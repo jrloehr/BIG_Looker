@@ -24,7 +24,7 @@ view: fact_sales_detail {
 
   dimension: sum_discounts {
     type: number
-    sql: SUM(${discounts};;
+    sql: SUM(${discounts});;
   }
 
   dimension: document_number {
