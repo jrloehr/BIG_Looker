@@ -22,6 +22,11 @@ view: fact_sales_detail {
     sql: ${TABLE}.Discounts ;;
   }
 
+  dimension: sum_discounts {
+    type: number
+    sql: SUM(${discounts};;
+  }
+
   dimension: document_number {
     type: string
     sql: ${TABLE}.Document_Number ;;
