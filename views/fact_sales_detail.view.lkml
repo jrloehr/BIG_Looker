@@ -22,7 +22,7 @@ view: fact_sales_detail {
     sql: ${TABLE}.Discounts ;;
   }
 
-  dimension: sum_discounts {
+  measure: sum_discounts {
     type: number
     sql: SUM(${discounts});;
   }
