@@ -122,7 +122,7 @@ view: fact_sales_detail {
     sql: ${TABLE}.Shipping ;;
   }
 
-  dimension: sum_shipping {
+  measure: sum_shipping {
     type: number
     sql: sum(${shipping}) ;;
   }
