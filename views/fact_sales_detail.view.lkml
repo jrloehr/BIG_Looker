@@ -162,9 +162,14 @@ view: fact_sales_detail {
     sql: count(${transaction_id}) ;;
   }
 
-  measure: returns {
+  dimension: returns {
     type: number
     sql: -(${gross_sales} - ${discounts} - ${net_sales_b4_returns});;
+  }
+
+  measure: sum_returns {
+    type: number
+    sql: SUM(-(${gross_sales} - ${discounts} - ${net_sales_b4_returns}));;
   }
 
   measure: count {
