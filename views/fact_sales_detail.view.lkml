@@ -122,6 +122,11 @@ view: fact_sales_detail {
     sql: ${TABLE}.Shipping ;;
   }
 
+  dimension: sum_shipping {
+    type: number
+    sql: sum(${shipping}) ;;
+  }
+
   dimension: subsidiary_id {
     type: number
     sql: ${TABLE}.subsidiary_id ;;
@@ -130,6 +135,11 @@ view: fact_sales_detail {
   dimension: taxes {
     type: string
     sql: ${TABLE}.Taxes ;;
+  }
+
+  measure: sum_taxes {
+    type: number
+    sql: sum(${taxes}) ;;
   }
 
   dimension: total_sales_b4_returns {
