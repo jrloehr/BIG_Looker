@@ -157,6 +157,16 @@ view: fact_sales_detail {
     sql: ${TABLE}.transaction_id ;;
   }
 
+  measure: count_transaction_id {
+    type: number
+    sql: count(${transaction_id}) ;;
+  }
+
+  measure: returns {
+    type: number
+    sql: -(${gross_sales} - ${discounts} - ${net_sales_b4_returns});;
+  }
+
   measure: count {
     type: count
     drill_fields: []
