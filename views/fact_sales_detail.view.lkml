@@ -37,9 +37,19 @@ view: fact_sales_detail {
     sql: ${TABLE}.etail_order_id ;;
   }
 
+  measure: count_etail_order_id {
+    type: number
+    sql: count(${etail_order_id}) ;;
+  }
+
   dimension: gross_sales {
     type: string
     sql: ${TABLE}.Gross_Sales ;;
+  }
+
+  measure: sum_gross_sales {
+    type: number
+    sql: SUM(${gross_sales});;
   }
 
   dimension: item_id {
@@ -65,6 +75,11 @@ view: fact_sales_detail {
   dimension: net_sales_b4_returns {
     type: string
     sql: ${TABLE}.Net_Sales_B4_Returns ;;
+  }
+
+  measure: sum_net_sales_b4_returns {
+    type: number
+    sql: sum(${net_sales_b4_returns}) ;;
   }
 
   dimension_group: ordered {
@@ -120,6 +135,11 @@ view: fact_sales_detail {
   dimension: total_sales_b4_returns {
     type: string
     sql: ${TABLE}.Total_Sales_B4_Returns ;;
+  }
+
+  measure: sum_total_sales_b4_returns {
+    type: number
+    sql: sum(${total_sales_b4_returns}) ;;
   }
 
   dimension: transaction_id {
