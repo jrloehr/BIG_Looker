@@ -157,9 +157,9 @@ view: fact_sales_detail {
     sql: ${TABLE}.transaction_id ;;
   }
 
-  measure: count_transaction_id {
-    type: number
-    sql: countd(${transaction_id}) ;;
+  measure: countd_transaction_id {
+    type: count_distinct
+    sql: ${transaction_id} ;;
   }
 
   # dimension: returns {
