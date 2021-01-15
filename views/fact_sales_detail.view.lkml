@@ -159,7 +159,7 @@ view: fact_sales_detail {
 
   measure: count_transaction_id {
     type: number
-    sql: count(${transaction_id}) ;;
+    sql: countd(${transaction_id}) ;;
   }
 
   # dimension: returns {
