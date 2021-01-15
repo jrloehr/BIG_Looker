@@ -23,8 +23,8 @@ view: fact_sales_detail {
   }
 
   measure: sum_discounts {
-    type: number
-    sql: SUM(${discounts});;
+    type: sum
+    sql: ${discounts};;
   }
 
   dimension: document_number {
@@ -38,8 +38,8 @@ view: fact_sales_detail {
   }
 
   measure: count_etail_order_id {
-    type: number
-    sql: count(${etail_order_id}) ;;
+    type: count_distinct
+    sql: ${etail_order_id};;
   }
 
   dimension: gross_sales {
@@ -48,8 +48,8 @@ view: fact_sales_detail {
   }
 
   measure: sum_gross_sales {
-    type: number
-    sql: SUM(${gross_sales});;
+    type: sum
+    sql: ${gross_sales};;
   }
 
   dimension: item_id {
@@ -78,8 +78,8 @@ view: fact_sales_detail {
   }
 
   measure: sum_net_sales_b4_returns {
-    type: number
-    sql: sum(${net_sales_b4_returns}) ;;
+    type: sum
+    sql: ${net_sales_b4_returns} ;;
   }
 
   dimension_group: ordered {
@@ -123,8 +123,8 @@ view: fact_sales_detail {
   }
 
   measure: sum_shipping {
-    type: number
-    sql: sum(${shipping}) ;;
+    type: sum
+    sql: ${shipping} ;;
   }
 
   dimension: subsidiary_id {
@@ -138,8 +138,8 @@ view: fact_sales_detail {
   }
 
   measure: sum_taxes {
-    type: number
-    sql: sum(${taxes}) ;;
+    type: sum
+    sql: ${taxes} ;;
   }
 
   dimension: total_sales_b4_returns {
@@ -148,8 +148,8 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales_b4_returns {
-    type: number
-    sql: sum(${total_sales_b4_returns}) ;;
+    type: sum
+    sql: ${total_sales_b4_returns} ;;
   }
 
   dimension: transaction_id {
