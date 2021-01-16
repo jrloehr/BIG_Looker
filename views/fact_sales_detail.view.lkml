@@ -62,6 +62,11 @@ view: fact_sales_detail {
     sql: ${TABLE}.Item_Qty ;;
   }
 
+  measure: sum_item_qty {
+    type: sum
+    sql: ${TABLE}.Item_Qty ;;
+  }
+
   dimension: location_id {
     type: number
     sql: ${TABLE}.Location_id ;;
@@ -118,7 +123,7 @@ view: fact_sales_detail {
   }
 
   dimension: shipping {
-    type: string
+    type: number
     sql: ${TABLE}.Shipping ;;
   }
 
@@ -133,7 +138,7 @@ view: fact_sales_detail {
   }
 
   dimension: taxes {
-    type: string
+    type: number
     sql: ${TABLE}.Taxes ;;
   }
 
@@ -143,7 +148,7 @@ view: fact_sales_detail {
   }
 
   dimension: total_sales_b4_returns {
-    type: string
+    type: number
     sql: ${TABLE}.Total_Sales_B4_Returns ;;
   }
 
