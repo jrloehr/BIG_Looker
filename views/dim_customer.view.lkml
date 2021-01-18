@@ -88,9 +88,11 @@ view: dim_customer {
 
   dimension: firsttime_or_returning {
     type: string
-    sql:  case
+    sql:
+    CASE
     WHEN ${first_order_date} = ${last_order_date} THEN 'First-Time'
-    ELSE 'Returning';;
+    ELSE 'Returning'
+    END;;
   }
 
   measure: count_firsttime_or_returning {
