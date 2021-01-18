@@ -96,12 +96,8 @@ view: dim_customer {
   }
 
   measure: count_firsttime_or_returning {
-    type: sum
-    sql:
-    CASE
-    WHEN ${first_order_date} = ${last_order_date} THEN 1
-    ELSE 0
-    END ;;
+    type: number
+    sql: COUNT(${firsttime_or_returning}) ;;
   }
 
   measure: count {
