@@ -17,10 +17,6 @@ view: fact_sales_detail {
     sql: ${TABLE}.Customer_Type_Id2 ;;
   }
 
-  measure: count_customer_type_id2 {
-    type: count
-  }
-
   dimension: discounts {
     type: string
     sql: ${TABLE}.Discounts ;;
