@@ -27,6 +27,11 @@ view: fact_sales_detail {
     sql: ${discounts};;
   }
 
+  measure: avg_discounts {
+    type: average
+    sql: ${discounts};;
+  }
+
   dimension: document_number {
     type: string
     sql: ${TABLE}.Document_Number ;;
@@ -52,6 +57,11 @@ view: fact_sales_detail {
     sql: ${gross_sales};;
   }
 
+  measure: avg_gross_sales {
+    type: average
+    sql: ${gross_sales};;
+  }
+
   dimension: item_id {
     type: number
     sql: ${TABLE}.item_id ;;
@@ -64,6 +74,11 @@ view: fact_sales_detail {
 
   measure: sum_item_qty {
     type: sum
+    sql: ${TABLE}.Item_Qty ;;
+  }
+
+  measure: avg_item_qty {
+    type: average
     sql: ${TABLE}.Item_Qty ;;
   }
 
@@ -84,6 +99,11 @@ view: fact_sales_detail {
 
   measure: sum_net_sales_b4_returns {
     type: sum
+    sql: ${net_sales_b4_returns} ;;
+  }
+
+  measure: avg_net_sales_b4_returns {
+    type: average
     sql: ${net_sales_b4_returns} ;;
   }
 
@@ -132,6 +152,11 @@ view: fact_sales_detail {
     sql: ${shipping} ;;
   }
 
+  measure: avg_shipping {
+    type: average
+    sql: ${shipping} ;;
+  }
+
   dimension: subsidiary_id {
     type: number
     sql: ${TABLE}.subsidiary_id ;;
@@ -147,6 +172,11 @@ view: fact_sales_detail {
     sql: ${taxes} ;;
   }
 
+  measure: avg_taxes {
+    type: average
+    sql: ${taxes} ;;
+  }
+
   dimension: total_sales_b4_returns {
     type: number
     sql: ${TABLE}.Total_Sales_B4_Returns ;;
@@ -154,6 +184,11 @@ view: fact_sales_detail {
 
   measure: sum_total_sales_b4_returns {
     type: sum
+    sql: ${total_sales_b4_returns} ;;
+  }
+
+  measure: avg_total_sales_b4_returns {
+    type: average
     sql: ${total_sales_b4_returns} ;;
   }
 
