@@ -86,6 +86,18 @@ view: dim_customer {
     sql: ${TABLE}.ZipCode ;;
   }
 
+  dimension: firsttime_or_returning {
+    type: string
+    sql:  case
+    WHEN ${first_order_date} = ${last_order_date} THEN 'First-Time'
+    ELSE 'Returning';;
+  }
+
+  measure: count_firsttime_or_returning {
+    type: count_distinct
+    sql: ${firsttime_or_returning} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [customer_name, first_name, last_name]
