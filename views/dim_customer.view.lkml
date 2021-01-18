@@ -96,8 +96,8 @@ view: dim_customer {
   }
 
   measure: count_firsttime_or_returning {
-    type: count_distinct
-    sql: ${firsttime_or_returning} ;;
+    type: number
+    sql: COUNT(${firsttime_or_returning}) ;;
   }
 
   measure: count {
