@@ -50,11 +50,14 @@ view: fact_sales_detail {
   dimension: gross_sales {
     type: string
     sql: ${TABLE}.Gross_Sales ;;
+
   }
 
   measure: sum_gross_sales {
     type: sum
-    sql: ${gross_sales};;
+    sql: ${gross_sales}*1.10;;
+    value_format_name: usd_0
+    description: "Description of Gross Sales"
   }
 
   measure: avg_gross_sales {

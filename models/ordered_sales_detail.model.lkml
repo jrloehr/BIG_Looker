@@ -12,12 +12,14 @@ persist_with: ordered_sales_detail_default_datagroup
 
 explore: fact_sales_detail {
     join: dim_customer {
+      view_label: "Customer"
       type: left_outer
       sql_on: ${fact_sales_detail.customer_id} = ${dim_customer.customer_id} ;;
       relationship: many_to_one
     }
 
    join: dim_customer_types {
+    view_label: "Customer"
     type: left_outer
     sql_on: ${fact_sales_detail.customer_type_id2} = ${dim_customer_types.customer_type_id} ;;
     relationship: many_to_one

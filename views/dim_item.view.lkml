@@ -22,31 +22,37 @@ view: dim_item {
   }
 
   dimension: color_category {
+    group_label: "Color Attributes"
     type: string
     sql: ${TABLE}.color_category ;;
   }
 
   dimension: color_code_id {
+    group_label: "Color Attributes"
     type: number
     sql: ${TABLE}.color_code_id ;;
   }
 
   dimension: color_name_id {
+    group_label: "Color Attributes"
     type: number
     sql: ${TABLE}.color_name_id ;;
   }
 
   dimension: color_process {
+    group_label: "Color Attributes"
     type: string
     sql: ${TABLE}.color_process ;;
   }
 
   dimension: color_process_big_id {
+    group_label: "Color Attributes"
     type: number
     sql: ${TABLE}.color_process_big_id ;;
   }
 
   dimension: color_processes {
+    group_label: "Color Attributes"
     type: string
     sql: ${TABLE}.color_processes ;;
   }

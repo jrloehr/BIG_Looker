@@ -7,6 +7,7 @@ view: dim_customer {
   }
 
   dimension: customer_id {
+    primary_key: yes
     type: number
     sql: ${TABLE}.Customer_id ;;
   }
@@ -22,6 +23,7 @@ view: dim_customer {
   }
 
   dimension: customer_type_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.customer_type_id ;;
   }
@@ -95,13 +97,27 @@ view: dim_customer {
     END;;
   }
 
-  measure: count_firsttime_or_returning {
-    type: number
-    sql: COUNT(${firsttime_or_returning}) ;;
+  measure: count_firsttime_customers {
+    type: count_distinct
+    sql: ${customer_id} ;;
+    filters: [firsttime_or_returning: "First-Time"]
+    drill_fields: [customer_drill*]
   }
+
+  measure: count_returning_customers {
+    type: count_distinct
+    sql: ${customer_id} ;;
+    filters: [firsttime_or_returning: "Returning"]
+    drill_fields: [customer_drill*, count_returning_customers]
+  }
+
 
   measure: count {
     type: count
     drill_fields: [customer_name, first_name, last_name]
+  }
+
+  set: customer_drill {
+    fields: [city, days_on_file]
   }
 }
