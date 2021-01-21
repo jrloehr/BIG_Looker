@@ -55,7 +55,7 @@ view: fact_sales_detail {
 
   measure: sum_gross_sales {
     type: sum
-    sql: ${gross_sales}*1.10;;
+    sql: ${gross_sales};;
     value_format_name: usd_0
     description: "Description of Gross Sales"
   }

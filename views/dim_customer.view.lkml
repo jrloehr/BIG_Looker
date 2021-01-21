@@ -1,5 +1,6 @@
 view: dim_customer {
   sql_table_name: dbo.DimCustomer ;;
+  view_label: "Customers"
 
   dimension: city {
     type: string

@@ -19,30 +19,34 @@ explore: fact_sales_detail {
     }
 
    join: dim_customer_types {
-    view_label: "Customer"
+    view_label: "Customer Types"
     type: left_outer
     sql_on: ${fact_sales_detail.customer_type_id2} = ${dim_customer_types.customer_type_id} ;;
     relationship: many_to_one
   }
 
-  join: dim_date {
-    type: left_outer
-    sql_on: ${fact_sales_detail.ordered_date} = ${dim_date.date_date} ;;
-    relationship: many_to_one
-  }
+#  join: dim_date {
+#    type: left_outer
+#    sql_on: ${fact_sales_detail.ordered_date} = ${dim_date.date_date} ;;
+#    relationship: many_to_one
+#  }
+
   join: dim_item {
+    view_label: "Products"
     type: left_outer
     sql_on: ${fact_sales_detail.item_id} = ${dim_item.item_id} ;;
     relationship: many_to_one
   }
 
   join: dim_location {
+    view_label: "Brands"
     type: left_outer
     sql_on: ${fact_sales_detail.location_id} = ${dim_location.location_id} ;;
     relationship: many_to_one
   }
 
   join: dim_subsidiary {
+    view_label: "Subsidiaries"
     type: left_outer
     sql_on: ${fact_sales_detail.subsidiary_id} = ${dim_subsidiary.subsidiary_id} ;;
     relationship: many_to_one
