@@ -2,6 +2,7 @@ view: fact_sales_detail {
   sql_table_name: dbo.FactSalesDetail ;;
 
   dimension: cogs {
+    label: "Cost of Goods Sold"
     type: string
     sql: ${TABLE}.COGS ;;
   }
@@ -18,16 +19,19 @@ view: fact_sales_detail {
   }
 
   dimension: discounts {
+    label: "Discounts & Returns"
     type: string
     sql: ${TABLE}.Discounts ;;
   }
 
   measure: sum_discounts {
+    label: "Discounts & Returns"
     type: sum
     sql: ${discounts};;
   }
 
   measure: avg_discounts {
+    label: "Discounts & Returns"
     type: average
     sql: ${discounts};;
   }
