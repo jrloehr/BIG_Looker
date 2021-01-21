@@ -20,7 +20,7 @@ view: fact_sales_detail {
 
   dimension: discounts {
     label: "Discounts & Returns"
-    type: string
+    type: number
     value_format_name: usd_0
     sql: ${TABLE}.Discounts ;;
   }
