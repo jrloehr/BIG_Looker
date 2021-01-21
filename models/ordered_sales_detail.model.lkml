@@ -11,6 +11,7 @@ datagroup: ordered_sales_detail_default_datagroup {
 persist_with: ordered_sales_detail_default_datagroup
 
 explore: fact_sales_detail {
+    view_label: "Sales Detail"
     join: dim_customer {
       view_label: "Customer"
       type: left_outer
