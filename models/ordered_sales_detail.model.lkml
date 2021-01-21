@@ -26,11 +26,11 @@ explore: fact_sales_detail {
     relationship: many_to_one
   }
 
-#  join: dim_date {
-#    type: left_outer
-#    sql_on: ${fact_sales_detail.ordered_date} = ${dim_date.date_date} ;;
-#    relationship: many_to_one
-#  }
+  join: dim_date {
+    type: left_outer
+    sql_on: ${fact_sales_detail.ordered_date} = ${dim_date.date_date} ;;
+    relationship: many_to_one
+  }
 
   join: dim_item {
     view_label: "Products"
