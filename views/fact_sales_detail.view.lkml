@@ -209,7 +209,7 @@ view: fact_sales_detail {
   dimension: in_this_month_and_year {
     type:  yesno
     label: "In This Month and Year"
-    sql: (extract_months(${ordered_date}) = extract_months(now())) AND (extract_years(${ordered_date}) = (extract_years(now()));;
+    sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${ordered_date}), 0) = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
   }
 
   dimension_group: ordered {
