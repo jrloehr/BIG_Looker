@@ -21,18 +21,21 @@ view: fact_sales_detail {
   dimension: discounts {
     label: "Discounts & Returns"
     type: string
+    value_format_name: usd_0
     sql: ${TABLE}.Discounts ;;
   }
 
   measure: sum_discounts {
-    label: "Discounts & Returns"
+    label: "Total Discounts & Returns"
     type: sum
+    value_format_name: usd_0
     sql: ${discounts};;
   }
 
   measure: avg_discounts {
-    label: "Discounts & Returns"
+    label: "Average Discounts & Returns"
     type: average
+    value_format_name: usd_0
     sql: ${discounts};;
   }
 
@@ -52,12 +55,15 @@ view: fact_sales_detail {
   }
 
   dimension: gross_sales {
+    label: "Gross Sales"
     type: string
+    value_format_name: usd_0
     sql: ${TABLE}.Gross_Sales ;;
 
   }
 
   measure: sum_gross_sales {
+    label: "Total Gross Sales"
     type: sum
     sql: ${gross_sales};;
     value_format_name: usd_0
@@ -65,26 +71,32 @@ view: fact_sales_detail {
   }
 
   measure: avg_gross_sales {
+    label: "Average Gross Sales"
     type: average
+    value_format_name: usd_0
     sql: ${gross_sales};;
   }
 
   dimension: item_id {
+    label: "Item ID"
     type: number
     sql: ${TABLE}.item_id ;;
   }
 
   dimension: item_qty {
+    label: "Item Quantity"
     type: number
     sql: ${TABLE}.Item_Qty ;;
   }
 
   measure: sum_item_qty {
+    label: "Total Item Quantity"
     type: sum
     sql: ${TABLE}.Item_Qty ;;
   }
 
   measure: avg_item_qty {
+    label: "Average Item Quantity"
     type: average
     sql: ${TABLE}.Item_Qty ;;
   }
@@ -100,17 +112,23 @@ view: fact_sales_detail {
   }
 
   dimension: net_sales_b4_returns {
+    label: "Net Sales"
     type: string
+    value_format_name: usd_0
     sql: ${TABLE}.Net_Sales_B4_Returns ;;
   }
 
   measure: sum_net_sales_b4_returns {
+    label: "Total Net Sales"
     type: sum
+    value_format_name: usd_0
     sql: ${net_sales_b4_returns} ;;
   }
 
   measure: avg_net_sales_b4_returns {
+    label: "Average Net Sales"
     type: average
+    value_format_name: usd_0
     sql: ${net_sales_b4_returns} ;;
   }
 
@@ -150,17 +168,23 @@ view: fact_sales_detail {
   }
 
   dimension: shipping {
+    label: "Shipping"
     type: number
+    value_format_name: usd_0
     sql: ${TABLE}.Shipping ;;
   }
 
   measure: sum_shipping {
+    label: "Total Shipping"
     type: sum
+    value_format_name: usd_0
     sql: ${shipping} ;;
   }
 
   measure: avg_shipping {
+    label: "Average Shipping"
     type: average
+    value_format_name: usd_0
     sql: ${shipping} ;;
   }
 
@@ -170,41 +194,55 @@ view: fact_sales_detail {
   }
 
   dimension: taxes {
+    label: "Taxes"
     type: number
+    value_format_name: usd_0
     sql: ${TABLE}.Taxes ;;
   }
 
   measure: sum_taxes {
+    label: "Total Taxes"
     type: sum
+    value_format_name: usd_0
     sql: ${taxes} ;;
   }
 
   measure: avg_taxes {
+    label: "Average Taxes"
     type: average
+    value_format_name: usd_0
     sql: ${taxes} ;;
   }
 
   dimension: total_sales_b4_returns {
+    label: "Total Sales"
     type: number
+    value_format_name: usd_0
     sql: ${TABLE}.Total_Sales_B4_Returns ;;
   }
 
   measure: sum_total_sales_b4_returns {
+    label: "Grand Total Sales"
     type: sum
+    value_format_name: usd_0
     sql: ${total_sales_b4_returns} ;;
   }
 
   measure: avg_total_sales_b4_returns {
+    label: "Average Total Sales"
     type: average
+    value_format_name: usd_0
     sql: ${total_sales_b4_returns} ;;
   }
 
   dimension: transaction_id {
+    label: "Transaction ID"
     type: number
     sql: ${TABLE}.transaction_id ;;
   }
 
   measure: countd_transaction_id {
+    label: "# of Transactions"
     type: count_distinct
     sql: ${transaction_id} ;;
   }
