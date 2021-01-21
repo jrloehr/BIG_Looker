@@ -19,7 +19,7 @@ explore: fact_sales_detail {
     }
 
    join: dim_customer_types {
-    view_label: "Customer Types"
+    view_label: "Sales Channel"
     type: left_outer
     sql_on: ${fact_sales_detail.customer_type_id2} = ${dim_customer_types.customer_type_id} ;;
     relationship: many_to_one
