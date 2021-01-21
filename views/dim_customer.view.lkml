@@ -2,6 +2,7 @@ view: dim_customer {
   sql_table_name: dbo.DimCustomer ;;
 
   dimension: city {
+    label: "City"
     type: string
     sql: ${TABLE}.City ;;
   }
@@ -13,17 +14,18 @@ view: dim_customer {
   }
 
   dimension: customer_name {
+    label: "Customer Name"
     type: string
     sql: ${TABLE}.Customer_Name ;;
   }
 
   dimension: customer_state {
+    label: "Customer State"
     type: string
     sql: ${TABLE}.Customer_State ;;
   }
 
   dimension: customer_type_id {
-    hidden: yes
     type: number
     sql: ${TABLE}.customer_type_id ;;
   }
@@ -39,11 +41,13 @@ view: dim_customer {
   }
 
   dimension: email {
+    label: "Email"
     type: string
     sql: ${TABLE}.Email ;;
   }
 
   dimension: first_name {
+    label: "First Name"
     type: string
     sql: ${TABLE}.FirstName ;;
   }
@@ -64,6 +68,7 @@ view: dim_customer {
   }
 
   dimension: last_name {
+    label: "Last Name"
     type: string
     sql: ${TABLE}.LastName ;;
   }
@@ -84,6 +89,7 @@ view: dim_customer {
   }
 
   dimension: zip_code {
+    label: "Customer Zip Code"
     type: zipcode
     sql: ${TABLE}.ZipCode ;;
   }
@@ -110,7 +116,6 @@ view: dim_customer {
     filters: [firsttime_or_returning: "Returning"]
     drill_fields: [customer_drill*, count_returning_customers]
   }
-
 
   measure: count {
     type: count

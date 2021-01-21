@@ -7,6 +7,7 @@ view: dim_customer_types {
   }
 
   dimension: customer_type_name {
+    label: "Sales Channel Type"
     type: string
     sql: ${TABLE}.CustomerTypeName ;;
   }
