@@ -206,6 +206,12 @@ view: fact_sales_detail {
     sql: ${TABLE}.Margin_Dollars ;;
   }
 
+  dimension: in_this_month_and_year {
+    type:  yesno
+    label: "In This Month and Year"
+    sql: (extract_months(${ordered_date}) = extract_months(now())) AND (extract_years(${ordered_date}) = (extract_years(now()));;
+  }
+
   dimension_group: ordered {
     type: time
     timeframes: [
@@ -235,6 +241,8 @@ view: fact_sales_detail {
     datatype: date
     sql: ${TABLE}.ShippedDate ;;
   }
+
+
 
   dimension: shipped_flag {
     type: number
