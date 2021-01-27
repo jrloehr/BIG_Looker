@@ -173,7 +173,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id}
-    filters: [${ordered_year} = '2014'];;
+    filters: [${ordered_year}: '2014'];;
   }
 
   measure: countd_transaction_id_2015 {
@@ -181,7 +181,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id}
-      filters: [${ordered_year} = '2015'];;
+      filters: [${ordered_year}: '2015'];;
   }
 
   measure: countd_transaction_id_2016 {
@@ -189,7 +189,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id}
-      filters: [${ordered_year} = '2016'];;
+      filters: [${ordered_year}: '2016'];;
   }
 
   measure: countd_transaction_id_2017 {
@@ -197,7 +197,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id}
-      filters: [${ordered_year} = '2017'];;
+      filters: [${ordered_year}: '2017'];;
   }
 
   measure: countd_transaction_id_2018 {
@@ -205,7 +205,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id}
-      filters: [${ordered_year} = '2018'];;
+      filters: [${ordered_year}: '2018'];;
   }
 
   measure: countd_transaction_id_2019 {
@@ -213,7 +213,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id}
-      filters: [${ordered_year} = '2019'];;
+      filters: [${ordered_year}: '2019'];;
   }
 
   measure: countd_transaction_id_2020 {
@@ -221,7 +221,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id}
-      filters: [${ordered_year} = '2020'];;
+      filters: [${ordered_year}: '2020'];;
   }
 
   measure: countd_transaction_id_2021 {
@@ -229,7 +229,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id}
-      filters: [${ordered_year} = '2021'];;
+      filters: [${ordered_year}: '2021'];;
   }
 
   dimension: customer_id {
