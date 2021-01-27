@@ -204,7 +204,7 @@ view: fact_sales_detail {
   measure: aof_orders_per_customer{
     label: "Frequency - Orders per Customer"
     type: number
-    value_format_name: decimal_0
+    value_format_name: decimal_2
     sql: ${countd_transaction_id} / ${countd_customer_id} ;;
   }
 
