@@ -94,18 +94,21 @@ view: fact_sales_detail {
   dimension: item_qty {
     label: "Item Quantity"
     type: number
+    value_format_name: decimal_0
     sql: ${TABLE}.Item_Qty ;;
   }
 
   measure: sum_item_qty {
     label: "Total Item Quantity"
     type: sum
+    value_format_name: decimal_0
     sql: ${TABLE}.Item_Qty ;;
   }
 
   measure: shp_avg_item_qty {
     label: "Average Item Quantity"
     type: number
+    value_format_name: decimal_0
     sql: ${sum_item_qty} / ${countd_transaction_id} ;;
   }
 
@@ -161,6 +164,7 @@ view: fact_sales_detail {
   measure: countd_transaction_id {
     label: "# of Transactions"
     type: count_distinct
+    value_format_name: decimal_0
     sql: ${transaction_id} ;;
   }
 
@@ -172,32 +176,35 @@ view: fact_sales_detail {
   measure: countd_customer_id {
     label: "Unique Customers"
     type: count_distinct
+    value_format_name: decimal_0
     sql: ${customer_id} ;;
   }
 
   measure: count_customer_id {
     label: "Customers"
     type: sum
+    value_format_name: decimal_0
     sql: ${customer_id} ;;
   }
 
-  measure: aov{
+  measure: aov_sales_per_order{
     label: "AOV - Sales per Order"
     type: number
     value_format_name: usd_0
     sql: ${sum_total_sales} / ${countd_transaction_id} ;;
   }
 
-  measure: total_sales_per_customer{
+  measure: ltv_sales_per_customer{
     label: "LTV - Sales per Customer"
     type: number
     value_format_name: usd_0
     sql: ${sum_total_sales} / ${countd_customer_id} ;;
   }
 
-  measure: average_order_frequency{
+  measure: aof_orders_per_customer{
     label: "Frequency - Orders per Customer"
     type: number
+    value_format_name: decimal_0
     sql: ${countd_transaction_id} / ${countd_customer_id} ;;
   }
 
