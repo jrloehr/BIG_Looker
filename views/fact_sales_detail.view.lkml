@@ -70,25 +70,25 @@ view: fact_sales_detail {
     sql: ${sum_taxes} / ${countd_transaction_id} ;;
   }
 
-  dimension: total_sales_b4_returns {
+  dimension: total_sales {
     label: "Total Sales"
     type: number
     value_format_name: usd_0
     sql: ${TABLE}.Total_Sales_B4_Returns ;;
   }
 
-  measure: sum_total_sales_b4_returns {
+  measure: sum_total_sales {
     label: "Grand Total Sales"
     type: sum
     value_format_name: usd_0
-    sql: ${total_sales_b4_returns} ;;
+    sql: ${total_sales} ;;
   }
 
-  measure: shp_avg_total_sales_b4_returns {
+  measure: shp_avg_total_sales {
     label: "Average Total Sales"
     type: number
     value_format_name: usd_0
-    sql: ${sum_total_sales_b4_returns} / ${countd_transaction_id} ;;
+    sql: ${sum_total_sales} / ${countd_transaction_id} ;;
   }
 
   dimension: item_qty {
@@ -169,6 +169,25 @@ view: fact_sales_detail {
     sql: ${TABLE}.Customer_id ;;
   }
 
+  measure: countd_customer_id {
+    label: "Unique Customers"
+    type: count_distinct
+    sql: ${customer_id} ;;
+  }
+
+  measure: count_customer_id {
+    label: "Customers"
+    type: sum
+    sql: ${customer_id} ;;
+  }
+
+  measure: aov{
+    label: "Average Order Value"
+    type: number
+    value_format_name: usd_0
+    sql: ${sum_total_sales} / ${countd_transaction_id} ;;
+  }
+
   dimension: customer_type_id2 {
     type: number
     value_format_name: id
@@ -210,6 +229,12 @@ view: fact_sales_detail {
     type:  yesno
     label: "In This Month and Year"
     sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${ordered_date}), 0) = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
+  }
+
+  dimension: 2016to2018cohort {
+    type:  yesno
+    label: "In 2016 to 2018"
+    sql: YEAR(${ordered_date}) IN (YEAR('2018-01-01'), YEAR('2017-01-01'), YEAR('2016-01-01'));;
   }
 
   dimension_group: ordered {
