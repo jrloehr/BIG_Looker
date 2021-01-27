@@ -180,12 +180,12 @@ view: fact_sales_detail {
     sql: ${customer_id} ;;
   }
 
-  measure: count_customer_id {
-    label: "Customers"
-    type: sum
-    value_format_name: decimal_0
-    sql: ${customer_id} ;;
-  }
+  # measure: count_customer_id {
+  #   label: "Customers"
+  #   type: sum
+  #   value_format_name: decimal_0
+  #   sql: ${customer_id} ;;
+  # }
 
   measure: aov_sales_per_order{
     label: "AOV - Sales per Order"
