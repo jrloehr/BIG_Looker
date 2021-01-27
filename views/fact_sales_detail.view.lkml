@@ -198,7 +198,6 @@ view: fact_sales_detail {
   measure: average_order_frequency{
     label: "Frequency - Orders per Customer"
     type: number
-    value_format_name: usd_0
     sql: ${countd_transaction_id} / ${countd_customer_id} ;;
   }
 
