@@ -182,10 +182,24 @@ view: fact_sales_detail {
   }
 
   measure: aov{
-    label: "Average Order Value"
+    label: "AOV - Sales per Order"
     type: number
     value_format_name: usd_0
     sql: ${sum_total_sales} / ${countd_transaction_id} ;;
+  }
+
+  measure: total_sales_per_customer{
+    label: "LTV - Sales per Customer"
+    type: number
+    value_format_name: usd_0
+    sql: ${sum_total_sales} / ${countd_customer_id} ;;
+  }
+
+  measure: average_order_frequency{
+    label: "Frequency - Orders per Customer"
+    type: number
+    value_format_name: usd_0
+    sql: ${countd_transaction_id} / ${countd_customer_id} ;;
   }
 
   dimension: customer_type_id2 {
@@ -235,6 +249,24 @@ view: fact_sales_detail {
     type:  yesno
     label: "In 2016 to 2018"
     sql: YEAR(${ordered_date}) IN (YEAR('2018-01-01'), YEAR('2017-01-01'), YEAR('2016-01-01'));;
+  }
+
+  dimension: 2017to2019cohort {
+    type:  yesno
+    label: "In 2017 to 2019"
+    sql: YEAR(${ordered_date}) IN (YEAR('2019-01-01'), YEAR('2018-01-01'), YEAR('2017-01-01'));;
+  }
+
+  dimension: 2018to2020cohort {
+    type:  yesno
+    label: "In 2018 to 2020"
+    sql: YEAR(${ordered_date}) IN (YEAR('2020-01-01'), YEAR('2019-01-01'), YEAR('2018-01-01'));;
+  }
+
+  dimension: 2019to2021cohort {
+    type:  yesno
+    label: "In 2019 to 2021"
+    sql: YEAR(${ordered_date}) IN (YEAR('2021-01-01'), YEAR('2020-01-01'), YEAR('2019-01-01'));;
   }
 
   dimension_group: ordered {
