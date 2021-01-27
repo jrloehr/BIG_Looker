@@ -5,10 +5,12 @@ include: "/views/**/*.view"
 
 datagroup: ordered_sales_detail_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+  max_cache_age: "24 hours"
 }
 
 persist_with: ordered_sales_detail_default_datagroup
+
+explore: cohort_tool {}
 
 explore: fact_sales_detail {
     view_label: "Sales Detail"
@@ -52,4 +54,11 @@ explore: fact_sales_detail {
     sql_on: ${fact_sales_detail.subsidiary_id} = ${dim_subsidiary.subsidiary_id} ;;
     relationship: many_to_one
   }
+  ###Product Rollup Table - used for benchmarking
+  # join: product_category_rollup {
+  #   type: left_outer
+  #   sql_on: ${fact_sales_detail.ordered_date} = ${product_category_rollup.ordered_date} AND ${dim_item.product_category} = ${product_category_rollup.product_category} ;;
+  #   # sql_on: ${dim_item.product_category} = ${product_category_rollup.product_category} ;;
+  #   relationship: many_to_one
+  # }
 }
