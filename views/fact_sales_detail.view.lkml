@@ -177,6 +177,78 @@ view: fact_sales_detail {
     sql: ${TABLE}.Item_Qty ;;
   }
 
+  measure: sum_item_qty_2014 {
+    label: "Total Item Quantity in 2014"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${item_qty} ;;
+    filters: [ordered_year: "2014"]
+  }
+
+  measure: sum_item_qty_2015 {
+    label: "Total Item Quantity in 2015"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${item_qty};;
+    filters: [ordered_year: "2015"]
+  }
+
+  measure: sum_item_qty_2016 {
+    label: "Total Item Quantity in 2016"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${item_qty} ;;
+    filters: [ordered_year: "2016"]
+  }
+
+  measure: sum_item_qty_2017 {
+    label: "Total Item Quantity in 2017"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${item_qty} ;;
+    filters: [ordered_year: "2017"]
+  }
+
+  measure: sum_item_qty_2018 {
+    label: "Total Item Quantity in 2018"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${item_qty} ;;
+    filters: [ordered_year: "2018"]
+  }
+
+  measure: sum_item_qty_2019 {
+    label: "Total Item Quantity in 2019"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${item_qty};;
+    filters: [ordered_year: "2019"]
+  }
+
+  measure: sum_item_qty_2020 {
+    label: "Total Item Quantity in 2020"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${item_qty} ;;
+    filters: [ordered_year: "2020"]
+  }
+
+  measure: sum_item_qty_2021 {
+    label: "Total Item Quantity in 2021"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${item_qty} ;;
+    filters: [ordered_year: "2021"]
+  }
+
+  measure: sum_item_qty_2022 {
+    label: "Total Item Quantity in 2022"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${item_qty} ;;
+    filters: [ordered_year: "2022"]
+  }
+
   measure: shp_avg_item_qty {
     label: "Average Item Quantity"
     type: number
