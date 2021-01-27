@@ -85,7 +85,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales_2014 {
-    label: "Total Sales in 2014"
+    label: "Sales in 2014"
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
@@ -93,7 +93,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales_2015 {
-    label: "Total Sales in 2015"
+    label: "Sales in 2015"
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
@@ -101,7 +101,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales_2016 {
-    label: "Total Sales in 2016"
+    label: "Sales in 2016"
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
@@ -109,7 +109,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales_2017 {
-    label: "Total Sales in 2017"
+    label: "Sales in 2017"
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
@@ -117,7 +117,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales_2018 {
-    label: "Total Sales in 2018"
+    label: "Sales in 2018"
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
@@ -125,7 +125,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales_2019 {
-    label: "Total Sales in 2019"
+    label: "Sales in 2019"
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
@@ -133,7 +133,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales_2020 {
-    label: "Total Sales in 2020"
+    label: "Sales in 2020"
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
@@ -141,7 +141,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales_2021 {
-    label: "Total Sales in 2021"
+    label: "Sales in 2021"
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
@@ -149,7 +149,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales_2022 {
-    label: "Total Sales in 2022"
+    label: "Sales in 2022"
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
@@ -178,7 +178,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_item_qty_2014 {
-    label: "Total Item Quantity in 2014"
+    label: "Item Quantity in 2014"
     type: sum
     value_format_name: decimal_0
     sql: ${item_qty} ;;
@@ -186,7 +186,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_item_qty_2015 {
-    label: "Total Item Quantity in 2015"
+    label: "Item Quantity in 2015"
     type: sum
     value_format_name: decimal_0
     sql: ${item_qty};;
@@ -194,7 +194,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_item_qty_2016 {
-    label: "Total Item Quantity in 2016"
+    label: "Item Quantity in 2016"
     type: sum
     value_format_name: decimal_0
     sql: ${item_qty} ;;
@@ -202,7 +202,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_item_qty_2017 {
-    label: "Total Item Quantity in 2017"
+    label: "Item Quantity in 2017"
     type: sum
     value_format_name: decimal_0
     sql: ${item_qty} ;;
@@ -210,7 +210,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_item_qty_2018 {
-    label: "Total Item Quantity in 2018"
+    label: "Item Quantity in 2018"
     type: sum
     value_format_name: decimal_0
     sql: ${item_qty} ;;
@@ -218,7 +218,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_item_qty_2019 {
-    label: "Total Item Quantity in 2019"
+    label: "Item Quantity in 2019"
     type: sum
     value_format_name: decimal_0
     sql: ${item_qty};;
@@ -226,7 +226,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_item_qty_2020 {
-    label: "Total Item Quantity in 2020"
+    label: "Item Quantity in 2020"
     type: sum
     value_format_name: decimal_0
     sql: ${item_qty} ;;
@@ -234,7 +234,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_item_qty_2021 {
-    label: "Total Item Quantity in 2021"
+    label: "Item Quantity in 2021"
     type: sum
     value_format_name: decimal_0
     sql: ${item_qty} ;;
@@ -242,7 +242,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_item_qty_2022 {
-    label: "Total Item Quantity in 2022"
+    label: "Item Quantity in 2022"
     type: sum
     value_format_name: decimal_0
     sql: ${item_qty} ;;
