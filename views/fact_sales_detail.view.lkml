@@ -275,6 +275,22 @@ view: fact_sales_detail {
     sql: YEAR(${ordered_date}) IN (YEAR('2021-01-01'), YEAR('2020-01-01'), YEAR('2019-01-01'));;
   }
 
+  dimension: cohorts {
+    type:  string
+    label: "Cohorts"
+    sql: CASE
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2012-01-01'), YEAR('2013-01-01'), YEAR('2014-01-01')) THEN '2012 to 2014'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2013-01-01'), YEAR('2014-01-01'), YEAR('2015-01-01')) THEN '2013 to 2015'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2014-01-01'), YEAR('2015-01-01'), YEAR('2016-01-01')) THEN '2014 to 2016'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2015-01-01'), YEAR('2016-01-01'), YEAR('2017-01-01')) THEN '2015 to 2017'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2016-01-01'), YEAR('2017-01-01'), YEAR('2018-01-01')) THEN '2016 to 2018'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2017-01-01'), YEAR('2018-01-01'), YEAR('2019-01-01')) THEN '2017 to 2019'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2018-01-01'), YEAR('2019-01-01'), YEAR('2020-01-01')) THEN '2018 to 2020'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2019-01-01'), YEAR('2020-01-01'), YEAR('2021-01-01')) THEN '2019 to 2021'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2020-01-01'), YEAR('2021-01-01'), YEAR('2022-01-01')) THEN '2020 to 2022'
+          END;;
+  }
+
   dimension_group: ordered {
     type: time
     timeframes: [
