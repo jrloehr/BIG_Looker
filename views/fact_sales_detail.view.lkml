@@ -71,17 +71,89 @@ view: fact_sales_detail {
   }
 
   dimension: total_sales {
-    label: "Total Sales"
+    label: "Sales Amount"
     type: number
     value_format_name: usd
     sql: ${TABLE}.Total_Sales_B4_Returns ;;
   }
 
   measure: sum_total_sales {
-    label: "Grand Total Sales"
+    label: "Total Sales"
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
+  }
+
+  measure: sum_total_sales_2014 {
+    label: "Total Sales in 2014"
+    type: sum
+    value_format_name: usd
+    sql: ${total_sales} ;;
+    filters: [ordered_year: "2014"]
+  }
+
+  measure: sum_total_sales_2015 {
+    label: "Total Sales in 2015"
+    type: sum
+    value_format_name: usd
+    sql: ${total_sales} ;;
+    filters: [ordered_year: "2015"]
+  }
+
+  measure: sum_total_sales_2016 {
+    label: "Total Sales in 2016"
+    type: sum
+    value_format_name: usd
+    sql: ${total_sales} ;;
+    filters: [ordered_year: "2016"]
+  }
+
+  measure: sum_total_sales_2017 {
+    label: "Total Sales in 2017"
+    type: sum
+    value_format_name: usd
+    sql: ${total_sales} ;;
+    filters: [ordered_year: "2017"]
+  }
+
+  measure: sum_total_sales_2018 {
+    label: "Total Sales in 2018"
+    type: sum
+    value_format_name: usd
+    sql: ${total_sales} ;;
+    filters: [ordered_year: "2018"]
+  }
+
+  measure: sum_total_sales_2019 {
+    label: "Total Sales in 2019"
+    type: sum
+    value_format_name: usd
+    sql: ${total_sales} ;;
+    filters: [ordered_year: "2019"]
+  }
+
+  measure: sum_total_sales_2020 {
+    label: "Total Sales in 2020"
+    type: sum
+    value_format_name: usd
+    sql: ${total_sales} ;;
+    filters: [ordered_year: "2020"]
+  }
+
+  measure: sum_total_sales_2021 {
+    label: "Total Sales in 2021"
+    type: sum
+    value_format_name: usd
+    sql: ${total_sales} ;;
+    filters: [ordered_year: "2021"]
+  }
+
+  measure: sum_total_sales_2022 {
+    label: "Total Sales in 2022"
+    type: sum
+    value_format_name: usd
+    sql: ${total_sales} ;;
+    filters: [ordered_year: "2022"]
   }
 
   measure: shp_avg_total_sales {
@@ -244,6 +316,70 @@ view: fact_sales_detail {
     sql: ${customer_id} ;;
   }
 
+  measure: countd_customer_id_2014 {
+    label: "# of Customers in 2014"
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${customer_id};;
+    filters: [ordered_year: "2014"]
+  }
+
+  measure: countd_customer_id_2015 {
+    label: "# of Customers in 2015"
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${customer_id};;
+    filters: [ordered_year: "2015"]
+  }
+
+  measure: countd_customer_id_2016 {
+    label: "# of Customers in 2016"
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${customer_id};;
+    filters: [ordered_year: "2016"]
+  }
+
+  measure: countd_customer_id_2017 {
+    label: "# of Customers in 2017"
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${customer_id};;
+    filters: [ordered_year: "2017"]
+  }
+
+  measure: countd_customer_id_2018 {
+    label: "# of Customers in 2018"
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${customer_id};;
+    filters: [ordered_year: "2018"]
+  }
+
+  measure: countd_customer_id_2019 {
+    label: "# of Customers in 2019"
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${customer_id};;
+    filters: [ordered_year: "2019"]
+  }
+
+  measure: countd_customer_id_2020 {
+    label: "# of Customers in 2020"
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${customer_id};;
+    filters: [ordered_year: "2020"]
+  }
+
+  measure: countd_customer_id_2021 {
+    label: "# of Customers in 2021"
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${customer_id};;
+    filters: [ordered_year: "2021"]
+  }
+
   # measure: count_customer_id {
   #   label: "Customers"
   #   type: sum
@@ -343,15 +479,15 @@ view: fact_sales_detail {
     type:  string
     label: "Cohorts"
     sql: CASE
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2012-01-01'), YEAR('2013-01-01'), YEAR('2014-01-01')) THEN '2012 to 2014'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2013-01-01'), YEAR('2014-01-01'), YEAR('2015-01-01')) THEN '2013 to 2015'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2014-01-01'), YEAR('2015-01-01'), YEAR('2016-01-01')) THEN '2014 to 2016'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2015-01-01'), YEAR('2016-01-01'), YEAR('2017-01-01')) THEN '2015 to 2017'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2016-01-01'), YEAR('2017-01-01'), YEAR('2018-01-01')) THEN '2016 to 2018'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2017-01-01'), YEAR('2018-01-01'), YEAR('2019-01-01')) THEN '2017 to 2019'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2018-01-01'), YEAR('2019-01-01'), YEAR('2020-01-01')) THEN '2018 to 2020'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2019-01-01'), YEAR('2020-01-01'), YEAR('2021-01-01')) THEN '2019 to 2021'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2020-01-01'), YEAR('2021-01-01'), YEAR('2022-01-01')) THEN '2020 to 2022'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2012'), YEAR('2013'), YEAR('2014')) THEN '2012 to 2014'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2013'), YEAR('2014'), YEAR('2015')) THEN '2013 to 2015'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2014'), YEAR('2015'), YEAR('2016')) THEN '2014 to 2016'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2015'), YEAR('2016'), YEAR('2017')) THEN '2015 to 2017'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2016'), YEAR('2017'), YEAR('2018')) THEN '2016 to 2018'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2017'), YEAR('2018'), YEAR('2019')) THEN '2017 to 2019'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2018'), YEAR('2019'), YEAR('2020')) THEN '2018 to 2020'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2019'), YEAR('2020'), YEAR('2021')) THEN '2019 to 2021'
+          WHEN  YEAR(${ordered_date}) IN (YEAR('2020'), YEAR('2021'), YEAR('2022')) THEN '2020 to 2022'
           END;;
   }
 
