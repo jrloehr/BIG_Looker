@@ -10,84 +10,84 @@ view: fact_sales_detail {
   dimension: net_sales_b4_returns {
     label: "Net Sales"
     type: string
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${TABLE}.Net_Sales_B4_Returns ;;
   }
 
   measure: sum_net_sales_b4_returns {
     label: "Total Net Sales"
     type: sum
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${net_sales_b4_returns} ;;
   }
 
   measure: shp_avg_net_sales_b4_returns {
     label: "Average Net Sales"
     type: number
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${sum_net_sales_b4_returns} / ${countd_transaction_id} ;;
   }
 
   dimension: shipping {
     label: "Shipping"
     type: number
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${TABLE}.Shipping ;;
   }
 
   measure: sum_shipping {
     label: "Total Shipping"
     type: sum
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${shipping} ;;
   }
 
   measure: shp_avg_shipping {
     label: "Average Shipping"
     type: number
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${sum_shipping} / ${countd_transaction_id} ;;
   }
 
   dimension: taxes {
     label: "Taxes"
     type: number
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${TABLE}.Taxes ;;
   }
 
   measure: sum_taxes {
     label: "Total Taxes"
     type: sum
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${taxes} ;;
   }
 
   measure: shp_avg_taxes {
     label: "Average Taxes"
     type: number
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${sum_taxes} / ${countd_transaction_id} ;;
   }
 
   dimension: total_sales {
     label: "Total Sales"
     type: number
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${TABLE}.Total_Sales_B4_Returns ;;
   }
 
   measure: sum_total_sales {
     label: "Grand Total Sales"
     type: sum
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${total_sales} ;;
   }
 
   measure: shp_avg_total_sales {
     label: "Average Total Sales"
     type: number
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${sum_total_sales} / ${countd_transaction_id} ;;
   }
 
@@ -115,7 +115,7 @@ view: fact_sales_detail {
   dimension: gross_sales {
     label: "Gross Sales"
     type: string
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${TABLE}.Gross_Sales ;;
   }
 
@@ -123,35 +123,35 @@ view: fact_sales_detail {
     label: "Total Gross Sales"
     type: sum
     sql: ${gross_sales};;
-    value_format_name: usd_0
+    value_format_name: usd
     description: "Description of Gross Sales"
   }
 
   measure: shp_avg_gross_sales {
     label: "Average Gross Sales"
     type: number
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${sum_gross_sales} / ${countd_transaction_id};;
   }
 
   dimension: discounts {
     label: "Discounts & Returns"
     type: number
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${TABLE}.Discounts ;;
   }
 
   measure: sum_discounts {
     label: "Total Discounts & Returns"
     type: sum
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${discounts};;
   }
 
   measure: shp_avg_discounts {
     label: "Average Discounts & Returns"
     type: number
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${sum_discounts} / ${countd_transaction_id};;
   }
 
@@ -190,14 +190,14 @@ view: fact_sales_detail {
   measure: aov_sales_per_order{
     label: "AOV - Sales per Order"
     type: number
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${sum_total_sales} / ${countd_transaction_id} ;;
   }
 
   measure: ltv_sales_per_customer{
     label: "LTV - Sales per Customer"
     type: number
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${sum_total_sales} / ${countd_customer_id} ;;
   }
 
