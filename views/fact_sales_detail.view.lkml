@@ -172,64 +172,64 @@ view: fact_sales_detail {
     label: "# of Orders in 2014"
     type: count_distinct
     value_format_name: decimal_0
-    sql: ${transaction_id}
-    filters: [${ordered_year}: YEAR('2014-01-01')];;
+    sql: ${transaction_id};;
+    filters: [ordered_year: "2014"]
   }
 
   measure: countd_transaction_id_2015 {
     label: "# of Orders in 2015"
     type: count_distinct
     value_format_name: decimal_0
-    sql: ${transaction_id}
-      filters: [${ordered_year}: YEAR('2015-01-01')];;
+    sql: ${transaction_id};;
+    filters: [ordered_year: "2015"]
   }
 
   measure: countd_transaction_id_2016 {
     label: "# of Orders in 2016"
     type: count_distinct
     value_format_name: decimal_0
-    sql: ${transaction_id}
-      filters: [${ordered_year}: YEAR('2016-01-01')];;
+    sql: ${transaction_id};;
+    filters: [ordered_year: "2016"]
   }
 
   measure: countd_transaction_id_2017 {
     label: "# of Orders in 2017"
     type: count_distinct
     value_format_name: decimal_0
-    sql: ${transaction_id}
-      filters: [${ordered_year}: YEAR('2017-01-01')];;
+    sql: ${transaction_id};;
+    filters: [ordered_year: "2017"]
   }
 
   measure: countd_transaction_id_2018 {
     label: "# of Orders in 2018"
     type: count_distinct
     value_format_name: decimal_0
-    sql: ${transaction_id}
-      filters: [${ordered_year}: YEAR('2018-01-01')];;
+    sql: ${transaction_id};;
+    filters: [ordered_year: "2018"]
   }
 
   measure: countd_transaction_id_2019 {
     label: "# of Orders in 2019"
     type: count_distinct
     value_format_name: decimal_0
-    sql: ${transaction_id}
-      filters: [${ordered_year}: YEAR('2019-01-01')];;
+    sql: ${transaction_id};;
+    filters: [ordered_year: "2019"]
   }
 
   measure: countd_transaction_id_2020 {
     label: "# of Orders in 2020"
     type: count_distinct
     value_format_name: decimal_0
-    sql: ${transaction_id}
-      filters: [${ordered_year}: YEAR('2020-01-01')];;
+    sql: ${transaction_id};;
+    filters: [ordered_year: "2020"]
   }
 
   measure: countd_transaction_id_2021 {
     label: "# of Orders in 2021"
     type: count_distinct
     value_format_name: decimal_0
-    sql: ${transaction_id}
-      filters: [${ordered_year}: YEAR('2021-01-01')];;
+    sql: ${transaction_id};;
+    filters: [ordered_year: "2021"]
   }
 
   dimension: customer_id {
