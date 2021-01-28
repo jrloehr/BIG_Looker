@@ -52,6 +52,11 @@ view: dim_customer {
     sql: ${TABLE}.FirstName ;;
   }
 
+  dimension: full_name {
+    type: string
+    sql: CONCAT(${first_name}, ' ', ${last_name});;
+  }
+
   dimension_group: first_order {
     type: time
     timeframes: [
