@@ -12,8 +12,6 @@ persist_with: order_sales_detail_datagroup
 
 explore: cohort_tool {}
 
-explore: customer_order_facts {}
-
 explore: fact_sales_detail {
     view_label: "Sales Detail"
     join: dim_customer {
