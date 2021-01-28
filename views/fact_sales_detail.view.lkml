@@ -480,10 +480,10 @@ view: fact_sales_detail {
     sql: ${countd_transaction_id} / ${countd_customer_id} ;;
   }
 
-  dimension: customer_type_id2 {
+  dimension: customer_type_id {
     type: number
     value_format_name: id
-    sql: ${TABLE}.Customer_Type_Id2 ;;
+    sql: ${TABLE}.customer_type_id ;;
   }
 
   dimension: document_number {
