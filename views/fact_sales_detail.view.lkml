@@ -635,8 +635,18 @@ view: fact_sales_detail {
     sql: ${TABLE}.subsidiary_id ;;
   }
 
-  dimension: first_order_date {
-    type: date
+  dimension_group: first_order_date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}.first_order_date ;;
   }
 
