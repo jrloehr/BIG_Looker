@@ -635,6 +635,11 @@ view: fact_sales_detail {
     sql: ${TABLE}.subsidiary_id ;;
   }
 
+  dimension: first_order_date {
+    type: date
+    sql: ${TABLE}.first_order_date ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
