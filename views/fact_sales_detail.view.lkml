@@ -85,7 +85,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_total_sales {
-    label: "Total Sales"
+    label: "Running Total Sales"
     type: running_total
     value_format_name: usd
     sql: ${total_sales} ;;
