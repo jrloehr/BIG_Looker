@@ -451,6 +451,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2014"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2015 {
@@ -459,6 +460,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2015"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2016 {
@@ -467,6 +469,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2016"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2017 {
@@ -475,6 +478,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2017"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2018 {
@@ -483,6 +487,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2018"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2019 {
@@ -491,6 +496,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2019"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2020 {
@@ -499,6 +505,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2020"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2021 {
@@ -507,6 +514,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2021"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   # measure: count_customer_id {
@@ -650,6 +658,10 @@ view: fact_sales_detail {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.first_order_date ;;
+  }
+
+  set: fact_sales_detail_drill_set {
+    fields: [customer_id, dim_brand.first_order_date_date, first_order_date_date]
   }
 
   measure: count {
