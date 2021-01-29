@@ -661,7 +661,7 @@ view: fact_sales_detail {
   }
 
   set: fact_sales_detail_drill_set {
-    fields: [customer_id, dim_brand.first_order_date_date, first_order_date_date]
+    fields: [customer_id,first_order_date_date,dim_brand.first_order_date_date]
   }
 
   measure: count {
