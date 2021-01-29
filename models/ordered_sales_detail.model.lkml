@@ -50,33 +50,33 @@ explore: fact_sales_detail {
     relationship: many_to_one
   }
 
-  join: dim_location {
-    view_label: "Brands"
-    type: left_outer
-    sql_on: ${fact_sales_detail.location_id} = ${dim_location.location_id} ;;
-    relationship: many_to_one
-  }
-
-  join: dim_subsidiary {
-    view_label: "Subsidiaries"
-    type: left_outer
-    sql_on: ${fact_sales_detail.subsidiary_id} = ${dim_subsidiary.subsidiary_id} ;;
-    relationship: many_to_one
-  }
-
-   # join: dim_sales_channel {
-  #   view_label: "Sales Channel"
-  #   type: left_outer
-  #   sql_on: ${fact_sales_detail.customer_type_id2} = ${dim_sales_channel.customer_type_id} ;;
-  #   relationship: many_to_one
-  # }
-
-  # join: dim_brand {
+  # join: dim_location {
   #   view_label: "Brands"
   #   type: left_outer
-  #   sql_on: ${fact_sales_detail.location_id} = ${dim_brand.brand_id} ;;
+  #   sql_on: ${fact_sales_detail.location_id} = ${dim_location.location_id} ;;
   #   relationship: many_to_one
   # }
+
+  # join: dim_subsidiary {
+  #   view_label: "Subsidiaries"
+  #   type: left_outer
+  #   sql_on: ${fact_sales_detail.subsidiary_id} = ${dim_subsidiary.subsidiary_id} ;;
+  #   relationship: many_to_one
+  # }
+
+    join: dim_sales_channel {
+    view_label: "Sales Channel"
+    type: left_outer
+    sql_on: ${fact_sales_detail.customer_type_id} = ${dim_sales_channel.customer_type_id} ;;
+    relationship: many_to_one
+  }
+
+  join: dim_brand {
+    view_label: "Brands"
+    type: left_outer
+    sql_on: ${fact_sales_detail.location_id} = ${dim_brand.brand_id} ;;
+    relationship: many_to_one
+  }
 
   # ##Product Rollup Table - used for benchmarking
   # join: product_category_rollup {
