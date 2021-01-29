@@ -21,6 +21,13 @@ view: fact_sales_detail {
     sql: ${net_sales_b4_returns} ;;
   }
 
+  measure: runningtotal_net_sales_b4_returns {
+    label: "Running Total Net Sales"
+    type: running_total
+    value_format_name: usd
+    sql: ${sum_net_sales_b4_returns} ;;
+  }
+
   measure: shp_avg_net_sales_b4_returns {
     label: "Average Net Sales"
     type: number
@@ -40,6 +47,13 @@ view: fact_sales_detail {
     type: sum
     value_format_name: usd
     sql: ${shipping} ;;
+  }
+
+  measure: runningtotal_total_shipping {
+    label: "Running Total Shipping"
+    type: running_total
+    value_format_name: usd
+    sql: ${sum_shipping} ;;
   }
 
   measure: shp_avg_shipping {
@@ -63,6 +77,13 @@ view: fact_sales_detail {
     sql: ${taxes} ;;
   }
 
+  measure: runningtotal_total_taxes {
+    label: "Running Total Taxes"
+    type: running_total
+    value_format_name: usd
+    sql: ${sum_taxes} ;;
+  }
+
   measure: shp_avg_taxes {
     label: "Average Taxes"
     type: number
@@ -82,6 +103,13 @@ view: fact_sales_detail {
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
+  }
+
+  measure: runningtotal_total_sales {
+    label: "Running Total Sales"
+    type: running_total
+    value_format_name: usd
+    sql: ${sum_total_sales} ;;
   }
 
   measure: sum_total_sales_2014 {
@@ -175,6 +203,13 @@ view: fact_sales_detail {
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.Item_Qty ;;
+  }
+
+  measure: runningtotal_item_qty {
+    label: "Running Total Item Quantity"
+    type: running_total
+    value_format_name: decimal_0
+    sql: ${sum_item_qty} ;;
   }
 
   measure: sum_item_qty_2014 {
@@ -271,6 +306,13 @@ view: fact_sales_detail {
     description: "Description of Gross Sales"
   }
 
+  measure: runningtotal_gross_sales {
+    label: "Running Total Gross Sales"
+    type: running_total
+    value_format_name: usd
+    sql: ${sum_gross_sales} ;;
+  }
+
   measure: shp_avg_gross_sales {
     label: "Average Gross Sales"
     type: number
@@ -292,6 +334,13 @@ view: fact_sales_detail {
     sql: ${discounts};;
   }
 
+  measure: runningtotal_discounts {
+    label: "Running Total Discounts & Returns"
+    type: running_total
+    value_format_name: usd
+    sql: ${sum_discounts} ;;
+  }
+
   measure: shp_avg_discounts {
     label: "Average Discounts & Returns"
     type: number
@@ -310,6 +359,14 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id} ;;
+    drill_fields: [customer_id,first_order_date_date]
+  }
+
+  measure: runningtotal_orders {
+    label: "Running Total Orders"
+    type: running_total
+    value_format_name: decimal_0
+    sql: ${countd_transaction_id} ;;
   }
 
   measure: countd_transaction_id_2014 {
@@ -394,6 +451,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2014"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2015 {
@@ -402,6 +460,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2015"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2016 {
@@ -410,6 +469,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2016"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2017 {
@@ -418,6 +478,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2017"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2018 {
@@ -426,6 +487,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2018"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2019 {
@@ -434,6 +496,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2019"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2020 {
@@ -442,6 +505,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2020"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   measure: countd_customer_id_2021 {
@@ -450,6 +514,7 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${customer_id};;
     filters: [ordered_year: "2021"]
+    drill_fields: [fact_sales_detail_drill_set*]
   }
 
   # measure: count_customer_id {
@@ -480,10 +545,10 @@ view: fact_sales_detail {
     sql: ${countd_transaction_id} / ${countd_customer_id} ;;
   }
 
-  dimension: customer_type_id2 {
+  dimension: customer_type_id {
     type: number
     value_format_name: id
-    sql: ${TABLE}.Customer_Type_Id2 ;;
+    sql: ${TABLE}.customer_type_id ;;
   }
 
   dimension: document_number {
@@ -521,30 +586,6 @@ view: fact_sales_detail {
     type:  yesno
     label: "In This Month and Year"
     sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${ordered_date}), 0) = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
-  }
-
-  dimension: 2016to2018cohort {
-    type:  yesno
-    label: "In 2016 to 2018"
-    sql: YEAR(${ordered_date}) IN (YEAR('2018-01-01'), YEAR('2017-01-01'), YEAR('2016-01-01'));;
-  }
-
-  dimension: 2017to2019cohort {
-    type:  yesno
-    label: "In 2017 to 2019"
-    sql: YEAR(${ordered_date}) IN (YEAR('2019-01-01'), YEAR('2018-01-01'), YEAR('2017-01-01'));;
-  }
-
-  dimension: 2018to2020cohort {
-    type:  yesno
-    label: "In 2018 to 2020"
-    sql: YEAR(${ordered_date}) IN (YEAR('2020-01-01'), YEAR('2019-01-01'), YEAR('2018-01-01'));;
-  }
-
-  dimension: 2019to2021cohort {
-    type:  yesno
-    label: "In 2019 to 2021"
-    sql: YEAR(${ordered_date}) IN (YEAR('2021-01-01'), YEAR('2020-01-01'), YEAR('2019-01-01'));;
   }
 
   dimension: cohorts {
@@ -593,8 +634,6 @@ view: fact_sales_detail {
     sql: ${TABLE}.ShippedDate ;;
   }
 
-
-
   dimension: shipped_flag {
     type: number
     sql: ${TABLE}.ShippedFlag ;;
@@ -605,15 +644,25 @@ view: fact_sales_detail {
     sql: ${TABLE}.subsidiary_id ;;
   }
 
-  # dimension: returns {
-  #   type: number
-  #   sql: -(${gross_sales} - ${discounts} - ${net_sales_b4_returns});;
-  # }
+  dimension_group: first_order_date {
+    label: "Customer First Order"
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.first_order_date ;;
+  }
 
-  # measure: sum_returns {
-  #   type: number
-  #   sql: SUM(-(${gross_sales} - ${discounts} - ${net_sales_b4_returns}));;
-  # }
+  set: fact_sales_detail_drill_set {
+    fields: [customer_id,first_order_date_date,dim_brand.first_order_date_date]
+  }
 
   measure: count {
     type: count
