@@ -359,6 +359,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id} ;;
+    drill_fields: [customer_id,first_order_date_date]
   }
 
   measure: runningtotal_orders {
