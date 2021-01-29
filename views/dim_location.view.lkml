@@ -15,6 +15,7 @@ view: dim_location {
   }
 
   dimension: location_id {
+    primary_key: yes
     label: "Location ID"
     type: number
     sql: ${TABLE}.Location_id ;;

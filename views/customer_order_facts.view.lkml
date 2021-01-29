@@ -102,7 +102,7 @@ view: customer_order_facts {
   ##### Lifetime Behavior - Revenue ######
 
   dimension: lifetime_sales {
-    type: string
+    type: number
     sql: ${TABLE}.lifetime_sales ;;
   }
 
