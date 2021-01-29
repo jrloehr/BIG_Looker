@@ -636,6 +636,7 @@ view: fact_sales_detail {
   }
 
   dimension_group: first_order_date {
+    label: "Customer First Order"
     type: time
     timeframes: [
       raw,
