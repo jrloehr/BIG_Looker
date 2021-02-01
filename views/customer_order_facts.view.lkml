@@ -67,6 +67,20 @@ view: customer_order_facts {
     style: integer
   }
 
+  dimension: months_as_customer {
+    description: "Days between first and latest order"
+    type: number
+    sql: DATEDIFF(MONTH,${first_order_date},${latest_order_date}) ;;
+    drill_fields: [customer*]
+  }
+
+  dimension: months_as_customer_tiered {
+    type: tier
+    tiers: [0, 6, 13, 19, 37]
+    sql: ${months_as_customer} ;;
+    style: integer
+  }
+
   ##### Lifetime Behavior - Order Counts ######
 
   dimension: lifetime_orders {
