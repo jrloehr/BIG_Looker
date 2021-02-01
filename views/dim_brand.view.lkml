@@ -23,10 +23,12 @@ view: dim_brand {
 
   #### THIS CAN BE USED FOR BENCHMARKING BRANDS
   filter: company_for_comparison {
+    description: "Use with Brand Benchmark"
     type: string
+    suggest_dimension: brand_name
   }
 
-  dimension: brand_vs_competitors {
+  dimension: brand_benchmark {
     type: string
     sql: CASE
             WHEN {% condition company_for_comparison %} ${brand_name} {% endcondition %} THEN ${brand_name}
