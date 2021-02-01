@@ -1,7 +1,6 @@
 view: customer_order_facts {
   derived_table: {
     sql: SELECT
-      TOP 500
         fact_sales_detail.Customer_id  AS customer_id,
         COALESCE(SUM(fact_sales_detail.Total_Sales_B4_Returns ), 0) AS lifetime_sales,
         COUNT(DISTINCT fact_sales_detail.etail_order_id)  AS lifetime_orders,

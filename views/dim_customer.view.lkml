@@ -55,7 +55,41 @@ view: dim_customer {
   dimension: full_name {
     type: string
     sql: CONCAT(${first_name}, ' ', ${last_name});;
+
+    link: {
+      label: "Customer Lookup Dashboard"
+      url: "/dashboards-next/4?Full+Name={{ value | encode_uri }}"
+      icon_url: "https://cdn.shopify.com/s/files/1/0079/9028/0243/files/favicon_82c098c7-270d-461b-b951-ce1bca63e8aa_32x32.png?v=1572415227"
+    }
+    action: {
+      label: "Email Promotion to Customer"
+      url: "https://desolate-refuge-53336.herokuapp.com/posts"
+      icon_url: "https://sendgrid.com/favicon.ico"
+      param: {
+        name: "some_auth_code"
+        value: "abc123456"
+      }
+      form_param: {
+        name: "Subject"
+        required: yes
+        default: "Thank you {{ full_name._value }}"
+      }
+      form_param: {
+        name: "Body"
+        type: textarea
+        required: yes
+        default:
+        "Dear {{ full_name._value }},
+
+        Thanks for your loyalty to Beauty Industry Group!  We'd like to offer you a 15% discount
+        on your next purchase!  Just use the code BIGLOYALTY when checking out!
+
+        Your friends at Beauty Industry Group"
+      }
+    }
+    required_fields: [full_name]
   }
+
 
   dimension_group: first_order {
     type: time

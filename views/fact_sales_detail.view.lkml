@@ -105,6 +105,30 @@ view: fact_sales_detail {
     sql: ${total_sales} ;;
   }
 
+#### THIS CAN BE USED FOR CHANGING YEARS OF SALES DYNAMICALLY
+  filter: select_sales_year {
+    description: "Use with filtered sales"
+    type: number
+    suggestions: ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"]
+  }
+
+  dimension: sales_year_selected {
+    hidden: yes
+    sql: CASE
+            WHEN {% condition select_sales_year %} ${ordered_year} {% endcondition %} THEN 1
+            ELSE 0
+          END ;;
+  }
+
+  measure: filtered_sales {
+    label: "Filtered Sales"
+    type: sum
+    sql: ${total_sales} ;;
+    value_format_name: usd
+    filters: [sales_year_selected: "1"]
+  }
+  #####
+
   measure: runningtotal_total_sales {
     label: "Running Total Sales"
     type: running_total
@@ -359,7 +383,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id} ;;
-    drill_fields: [customer_id,first_order_date_date]
+    drill_fields: [customer_id, dim_customer.full_name, dim_customer.email, first_order_date_date]
   }
 
   measure: runningtotal_orders {

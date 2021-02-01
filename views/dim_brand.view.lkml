@@ -21,6 +21,19 @@ view: dim_brand {
     sql: ${TABLE}.Brand_Name ;;
   }
 
+  #### THIS CAN BE USED FOR BENCHMARKING BRANDS
+  filter: company_for_comparison {
+    type: string
+  }
+
+  dimension: brand_vs_competitors {
+    type: string
+    sql: CASE
+            WHEN {% condition company_for_comparison %} ${brand_name} {% endcondition %} THEN ${brand_name}
+            ELSE 'All Other Brands'
+          END ;;
+    }
+
   dimension: brand_parent_name {
     type: string
     sql: ${TABLE}.Brand_Parent_Name ;;
