@@ -36,6 +36,14 @@ view: dim_brand {
           END ;;
     }
 
+  dimension: brand_benchmark_with_group {
+    type: string
+    sql: CASE
+            WHEN {% condition company_for_comparison %} ${brand_name} {% endcondition %} THEN 'Group of Chosen Brands'
+            ELSE 'All Other Brands'
+          END ;;
+  }
+
   dimension: brand_parent_name {
     type: string
     sql: ${TABLE}.Brand_Parent_Name ;;
