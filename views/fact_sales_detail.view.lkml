@@ -644,6 +644,11 @@ view: fact_sales_detail {
     sql: ${TABLE}.subsidiary_id ;;
   }
 
+  dimension: marketing_channel_id {
+    type: number
+    sql: ${TABLE}.marketing_channelid ;;
+  }
+
   dimension_group: first_order_date {
     label: "Customer First Order"
     type: time

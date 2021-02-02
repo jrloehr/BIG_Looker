@@ -78,6 +78,13 @@ explore: fact_sales_detail {
     relationship: many_to_one
   }
 
+  join: dim_market_channel_direct_allocation {
+    view_label: "Marketing Channel"
+    type: left_outer
+    sql_on: ${fact_sales_detail.marketing_channel_id} = ${dim_market_channel_direct_allocation.marketing_channel_id};;
+    relationship: many_to_one
+  }
+
   # ##Product Rollup Table - used for benchmarking
   # join: product_category_rollup {
   #   type: left_outer
