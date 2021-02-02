@@ -13,8 +13,19 @@ persist_with: order_sales_detail_datagroup
 explore: cohort_tool {}
 
 explore: fact_sales_detail {
-
     view_label: "Sales Detail"
+
+    query: order_count_by_month {
+    description: "Number of orders placed by month in 2019"
+    dimensions: [fact_sales_detail.ordered_month]
+    measures: [fact_sales_detail.count_etail_order_id]
+    filters: [fact_sales_detail.ordered_date: "2018"]
+  }
+    query: total_yearly_sales {
+      description: "Total Sales by Year"
+      dimensions: [fact_sales_detail.ordered_year]
+      measures: [fact_sales_detail.sum_total_sales]
+    }
 
     join: dim_customer {
       view_label: "Customer"
