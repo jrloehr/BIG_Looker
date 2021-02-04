@@ -21,6 +21,7 @@ explore: fact_sales_detail {
     measures: [fact_sales_detail.count_etail_order_id]
     filters: [fact_sales_detail.ordered_date: "2018"]
   }
+
     query: total_yearly_sales {
       description: "Total Sales by Year"
       dimensions: [fact_sales_detail.ordered_year]
@@ -33,13 +34,6 @@ explore: fact_sales_detail {
       sql_on: ${fact_sales_detail.customer_id} = ${dim_customer.customer_id} ;;
       relationship: many_to_one
     }
-
-  join: dim_customer_types {
-    view_label: "Sales Channel"
-    type: left_outer
-    sql_on: ${fact_sales_detail.customer_type_id} = ${dim_customer_types.customer_type_id};;
-    relationship: many_to_one
-  }
 
   join: dim_date {
     type: left_outer
@@ -54,28 +48,7 @@ explore: fact_sales_detail {
     relationship: many_to_one
   }
 
-  join: dim_parent_company {
-    view_label: "Parent Company"
-    type: left_outer
-    sql_on: ${fact_sales_detail.subsidiary_id} = ${dim_parent_company.subsidiary_id} ;;
-    relationship: many_to_one
-  }
-
-  # join: dim_location {
-  #   view_label: "Brands"
-  #   type: left_outer
-  #   sql_on: ${fact_sales_detail.location_id} = ${dim_location.location_id} ;;
-  #   relationship: many_to_one
-  # }
-
-  # join: dim_subsidiary {
-  #   view_label: "Subsidiaries"
-  #   type: left_outer
-  #   sql_on: ${fact_sales_detail.subsidiary_id} = ${dim_subsidiary.subsidiary_id} ;;
-  #   relationship: many_to_one
-  # }
-
-    join: dim_sales_channel {
+  join: dim_sales_channel {
     view_label: "Sales Channel"
     type: left_outer
     sql_on: ${fact_sales_detail.customer_type_id} = ${dim_sales_channel.customer_type_id} ;;
@@ -96,14 +69,6 @@ explore: fact_sales_detail {
     relationship: many_to_one
   }
 
-  # ##Product Rollup Table - used for benchmarking
-  # join: product_category_rollup {
-  #   type: left_outer
-  #   sql_on: ${fact_sales_detail.ordered_date} = ${product_category_rollup.ordered_date} AND ${dim_item.product_category} = ${product_category_rollup.product_category} ;;
-  #   # sql_on: ${dim_item.product_category} = ${product_category_rollup.product_category} ;;
-  #   relationship: many_to_one
-  # }
-
   ##### JOINED IN THE CUSTOMER LIFETIME VALUE PDT #####
   join: customer_order_facts {
     view_label: "Customer Order Facts"
@@ -111,5 +76,41 @@ explore: fact_sales_detail {
     relationship: many_to_one
     sql_on: ${fact_sales_detail.customer_id} = ${customer_order_facts.customer_id} ;;
   }
+
+  # join: dim_customer_types {
+  #   view_label: "Sales Channel"
+  #   type: left_outer
+  #   sql_on: ${fact_sales_detail.customer_type_id} = ${dim_customer_types.customer_type_id};;
+  #   relationship: many_to_one
+  # }
+
+  # join: dim_parent_company {
+  #   view_label: "Parent Company"
+  #   type: left_outer
+  #   sql_on: ${fact_sales_detail.subsidiary_id} = ${dim_parent_company.subsidiary_id} ;;
+  #   relationship: many_to_one
+  # }
+
+  # join: dim_location {
+  #   view_label: "Brands"
+  #   type: left_outer
+  #   sql_on: ${fact_sales_detail.location_id} = ${dim_location.location_id} ;;
+  #   relationship: many_to_one
+  # }
+
+  # join: dim_subsidiary {
+  #   view_label: "Subsidiaries"
+  #   type: left_outer
+  #   sql_on: ${fact_sales_detail.subsidiary_id} = ${dim_subsidiary.subsidiary_id} ;;
+  #   relationship: many_to_one
+  # }
+
+  # ##Product Rollup Table - used for benchmarking
+  # join: product_category_rollup {
+  #   type: left_outer
+  #   sql_on: ${fact_sales_detail.ordered_date} = ${product_category_rollup.ordered_date} AND ${dim_item.product_category} = ${product_category_rollup.product_category} ;;
+  #   # sql_on: ${dim_item.product_category} = ${product_category_rollup.product_category} ;;
+  #   relationship: many_to_one
+  # }
 
 }
