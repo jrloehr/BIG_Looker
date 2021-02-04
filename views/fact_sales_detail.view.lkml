@@ -239,7 +239,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id} ;;
-    drill_fields: [customer_id, dim_customer.full_name, dim_customer.email, first_order_date_date]
+    drill_fields: [customer_id, dim_customer.full_name, dim_customer.email]
   }
 
   measure: runningtotal_orders {
@@ -378,24 +378,24 @@ view: fact_sales_detail {
     sql: ${TABLE}.marketing_channelid ;;
   }
 
-  dimension_group: first_order_date {
-    label: "Customer First Order"
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.first_order_date ;;
-  }
+  # dimension_group: first_order_date {
+  #   label: "Customer First Order"
+  #   type: time
+  #   timeframes: [
+  #     raw,
+  #     date,
+  #     week,
+  #     month,
+  #     quarter,
+  #     year
+  #   ]
+  #   convert_tz: no
+  #   datatype: date
+  #   sql: ${TABLE}.first_order_date ;;
+  # }
 
   set: fact_sales_detail_drill_set {
-    fields: [customer_id,first_order_date_date,dim_brand.first_order_date_date]
+    fields: [customer_id,dim_brand.first_order_date_date]
   }
 
   measure: count {
