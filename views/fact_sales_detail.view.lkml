@@ -136,78 +136,6 @@ view: fact_sales_detail {
     sql: ${sum_total_sales} ;;
   }
 
-  measure: sum_total_sales_2014 {
-    label: "Sales in 2014"
-    type: sum
-    value_format_name: usd
-    sql: ${total_sales} ;;
-    filters: [ordered_year: "2014"]
-  }
-
-  measure: sum_total_sales_2015 {
-    label: "Sales in 2015"
-    type: sum
-    value_format_name: usd
-    sql: ${total_sales} ;;
-    filters: [ordered_year: "2015"]
-  }
-
-  measure: sum_total_sales_2016 {
-    label: "Sales in 2016"
-    type: sum
-    value_format_name: usd
-    sql: ${total_sales} ;;
-    filters: [ordered_year: "2016"]
-  }
-
-  measure: sum_total_sales_2017 {
-    label: "Sales in 2017"
-    type: sum
-    value_format_name: usd
-    sql: ${total_sales} ;;
-    filters: [ordered_year: "2017"]
-  }
-
-  measure: sum_total_sales_2018 {
-    label: "Sales in 2018"
-    type: sum
-    value_format_name: usd
-    sql: ${total_sales} ;;
-    filters: [ordered_year: "2018"]
-  }
-
-  measure: sum_total_sales_2019 {
-    label: "Sales in 2019"
-    type: sum
-    value_format_name: usd
-    sql: ${total_sales} ;;
-    filters: [ordered_year: "2019"]
-  }
-
-  measure: sum_total_sales_2020 {
-    label: "Sales in 2020"
-    type: sum
-    value_format_name: usd
-    sql: ${total_sales} ;;
-    filters: [ordered_year: "2020"]
-  }
-
-  measure: sum_total_sales_2021 {
-    label: "Sales in 2021"
-    type: sum
-    value_format_name: usd
-    sql: ${total_sales} ;;
-    filters: [ordered_year: "2021"]
-  }
-
-  measure: sum_total_sales_2022 {
-    label: "Sales in 2022"
-    type: sum
-    value_format_name: usd
-    sql: ${total_sales} ;;
-    filters: [ordered_year: "2022"]
-  }
-
   measure: shp_avg_total_sales {
     label: "Average Total Sales"
     type: number
@@ -236,77 +164,6 @@ view: fact_sales_detail {
     sql: ${sum_item_qty} ;;
   }
 
-  measure: sum_item_qty_2014 {
-    label: "Item Quantity in 2014"
-    type: sum
-    value_format_name: decimal_0
-    sql: ${item_qty} ;;
-    filters: [ordered_year: "2014"]
-  }
-
-  measure: sum_item_qty_2015 {
-    label: "Item Quantity in 2015"
-    type: sum
-    value_format_name: decimal_0
-    sql: ${item_qty};;
-    filters: [ordered_year: "2015"]
-  }
-
-  measure: sum_item_qty_2016 {
-    label: "Item Quantity in 2016"
-    type: sum
-    value_format_name: decimal_0
-    sql: ${item_qty} ;;
-    filters: [ordered_year: "2016"]
-  }
-
-  measure: sum_item_qty_2017 {
-    label: "Item Quantity in 2017"
-    type: sum
-    value_format_name: decimal_0
-    sql: ${item_qty} ;;
-    filters: [ordered_year: "2017"]
-  }
-
-  measure: sum_item_qty_2018 {
-    label: "Item Quantity in 2018"
-    type: sum
-    value_format_name: decimal_0
-    sql: ${item_qty} ;;
-    filters: [ordered_year: "2018"]
-  }
-
-  measure: sum_item_qty_2019 {
-    label: "Item Quantity in 2019"
-    type: sum
-    value_format_name: decimal_0
-    sql: ${item_qty};;
-    filters: [ordered_year: "2019"]
-  }
-
-  measure: sum_item_qty_2020 {
-    label: "Item Quantity in 2020"
-    type: sum
-    value_format_name: decimal_0
-    sql: ${item_qty} ;;
-    filters: [ordered_year: "2020"]
-  }
-
-  measure: sum_item_qty_2021 {
-    label: "Item Quantity in 2021"
-    type: sum
-    value_format_name: decimal_0
-    sql: ${item_qty} ;;
-    filters: [ordered_year: "2021"]
-  }
-
-  measure: sum_item_qty_2022 {
-    label: "Item Quantity in 2022"
-    type: sum
-    value_format_name: decimal_0
-    sql: ${item_qty} ;;
-    filters: [ordered_year: "2022"]
-  }
 
   measure: shp_avg_item_qty {
     label: "Average Item Quantity"
@@ -393,70 +250,6 @@ view: fact_sales_detail {
     sql: ${countd_transaction_id} ;;
   }
 
-  measure: countd_transaction_id_2014 {
-    label: "# of Orders in 2014"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${transaction_id};;
-    filters: [ordered_year: "2014"]
-  }
-
-  measure: countd_transaction_id_2015 {
-    label: "# of Orders in 2015"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${transaction_id};;
-    filters: [ordered_year: "2015"]
-  }
-
-  measure: countd_transaction_id_2016 {
-    label: "# of Orders in 2016"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${transaction_id};;
-    filters: [ordered_year: "2016"]
-  }
-
-  measure: countd_transaction_id_2017 {
-    label: "# of Orders in 2017"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${transaction_id};;
-    filters: [ordered_year: "2017"]
-  }
-
-  measure: countd_transaction_id_2018 {
-    label: "# of Orders in 2018"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${transaction_id};;
-    filters: [ordered_year: "2018"]
-  }
-
-  measure: countd_transaction_id_2019 {
-    label: "# of Orders in 2019"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${transaction_id};;
-    filters: [ordered_year: "2019"]
-  }
-
-  measure: countd_transaction_id_2020 {
-    label: "# of Orders in 2020"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${transaction_id};;
-    filters: [ordered_year: "2020"]
-  }
-
-  measure: countd_transaction_id_2021 {
-    label: "# of Orders in 2021"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${transaction_id};;
-    filters: [ordered_year: "2021"]
-  }
-
   dimension: customer_id {
     type: number
     sql: ${TABLE}.Customer_id ;;
@@ -469,77 +262,6 @@ view: fact_sales_detail {
     sql: ${customer_id} ;;
   }
 
-  measure: countd_customer_id_2014 {
-    label: "# of Customers in 2014"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${customer_id};;
-    filters: [ordered_year: "2014"]
-    drill_fields: [fact_sales_detail_drill_set*]
-  }
-
-  measure: countd_customer_id_2015 {
-    label: "# of Customers in 2015"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${customer_id};;
-    filters: [ordered_year: "2015"]
-    drill_fields: [fact_sales_detail_drill_set*]
-  }
-
-  measure: countd_customer_id_2016 {
-    label: "# of Customers in 2016"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${customer_id};;
-    filters: [ordered_year: "2016"]
-    drill_fields: [fact_sales_detail_drill_set*]
-  }
-
-  measure: countd_customer_id_2017 {
-    label: "# of Customers in 2017"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${customer_id};;
-    filters: [ordered_year: "2017"]
-    drill_fields: [fact_sales_detail_drill_set*]
-  }
-
-  measure: countd_customer_id_2018 {
-    label: "# of Customers in 2018"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${customer_id};;
-    filters: [ordered_year: "2018"]
-    drill_fields: [fact_sales_detail_drill_set*]
-  }
-
-  measure: countd_customer_id_2019 {
-    label: "# of Customers in 2019"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${customer_id};;
-    filters: [ordered_year: "2019"]
-    drill_fields: [fact_sales_detail_drill_set*]
-  }
-
-  measure: countd_customer_id_2020 {
-    label: "# of Customers in 2020"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${customer_id};;
-    filters: [ordered_year: "2020"]
-    drill_fields: [fact_sales_detail_drill_set*]
-  }
-
-  measure: countd_customer_id_2021 {
-    label: "# of Customers in 2021"
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${customer_id};;
-    filters: [ordered_year: "2021"]
-    drill_fields: [fact_sales_detail_drill_set*]
-  }
 
   # measure: count_customer_id {
   #   label: "Customers"
@@ -610,22 +332,6 @@ view: fact_sales_detail {
     type:  yesno
     label: "In This Month and Year"
     sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${ordered_date}), 0) = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
-  }
-
-  dimension: cohorts {
-    type:  string
-    label: "Cohorts"
-    sql: CASE
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2012'), YEAR('2013'), YEAR('2014')) THEN '2012 to 2014'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2013'), YEAR('2014'), YEAR('2015')) THEN '2013 to 2015'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2014'), YEAR('2015'), YEAR('2016')) THEN '2014 to 2016'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2015'), YEAR('2016'), YEAR('2017')) THEN '2015 to 2017'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2016'), YEAR('2017'), YEAR('2018')) THEN '2016 to 2018'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2017'), YEAR('2018'), YEAR('2019')) THEN '2017 to 2019'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2018'), YEAR('2019'), YEAR('2020')) THEN '2018 to 2020'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2019'), YEAR('2020'), YEAR('2021')) THEN '2019 to 2021'
-          WHEN  YEAR(${ordered_date}) IN (YEAR('2020'), YEAR('2021'), YEAR('2022')) THEN '2020 to 2022'
-          END;;
   }
 
   dimension_group: ordered {
