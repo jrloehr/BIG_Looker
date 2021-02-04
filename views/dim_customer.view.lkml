@@ -137,8 +137,8 @@ view: dim_customer {
     type: string
     sql:
     CASE
-    WHEN ${first_order_date} = ${last_order_date} THEN 'First-Time'
-    ELSE 'Returning'
+      WHEN ${first_order_date} = ${last_order_date} THEN 'First-Time'
+      ELSE 'Returning'
     END;;
   }
 

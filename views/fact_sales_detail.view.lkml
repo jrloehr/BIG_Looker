@@ -127,7 +127,6 @@ view: fact_sales_detail {
     value_format_name: usd
     filters: [sales_year_selected: "1"]
   }
-  #####
 
   measure: runningtotal_total_sales {
     label: "Running Total Sales"
