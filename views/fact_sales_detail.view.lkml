@@ -11,7 +11,7 @@ view: fact_sales_detail {
     group_label: "Net Sales"
     hidden: yes
     label: "Net Sales"
-    description: "Net Sales = Gross Sales - Discounts & Returns"
+    description: "Net Sales = Gross Sales - Discounts"
     type: string
     value_format_name: usd
     sql: ${TABLE}.Net_Sales_B4_Returns ;;
@@ -20,7 +20,7 @@ view: fact_sales_detail {
   measure: sum_net_sales_b4_returns {
     group_label: "Net Sales"
     label: "Total Net Sales"
-    description: "Net Sales = Gross Sales - Discounts & Returns"
+    description: "Net Sales = Gross Sales - Discounts"
     type: sum
     value_format_name: usd
     sql: ${net_sales_b4_returns} ;;
@@ -29,7 +29,7 @@ view: fact_sales_detail {
   measure: runningtotal_net_sales_b4_returns {
     group_label: "Net Sales"
     label: "Running Total Net Sales"
-    description: "Net Sales = Gross Sales - Discounts & Returns"
+    description: "Net Sales = Gross Sales - Discounts"
     type: running_total
     value_format_name: usd
     sql: ${sum_net_sales_b4_returns} ;;
@@ -38,7 +38,7 @@ view: fact_sales_detail {
   measure: shp_avg_net_sales_b4_returns {
     group_label: "Net Sales"
     label: "Average Net Sales"
-    description: "Net Sales = Gross Sales - Discounts & Returns"
+    description: "Net Sales = Gross Sales - Discounts"
     type: number
     value_format_name: usd
     sql: ${sum_net_sales_b4_returns} / ${countd_transaction_id} ;;
@@ -114,7 +114,7 @@ view: fact_sales_detail {
     group_label: "Total Sales"
     hidden: yes
     label: "Sales Amount"
-    description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
+    description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: number
     value_format_name: usd
     sql: ${TABLE}.Total_Sales_B4_Returns ;;
@@ -123,7 +123,7 @@ view: fact_sales_detail {
   measure: sum_total_sales {
     group_label: "Total Sales"
     label: "Total Sales"
-    description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
+    description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
@@ -147,7 +147,7 @@ view: fact_sales_detail {
   measure: filtered_sales {
     group_label: "Total Sales"
     label: "Filtered Sales"
-    description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
+    description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: sum
     sql: ${total_sales} ;;
     value_format_name: usd
@@ -157,7 +157,7 @@ view: fact_sales_detail {
   measure: runningtotal_total_sales {
     group_label: "Total Sales"
     label: "Running Total Sales"
-    description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
+    description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: running_total
     value_format_name: usd
     sql: ${sum_total_sales} ;;
@@ -166,7 +166,7 @@ view: fact_sales_detail {
   measure: shp_avg_total_sales {
     group_label: "Total Sales"
     label: "Average Total Sales"
-    description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
+    description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: number
     value_format_name: usd
     sql: ${sum_total_sales} / ${countd_transaction_id} ;;
@@ -240,33 +240,33 @@ view: fact_sales_detail {
   }
 
   dimension: discounts {
-    group_label: "Discounts & Returns"
+    group_label: "Discounts"
     hidden: yes
-    label: "Discounts & Returns"
+    label: "Discounts"
     type: number
     value_format_name: usd
     sql: ${TABLE}.Discounts ;;
   }
 
   measure: sum_discounts {
-    group_label: "Discounts & Returns"
-    label: "Total Discounts & Returns"
+    group_label: "Discounts"
+    label: "Total Discounts"
     type: sum
     value_format_name: usd
     sql: ${discounts};;
   }
 
   measure: runningtotal_discounts {
-    group_label: "Discounts & Returns"
-    label: "Running Total Discounts & Returns"
+    group_label: "Discounts"
+    label: "Running Total Discounts"
     type: running_total
     value_format_name: usd
     sql: ${sum_discounts} ;;
   }
 
   measure: shp_avg_discounts {
-    group_label: "Discounts & Returns"
-    label: "Average Discounts & Returns"
+    group_label: "Discounts"
+    label: "Average Discounts"
     type: number
     value_format_name: usd
     sql: ${sum_discounts} / ${countd_transaction_id};;
