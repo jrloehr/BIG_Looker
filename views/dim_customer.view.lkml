@@ -1,28 +1,10 @@
 view: dim_customer {
   sql_table_name: dbo.DimCustomer ;;
 
-  dimension: city {
-    label: "City"
-    type: string
-    sql: ${TABLE}.City ;;
-  }
-
   dimension: customer_id {
     primary_key: yes
     type: number
     sql: ${TABLE}.Customer_id ;;
-  }
-
-  dimension: customer_name {
-    label: "Customer Name"
-    type: string
-    sql: ${TABLE}.Customer_Name ;;
-  }
-
-  dimension: customer_state {
-    label: "Customer State"
-    type: string
-    sql: ${TABLE}.Customer_State ;;
   }
 
   dimension: customer_type_id {
@@ -50,6 +32,36 @@ view: dim_customer {
     label: "First Name"
     type: string
     sql: ${TABLE}.FirstName ;;
+  }
+
+  dimension: last_name {
+    label: "Last Name"
+    type: string
+    sql: ${TABLE}.LastName ;;
+  }
+
+  dimension: customer_name {
+    label: "Customer Name"
+    type: string
+    sql: ${TABLE}.Customer_Name ;;
+  }
+
+  dimension: city {
+    label: "Customer City"
+    type: string
+    sql: ${TABLE}.City ;;
+  }
+
+  dimension: zip_code {
+    label: "Customer Zip Code"
+    type: zipcode
+    sql: ${TABLE}.ZipCode ;;
+  }
+
+  dimension: customer_state {
+    label: "Customer State"
+    type: string
+    sql: ${TABLE}.Customer_State ;;
   }
 
   dimension: full_name {
@@ -90,6 +102,37 @@ view: dim_customer {
     required_fields: [full_name]
   }
 
+
+  dimension_group: first_order {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.First_Order_Date ;;
+  }
+
+  dimension_group: last_order {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.Last_Order_Date ;;
+  }
+
   dimension: firsttime_or_returning {
     type: string
     description: "Validated by SJ on 2/4/2021 using 2/1/2021 data from Looker and Shopify - see 89 vs 90 and 289 vs. 292 but both reports come out to 308 total."
@@ -112,49 +155,6 @@ view: dim_customer {
     sql: ${customer_id} ;;
     filters: [firsttime_or_returning: "Returning"]
     drill_fields: [customer_drill*, count_returning_customers]
-  }
-
-
-  dimension_group: first_order {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.First_Order_Date ;;
-  }
-
-  dimension: last_name {
-    label: "Last Name"
-    type: string
-    sql: ${TABLE}.LastName ;;
-  }
-
-  dimension_group: last_order {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.Last_Order_Date ;;
-  }
-
-  dimension: zip_code {
-    label: "Customer Zip Code"
-    type: zipcode
-    sql: ${TABLE}.ZipCode ;;
   }
 
   measure: count {

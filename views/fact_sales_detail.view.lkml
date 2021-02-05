@@ -8,7 +8,9 @@ view: fact_sales_detail {
   }
 
   dimension: net_sales_b4_returns {
+    hidden: yes
     label: "Net Sales"
+    description: "Net Sales = Gross Sales - Discounts & Returns"
     type: string
     value_format_name: usd
     sql: ${TABLE}.Net_Sales_B4_Returns ;;
@@ -16,6 +18,7 @@ view: fact_sales_detail {
 
   measure: sum_net_sales_b4_returns {
     label: "Total Net Sales"
+    description: "Net Sales = Gross Sales - Discounts & Returns"
     type: sum
     value_format_name: usd
     sql: ${net_sales_b4_returns} ;;
@@ -23,6 +26,7 @@ view: fact_sales_detail {
 
   measure: runningtotal_net_sales_b4_returns {
     label: "Running Total Net Sales"
+    description: "Net Sales = Gross Sales - Discounts & Returns"
     type: running_total
     value_format_name: usd
     sql: ${sum_net_sales_b4_returns} ;;
@@ -30,12 +34,14 @@ view: fact_sales_detail {
 
   measure: shp_avg_net_sales_b4_returns {
     label: "Average Net Sales"
+    description: "Net Sales = Gross Sales - Discounts & Returns"
     type: number
     value_format_name: usd
     sql: ${sum_net_sales_b4_returns} / ${countd_transaction_id} ;;
   }
 
   dimension: shipping {
+    hidden: yes
     label: "Shipping"
     type: number
     value_format_name: usd
@@ -64,6 +70,7 @@ view: fact_sales_detail {
   }
 
   dimension: taxes {
+    hidden: yes
     label: "Taxes"
     type: number
     value_format_name: usd
@@ -92,7 +99,9 @@ view: fact_sales_detail {
   }
 
   dimension: total_sales {
+    hidden: yes
     label: "Sales Amount"
+    description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
     type: number
     value_format_name: usd
     sql: ${TABLE}.Total_Sales_B4_Returns ;;
@@ -100,6 +109,7 @@ view: fact_sales_detail {
 
   measure: sum_total_sales {
     label: "Total Sales"
+    description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
     type: sum
     value_format_name: usd
     sql: ${total_sales} ;;
@@ -122,6 +132,7 @@ view: fact_sales_detail {
 
   measure: filtered_sales {
     label: "Filtered Sales"
+    description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
     type: sum
     sql: ${total_sales} ;;
     value_format_name: usd
@@ -130,6 +141,7 @@ view: fact_sales_detail {
 
   measure: runningtotal_total_sales {
     label: "Running Total Sales"
+    description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
     type: running_total
     value_format_name: usd
     sql: ${sum_total_sales} ;;
@@ -137,12 +149,14 @@ view: fact_sales_detail {
 
   measure: shp_avg_total_sales {
     label: "Average Total Sales"
+    description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
     type: number
     value_format_name: usd
     sql: ${sum_total_sales} / ${countd_transaction_id} ;;
   }
 
   dimension: item_qty {
+    hidden: yes
     label: "Item Quantity"
     type: number
     value_format_name: decimal_0
@@ -162,7 +176,6 @@ view: fact_sales_detail {
     value_format_name: decimal_0
     sql: ${sum_item_qty} ;;
   }
-
 
   measure: shp_avg_item_qty {
     label: "Average Item Quantity"
@@ -271,6 +284,7 @@ view: fact_sales_detail {
 
   measure: aov_sales_per_order{
     label: "AOV - Sales per Order"
+    description: "Total Sales / # of Orders"
     type: number
     value_format_name: usd
     sql: ${sum_total_sales} / ${countd_transaction_id} ;;
@@ -278,6 +292,7 @@ view: fact_sales_detail {
 
   measure: ltv_sales_per_customer{
     label: "LTV - Sales per Customer"
+    description: "Total Sales / Unique Customers"
     type: number
     value_format_name: usd
     sql: ${sum_total_sales} / ${countd_customer_id} ;;
@@ -285,6 +300,7 @@ view: fact_sales_detail {
 
   measure: aof_orders_per_customer{
     label: "Frequency - Orders per Customer"
+    description: "# of Orders / Unique Customers"
     type: number
     value_format: "0.00"
     sql: 1.0 * ${countd_transaction_id} / ${countd_customer_id} ;;
