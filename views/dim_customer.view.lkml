@@ -135,6 +135,7 @@ view: dim_customer {
 
   dimension: firsttime_or_returning {
     type: string
+    description: "Validated by SJ on 2/4/2021 using 2/1/2021 data from Looker and Shopify - see 89 vs 90 and 289 vs. 292 but both reports come out to 308 total."
     sql:
     CASE
       WHEN ${first_order_date} = ${last_order_date} THEN 'First-Time'
