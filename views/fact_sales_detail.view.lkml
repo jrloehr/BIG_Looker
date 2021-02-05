@@ -8,6 +8,7 @@ view: fact_sales_detail {
   }
 
   dimension: net_sales_b4_returns {
+    group_label: "Net Sales"
     hidden: yes
     label: "Net Sales"
     description: "Net Sales = Gross Sales - Discounts & Returns"
@@ -17,6 +18,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_net_sales_b4_returns {
+    group_label: "Net Sales"
     label: "Total Net Sales"
     description: "Net Sales = Gross Sales - Discounts & Returns"
     type: sum
@@ -25,6 +27,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_net_sales_b4_returns {
+    group_label: "Net Sales"
     label: "Running Total Net Sales"
     description: "Net Sales = Gross Sales - Discounts & Returns"
     type: running_total
@@ -33,6 +36,7 @@ view: fact_sales_detail {
   }
 
   measure: shp_avg_net_sales_b4_returns {
+    group_label: "Net Sales"
     label: "Average Net Sales"
     description: "Net Sales = Gross Sales - Discounts & Returns"
     type: number
@@ -41,6 +45,7 @@ view: fact_sales_detail {
   }
 
   dimension: shipping {
+    group_label: "Shipping"
     hidden: yes
     label: "Shipping"
     type: number
@@ -49,6 +54,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_shipping {
+    group_label: "Shipping"
     label: "Total Shipping"
     type: sum
     value_format_name: usd
@@ -56,6 +62,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_total_shipping {
+    group_label: "Shipping"
     label: "Running Total Shipping"
     type: running_total
     value_format_name: usd
@@ -63,6 +70,7 @@ view: fact_sales_detail {
   }
 
   measure: shp_avg_shipping {
+    group_label: "Shipping"
     label: "Average Shipping"
     type: number
     value_format_name: usd
@@ -70,6 +78,7 @@ view: fact_sales_detail {
   }
 
   dimension: taxes {
+    group_label: "Taxes"
     hidden: yes
     label: "Taxes"
     type: number
@@ -78,6 +87,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_taxes {
+    group_label: "Taxes"
     label: "Total Taxes"
     type: sum
     value_format_name: usd
@@ -85,6 +95,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_total_taxes {
+    group_label: "Taxes"
     label: "Running Total Taxes"
     type: running_total
     value_format_name: usd
@@ -92,6 +103,7 @@ view: fact_sales_detail {
   }
 
   measure: shp_avg_taxes {
+    group_label: "Taxes"
     label: "Average Taxes"
     type: number
     value_format_name: usd
@@ -99,6 +111,7 @@ view: fact_sales_detail {
   }
 
   dimension: total_sales {
+    group_label: "Total Sales"
     hidden: yes
     label: "Sales Amount"
     description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
@@ -108,6 +121,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales {
+    group_label: "Total Sales"
     label: "Total Sales"
     description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
     type: sum
@@ -131,6 +145,7 @@ view: fact_sales_detail {
   }
 
   measure: filtered_sales {
+    group_label: "Total Sales"
     label: "Filtered Sales"
     description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
     type: sum
@@ -140,6 +155,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_total_sales {
+    group_label: "Total Sales"
     label: "Running Total Sales"
     description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
     type: running_total
@@ -148,6 +164,7 @@ view: fact_sales_detail {
   }
 
   measure: shp_avg_total_sales {
+    group_label: "Total Sales"
     label: "Average Total Sales"
     description: "Sales Amount = Gross Sales - Discounts & Returns + Shipping + Taxes"
     type: number
@@ -156,6 +173,7 @@ view: fact_sales_detail {
   }
 
   dimension: item_qty {
+    group_label: "Item Quantity"
     hidden: yes
     label: "Item Quantity"
     type: number
@@ -164,6 +182,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_item_qty {
+    group_label: "Item Quantity"
     label: "Total Item Quantity"
     type: sum
     value_format_name: decimal_0
@@ -171,6 +190,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_item_qty {
+    group_label: "Item Quantity"
     label: "Running Total Item Quantity"
     type: running_total
     value_format_name: decimal_0
@@ -178,6 +198,7 @@ view: fact_sales_detail {
   }
 
   measure: shp_avg_item_qty {
+    group_label: "Item Quantity"
     label: "Average Item Quantity"
     type: number
     value_format_name: decimal_0
@@ -185,6 +206,8 @@ view: fact_sales_detail {
   }
 
   dimension: gross_sales {
+    group_label: "Gross Sales"
+    hidden: yes
     label: "Gross Sales"
     type: string
     value_format_name: usd
@@ -192,6 +215,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_gross_sales {
+    group_label: "Gross Sales"
     label: "Total Gross Sales"
     type: sum
     sql: ${gross_sales};;
@@ -200,6 +224,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_gross_sales {
+    group_label: "Gross Sales"
     label: "Running Total Gross Sales"
     type: running_total
     value_format_name: usd
@@ -207,6 +232,7 @@ view: fact_sales_detail {
   }
 
   measure: shp_avg_gross_sales {
+    group_label: "Gross Sales"
     label: "Average Gross Sales"
     type: number
     value_format_name: usd
@@ -214,6 +240,8 @@ view: fact_sales_detail {
   }
 
   dimension: discounts {
+    group_label: "Discounts & Returns"
+    hidden: yes
     label: "Discounts & Returns"
     type: number
     value_format_name: usd
@@ -221,6 +249,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_discounts {
+    group_label: "Discounts & Returns"
     label: "Total Discounts & Returns"
     type: sum
     value_format_name: usd
@@ -228,6 +257,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_discounts {
+    group_label: "Discounts & Returns"
     label: "Running Total Discounts & Returns"
     type: running_total
     value_format_name: usd
@@ -235,6 +265,7 @@ view: fact_sales_detail {
   }
 
   measure: shp_avg_discounts {
+    group_label: "Discounts & Returns"
     label: "Average Discounts & Returns"
     type: number
     value_format_name: usd
@@ -242,12 +273,14 @@ view: fact_sales_detail {
   }
 
   dimension: transaction_id {
+    group_label: "Orders"
     label: "Transaction ID"
     type: number
     sql: ${TABLE}.transaction_id ;;
   }
 
   measure: countd_transaction_id {
+    group_label: "Orders"
     label: "# of Orders"
     type: count_distinct
     value_format_name: decimal_0
@@ -256,6 +289,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_orders {
+    group_label: "Orders"
     label: "Running Total Orders"
     type: running_total
     value_format_name: decimal_0
@@ -263,11 +297,13 @@ view: fact_sales_detail {
   }
 
   dimension: customer_id {
+    group_label: "Customers"
     type: number
     sql: ${TABLE}.Customer_id ;;
   }
 
   measure: countd_customer_id {
+    group_label: "Customers"
     label: "Unique Customers"
     type: count_distinct
     value_format_name: decimal_0
