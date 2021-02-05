@@ -31,34 +31,40 @@ view: dim_market_channel_direct_allocation {
     sql: ${TABLE}.last_activity ;;
   }
 
-  dimension: marketing_ad_content {
-    type: string
-    sql: ${TABLE}.Marketing_Ad_Content ;;
-  }
-
-  dimension: marketing_campaign {
-    type: string
-    sql: ${TABLE}.Marketing_Campaign ;;
-  }
-
-  dimension: marketing_channel_grouping {
-    type: string
-    sql: ${TABLE}.Marketing_Channel_Grouping ;;
-  }
-
   dimension: marketing_channel_id {
+    group_label: "Marketing Channel"
     type: number
     sql: ${TABLE}.Marketing_ChannelId ;;
   }
 
-  dimension: marketing_keyword {
+  dimension: marketing_channel_grouping {
+    group_label: "Marketing Channel"
     type: string
-    sql: ${TABLE}.Marketing_Keyword ;;
+    sql: ${TABLE}.Marketing_Channel_Grouping ;;
   }
 
   dimension: marketing_source_medium {
+    group_label: "Marketing Channel"
     type: string
     sql: ${TABLE}.Marketing_Source_Medium ;;
+  }
+
+  dimension: marketing_campaign {
+    group_label: "Marketing Channel"
+    type: string
+    sql: ${TABLE}.Marketing_Campaign ;;
+  }
+
+  dimension: marketing_ad_content {
+    group_label: "Marketing Channel"
+    type: string
+    sql: ${TABLE}.Marketing_Ad_Content ;;
+  }
+
+  dimension: marketing_keyword {
+    group_label: "Marketing Channel"
+    type: string
+    sql: ${TABLE}.Marketing_Keyword ;;
   }
 
   measure: count {
