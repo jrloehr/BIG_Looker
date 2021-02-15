@@ -15,6 +15,13 @@ view: fact_sales_detail {
     sql: ${TABLE}.COGS ;;
   }
 
+  measure: cogs_per_order {
+    label: "Average COGS"
+    type: number
+    value_format_name: usd
+    sql: ${cogs_total} / ${countd_transaction_id} ;;
+  }
+
   dimension: net_sales_b4_returns {
     group_label: "Net Sales"
     hidden: yes
