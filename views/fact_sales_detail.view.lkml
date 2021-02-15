@@ -385,6 +385,12 @@ view: fact_sales_detail {
     sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${ordered_date}), 0) = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
   }
 
+  dimension: year_to_date {
+    type:  yesno
+    label: "Year to Date"
+    sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${ordered_date}), 0) <= DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
+  }
+
   dimension_group: ordered {
     type: time
     timeframes: [
