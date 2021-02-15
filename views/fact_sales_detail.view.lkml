@@ -379,16 +379,28 @@ view: fact_sales_detail {
     sql: ${TABLE}.Margin_Dollars ;;
   }
 
+# MAY NEED TO CHANGE THESE TO FILTERS
   dimension: in_this_month_and_year {
     type:  yesno
     label: "In This Month and Year"
     sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${ordered_date}), 0) = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
   }
 
+# MAY NEED TO CHANGE THESE TO FILTERS
   dimension: year_to_date {
     type:  yesno
     label: "Year to Date"
-    sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${ordered_date}), 0) <= DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
+    sql: ${ordered_date} <= GETDATE()
+    AND YEAR(${ordered_date}) = YEAR(GETDATE());;
+  }
+
+# MAY NEED TO CHANGE THESE TO FILTERS
+  dimension: month_to_date {
+    type:  yesno
+    label: "Month to Date"
+    sql: ${ordered_date} <= GETDATE()
+      AND YEAR(${ordered_date}) = YEAR(GETDATE())
+      AND MONTH(${ordered_date}) = MONTH(GETDATE());;
   }
 
   dimension_group: ordered {
