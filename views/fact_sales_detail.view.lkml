@@ -3,7 +3,15 @@ view: fact_sales_detail {
 
   dimension: cogs {
     label: "Cost of Goods Sold"
+    # hidden: yes
     type: string
+    sql: ${TABLE}.COGS ;;
+  }
+
+  measure: cogs_total {
+    label: "Cost of Goods Sold"
+    type: sum
+    value_format_name: usd
     sql: ${TABLE}.COGS ;;
   }
 
