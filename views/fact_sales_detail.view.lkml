@@ -378,7 +378,7 @@ view: fact_sales_detail {
     type: string
     sql: CASE
           WHEN ${etail_order_id} IS NULL THEN 'Outside Ecommerce Channels'
-          WHEN ${etail_order_id} NOT IS NULL THEN 'Ecommerce'
+          WHEN ${etail_order_id} IS NOT NULL THEN 'Ecommerce'
           END;;
   }
 
