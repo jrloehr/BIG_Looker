@@ -373,6 +373,12 @@ view: fact_sales_detail {
     sql: ${TABLE}.etail_order_id ;;
   }
 
+  dimension: ecommerce_etail_order_id_filter {
+    label: "Ecommerce Filter"
+    type: yesno
+    sql: ${etail_order_id} IS NOT NULL ;;
+  }
+
   measure: count_etail_order_id {
     type: count_distinct
     sql: ${etail_order_id};;
