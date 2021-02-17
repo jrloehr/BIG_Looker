@@ -375,8 +375,11 @@ view: fact_sales_detail {
 
   dimension: ecommerce_etail_order_id_filter {
     label: "Ecommerce Filter"
-    type: yesno
-    sql: ${etail_order_id} IS NOT NULL ;;
+    type: string
+    sql: CASE
+          WHEN ${etail_order_id} IS NULL THEN 'Outside Ecommerce Channels'
+          WHEN ${etail_order_id} NOT IS NULL THEN 'Ecommerce'
+          END;;
   }
 
   measure: count_etail_order_id {
