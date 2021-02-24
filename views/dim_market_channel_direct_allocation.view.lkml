@@ -70,15 +70,15 @@ view: dim_market_channel_direct_allocation {
   dimension: marketing_channel_hierarchy {
     label_from_parameter: marketing_channel_hierarchy_types
     sql:  CASE
-      WHEN {% parameter marketing_channel_hierarchy_types %} = '1 Keyword'
+      WHEN {% parameter marketing_channel_hierarchy_types %} = '5 Keyword'
         THEN ${marketing_keyword}
-      WHEN {% parameter marketing_channel_hierarchy_types %} = '2 Ad Content'
+      WHEN {% parameter marketing_channel_hierarchy_types %} = '4 Ad Content'
         THEN ${marketing_ad_content}
       WHEN {% parameter marketing_channel_hierarchy_types %} = '3 Campaign'
         THEN ${marketing_campaign}
-      WHEN {% parameter marketing_channel_hierarchy_types %} = '4 Source Medium'
+      WHEN {% parameter marketing_channel_hierarchy_types %} = '2 Source Medium'
         THEN ${marketing_source_medium}
-      WHEN {% parameter marketing_channel_hierarchy_types %} = '5 Grouping'
+      WHEN {% parameter marketing_channel_hierarchy_types %} = '1 Grouping'
         THEN ${marketing_channel_grouping}
       ELSE NULL
     END ;;
