@@ -1,8 +1,6 @@
 view: fact_marketing_activty_campaign {
   sql_table_name: dbo.tblFactMarketingActivty_Campaign ;;
 
-  view_label: "Marketing Campaign Data"
-
   dimension: brand_parent_name {
     type: string
     sql: ${TABLE}.brand_parent_name ;;
