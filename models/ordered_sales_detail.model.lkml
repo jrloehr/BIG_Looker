@@ -12,6 +12,12 @@ persist_with: order_sales_detail_datagroup
 
 explore: cohort_tool {}
 
+explore: fact_marketing_activty_campaign {
+
+  view_label: "Marketing Detail"
+
+}
+
 explore: fact_sales_detail {
     view_label: "Sales Detail"
 
@@ -22,18 +28,18 @@ explore: fact_sales_detail {
     filters: [fact_sales_detail.ordered_date: "2018"]
   }
 
-    query: total_yearly_sales {
-      description: "Total Sales by Year"
-      dimensions: [fact_sales_detail.ordered_year]
-      measures: [fact_sales_detail.sum_total_sales]
-    }
+  query: total_yearly_sales {
+    description: "Total Sales by Year"
+    dimensions: [fact_sales_detail.ordered_year]
+    measures: [fact_sales_detail.sum_total_sales]
+  }
 
-    join: dim_customer {
-      view_label: "Customer"
-      type: left_outer
-      sql_on: ${fact_sales_detail.customer_id} = ${dim_customer.customer_id} ;;
-      relationship: many_to_one
-    }
+  join: dim_customer {
+    view_label: "Customer"
+    type: left_outer
+    sql_on: ${fact_sales_detail.customer_id} = ${dim_customer.customer_id} ;;
+    relationship: many_to_one
+  }
 
   join: dim_date {
     type: left_outer
