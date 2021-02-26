@@ -449,7 +449,9 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | Dollars / Order Total"
     type: sum
     value_format_name: usd
-    sql: ${marketing_spend} / ${new_existing_order_count};;
+    sql: CASE
+    WHEN ${new_existing_order_count} <> 0 THEN ${marketing_spend} / ${new_existing_order_count}
+    ELSE ${marketing_spend};;
   }
 
   measure: new_existing_spend_per_customer_sum {
@@ -457,7 +459,10 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | Dollars / Customer Total"
     type: sum
     value_format_name: usd
-    sql: ${marketing_spend} / ${new_existing_customer_count};;
+    sql: CASE
+    WHEN ${new_existing_customer_count} <> 0 THEN ${marketing_spend} / ${new_existing_customer_count}
+    ELSE ${marketing_spend}
+    END;;
   }
 
   measure: new_existing_spend_per_item_sum {
@@ -465,7 +470,10 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | Dollars / Item Total"
     type: sum
     value_format_name: usd
-    sql: ${marketing_spend} / ${new_existing_item_count};;
+    sql: CASE
+    WHEN ${new_existing_item_count} <> 0 THEN ${marketing_spend} / ${new_existing_item_count}
+    ELSE ${marketing_spend}
+    END;;
   }
 
   measure: new_existing_spend_per_order_avg {
@@ -473,7 +481,10 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | Dollars / Order Average"
     type: average
     value_format_name: usd
-    sql: ${marketing_spend} / ${new_existing_order_count};;
+    sql: CASE
+    WHEN ${new_existing_order_count} <> 0 THEN ${marketing_spend} / ${new_existing_order_count}
+    ELSE ${marketing_spend}
+    END;;
   }
 
   measure: new_existing_spend_per_customer_avg {
@@ -481,7 +492,10 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | Dollars / Customer Average"
     type: average
     value_format_name: usd
-    sql: ${marketing_spend} / ${new_existing_customer_count};;
+    sql: CASE
+    WHEN ${new_existing_customer_count} <> 0 THEN ${marketing_spend} / ${new_existing_customer_count}
+    ELSE ${marketing_spend}
+    END;;
   }
 
   measure: new_existing_spend_per_item_avg {
@@ -489,7 +503,9 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | Dollars / Item Average"
     type: average
     value_format_name: usd
-    sql: ${marketing_spend} / ${new_existing_item_count};;
+    sql: CASE WHEN ${new_existing_item_count} <> 0 THEN ${marketing_spend} / ${new_existing_item_count}
+    ELSE ${marketing_spend}
+    END;;
   }
 
   measure: count {
