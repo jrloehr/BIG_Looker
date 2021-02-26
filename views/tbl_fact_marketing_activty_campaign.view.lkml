@@ -278,7 +278,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: existing_total_sales_b4_returns_total {
-    label: "Existing | COGS"
+    label: "Existing | Sales"
     type: sum
     value_format_name: usd
     sql: ${existing_total_sales_b4_returns} ;;
