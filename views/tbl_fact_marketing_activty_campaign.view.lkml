@@ -48,6 +48,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: hard_bounce_count_total {
+    group_label: "Ad Metrics"
     label: "Hard Bounce Count"
     type: sum
     sql: ${hard_bounce_count} ;;
@@ -60,6 +61,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: marketing_clicks_total {
+    group_label: "Ad Metrics"
     label: "Marketing Clicks"
     type: sum
     sql: ${marketing_clicks} ;;
@@ -72,6 +74,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: marketing_impressions_total {
+    group_label: "Ad Metrics"
     label: "Marketing Impressions"
     type: sum
     sql: ${marketing_impressions} ;;
@@ -84,6 +87,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: session_count_total {
+    group_label: "Ad Metrics"
     label: "Session Count"
     type: sum
     sql: ${session_count} ;;
@@ -96,6 +100,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: page_views_total {
+    group_label: "Ad Metrics"
     label: "Page Views"
     type: sum
     sql: ${page_views} ;;
@@ -108,6 +113,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: visitor_count_total {
+    group_label: "Ad Metrics"
     label: "Visitor Count"
     type: sum
     sql: ${visitor_count} ;;
