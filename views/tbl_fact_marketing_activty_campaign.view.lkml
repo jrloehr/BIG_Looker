@@ -362,76 +362,76 @@ view: fact_marketing_activty_campaign {
 
   # ROAS
 
-  measure: existing_roas_avg {
-    group_label: "ROAS"
-    label: "Existing | ROAS Average"
-    type: average
-    value_format_name: usd
-    # sql: CASE
-    # WHEN ${marketing_spend} <> 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
-    # ELSE ${existing_total_sales_b4_returns}
-    # END;;
-    sql: ${existing_total_sales_b4_returns} / ${marketing_spend} ;;
-  }
+  # measure: existing_roas_avg {
+  #   group_label: "ROAS"
+  #   label: "Existing | ROAS Average"
+  #   type: average
+  #   value_format_name: usd
+  #   # sql: CASE
+  #   # WHEN ${marketing_spend} <> 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
+  #   # ELSE ${existing_total_sales_b4_returns}
+  #   # END;;
+  #   sql: AVG(${existing_total_sales_b4_returns}) / AVG(${marketing_spend}) ;;
+  # }
 
-  measure: new_roas_avg {
-    group_label: "ROAS"
-    label: "New | ROAS Average"
-    type: average
-    value_format_name: usd
-    # sql: CASE
-    # WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
-    # ELSE ${new_total_sales_b4_returns}
-    # END;;
-    sql: ${new_total_sales_b4_returns} / ${marketing_spend} ;;
-  }
+  # measure: new_roas_avg {
+  #   group_label: "ROAS"
+  #   label: "New | ROAS Average"
+  #   type: average
+  #   value_format_name: usd
+  #   # sql: CASE
+  #   # WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
+  #   # ELSE ${new_total_sales_b4_returns}
+  #   # END;;
+  #   sql: AVG(${new_total_sales_b4_returns}) / AVG(${marketing_spend}) ;;
+  # }
 
-  measure: new_existing_roas_avg {
-    group_label: "ROAS"
-    label: "New & Existing | ROAS Average"
-    type: average
-    value_format_name: usd
-  #   sql: CASE
-  #   WHEN ${marketing_spend} <> 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
-  #   ELSE ${new_existing_total_sales_b4_returns}
-  # END;;
-    sql: ${new_existing_total_sales_b4_returns} / ${marketing_spend} ;;
-}
+#   measure: new_existing_roas_avg {
+#     group_label: "ROAS"
+#     label: "New & Existing | ROAS Average"
+#     type: average
+#     value_format_name: usd
+#   #   sql: CASE
+#   #   WHEN ${marketing_spend} <> 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
+#   #   ELSE ${new_existing_total_sales_b4_returns}
+#   # END;;
+#     sql: AVG(${new_existing_total_sales_b4_returns}) / AVG(${marketing_spend}) ;;
+# }
 
   measure: existing_roas_sum {
     group_label: "ROAS"
     label: "Existing | ROAS Total"
-    type: sum
+    type: number
     value_format_name: usd
     # sql: CASE
     # WHEN ${marketing_spend} <> 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${existing_total_sales_b4_returns}
     # END;;
-    sql: ${existing_total_sales_b4_returns} / ${marketing_spend} ;;
+    sql: SUM(${existing_total_sales_b4_returns}) / SUM(${marketing_spend}) ;;
   }
 
   measure: new_roas_sum {
     group_label: "ROAS"
     label: "New | ROAS Total"
-    type: sum
+    type: number
     value_format_name: usd
     # sql: CASE
     # WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${new_total_sales_b4_returns}
     # END;;
-    sql: ${new_total_sales_b4_returns} / ${marketing_spend} ;;
+    sql: SUM(${new_total_sales_b4_returns}) / SUM(${marketing_spend}) ;;
   }
 
   measure: new_existing_roas_sum {
     group_label: "ROAS"
     label: "New & Existing | ROAS Total"
-    type: sum
+    type: number
     value_format_name: usd
     # sql: CASE
     # WHEN ${marketing_spend} <> 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${new_existing_total_sales_b4_returns}
     # END;;
-    sql: ${new_existing_total_sales_b4_returns} / ${marketing_spend} ;;
+    sql: SUM(${new_existing_total_sales_b4_returns}) / SUM(${marketing_spend}) ;;
   }
 
   # MARKETING SPEND METRICS
@@ -453,66 +453,74 @@ view: fact_marketing_activty_campaign {
   measure: new_existing_spend_per_order_sum {
     group_label: "Marketing Spend Metrics"
     label: "New & Existing | Dollars / Order Total"
-    type: sum
+    type: number
     value_format_name: usd
-    sql: CASE
-    WHEN ${new_existing_order_count} <> 0 THEN ${marketing_spend} / ${new_existing_order_count}
-    ELSE ${marketing_spend};;
+    # sql: CASE
+    # WHEN ${new_existing_order_count} <> 0 THEN ${marketing_spend} / ${new_existing_order_count}
+    # ELSE ${marketing_spend}
+    # END;;
+    sql: SUM(${marketing_spend}) / SUM(${new_existing_order_count}) ;;
   }
 
   measure: new_existing_spend_per_customer_sum {
     group_label: "Marketing Spend Metrics"
     label: "New & Existing | Dollars / Customer Total"
-    type: sum
+    type: number
     value_format_name: usd
-    sql: CASE
-    WHEN ${new_existing_customer_count} <> 0 THEN ${marketing_spend} / ${new_existing_customer_count}
-    ELSE ${marketing_spend}
-    END;;
+    # sql: CASE
+    # WHEN ${new_existing_customer_count} <> 0 THEN ${marketing_spend} / ${new_existing_customer_count}
+    # ELSE ${marketing_spend}
+    # END;;
+    sql: SUM(${marketing_spend}) / SUM(${new_existing_customer_count}) ;;
   }
 
   measure: new_existing_spend_per_item_sum {
     group_label: "Marketing Spend Metrics"
     label: "New & Existing | Dollars / Item Total"
-    type: sum
+    type: number
     value_format_name: usd
-    sql: CASE
-    WHEN ${new_existing_item_count} <> 0 THEN ${marketing_spend} / ${new_existing_item_count}
-    ELSE ${marketing_spend}
-    END;;
+    # sql: CASE
+    # WHEN ${new_existing_item_count} <> 0 THEN ${marketing_spend} / ${new_existing_item_count}
+    # ELSE ${marketing_spend}
+    # END;;
+    sql: SUM(${marketing_spend}) / SUM(${new_existing_item_count}) ;;
   }
 
-  measure: new_existing_spend_per_order_avg {
-    group_label: "Marketing Spend Metrics"
-    label: "New & Existing | Dollars / Order Average"
-    type: average
-    value_format_name: usd
-    sql: CASE
-    WHEN ${new_existing_order_count} <> 0 THEN ${marketing_spend} / ${new_existing_order_count}
-    ELSE ${marketing_spend}
-    END;;
-  }
+  # measure: new_existing_spend_per_order_avg {
+  #   group_label: "Marketing Spend Metrics"
+  #   label: "New & Existing | Dollars / Order Average"
+  #   type: number
+  #   value_format_name: usd
+  #   # sql: CASE
+  #   # WHEN ${new_existing_order_count} <> 0 THEN ${marketing_spend} / ${new_existing_order_count}
+  #   # ELSE ${marketing_spend}
+  #   # END;;
+  #   sql: AVG(${marketing_spend}) / AVG(${new_existing_order_count}) ;;
+  # }
 
-  measure: new_existing_spend_per_customer_avg {
-    group_label: "Marketing Spend Metrics"
-    label: "New & Existing | Dollars / Customer Average"
-    type: average
-    value_format_name: usd
-    sql: CASE
-    WHEN ${new_existing_customer_count} <> 0 THEN ${marketing_spend} / ${new_existing_customer_count}
-    ELSE ${marketing_spend}
-    END;;
-  }
+  # measure: new_existing_spend_per_customer_avg {
+  #   group_label: "Marketing Spend Metrics"
+  #   label: "New & Existing | Dollars / Customer Average"
+  #   type: number
+  #   value_format_name: usd
+  #   # sql: CASE
+  #   # WHEN ${new_existing_customer_count} <> 0 THEN ${marketing_spend} / ${new_existing_customer_count}
+  #   # ELSE ${marketing_spend}
+  #   # END;;
+  #   sql: AVG(${marketing_spend}) / AVG(${new_existing_customer_count}) ;;
+  # }
 
-  measure: new_existing_spend_per_item_avg {
-    group_label: "Marketing Spend Metrics"
-    label: "New & Existing | Dollars / Item Average"
-    type: average
-    value_format_name: usd
-    sql: CASE WHEN ${new_existing_item_count} <> 0 THEN ${marketing_spend} / ${new_existing_item_count}
-    ELSE ${marketing_spend}
-    END;;
-  }
+  # measure: new_existing_spend_per_item_avg {
+  #   group_label: "Marketing Spend Metrics"
+  #   label: "New & Existing | Dollars / Item Average"
+  #   type: number
+  #   value_format_name: usd
+  #   # sql: CASE
+  #   # WHEN ${new_existing_item_count} <> 0 THEN ${marketing_spend} / ${new_existing_item_count}
+  #   # ELSE ${marketing_spend}
+  #   # END;;
+  #   sql: AVG(${marketing_spend}) / AVG(${new_existing_item_count}) ;;
+  # }
 
   measure: count {
     type: count
