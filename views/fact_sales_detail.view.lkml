@@ -3,7 +3,7 @@ view: fact_sales_detail {
 
   dimension: cogs {
     label: "Cost of Goods Sold"
-    # hidden: yes
+    hidden: yes
     type: string
     sql: ${TABLE}.COGS ;;
   }
