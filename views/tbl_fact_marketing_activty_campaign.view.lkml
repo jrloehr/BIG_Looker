@@ -367,7 +367,10 @@ view: fact_marketing_activty_campaign {
     label: "Existing | ROAS Average"
     type: average
     value_format_name: usd
-    sql: ${existing_total_sales_b4_returns} / ${marketing_spend};;
+    sql: CASE
+    WHEN ${marketing_spend} > 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
+    ELSE ${existing_total_sales_b4_returns}
+    END;;
   }
 
   measure: new_roas_avg {
@@ -375,7 +378,10 @@ view: fact_marketing_activty_campaign {
     label: "New | ROAS Average"
     type: average
     value_format_name: usd
-    sql: ${new_total_sales_b4_returns} / ${marketing_spend};;
+    sql: CASE
+    WHEN ${marketing_spend} > 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
+    ELSE ${new_total_sales_b4_returns}
+    END;;
   }
 
   measure: new_existing_roas_avg {
@@ -383,15 +389,21 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | ROAS Average"
     type: average
     value_format_name: usd
-    sql: ${new_existing_total_sales_b4_returns} / ${marketing_spend};;
-  }
+    sql: CASE
+    WHEN ${marketing_spend} > 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
+    ELSE ${new_existing_total_sales_b4_returns}
+  END;;
+}
 
   measure: existing_roas_sum {
     group_label: "ROAS"
     label: "Existing | ROAS Total"
     type: sum
     value_format_name: usd
-    sql: ${existing_total_sales_b4_returns} / ${marketing_spend};;
+    sql: CASE
+    WHEN ${marketing_spend} > 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
+    ELSE ${existing_total_sales_b4_returns}
+    END;;
   }
 
   measure: new_roas_sum {
@@ -399,7 +411,10 @@ view: fact_marketing_activty_campaign {
     label: "New | ROAS Total"
     type: sum
     value_format_name: usd
-    sql: ${new_total_sales_b4_returns} / ${marketing_spend};;
+    sql: CASE
+    WHEN ${marketing_spend} > 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
+    ELSE ${new_total_sales_b4_returns}
+    END;;
   }
 
   measure: new_existing_roas_sum {
@@ -407,7 +422,10 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | ROAS Total"
     type: sum
     value_format_name: usd
-    sql: ${new_existing_total_sales_b4_returns} / ${marketing_spend};;
+    sql: CASE
+    WHEN ${marketing_spend} > 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
+    ELSE ${new_existing_total_sales_b4_returns}
+    END;;
   }
 
   # MARKETING SPEND METRICS
@@ -452,7 +470,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_spend_per_order_avg {
     group_label: "Marketing Spend Metrics"
-    label: "New & Existing | Dollars / Order Total"
+    label: "New & Existing | Dollars / Order Average"
     type: average
     value_format_name: usd
     sql: ${marketing_spend} / ${new_existing_order_count};;
@@ -460,7 +478,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_spend_per_customer_avg {
     group_label: "Marketing Spend Metrics"
-    label: "New & Existing | Dollars / Customer Total"
+    label: "New & Existing | Dollars / Customer Average"
     type: average
     value_format_name: usd
     sql: ${marketing_spend} / ${new_existing_customer_count};;
@@ -468,7 +486,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_spend_per_item_avg {
     group_label: "Marketing Spend Metrics"
-    label: "New & Existing | Dollars / Item Total"
+    label: "New & Existing | Dollars / Item Average"
     type: average
     value_format_name: usd
     sql: ${marketing_spend} / ${new_existing_item_count};;
@@ -478,4 +496,5 @@ view: fact_marketing_activty_campaign {
     type: count
     drill_fields: [brand_parent_name, marketing_campaign_name]
   }
+
 }
