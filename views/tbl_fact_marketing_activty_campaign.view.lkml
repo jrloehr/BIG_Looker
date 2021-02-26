@@ -197,57 +197,44 @@ view: fact_marketing_activty_campaign {
 
   # TOTAL METRICS
 
-  dimension: total_customer_count {
+  dimension: new_existing_customer_count {
     hidden: yes
     type: number
     sql: ${TABLE}.total_customer_count ;;
   }
 
-  measure: total_customer_count_total {
+  measure: new_existing_customer_count_total {
     label: "New & Existing | Customer Count"
     type: sum
-    sql: ${total_customer_count} ;;
+    sql: ${new_existing_customer_count} ;;
   }
 
-  dimension: total_item_count {
+  dimension: new_existing_item_count {
     hidden: yes
     type: number
     sql: ${TABLE}.total_item_count ;;
   }
 
-  measure: total_item_count_total {
+  measure: new_existing_item_count_total {
     label: "New & Existing | Item Count"
     type: sum
-    sql: ${total_item_count} ;;
+    sql: ${new_existing_item_count} ;;
   }
 
-  dimension: total_order_count {
+  dimension: new_existing_order_count {
     hidden: yes
     type: number
     sql: ${TABLE}.total_order_count ;;
   }
 
-  measure: total_order_count_total {
+  measure: new_existing_order_count_total {
     label: "New & Existing | Order Count"
     type: sum
-    sql: ${total_order_count} ;;
+    sql: ${new_existing_order_count} ;;
   }
 
 
 # DOLLAR DIMENSIONS HERE
-
-  dimension: marketing_spend {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.marketing_spend ;;
-  }
-
-  measure: marketing_spend_total {
-    label: "Marketing Spend"
-    type: sum
-    value_format_name: usd
-    sql: ${marketing_spend} ;;
-  }
 
   # EXISTING DOLLAR METRICS
 
@@ -331,45 +318,160 @@ view: fact_marketing_activty_campaign {
     sql: ${new_total_sales_b4_returns} ;;
   }
 
+
 # TOTAL DOLLAR METRICS
 
-  dimension: total_cogs {
+  dimension: new_existing_cogs {
     hidden: yes
     type: number
     sql: ${TABLE}.total_cogs ;;
   }
 
-  measure: total_cogs_total {
+  measure: new_existing_cogs_total {
     label: "New & Existing | COGS"
     type: sum
     value_format_name: usd
-    sql: ${total_cogs} ;;
+    sql: ${new_existing_cogs} ;;
   }
 
-  dimension: total_margin_dollars {
+  dimension: new_existing_margin_dollars {
     hidden: yes
     type: number
     sql: ${TABLE}.total_margin_dollars ;;
   }
 
-  measure: total_margin_dollars_total {
+  measure: new_existing_margin_dollars_total {
     label: "New & Existing | Margin Dollars"
     type: sum
     value_format_name: usd
-    sql: ${total_margin_dollars} ;;
+    sql: ${new_existing_margin_dollars} ;;
   }
 
-  dimension: total_sales_b4_returns {
+  dimension: new_existing_total_sales_b4_returns {
     hidden: yes
     type: number
     sql: ${TABLE}.total_sales_b4_returns ;;
   }
 
-  measure: total_sales_b4_returns_total {
+  measure: new_existing_sales_b4_returns_total {
     label: "New & Existing | Sales"
     type: sum
     value_format_name: usd
-    sql: ${total_sales_b4_returns} ;;
+    sql: ${new_existing_total_sales_b4_returns} ;;
+  }
+
+  # ROAS
+
+  measure: existing_roas_avg {
+    group_label: "ROAS"
+    label: "Existing | ROAS Average"
+    type: average
+    value_format_name: usd
+    sql: ${existing_total_sales_b4_returns} / ${marketing_spend};;
+  }
+
+  measure: new_roas_avg {
+    group_label: "ROAS"
+    label: "New | ROAS Average"
+    type: average
+    value_format_name: usd
+    sql: ${new_total_sales_b4_returns} / ${marketing_spend};;
+  }
+
+  measure: new_existing_roas_avg {
+    group_label: "ROAS"
+    label: "New & Existing | ROAS Average"
+    type: average
+    value_format_name: usd
+    sql: ${new_existing_total_sales_b4_returns} / ${marketing_spend};;
+  }
+
+  measure: existing_roas_sum {
+    group_label: "ROAS"
+    label: "Existing | ROAS Total"
+    type: sum
+    value_format_name: usd
+    sql: ${existing_total_sales_b4_returns} / ${marketing_spend};;
+  }
+
+  measure: new_roas_sum {
+    group_label: "ROAS"
+    label: "New | ROAS Total"
+    type: sum
+    value_format_name: usd
+    sql: ${new_total_sales_b4_returns} / ${marketing_spend};;
+  }
+
+  measure: new_existing_roas_sum {
+    group_label: "ROAS"
+    label: "New & Existing | ROAS Total"
+    type: sum
+    value_format_name: usd
+    sql: ${new_existing_total_sales_b4_returns} / ${marketing_spend};;
+  }
+
+  # MARKETING SPEND METRICS
+
+  dimension: marketing_spend {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.marketing_spend ;;
+  }
+
+  measure: marketing_spend_total {
+    group_label: "Marketing Spend Metrics"
+    label: "Marketing Spend"
+    type: sum
+    value_format_name: usd
+    sql: ${marketing_spend} ;;
+  }
+
+  measure: new_existing_spend_per_order_sum {
+    group_label: "Marketing Spend Metrics"
+    label: "New & Existing | Dollars / Order Total"
+    type: sum
+    value_format_name: usd
+    sql: ${marketing_spend} / ${new_existing_order_count};;
+  }
+
+  measure: new_existing_spend_per_customer_sum {
+    group_label: "Marketing Spend Metrics"
+    label: "New & Existing | Dollars / Customer Total"
+    type: sum
+    value_format_name: usd
+    sql: ${marketing_spend} / ${new_existing_customer_count};;
+  }
+
+  measure: new_existing_spend_per_item_sum {
+    group_label: "Marketing Spend Metrics"
+    label: "New & Existing | Dollars / Item Total"
+    type: sum
+    value_format_name: usd
+    sql: ${marketing_spend} / ${new_existing_item_count};;
+  }
+
+  measure: new_existing_spend_per_order_avg {
+    group_label: "Marketing Spend Metrics"
+    label: "New & Existing | Dollars / Order Total"
+    type: average
+    value_format_name: usd
+    sql: ${marketing_spend} / ${new_existing_order_count};;
+  }
+
+  measure: new_existing_spend_per_customer_avg {
+    group_label: "Marketing Spend Metrics"
+    label: "New & Existing | Dollars / Customer Total"
+    type: average
+    value_format_name: usd
+    sql: ${marketing_spend} / ${new_existing_customer_count};;
+  }
+
+  measure: new_existing_spend_per_item_avg {
+    group_label: "Marketing Spend Metrics"
+    label: "New & Existing | Dollars / Item Total"
+    type: average
+    value_format_name: usd
+    sql: ${marketing_spend} / ${new_existing_item_count};;
   }
 
   measure: count {
