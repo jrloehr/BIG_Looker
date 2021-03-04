@@ -68,10 +68,10 @@ explore: fact_sales_detail {
     relationship: many_to_one
   }
 
-  join: estimatedbudget {
+  join: dim_estimated_budget {
     view_label: "Budget and Forecast"
     type: left_outer
-    sql_on: ${fact_sales_detail.ordered_date} = ${estimatedbudget.date} ;;
+    sql_on: ${fact_sales_detail.ordered_date} = ${dim_estimated_budget.date} ;;
     relationship: many_to_one
   }
 

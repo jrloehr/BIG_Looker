@@ -1,4 +1,4 @@
-view: estimatedbudget {
+view: dim_estimated_budget {
   sql_table_name: google_sheets.estimatedbudget ;;
 
   dimension: _fivetran_synced {
@@ -69,7 +69,7 @@ view: estimatedbudget {
   }
 
   measure: avg_variable_ad_expense_budget {
-    label: "Variable Ad Expense Budget"
+    label: "Average Variable Ad Expense Budget"
     type: average
     sql: ${variable_ad_expense_budget} ;;
   }
