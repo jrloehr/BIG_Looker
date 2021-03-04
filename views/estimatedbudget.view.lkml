@@ -28,20 +28,9 @@ view: estimatedbudget {
   }
 
   dimension: estimated_revenue {
+    hidden: yes
     type: number
     sql: ${TABLE}.estimated_revenue ;;
-  }
-
-  measure: total_estimated_revenue {
-    label: "Estimated Revenue"
-    type: sum
-    sql: ${estimated_revenue} ;;
-  }
-
-  measure: avg_estimated_revenue {
-    label: "Average Estimated Revenue"
-    type: average
-    sql: ${estimated_revenue} ;;
   }
 
   dimension: subsidiary_id {
@@ -56,8 +45,21 @@ view: estimatedbudget {
   }
 
   dimension: variable_ad_expense_budget {
+    hidden: yes
     type: number
     sql: ${TABLE}.variable_ad_expense_budget ;;
+  }
+
+  measure: total_estimated_revenue {
+    label: "Estimated Revenue"
+    type: sum
+    sql: ${estimated_revenue} ;;
+  }
+
+  measure: avg_estimated_revenue {
+    label: "Average Estimated Revenue"
+    type: average
+    sql: ${estimated_revenue} ;;
   }
 
   measure: total_variable_ad_expense_budget {
