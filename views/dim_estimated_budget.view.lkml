@@ -22,8 +22,24 @@ view: dim_estimated_budget {
     sql: ${TABLE}.brand_parent_name ;;
   }
 
-  dimension: date {
+  dimension: subsidiary_name {
+    label: "Subsidiary"
     type: string
+    sql: ${TABLE}.subsidiary_name ;;
+  }
+
+  dimension_group: date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}.date ;;
   }
 
@@ -36,12 +52,6 @@ view: dim_estimated_budget {
   dimension: subsidiary_id {
     type: number
     sql: ${TABLE}.subsidiary_id ;;
-  }
-
-  dimension: subsidiary_name {
-    label: "Subsidiary"
-    type: string
-    sql: ${TABLE}.subsidiary_name ;;
   }
 
   dimension: variable_ad_expense_budget {
