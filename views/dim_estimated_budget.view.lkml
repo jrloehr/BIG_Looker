@@ -7,6 +7,7 @@ view: dim_estimated_budget {
   }
 
   dimension: _row {
+    primary_key: yes
     type: number
     sql: ${TABLE}._row ;;
   }
@@ -28,7 +29,7 @@ view: dim_estimated_budget {
     sql: ${TABLE}.subsidiary_name ;;
   }
 
-  dimension_group: date {
+  dimension_group: budget_date {
     type: time
     timeframes: [
       raw,
