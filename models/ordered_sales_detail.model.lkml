@@ -70,8 +70,9 @@ explore: fact_sales_detail {
 
   join: dim_estimated_budget {
     view_label: "Budget and Forecast"
-    type: left_outer
-    sql_on: ${fact_sales_detail.ordered_date} = ${dim_estimated_budget.budget_date_date};;
+    type: inner
+    sql_on: ${fact_sales_detail.ordered_date} = ${dim_estimated_budget.budget_date_date}
+    AND ${fact_sales_detail.location_id} = ${dim_estimated_budget.brand_id};;
     relationship: many_to_one
   }
 
