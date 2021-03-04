@@ -38,6 +38,12 @@ view: estimatedbudget {
     sql: ${estimated_revenue} ;;
   }
 
+  measure: avg_estimated_revenue {
+    label: "Average Estimated Revenue"
+    type: average
+    sql: ${estimated_revenue} ;;
+  }
+
   dimension: subsidiary_id {
     type: number
     sql: ${TABLE}.subsidiary_id ;;
@@ -57,6 +63,12 @@ view: estimatedbudget {
   measure: total_variable_ad_expense_budget {
     label: "Variable Ad Expense Budget"
     type: sum
+    sql: ${variable_ad_expense_budget} ;;
+  }
+
+  measure: avg_variable_ad_expense_budget {
+    label: "Variable Ad Expense Budget"
+    type: average
     sql: ${variable_ad_expense_budget} ;;
   }
 
