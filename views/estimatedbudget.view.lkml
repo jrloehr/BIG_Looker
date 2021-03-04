@@ -17,6 +17,7 @@ view: estimatedbudget {
   }
 
   dimension: brand_parent_name {
+    label: "Brand"
     type: string
     sql: ${TABLE}.brand_parent_name ;;
   }
@@ -31,12 +32,19 @@ view: estimatedbudget {
     sql: ${TABLE}.estimated_revenue ;;
   }
 
+  measure: total_estimated_revenue {
+    label: "Estimated Revenue"
+    type: sum
+    sql: ${estimated_revenue} ;;
+  }
+
   dimension: subsidiary_id {
     type: number
     sql: ${TABLE}.subsidiary_id ;;
   }
 
   dimension: subsidiary_name {
+    label: "Subsidiary"
     type: string
     sql: ${TABLE}.subsidiary_name ;;
   }
@@ -44,6 +52,12 @@ view: estimatedbudget {
   dimension: variable_ad_expense_budget {
     type: number
     sql: ${TABLE}.variable_ad_expense_budget ;;
+  }
+
+  measure: total_variable_ad_expense_budget {
+    label: "Variable Ad Expense Budget"
+    type: sum
+    sql: ${variable_ad_expense_budget} ;;
   }
 
   measure: count {
