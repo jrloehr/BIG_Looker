@@ -68,6 +68,13 @@ explore: fact_sales_detail {
     relationship: many_to_one
   }
 
+  join: estimatedbudget {
+    view_label: "Budget and Forecast"
+    type: left_outer
+    sql_on: ${fact_sales_detail.location_id} = ${estimatedbudget.brand_id}.brand_id} ;;
+    relationship: many_to_one
+  }
+
   join: dim_market_channel_direct_allocation {
     view_label: "Marketing Channel"
     type: inner
