@@ -61,24 +61,46 @@ view: fact_estimated_budget {
   }
 
   measure: total_estimated_revenue {
+    group_label: "Estimated Revenue"
     label: "Estimated Revenue"
     type: sum
     sql: ${estimated_revenue} ;;
   }
 
   measure: avg_estimated_revenue {
+    group_label: "Estimated Revenue"
     label: "Average Estimated Revenue"
     type: average
     sql: ${estimated_revenue} ;;
   }
 
+  measure: runningtotal_estimated_revenue {
+    group_label: "Estimated Revenue"
+    label: "Running Total Estimated Revenue"
+    # description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
+    type: running_total
+    value_format_name: usd
+    sql: ${estimated_revenue} ;;
+  }
+
   measure: total_variable_ad_expense_budget {
+    group_label: "VADX"
     label: "Variable Ad Expense Budget"
     type: sum
     sql: ${variable_ad_expense_budget} ;;
   }
 
+  measure: runningtotal_variable_ad_expense {
+    group_label: "VADX"
+    label: "Running Total VADX"
+    # description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
+    type: running_total
+    value_format_name: usd
+    sql: ${variable_ad_expense_budget} ;;
+  }
+
   measure: avg_variable_ad_expense_budget {
+    group_label: "VADX"
     label: "Average Variable Ad Expense Budget"
     type: average
     sql: ${variable_ad_expense_budget} ;;
