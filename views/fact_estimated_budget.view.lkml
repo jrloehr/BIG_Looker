@@ -60,7 +60,7 @@ view: fact_estimated_budget {
     sql: ${TABLE}.variable_ad_expense_budget ;;
   }
 
-  measure: total_estimated_revenue {
+  measure: sum_estimated_revenue {
     group_label: "Estimated Revenue"
     label: "Estimated Revenue"
     type: sum
@@ -80,10 +80,10 @@ view: fact_estimated_budget {
     # description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: running_total
     value_format_name: usd
-    sql: ${estimated_revenue} ;;
+    sql: ${sum_estimated_revenue} ;;
   }
 
-  measure: total_variable_ad_expense_budget {
+  measure: sum_variable_ad_expense_budget {
     group_label: "VADX"
     label: "Variable Ad Expense Budget"
     type: sum
@@ -96,7 +96,7 @@ view: fact_estimated_budget {
     # description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: running_total
     value_format_name: usd
-    sql: ${variable_ad_expense_budget} ;;
+    sql: ${sum_variable_ad_expense_budget} ;;
   }
 
   measure: avg_variable_ad_expense_budget {
