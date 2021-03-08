@@ -16,6 +16,15 @@ explore: fact_marketing_activty_campaign {
 
   view_label: "Marketing Detail"
 
+  join: fact_estimated_budget {
+    view_label: "Budget and Forecast"
+    type: inner
+    sql_on: ${fact_marketing_activty_campaign.date_date} = ${fact_estimated_budget.date_date}
+          AND ${fact_marketing_activty_campaign.brand_parent_name} = ${fact_estimated_budget.brand_parent_name}
+          ;;
+    relationship: many_to_one
+  }
+
 }
 
 explore: fact_sales_detail {
