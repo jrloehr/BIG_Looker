@@ -1,5 +1,19 @@
-view: dim_estimated_budget {
-  sql_table_name: google_sheets.estimatedbudget ;;
+view: fact_estimated_budget {
+  sql_table_name: google_sheets.fact_estimated_budget ;;
+
+  dimension_group: date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.date ;;
+  }
 
   dimension: _fivetran_synced {
     type: string
@@ -27,21 +41,6 @@ view: dim_estimated_budget {
     label: "Subsidiary"
     type: string
     sql: ${TABLE}.subsidiary_name ;;
-  }
-
-  dimension_group: budget_date {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.date ;;
   }
 
   dimension: estimated_revenue {
