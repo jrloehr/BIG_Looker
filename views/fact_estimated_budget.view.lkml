@@ -12,6 +12,8 @@ view: fact_estimated_budget {
       quarter,
       year
     ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}.date ;;
   }
 
