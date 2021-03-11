@@ -445,6 +445,7 @@ view: fact_marketing_activty_campaign {
   measure: marketing_spend_total {
     group_label: "Marketing Spend Metrics"
     label: "Marketing Spend"
+    description: "Use for marketing costs. Validated on 3/11/2021. Make sure to include the final day."
     type: sum
     value_format_name: usd
     sql: ${marketing_spend} ;;
