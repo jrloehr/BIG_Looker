@@ -119,44 +119,6 @@ view: fact_marketing_activty_campaign {
     sql: ${visitor_count} ;;
   }
 
-  # EXISTING METRICS
-
-  dimension: existing_customer_count {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.existing_customer_count ;;
-  }
-
-  measure: existing_customer_count_total {
-    label: "Existing | Customer Count"
-    type: sum
-    sql: ${existing_customer_count} ;;
-  }
-
-  dimension: existing_item_count {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.existing_item_count ;;
-  }
-
-  measure: existing_item_count_total {
-    label: "Existing | Item Count"
-    type: sum
-    sql: ${existing_item_count} ;;
-  }
-
-  dimension: existing_order_count {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.existing_order_count ;;
-  }
-
-  measure: existing_order_count_total {
-    label: "Existing | Order Count"
-    type: sum
-    sql: ${existing_order_count} ;;
-  }
-
   # NEW METRICS
 
   dimension: new_customer_count {
@@ -166,6 +128,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_customer_count_total {
+    group_label: "New Customers"
     label: "New | Customer Count"
     type: sum
     sql: ${new_customer_count} ;;
@@ -178,6 +141,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_item_count_total {
+    group_label: "New Customers"
     label: "New | Item Count"
     type: sum
     sql: ${new_item_count} ;;
@@ -190,91 +154,10 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_order_count_total {
+    group_label: "New Customers"
     label: "New | Order Count"
     type: sum
     sql: ${new_order_count} ;;
-  }
-
-  # TOTAL METRICS
-
-  dimension: new_existing_customer_count {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.total_customer_count ;;
-  }
-
-  measure: new_existing_customer_count_total {
-    label: "New & Existing | Customer Count"
-    type: sum
-    sql: ${new_existing_customer_count} ;;
-  }
-
-  dimension: new_existing_item_count {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.total_item_count ;;
-  }
-
-  measure: new_existing_item_count_total {
-    label: "New & Existing | Item Count"
-    type: sum
-    sql: ${new_existing_item_count} ;;
-  }
-
-  dimension: new_existing_order_count {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.total_order_count ;;
-  }
-
-  measure: new_existing_order_count_total {
-    label: "New & Existing | Order Count"
-    type: sum
-    sql: ${new_existing_order_count} ;;
-  }
-
-
-# DOLLAR DIMENSIONS HERE
-
-  # EXISTING DOLLAR METRICS
-
-  dimension: existing_cogs {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.existing_cogs ;;
-  }
-
-  measure: existing_cogs_total {
-    label: "Existing | COGS"
-    type: sum
-    value_format_name: usd
-    sql: ${existing_cogs} ;;
-  }
-
-  dimension: existing_margin_dollars {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.existing_margin_dollars ;;
-  }
-
-  measure: existing_margin_dollars_total {
-    label: "Existing | Margin Dollars"
-    type: sum
-    value_format_name: usd
-    sql: ${existing_margin_dollars} ;;
-  }
-
-  dimension: existing_total_sales_b4_returns {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.existing_total_sales_b4_returns ;;
-  }
-
-  measure: existing_total_sales_b4_returns_total {
-    label: "Existing | Sales"
-    type: sum
-    value_format_name: usd
-    sql: ${existing_total_sales_b4_returns} ;;
   }
 
 # NEW DOLLAR METRICS
@@ -286,6 +169,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_cogs_total {
+    group_label: "New Customers"
     label: "New | COGS"
     type: sum
     value_format_name: usd
@@ -299,6 +183,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_margin_dollars_total {
+    group_label: "New Customers"
     label: "New | Margin Dollars"
     type: sum
     value_format_name: usd
@@ -312,10 +197,153 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_total_sales_b4_returns_total {
+    group_label: "New Customers"
     label: "New | Sales"
     type: sum
     value_format_name: usd
     sql: ${new_total_sales_b4_returns} ;;
+  }
+
+  measure: new_AOV {
+    group_label: "New Customers"
+    label: "New | Average Order Value"
+    type: number
+    value_format_name: usd
+    sql: ${new_total_sales_b4_returns_total} / ${new_order_count_total} ;;
+  }
+
+  # EXISTING METRICS
+
+  dimension: existing_customer_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.existing_customer_count ;;
+  }
+
+  measure: existing_customer_count_total {
+    group_label: "Existing Customers"
+    label: "Existing | Customer Count"
+    type: sum
+    sql: ${existing_customer_count} ;;
+  }
+
+  dimension: existing_item_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.existing_item_count ;;
+  }
+
+  measure: existing_item_count_total {
+    group_label: "Existing Customers"
+    label: "Existing | Item Count"
+    type: sum
+    sql: ${existing_item_count} ;;
+  }
+
+  dimension: existing_order_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.existing_order_count ;;
+  }
+
+  measure: existing_order_count_total {
+    group_label: "Existing Customers"
+    label: "Existing | Order Count"
+    type: sum
+    sql: ${existing_order_count} ;;
+  }
+
+# EXISTING DOLLAR METRICS
+
+  dimension: existing_cogs {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.existing_cogs ;;
+  }
+
+  measure: existing_cogs_total {
+    group_label: "Existing Customers"
+    label: "Existing | COGS"
+    type: sum
+    value_format_name: usd
+    sql: ${existing_cogs} ;;
+  }
+
+  dimension: existing_margin_dollars {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.existing_margin_dollars ;;
+  }
+
+  measure: existing_margin_dollars_total {
+    group_label: "Existing Customers"
+    label: "Existing | Margin Dollars"
+    type: sum
+    value_format_name: usd
+    sql: ${existing_margin_dollars} ;;
+  }
+
+  dimension: existing_total_sales_b4_returns {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.existing_total_sales_b4_returns ;;
+  }
+
+  measure: existing_total_sales_b4_returns_total {
+    group_label: "Existing Customers"
+    label: "Existing | Sales"
+    type: sum
+    value_format_name: usd
+    sql: ${existing_total_sales_b4_returns} ;;
+  }
+
+  measure: existing_AOV {
+    group_label: "Existing Customers"
+    label: "Existing | Average Order Value"
+    type: number
+    value_format_name: usd
+    sql: ${existing_total_sales_b4_returns_total} / ${existing_order_count_total} ;;
+  }
+
+  # TOTAL METRICS
+
+  dimension: new_existing_customer_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.total_customer_count ;;
+  }
+
+  measure: new_existing_customer_count_total {
+    group_label: "All Customers"
+    label: "New & Existing | Customer Count"
+    type: sum
+    sql: ${new_existing_customer_count} ;;
+  }
+
+  dimension: new_existing_item_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.total_item_count ;;
+  }
+
+  measure: new_existing_item_count_total {
+    group_label: "All Customers"
+    label: "New & Existing | Item Count"
+    type: sum
+    sql: ${new_existing_item_count} ;;
+  }
+
+  dimension: new_existing_order_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.total_order_count ;;
+  }
+
+  measure: new_existing_order_count_total {
+    group_label: "All Customers"
+    label: "New & Existing | Order Count"
+    type: sum
+    sql: ${new_existing_order_count} ;;
   }
 
 
@@ -328,6 +356,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_existing_cogs_total {
+    group_label: "All Customers"
     label: "New & Existing | COGS"
     type: sum
     value_format_name: usd
@@ -341,6 +370,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_existing_margin_dollars_total {
+    group_label: "All Customers"
     label: "New & Existing | Margin Dollars"
     type: sum
     value_format_name: usd
@@ -353,11 +383,20 @@ view: fact_marketing_activty_campaign {
     sql: ${TABLE}.total_sales_b4_returns ;;
   }
 
-  measure: new_existing_sales_b4_returns_total {
+  measure: new_existing_total_sales_b4_returns_total {
+    group_label: "All Customers"
     label: "New & Existing | Sales"
     type: sum
     value_format_name: usd
     sql: ${new_existing_total_sales_b4_returns} ;;
+  }
+
+  measure: new_existing_AOV {
+    group_label: "All Customers"
+    label: "New & Existing | Average Order Value"
+    type: number
+    value_format_name: usd
+    sql: ${new_existing_total_sales_b4_returns_total} / ${new_existing_order_count_total} ;;
   }
 
   # ROAS
@@ -407,7 +446,7 @@ view: fact_marketing_activty_campaign {
     # WHEN ${marketing_spend} <> 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${existing_total_sales_b4_returns}
     # END;;
-     sql: SUM(${existing_total_sales_b4_returns}) / SUM(NULLIF(${marketing_spend}, 0)) ;;
+     sql: ${existing_total_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
   }
 
   measure: new_roas_sum {
@@ -419,7 +458,7 @@ view: fact_marketing_activty_campaign {
     # WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${new_total_sales_b4_returns}
     # END;;
-     sql: SUM(${new_total_sales_b4_returns}) / SUM(NULLIF(${marketing_spend}, 0)) ;;
+     sql: ${new_total_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
   }
 
   measure: new_existing_roas_sum {
@@ -431,7 +470,7 @@ view: fact_marketing_activty_campaign {
     # WHEN ${marketing_spend} <> 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${new_existing_total_sales_b4_returns}
     # END;;
-    sql: SUM(${new_existing_total_sales_b4_returns}) / SUM(NULLIF(${marketing_spend}, 0)) ;;
+    sql: ${new_existing_total_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
   }
 
   # MARKETING SPEND METRICS
