@@ -144,6 +144,16 @@ view: fact_sales_detail {
     sql: ${total_sales} ;;
   }
 
+  measure: sum_total_sales_last_year {
+    group_label: "Total Sales"
+    label: "Total Sales"
+    description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
+    type: sum
+    value_format_name: usd
+    sql: ${total_sales};;
+    filters: [order_date_last_year: "yes"]
+  }
+
 #### THIS CAN BE USED FOR CHANGING YEARS OF SALES DYNAMICALLY
   filter: select_sales_year {
     description: "Use with filtered sales"
@@ -374,7 +384,8 @@ view: fact_sales_detail {
   }
 
   dimension: ecommerce_etail_order_id_filter {
-    label: "Ecommerce Filter"
+    label: "etail Order ID Filter"
+    description: "This is used to help filter for those items that have Shopify orders."
     type: string
     sql: CASE
           WHEN ${etail_order_id} IS NULL THEN 'Outside Ecommerce Channels'
@@ -403,15 +414,17 @@ view: fact_sales_detail {
     sql: ${TABLE}.Margin_Dollars ;;
   }
 
-# MAY NEED TO CHANGE THESE TO FILTERS
-  dimension: in_this_month_and_year {
-    type:  yesno
-    label: "In This Month and Year"
-    sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${ordered_date}), 0) = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
-  }
+# # MAY NEED TO CHANGE THESE TO FILTERS
+#   dimension: in_this_month_and_year {
+#     group_label: "Date Filters"
+#     type:  yesno
+#     label: "In This Month and Year"
+#     sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${ordered_date}), 0) = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
+#   }
 
 # MAY NEED TO CHANGE THESE TO FILTERS
   dimension: year_to_date {
+    group_label: "Date Filters"
     type:  yesno
     label: "Year to Date"
     sql: ${ordered_date} <= GETDATE()
@@ -420,10 +433,28 @@ view: fact_sales_detail {
 
 # MAY NEED TO CHANGE THESE TO FILTERS
   dimension: month_to_date {
+    group_label: "Date Filters"
     type:  yesno
     label: "Month to Date"
     sql: ${ordered_date} <= GETDATE()
       AND YEAR(${ordered_date}) = YEAR(GETDATE())
+      AND MONTH(${ordered_date}) = MONTH(GETDATE());;
+  }
+
+  dimension: order_date_last_year {
+    group_label: "Date Filters"
+    type:  yesno
+    label: "Last Year"
+    sql: ${ordered_date} <= GETDATE()
+    AND YEAR(${ordered_date}) = YEAR(GETDATE()) - 1;;
+  }
+
+  dimension: order_date_last_year_month_to_date {
+    group_label: "Date Filters"
+    type:  yesno
+    label: "Last Year Month to Date"
+    sql: ${ordered_date} <= GETDATE()
+      AND YEAR(${ordered_date}) = YEAR(GETDATE()) - 1
       AND MONTH(${ordered_date}) = MONTH(GETDATE());;
   }
 

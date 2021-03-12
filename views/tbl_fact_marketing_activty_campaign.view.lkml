@@ -400,14 +400,8 @@ view: fact_marketing_activty_campaign {
   }
 
 # MAY NEED TO CHANGE THESE TO FILTERS
-  dimension: in_this_month_and_year {
-    type:  yesno
-    label: "In This Month and Year"
-    sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${date_date}), 0) = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
-  }
-
-# MAY NEED TO CHANGE THESE TO FILTERS
   dimension: year_to_date {
+    group_label: "Date Filters"
     type:  yesno
     label: "Year to Date"
     sql: ${date_date} <= GETDATE()
@@ -416,10 +410,28 @@ view: fact_marketing_activty_campaign {
 
 # MAY NEED TO CHANGE THESE TO FILTERS
   dimension: month_to_date {
+    group_label: "Date Filters"
     type:  yesno
     label: "Month to Date"
     sql: ${date_date} <= GETDATE()
       AND YEAR(${date_date}) = YEAR(GETDATE())
+      AND MONTH(${date_date}) = MONTH(GETDATE());;
+  }
+
+  dimension: order_date_last_year {
+    group_label: "Date Filters"
+    type:  yesno
+    label: "Last Year"
+    sql: ${date_date} <= GETDATE()
+      AND YEAR(${date_date}) = YEAR(GETDATE()) - 1;;
+  }
+
+  dimension: order_date_last_year_month_to_date {
+    group_label: "Date Filters"
+    type:  yesno
+    label: "Last Year Month to Date"
+    sql: ${date_date} <= GETDATE()
+      AND YEAR(${date_date}) = YEAR(GETDATE()) - 1
       AND MONTH(${date_date}) = MONTH(GETDATE());;
   }
 
