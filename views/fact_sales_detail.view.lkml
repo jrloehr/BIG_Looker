@@ -146,7 +146,7 @@ view: fact_sales_detail {
 
   measure: sum_total_sales_last_year {
     group_label: "Total Sales"
-    label: "Total Sales"
+    label: "Total Sales Last Year"
     description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: sum
     value_format_name: usd
