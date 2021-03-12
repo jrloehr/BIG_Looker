@@ -399,6 +399,30 @@ view: fact_marketing_activty_campaign {
     sql: ${new_existing_total_sales_b4_returns_total} / ${new_existing_order_count_total} ;;
   }
 
+# MAY NEED TO CHANGE THESE TO FILTERS
+  dimension: in_this_month_and_year {
+    type:  yesno
+    label: "In This Month and Year"
+    sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${date_date}), 0) = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
+  }
+
+# MAY NEED TO CHANGE THESE TO FILTERS
+  dimension: year_to_date {
+    type:  yesno
+    label: "Year to Date"
+    sql: ${date_date} <= GETDATE()
+      AND YEAR(${date_date}) = YEAR(GETDATE());;
+  }
+
+# MAY NEED TO CHANGE THESE TO FILTERS
+  dimension: month_to_date {
+    type:  yesno
+    label: "Month to Date"
+    sql: ${date_date} <= GETDATE()
+      AND YEAR(${date_date}) = YEAR(GETDATE())
+      AND MONTH(${date_date}) = MONTH(GETDATE());;
+  }
+
   # ROAS
 
   # measure: existing_roas_avg {
