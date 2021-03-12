@@ -212,6 +212,14 @@ view: fact_marketing_activty_campaign {
     sql: ${new_total_sales_b4_returns_total} / ${new_order_count_total} ;;
   }
 
+  measure: new_conversions {
+    group_label: "New Customers"
+    label: "New | Conversions"
+    type: number
+    value_format_name: usd
+    sql: ${new_order_count_total} / ISNULL(${session_count_total},0) ;;
+  }
+
   # EXISTING METRICS
 
   dimension: existing_customer_count {
@@ -305,6 +313,14 @@ view: fact_marketing_activty_campaign {
     sql: ${existing_total_sales_b4_returns_total} / ${existing_order_count_total} ;;
   }
 
+  measure: existing_conversions {
+    group_label: "Existing Customers"
+    label: "Existing | Conversions"
+    type: number
+    value_format_name: usd
+    sql: ${existing_order_count_total} / ISNULL(${session_count_total},0) ;;
+  }
+
   # TOTAL METRICS
 
   dimension: new_existing_customer_count {
@@ -396,7 +412,15 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | Average Order Value"
     type: number
     value_format_name: usd
-    sql: ${new_existing_total_sales_b4_returns_total} / ${new_existing_order_count_total} ;;
+    sql: ${new_existing_total_sales_b4_returns_total} / ISNULL(${new_existing_order_count_total},0) ;;
+  }
+
+  measure: new_existing_conversions {
+    group_label: "All Customers"
+    label: "New & Existing | Conversions"
+    type: number
+    value_format_name: usd
+    sql: ${new_existing_order_count_total} / ISNULL(${session_count_total},0) ;;
   }
 
 # MAY NEED TO CHANGE THESE TO FILTERS
@@ -482,7 +506,7 @@ view: fact_marketing_activty_campaign {
     # WHEN ${marketing_spend} <> 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${existing_total_sales_b4_returns}
     # END;;
-     sql: ${existing_total_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
+    sql: ${existing_total_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
   }
 
   measure: new_roas_sum {
@@ -494,7 +518,7 @@ view: fact_marketing_activty_campaign {
     # WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${new_total_sales_b4_returns}
     # END;;
-     sql: ${new_total_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
+    sql: ${new_total_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
   }
 
   measure: new_existing_roas_sum {
@@ -547,7 +571,7 @@ view: fact_marketing_activty_campaign {
     # WHEN ${new_existing_customer_count} <> 0 THEN ${marketing_spend} / ${new_existing_customer_count}
     # ELSE ${marketing_spend}
     # END;;
-     sql: ${marketing_spend_total} / NULLIF(${new_existing_customer_count_total},0) ;;
+    sql: ${marketing_spend_total} / NULLIF(${new_existing_customer_count_total},0) ;;
   }
 
   measure: new_existing_spend_per_item_sum {
@@ -561,6 +585,8 @@ view: fact_marketing_activty_campaign {
     # END;;
     sql: ${marketing_spend_total} / NULLIF(${new_existing_item_count_total},0) ;;
   }
+
+
 
   # measure: new_existing_spend_per_order_avg {
   #   group_label: "Marketing Spend Metrics"
