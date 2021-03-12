@@ -388,8 +388,8 @@ view: fact_sales_detail {
     description: "This is used to help filter for those items that have Shopify orders."
     type: string
     sql: CASE
-          WHEN ${etail_order_id} IS NULL THEN 'Outside Ecommerce Channels'
-          WHEN ${etail_order_id} IS NOT NULL THEN 'Ecommerce'
+          WHEN ${etail_order_id} IS NULL THEN 'No etail Order ID'
+          WHEN ${etail_order_id} IS NOT NULL THEN 'Has Etail Order ID'
           END;;
   }
 
