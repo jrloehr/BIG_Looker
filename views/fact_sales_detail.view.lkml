@@ -414,14 +414,6 @@ view: fact_sales_detail {
     sql: ${TABLE}.Margin_Dollars ;;
   }
 
-# # MAY NEED TO CHANGE THESE TO FILTERS
-#   dimension: in_this_month_and_year {
-#     group_label: "Date Filters"
-#     type:  yesno
-#     label: "In This Month and Year"
-#     sql: DATEADD(MONTH, DATEDIFF(MONTH, 0, ${ordered_date}), 0) = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0);;
-#   }
-
 # MAY NEED TO CHANGE THESE TO FILTERS
   dimension: year_to_date {
     group_label: "Date Filters"
@@ -502,22 +494,6 @@ view: fact_sales_detail {
     type: number
     sql: ${TABLE}.marketing_channelid ;;
   }
-
-  # dimension_group: first_order_date {
-  #   label: "Customer First Order"
-  #   type: time
-  #   timeframes: [
-  #     raw,
-  #     date,
-  #     week,
-  #     month,
-  #     quarter,
-  #     year
-  #   ]
-  #   convert_tz: no
-  #   datatype: date
-  #   sql: ${TABLE}.first_order_date ;;
-  # }
 
   set: fact_sales_detail_drill_set {
     fields: [customer_id,dim_brand.first_order_date_date]
