@@ -401,7 +401,7 @@ view: fact_marketing_activty_campaign {
   measure: existing_roas_sum {
     group_label: "ROAS"
     label: "Existing | ROAS Total"
-    type: sum
+    type: number
     value_format_name: usd
     # sql: CASE
     # WHEN ${marketing_spend} <> 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
@@ -413,7 +413,7 @@ view: fact_marketing_activty_campaign {
   measure: new_roas_sum {
     group_label: "ROAS"
     label: "New | ROAS Total"
-    type: sum
+    type: number
     value_format_name: usd
     # sql: CASE
     # WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
@@ -425,7 +425,7 @@ view: fact_marketing_activty_campaign {
   measure: new_existing_roas_sum {
     group_label: "ROAS"
     label: "New & Existing | ROAS Total"
-    type: sum
+    type: number
     value_format_name: usd
     # sql: CASE
     # WHEN ${marketing_spend} <> 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
