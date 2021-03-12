@@ -407,7 +407,7 @@ view: fact_marketing_activty_campaign {
     # WHEN ${marketing_spend} <> 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${existing_total_sales_b4_returns}
     # END;;
-     sql: ${existing_total_sales_b4_returns} / NULLIF(${marketing_spend}, 0) ;;
+     sql: SUM(${existing_total_sales_b4_returns}) / SUM(NULLIF(${marketing_spend}, 0)) ;;
   }
 
   measure: new_roas_sum {
@@ -419,7 +419,7 @@ view: fact_marketing_activty_campaign {
     # WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${new_total_sales_b4_returns}
     # END;;
-     sql: ${new_total_sales_b4_returns} / NULLIF(${marketing_spend}, 0) ;;
+     sql: SUM(${new_total_sales_b4_returns}) / SUM(NULLIF(${marketing_spend}, 0)) ;;
   }
 
   measure: new_existing_roas_sum {
@@ -431,7 +431,7 @@ view: fact_marketing_activty_campaign {
     # WHEN ${marketing_spend} <> 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${new_existing_total_sales_b4_returns}
     # END;;
-    sql: ${new_existing_total_sales_b4_returns} / NULLIF(${marketing_spend}, 0) ;;
+    sql: SUM(${new_existing_total_sales_b4_returns}) / SUM(NULLIF(${marketing_spend}, 0)) ;;
   }
 
   # MARKETING SPEND METRICS
