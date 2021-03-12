@@ -419,7 +419,6 @@ view: fact_marketing_activty_campaign {
     group_label: "All Customers"
     label: "New & Existing | Conversions"
     type: number
-    value_format_name: usd
     sql: ${new_existing_order_count_total} / NULLIF(${session_count_total},0) ;;
   }
 
