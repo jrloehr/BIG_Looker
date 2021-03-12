@@ -209,15 +209,15 @@ view: fact_marketing_activty_campaign {
     label: "New | Average Order Value"
     type: number
     value_format_name: usd
-    sql: ${new_total_sales_b4_returns_total} / ${new_order_count_total} ;;
+    sql: ${new_total_sales_b4_returns_total} / NULLIF(${new_order_count_total},0) ;;
   }
 
   measure: new_conversions {
     group_label: "New Customers"
     label: "New | Conversions"
     type: number
-    value_format_name: usd
-    sql: SUM(${new_order_count}) / SUM(${session_count}) ;;
+    value_format_name: percent_2
+    sql: ${new_order_count_total} / NULLIF(${session_count_total},0) ;;
   }
 
   # EXISTING METRICS
@@ -310,15 +310,15 @@ view: fact_marketing_activty_campaign {
     label: "Existing | Average Order Value"
     type: number
     value_format_name: usd
-    sql: ${existing_total_sales_b4_returns_total} / ${existing_order_count_total} ;;
+    sql: ${existing_total_sales_b4_returns_total} / NULLIF(${existing_order_count_total},0) ;;
   }
 
   measure: existing_conversions {
     group_label: "Existing Customers"
     label: "Existing | Conversions"
     type: number
-    value_format_name: usd
-    sql: SUM(${existing_order_count}) / SUM(${session_count}) ;;
+    value_format_name: percent_2
+    sql: ${existing_order_count_total} / NULLIF(${session_count_total},0) ;;
   }
 
   # TOTAL METRICS
@@ -419,7 +419,8 @@ view: fact_marketing_activty_campaign {
     group_label: "All Customers"
     label: "New & Existing | Conversions"
     type: number
-    sql: SUM(${new_existing_order_count}) / NULLIF(SUM(${session_count}),0) ;;
+    value_format_name: percent_2
+    sql: ${new_existing_order_count_total} / NULLIF(${session_count_total},0) ;;
   }
 
 # MAY NEED TO CHANGE THESE TO FILTERS
