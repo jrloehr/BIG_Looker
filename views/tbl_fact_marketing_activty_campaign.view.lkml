@@ -419,7 +419,7 @@ view: fact_marketing_activty_campaign {
     group_label: "All Customers"
     label: "New & Existing | Conversions"
     type: number
-    sql: SUM(${new_existing_order_count}) / SUM(${session_count}) ;;
+    sql: SUM(${new_existing_order_count}) / NULLIF(SUM(${session_count}),0) ;;
   }
 
 # MAY NEED TO CHANGE THESE TO FILTERS
