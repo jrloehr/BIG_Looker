@@ -209,7 +209,7 @@ view: fact_marketing_activty_campaign {
     label: "New | Average Order Value"
     type: number
     value_format_name: usd
-    sql: ${new_total_sales_b4_returns_total} / NULLIF(${new_order_count_total},0) ;;
+    sql: 1.0 * ${new_total_sales_b4_returns_total} / NULLIF(${new_order_count_total},0) ;;
   }
 
   measure: new_conversions {
@@ -217,7 +217,7 @@ view: fact_marketing_activty_campaign {
     label: "New | Conversions"
     type: number
     value_format_name: percent_2
-    sql: ${new_order_count_total} / NULLIF(${session_count_total},0) ;;
+    sql: 1.0 * ${new_order_count_total} / NULLIF(${session_count_total},0) ;;
   }
 
   # EXISTING METRICS
@@ -310,7 +310,7 @@ view: fact_marketing_activty_campaign {
     label: "Existing | Average Order Value"
     type: number
     value_format_name: usd
-    sql: ${existing_total_sales_b4_returns_total} / NULLIF(${existing_order_count_total},0) ;;
+    sql: 1.0 * ${existing_total_sales_b4_returns_total} / NULLIF(${existing_order_count_total},0) ;;
   }
 
   measure: existing_conversions {
@@ -318,7 +318,7 @@ view: fact_marketing_activty_campaign {
     label: "Existing | Conversions"
     type: number
     value_format_name: percent_2
-    sql: ${existing_order_count_total} / NULLIF(${session_count_total},0) ;;
+    sql: 1.0 * ${existing_order_count_total} / NULLIF(${session_count_total},0) ;;
   }
 
   # TOTAL METRICS
@@ -412,7 +412,7 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | Average Order Value"
     type: number
     value_format_name: usd
-    sql: ${new_existing_total_sales_b4_returns_total} / NULLIF(${new_existing_order_count_total},0) ;;
+    sql: 1.0 * ${new_existing_total_sales_b4_returns_total} / NULLIF(${new_existing_order_count_total},0) ;;
   }
 
   measure: new_existing_conversions {
@@ -420,7 +420,7 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | Conversions"
     type: number
     value_format_name: percent_2
-    sql: ${new_existing_order_count_total} / NULLIF(${session_count_total},0) ;;
+    sql: 1.0 * ${new_existing_order_count_total} / NULLIF(${session_count_total},0) ;;
   }
 
 # MAY NEED TO CHANGE THESE TO FILTERS
