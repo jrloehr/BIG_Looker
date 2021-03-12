@@ -401,37 +401,37 @@ view: fact_marketing_activty_campaign {
   measure: existing_roas_sum {
     group_label: "ROAS"
     label: "Existing | ROAS Total"
-    type: number
+    type: sum
     value_format_name: usd
-    sql: CASE
-    WHEN ${marketing_spend} <> 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
-    ELSE ${existing_total_sales_b4_returns}
-    END;;
-    # sql: SUM(${existing_total_sales_b4_returns}) / SUM(${marketing_spend}) ;;
+    # sql: CASE
+    # WHEN ${marketing_spend} <> 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
+    # ELSE ${existing_total_sales_b4_returns}
+    # END;;
+     sql: ${existing_total_sales_b4_returns} / NULLIF(${marketing_spend}, 0) ;;
   }
 
   measure: new_roas_sum {
     group_label: "ROAS"
     label: "New | ROAS Total"
-    type: number
+    type: sum
     value_format_name: usd
-    sql: CASE
-    WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
-    ELSE ${new_total_sales_b4_returns}
-    END;;
-    # sql: SUM(${new_total_sales_b4_returns}) / SUM(${marketing_spend}) ;;
+    # sql: CASE
+    # WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
+    # ELSE ${new_total_sales_b4_returns}
+    # END;;
+     sql: ${new_total_sales_b4_returns} / NULLIF(${marketing_spend}, 0) ;;
   }
 
   measure: new_existing_roas_sum {
     group_label: "ROAS"
     label: "New & Existing | ROAS Total"
-    type: number
+    type: sum
     value_format_name: usd
-    sql: CASE
-    WHEN ${marketing_spend} <> 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
-    ELSE ${new_existing_total_sales_b4_returns}
-    END;;
-    # sql: SUM(${new_existing_total_sales_b4_returns}) / SUM(${marketing_spend}) ;;
+    # sql: CASE
+    # WHEN ${marketing_spend} <> 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
+    # ELSE ${new_existing_total_sales_b4_returns}
+    # END;;
+    sql: ${new_existing_total_sales_b4_returns} / NULLIF(${marketing_spend}, 0) ;;
   }
 
   # MARKETING SPEND METRICS
