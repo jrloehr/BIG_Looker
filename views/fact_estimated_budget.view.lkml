@@ -66,6 +66,7 @@ view: fact_estimated_budget {
     group_label: "Estimated Revenue"
     label: "Estimated Revenue"
     type: sum
+    value_format_name: usd
     sql: ${estimated_revenue} ;;
   }
 
@@ -73,6 +74,7 @@ view: fact_estimated_budget {
     group_label: "Estimated Revenue"
     label: "Average Estimated Revenue"
     type: average
+    value_format_name: usd
     sql: ${estimated_revenue} ;;
   }
 
