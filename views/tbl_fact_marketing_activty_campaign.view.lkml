@@ -501,7 +501,7 @@ view: fact_marketing_activty_campaign {
     group_label: "Existing Customers"
     label: "Existing | ROAS Total"
     type: number
-    # value_format_name: usd
+    value_format_name: decimal_2
     # sql: CASE
     # WHEN ${marketing_spend} <> 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${existing_total_sales_b4_returns}
@@ -513,7 +513,7 @@ view: fact_marketing_activty_campaign {
     group_label: "New Customers"
     label: "New | ROAS Total"
     type: number
-    # value_format_name: usd
+    value_format_name: decimal_2
     # sql: CASE
     # WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${new_total_sales_b4_returns}
@@ -525,7 +525,7 @@ view: fact_marketing_activty_campaign {
     group_label: "All Customers"
     label: "New & Existing | ROAS Total"
     type: number
-    # value_format_name: usd
+    value_format_name: decimal_2
     # sql: CASE
     # WHEN ${marketing_spend} <> 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${new_existing_total_sales_b4_returns}
