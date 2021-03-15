@@ -22,7 +22,7 @@ explore: fact_marketing_activty_campaign {
     sql_on: ${fact_marketing_activty_campaign.date_date} = ${fact_estimated_budget.date_date}
           AND ${fact_marketing_activty_campaign.brand_parent_id} = ${fact_estimated_budget.brand_parent_id}
           ;;
-    relationship: many_to_many
+    relationship: many_to_one
   }
 
 }
@@ -83,7 +83,7 @@ explore: fact_sales_detail {
     sql_on: ${fact_sales_detail.ordered_date} = ${fact_estimated_budget.date_date}
     AND ${fact_sales_detail.location_id} = ${fact_estimated_budget.brand_parent_id}
     ;;
-    relationship: many_to_many
+    relationship: many_to_one
   }
 
 # AND ${fact_sales_detail.location_id} = ${dim_estimated_budget.brand_id}
