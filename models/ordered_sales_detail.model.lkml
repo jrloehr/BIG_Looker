@@ -83,7 +83,7 @@ explore: fact_sales_detail {
     sql_on: ${fact_sales_detail.ordered_date} = ${fact_estimated_budget.date_date}
     AND ${fact_sales_detail.location_id} = ${fact_estimated_budget.brand_parent_id}
     ;;
-    relationship: many_to_one
+    relationship: many_to_many
   }
 
 # AND ${fact_sales_detail.location_id} = ${dim_estimated_budget.brand_id}
