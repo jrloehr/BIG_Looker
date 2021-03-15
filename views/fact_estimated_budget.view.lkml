@@ -91,6 +91,7 @@ view: fact_estimated_budget {
     group_label: "VADX"
     label: "Variable Ad Expense Budget"
     type: sum
+    value_format_name: usd
     sql: ${variable_ad_expense_budget} ;;
   }
 
@@ -107,6 +108,7 @@ view: fact_estimated_budget {
     group_label: "VADX"
     label: "Average Variable Ad Expense Budget"
     type: average
+    value_format_name: usd
     sql: ${variable_ad_expense_budget} ;;
   }
 
