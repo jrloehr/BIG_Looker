@@ -225,6 +225,14 @@ view: fact_marketing_activty_campaign {
     sql: 1.0 * ${new_order_count_total} / NULLIF(${session_count_total},0) ;;
   }
 
+  measure: new_variable_ad_expense_as_percent_of_sales {
+    group_label: "New Customers"
+    label: "New | VADX % of Sales"
+    type: number
+    value_format_name: percent_2
+    sql: 1.0 * ${marketing_spend_total} / NULLIF(${new_total_sales_b4_returns_total},0) ;;
+  }
+
   # EXISTING METRICS
 
   dimension: existing_customer_count {
@@ -324,6 +332,14 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${existing_order_count_total} / NULLIF(${session_count_total},0) ;;
+  }
+
+  measure: existing_variable_ad_expense_as_percent_of_sales {
+    group_label: "Existing Customers"
+    label: "Existing | VADX % of Sales"
+    type: number
+    value_format_name: percent_2
+    sql: 1.0 * ${marketing_spend_total} / NULLIF(${existing_total_sales_b4_returns_total},0) ;;
   }
 
   # TOTAL METRICS
@@ -427,6 +443,16 @@ view: fact_marketing_activty_campaign {
     value_format_name: percent_2
     sql: 1.0 * ${new_existing_order_count_total} / NULLIF(${session_count_total},0) ;;
   }
+
+  measure: new_existing_variable_ad_expense_as_percent_of_sales {
+    group_label: "All Customers"
+    label: "New & Existing | VADX % of Sales"
+    type: number
+    value_format_name: percent_2
+    sql: 1.0 * ${marketing_spend_total} / NULLIF(${new_existing_total_sales_b4_returns_total},0) ;;
+  }
+
+
 
 # MAY NEED TO CHANGE THESE TO FILTERS
   dimension: year_to_date {
@@ -590,6 +616,8 @@ view: fact_marketing_activty_campaign {
     # END;;
     sql: ${marketing_spend_total} / NULLIF(${new_existing_item_count_total},0) ;;
   }
+
+
 
 
 
