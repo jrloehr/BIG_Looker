@@ -20,7 +20,7 @@ explore: fact_marketing_activty_campaign {
     view_label: "Budget and Forecast"
     type: inner
     sql_on: ${fact_marketing_activty_campaign.date_date} = ${fact_estimated_budget.date_date}
-          AND ${fact_marketing_activty_campaign.brand_parent_name} = ${fact_estimated_budget.brand_parent_name}
+          AND ${fact_marketing_activty_campaign.brand_parent_id} = ${fact_estimated_budget.brand_parent_id}
           ;;
     relationship: many_to_many
   }
@@ -81,7 +81,7 @@ explore: fact_sales_detail {
     view_label: "Budget and Forecast"
     type: inner
     sql_on: ${fact_sales_detail.ordered_date} = ${fact_estimated_budget.date_date}
-    AND ${fact_sales_detail.location_id} = ${fact_estimated_budget.brand_id}
+    AND ${fact_sales_detail.location_id} = ${fact_estimated_budget.brand_parent_id}
     ;;
     relationship: many_to_one
   }

@@ -6,6 +6,11 @@ view: fact_marketing_activty_campaign {
     sql: ${TABLE}.brand_parent_name ;;
   }
 
+  dimension: brand_parent_id {
+    type: string
+    sql: ${TABLE}.brand_parent_id ;;
+  }
+
   dimension_group: date {
     type: time
     timeframes: [

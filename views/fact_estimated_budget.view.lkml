@@ -28,9 +28,9 @@ view: fact_estimated_budget {
     sql: ${TABLE}._row ;;
   }
 
-  dimension: brand_id {
+  dimension: brand_parent_id {
     type: number
-    sql: ${TABLE}.brand_id ;;
+    sql: ${TABLE}.brand_parent_id ;;
   }
 
   dimension: brand_parent_name {
