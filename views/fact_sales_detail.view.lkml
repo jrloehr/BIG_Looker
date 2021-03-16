@@ -335,7 +335,7 @@ view: fact_sales_detail {
 
   measure: aov_sales_per_order{
     label: "AOV - Sales per Order"
-    description: "Total Sales / # of Orders"
+    description: "Net Sales / # of Orders"
     type: number
     value_format_name: usd
     sql: 1.0 * ${sum_net_sales} / ${countd_transaction_id} ;;
@@ -343,7 +343,7 @@ view: fact_sales_detail {
 
   measure: ltv_sales_per_customer{
     label: "LTV - Sales per Customer"
-    description: "Total Sales / Unique Customers"
+    description: "Net Sales / Unique Customers"
     type: number
     value_format_name: usd
     sql: 1.0 * ${sum_net_sales} / ${countd_customer_id} ;;
