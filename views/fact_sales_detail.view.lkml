@@ -55,7 +55,7 @@ view: fact_sales_detail {
     sql: 1.0 * ${sum_shipping} / ${countd_transaction_id} ;;
   }
 
-  dimension: net_sales_b4_returns {
+  dimension: net_sales {
     group_label: "Net Sales"
     hidden: yes
     label: "Net Sales"
@@ -65,31 +65,31 @@ view: fact_sales_detail {
     sql: ${TABLE}.Net_Sales_B4_Returns ;;
   }
 
-  measure: sum_net_sales_b4_returns {
+  measure: sum_net_sales {
     group_label: "Net Sales"
     label: "Total Net Sales"
     description: "Net Sales = Gross Sales - Discounts + Shipping"
     type: sum
     value_format_name: usd
-    sql: ${net_sales_b4_returns} + ${shipping} ;;
+    sql: ${net_sales} + ${shipping} ;;
   }
 
-  measure: runningtotal_net_sales_b4_returns {
+  measure: runningtotal_net_sales {
     group_label: "Net Sales"
     label: "Running Total Net Sales"
     description: "Net Sales = Gross Sales - Discounts + Shipping"
     type: running_total
     value_format_name: usd
-    sql: ${sum_net_sales_b4_returns} + ${sum_shipping} ;;
+    sql: ${sum_net_sales} + ${sum_shipping} ;;
   }
 
-  measure: shp_avg_net_sales_b4_returns {
+  measure: avg_net_sales {
     group_label: "Net Sales"
     label: "Average Net Sales"
     description: "Net Sales = Gross Sales - Discounts + Shipping"
     type: number
     value_format_name: usd
-    sql: 1.0 * (${sum_net_sales_b4_returns} + ${sum_shipping}) / ${countd_transaction_id} ;;
+    sql: 1.0 * (${sum_net_sales} + ${sum_shipping}) / ${countd_transaction_id} ;;
   }
 
   dimension: taxes {
@@ -144,14 +144,22 @@ view: fact_sales_detail {
     sql: ${total_sales} ;;
   }
 
-  measure: sum_total_sales_last_year {
+  measure: runningtotal_total_sales {
     group_label: "Total Sales"
-    label: "Total Sales Last Year"
+    label: "Running Total Sales"
     description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
-    type: sum
+    type: running_total
     value_format_name: usd
-    sql: ${total_sales};;
-    filters: [order_date_last_year: "yes"]
+    sql: ${sum_total_sales} ;;
+  }
+
+  measure: avg_total_sales {
+    group_label: "Total Sales"
+    label: "Average Total Sales"
+    description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
+    type: number
+    value_format_name: usd
+    sql: 1.0 * ${sum_total_sales} / ${countd_transaction_id} ;;
   }
 
 #### THIS CAN BE USED FOR CHANGING YEARS OF SALES DYNAMICALLY
@@ -177,24 +185,6 @@ view: fact_sales_detail {
     sql: ${total_sales} ;;
     value_format_name: usd
     filters: [sales_year_selected: "1"]
-  }
-
-  measure: runningtotal_total_sales {
-    group_label: "Total Sales"
-    label: "Running Total Sales"
-    description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
-    type: running_total
-    value_format_name: usd
-    sql: ${sum_total_sales} ;;
-  }
-
-  measure: shp_avg_total_sales {
-    group_label: "Total Sales"
-    label: "Average Total Sales"
-    description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
-    type: number
-    value_format_name: usd
-    sql: 1.0 * ${sum_total_sales} / ${countd_transaction_id} ;;
   }
 
   dimension: item_qty {
@@ -348,7 +338,7 @@ view: fact_sales_detail {
     description: "Total Sales / # of Orders"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${sum_total_sales} / ${countd_transaction_id} ;;
+    sql: 1.0 * ${sum_net_sales} / ${countd_transaction_id} ;;
   }
 
   measure: ltv_sales_per_customer{
@@ -356,7 +346,7 @@ view: fact_sales_detail {
     description: "Total Sales / Unique Customers"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${sum_total_sales} / ${countd_customer_id} ;;
+    sql: 1.0 * ${sum_net_sales} / ${countd_customer_id} ;;
   }
 
   measure: aof_orders_per_customer{
