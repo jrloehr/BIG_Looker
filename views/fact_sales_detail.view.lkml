@@ -22,43 +22,6 @@ view: fact_sales_detail {
     sql: ${cogs_total} / ${countd_transaction_id} ;;
   }
 
-  dimension: net_sales_b4_returns {
-    group_label: "Net Sales"
-    hidden: yes
-    label: "Net Sales"
-    description: "Net Sales = Gross Sales - Discounts"
-    type: string
-    value_format_name: usd
-    sql: ${TABLE}.Net_Sales_B4_Returns ;;
-  }
-
-  measure: sum_net_sales_b4_returns {
-    group_label: "Net Sales"
-    label: "Total Net Sales"
-    description: "Net Sales = Gross Sales - Discounts"
-    type: sum
-    value_format_name: usd
-    sql: ${net_sales_b4_returns} ;;
-  }
-
-  measure: runningtotal_net_sales_b4_returns {
-    group_label: "Net Sales"
-    label: "Running Total Net Sales"
-    description: "Net Sales = Gross Sales - Discounts"
-    type: running_total
-    value_format_name: usd
-    sql: ${sum_net_sales_b4_returns} ;;
-  }
-
-  measure: shp_avg_net_sales_b4_returns {
-    group_label: "Net Sales"
-    label: "Average Net Sales"
-    description: "Net Sales = Gross Sales - Discounts"
-    type: number
-    value_format_name: usd
-    sql: 1.0 * ${sum_net_sales_b4_returns} / ${countd_transaction_id} ;;
-  }
-
   dimension: shipping {
     group_label: "Shipping"
     hidden: yes
@@ -90,6 +53,43 @@ view: fact_sales_detail {
     type: number
     value_format_name: usd
     sql: 1.0 * ${sum_shipping} / ${countd_transaction_id} ;;
+  }
+
+  dimension: net_sales_b4_returns {
+    group_label: "Net Sales"
+    hidden: yes
+    label: "Net Sales"
+    description: "Net Sales = Gross Sales - Discounts"
+    type: string
+    value_format_name: usd
+    sql: ${TABLE}.Net_Sales_B4_Returns ;;
+  }
+
+  measure: sum_net_sales_b4_returns {
+    group_label: "Net Sales"
+    label: "Total Net Sales"
+    description: "Net Sales = Gross Sales - Discounts + Shipping"
+    type: sum
+    value_format_name: usd
+    sql: ${net_sales_b4_returns} + ${shipping} ;;
+  }
+
+  measure: runningtotal_net_sales_b4_returns {
+    group_label: "Net Sales"
+    label: "Running Total Net Sales"
+    description: "Net Sales = Gross Sales - Discounts + Shipping"
+    type: running_total
+    value_format_name: usd
+    sql: ${sum_net_sales_b4_returns} + ${sum_shipping} ;;
+  }
+
+  measure: shp_avg_net_sales_b4_returns {
+    group_label: "Net Sales"
+    label: "Average Net Sales"
+    description: "Net Sales = Gross Sales - Discounts + Shipping"
+    type: number
+    value_format_name: usd
+    sql: 1.0 * (${sum_net_sales_b4_returns} + ${sum_shipping}) / ${countd_transaction_id} ;;
   }
 
   dimension: taxes {
