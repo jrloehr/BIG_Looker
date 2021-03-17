@@ -8,6 +8,7 @@ view: dim_item {
 
 
   dimension: brand {
+    label: "Item Brand"
     type: string
     sql: ${TABLE}.brand ;;
   }

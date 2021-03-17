@@ -11,6 +11,7 @@ view: dim_sales_channel {
     label: "Sales Channel"
     type: string
     sql: ${TABLE}.SalesChannelName ;;
+    description: "This field is the NetSuite field 'Customer Type Name'. It has been re-labeled to more accurately convey its meaning."
   }
 
   measure: count {

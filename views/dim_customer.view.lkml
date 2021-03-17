@@ -3,14 +3,17 @@ view: dim_customer {
 
   dimension: customer_id {
     primary_key: yes
+    hidden: yes
     type: number
     sql: ${TABLE}.Customer_id ;;
+    description: "This may deprecate when BIG has a BIG Customer ID."
   }
 
   dimension: customer_type_id {
     hidden: yes
     type: number
     sql: ${TABLE}.customer_type_id ;;
+    description: "This is technically the 'Sales Channel'... or the type of buyer."
   }
 
   dimension: days_on_file {
@@ -41,6 +44,12 @@ view: dim_customer {
     label: "Last Name"
     type: string
     sql: ${TABLE}.LastName ;;
+  }
+
+  dimension: first_last_name {
+    label: "First and Last Name"
+    type: string
+    sql: ${first_name} + " " + ${last_name} ;;
   }
 
   dimension: customer_name {
@@ -103,6 +112,7 @@ view: dim_customer {
       }
     }
     required_fields: [full_name]
+    description: "This field was created by Looker team - could be very useful as a concept on how to quickly access/market to customers and many other uses."
   }
 
 
@@ -138,12 +148,13 @@ view: dim_customer {
 
   dimension: firsttime_or_returning {
     type: string
-    description: "Validated by SJ on 2/4/2021 using 2/1/2021 data from Looker and Shopify - see 89 vs 90 and 289 vs. 292 but both reports come out to 308 total."
+    description: "Validated by SJ on 2/4/2021 using 2/1/2021 data from Looker and Shopify - see 89 vs 90 and 289 vs. 292 but both reports come out to 308 total. This may also need adjustment to see historical first-time customers - in other words, as of today, 'X' was a first-time customer, but as of 2 months from now, they may not be. Will probably need to compare First_Order_Date to Order_Date in order to tell if a specific historical order was their first purchase."
     sql:
     CASE
       WHEN ${first_order_date} = ${last_order_date} THEN 'First-Time'
       ELSE 'Returning'
     END;;
+    hidden: yes
   }
 
   measure: count_firsttime_customers {
@@ -151,6 +162,7 @@ view: dim_customer {
     sql: ${customer_id} ;;
     filters: [firsttime_or_returning: "First-Time"]
     drill_fields: [customer_drill*]
+    description: "Use this field to get a count of all First-Time customers at this point in time."
   }
 
   measure: count_returning_customers {
@@ -158,6 +170,7 @@ view: dim_customer {
     sql: ${customer_id} ;;
     filters: [firsttime_or_returning: "Returning"]
     drill_fields: [customer_drill*, count_returning_customers]
+    description: "Use this field to get a count of all Returning customers at this point in time."
   }
 
   measure: count {

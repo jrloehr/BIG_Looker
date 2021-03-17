@@ -38,14 +38,14 @@ view: fact_estimated_budget {
 
   dimension: brand_parent_name {
     hidden: yes
-    label: "Brand"
+    label: "Brand Name"
     type: string
     sql: ${TABLE}.brand_parent_name ;;
   }
 
   dimension: subsidiary_name {
     hidden: yes
-    label: "Subsidiary"
+    label: "Subsidiary Name"
     type: string
     sql: ${TABLE}.subsidiary_name ;;
   }
