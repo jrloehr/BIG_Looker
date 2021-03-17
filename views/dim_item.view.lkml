@@ -1,15 +1,11 @@
 view: dim_item {
   sql_table_name: dbo.DimItem ;;
 
-  dimension: actual_length {
-    type: string
-    sql: ${TABLE}.actual_length ;;
+  dimension: item_status_id {
+    type: number
+    sql: ${TABLE}.item_status_id ;;
   }
 
-  dimension: band_type {
-    type: string
-    sql: ${TABLE}.band_type ;;
-  }
 
   dimension: brand {
     type: string
@@ -57,75 +53,165 @@ view: dim_item {
     sql: ${TABLE}.color_processes ;;
   }
 
+  dimension: hair_color {
+    group_label: "Color Attributes"
+    type: string
+    sql: ${TABLE}.hair_color ;;
+  }
+
+
+  dimension: band_type {
+    type: string
+    sql: ${TABLE}.band_type ;;
+  }
+
   dimension: consumption_unit_id {
     type: number
     sql: ${TABLE}.consumption_unit_id ;;
   }
 
-  dimension: cost_0 {
-    type: number
-    sql: ${TABLE}.cost_0 ;;
-  }
 
-  dimension: country_of_manufacture {
-    type: string
-    sql: ${TABLE}.country_of_manufacture ;;
-  }
+
 
   dimension: created {
+    group_label: "Product Dates"
     type: string
     sql: ${TABLE}.created ;;
   }
 
   dimension: date_last_modified {
+    group_label: "Product Dates"
     type: string
     sql: ${TABLE}.date_last_modified ;;
   }
 
-  dimension: displayname {
-    type: string
-    sql: ${TABLE}.displayname ;;
-  }
-
   dimension: expected_launch_date {
+    group_label: "Product Dates"
     type: string
     sql: ${TABLE}.expected_launch_date ;;
   }
 
+
+  dimension: displayname {
+    group_label: "Product Naming"
+    type: string
+    sql: ${TABLE}.displayname ;;
+  }
+
   dimension: full_name {
+    group_label: "Product Naming"
     type: string
     sql: ${TABLE}.full_name ;;
   }
 
+  dimension: item_full_name {
+    group_label: "Product Naming"
+    type: string
+    sql: ${TABLE}.Item_Full_Name ;;
+  }
+
+  dimension: item_id {
+    group_label: "Product Naming"
+    type: number
+    sql: ${TABLE}.item_id ;;
+  }
+
+  dimension: item_name {
+    group_label: "Product Naming"
+    type: string
+    sql: ${TABLE}.Item_Name ;;
+  }
+
+  dimension: name {
+    group_label: "Product Naming"
+    type: string
+    sql: ${TABLE}.name ;;
+  }
+
+  dimension: item_display_name {
+    group_label: "Product Naming"
+    type: string
+    sql: ${TABLE}.Item_Display_Name ;;
+  }
+
+
+  dimension: width_cm {
+    group_label: "Width Attributes"
+    type: string
+    sql: ${TABLE}.width_cm ;;
+  }
+
+  dimension: width_of_hair {
+    group_label: "Width Attributes"
+    type: string
+    sql: ${TABLE}.width_of_hair ;;
+  }
+
+
   dimension: gram_weight {
+    group_label: "Weight Attributes"
     type: number
     sql: ${TABLE}.gram_weight ;;
   }
 
-  dimension: hair_color {
+  dimension: weight {
+    group_label: "Weight Attributes"
+    type: number
+    sql: ${TABLE}.weight ;;
+  }
+
+  dimension: weight_count {
+    group_label: "Weight Attributes"
     type: string
-    sql: ${TABLE}.hair_color ;;
+    sql: ${TABLE}.weight_count ;;
+  }
+
+  dimension: weight_in_user_defined_unit {
+    group_label: "Weight Attributes"
+    type: number
+    sql: ${TABLE}.weight_in_user_defined_unit ;;
+  }
+
+  dimension: weight_unit_index {
+    group_label: "Weight Attributes"
+    type: number
+    sql: ${TABLE}.weight_unit_index ;;
+  }
+
+
+  dimension: actual_length {
+    group_label: "Length Attributes"
+    type: string
+    sql: ${TABLE}.actual_length ;;
   }
 
   dimension: hair_ext_length {
+    group_label: "Length Attributes"
     type: string
     sql: ${TABLE}.hair_ext_length ;;
   }
 
   dimension: hair_length {
+    group_label: "Length Attributes"
     type: string
     sql: ${TABLE}.hair_length ;;
   }
+
+  dimension: length_cm {
+    group_label: "Length Attributes"
+    type: string
+    sql: ${TABLE}.length_cm ;;
+  }
+
+
 
   dimension: hair_texture_id {
     type: number
     sql: ${TABLE}.hair_texture_id ;;
   }
 
-  dimension: hair_type_id {
-    type: number
-    sql: ${TABLE}.hair_type_id ;;
-  }
+
+
 
   dimension: image_url {
     type: string
@@ -137,29 +223,12 @@ view: dim_item {
     sql: ${TABLE}.income_account_id ;;
   }
 
-  dimension: item_display_name {
-    type: string
-    sql: ${TABLE}.Item_Display_Name ;;
-  }
 
-  dimension: item_full_name {
-    type: string
-    sql: ${TABLE}.Item_Full_Name ;;
-  }
 
-  dimension: item_id {
+
+  dimension: hair_type_id {
     type: number
-    sql: ${TABLE}.item_id ;;
-  }
-
-  dimension: item_name {
-    type: string
-    sql: ${TABLE}.Item_Name ;;
-  }
-
-  dimension: item_status_id {
-    type: number
-    sql: ${TABLE}.item_status_id ;;
+    sql: ${TABLE}.hair_type_id ;;
   }
 
   dimension: item_type_id {
@@ -167,10 +236,12 @@ view: dim_item {
     sql: ${TABLE}.item_type_id ;;
   }
 
-  dimension: length_cm {
+  dimension: type_name {
     type: string
-    sql: ${TABLE}.length_cm ;;
+    sql: ${TABLE}.type_name ;;
   }
+
+
 
   dimension: location_id {
     type: number
@@ -182,10 +253,7 @@ view: dim_item {
     sql: ${TABLE}.Merch_type ;;
   }
 
-  dimension: name {
-    type: string
-    sql: ${TABLE}.name ;;
-  }
+
 
   dimension: product_category {
     type: string
@@ -197,6 +265,8 @@ view: dim_item {
     sql: ${TABLE}.ProductCategoryParent ;;
   }
 
+
+
   dimension: qb_id {
     type: string
     sql: ${TABLE}.qb_id ;;
@@ -207,19 +277,12 @@ view: dim_item {
     sql: ${TABLE}.qb_name_0 ;;
   }
 
+
+
   dimension: sale_unit_id {
+    group_label: "Sales Attributes"
     type: number
     sql: ${TABLE}.sale_unit_id ;;
-  }
-
-  dimension: sales_price {
-    type: string
-    sql: ${TABLE}.SalesPrice ;;
-  }
-
-  dimension: salesdescription {
-    type: string
-    sql: ${TABLE}.salesdescription ;;
   }
 
   dimension: substringend {
@@ -227,55 +290,52 @@ view: dim_item {
     sql: ${TABLE}.substringend ;;
   }
 
+  dimension: sales_price {
+    group_label: "Sales Attributes"
+    type: string
+    sql: ${TABLE}.SalesPrice ;;
+  }
+
   dimension: totalvalue {
+    group_label: "Sales Attributes"
     type: number
     sql: ${TABLE}.totalvalue ;;
   }
 
-  dimension: type_name {
+  dimension: salesdescription {
+    group_label: "Sales Attributes"
     type: string
-    sql: ${TABLE}.type_name ;;
+    sql: ${TABLE}.salesdescription ;;
+  }
+
+
+  dimension: cost_0 {
+    group_label: "Manufacture Attributes"
+    type: number
+    sql: ${TABLE}.cost_0 ;;
+  }
+
+  dimension: country_of_manufacture {
+    group_label: "Manufacture Attributes"
+    type: string
+    sql: ${TABLE}.country_of_manufacture ;;
   }
 
   dimension: vendor_id {
+    group_label: "Manufacture Attributes"
     type: number
     sql: ${TABLE}.vendor_id ;;
   }
 
   dimension: vendorname {
+    group_label: "Manufacture Attributes"
     type: string
     sql: ${TABLE}.vendorname ;;
   }
 
-  dimension: weight {
-    type: number
-    sql: ${TABLE}.weight ;;
-  }
 
-  dimension: weight_count {
-    type: string
-    sql: ${TABLE}.weight_count ;;
-  }
 
-  dimension: weight_in_user_defined_unit {
-    type: number
-    sql: ${TABLE}.weight_in_user_defined_unit ;;
-  }
 
-  dimension: weight_unit_index {
-    type: number
-    sql: ${TABLE}.weight_unit_index ;;
-  }
-
-  dimension: width_cm {
-    type: string
-    sql: ${TABLE}.width_cm ;;
-  }
-
-  dimension: width_of_hair {
-    type: string
-    sql: ${TABLE}.width_of_hair ;;
-  }
 
   measure: count {
     type: count

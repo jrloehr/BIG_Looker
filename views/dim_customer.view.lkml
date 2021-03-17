@@ -8,16 +8,19 @@ view: dim_customer {
   }
 
   dimension: customer_type_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.customer_type_id ;;
   }
 
   dimension: days_on_file {
+    hidden: yes
     type: number
     sql: ${TABLE}.Days_On_File ;;
   }
 
   dimension: days_since_last {
+    hidden: yes
     type: number
     sql: ${TABLE}.Days_Since_Last ;;
   }

@@ -18,28 +18,33 @@ view: fact_estimated_budget {
   }
 
   dimension: _fivetran_synced {
+    hidden: yes
     type: string
     sql: ${TABLE}._fivetran_synced ;;
   }
 
   dimension: _row {
     primary_key: yes
+    hidden: yes
     type: number
     sql: ${TABLE}._row ;;
   }
 
   dimension: brand_parent_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.brand_parent_id ;;
   }
 
   dimension: brand_parent_name {
+    hidden: yes
     label: "Brand"
     type: string
     sql: ${TABLE}.brand_parent_name ;;
   }
 
   dimension: subsidiary_name {
+    hidden: yes
     label: "Subsidiary"
     type: string
     sql: ${TABLE}.subsidiary_name ;;
@@ -52,6 +57,7 @@ view: fact_estimated_budget {
   }
 
   dimension: subsidiary_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.subsidiary_id ;;
   }

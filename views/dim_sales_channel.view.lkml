@@ -2,7 +2,7 @@ view: dim_sales_channel {
   sql_table_name: dbo.DimSalesChannel ;;
 
   dimension: customer_type_id {
-    # hidden: yes
+    hidden: yes
     type: number
     sql: ${TABLE}.customer_type_id ;;
   }

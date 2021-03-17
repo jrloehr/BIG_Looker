@@ -12,6 +12,7 @@ view: dim_brand {
   }
 
   dimension: brand_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.Brand_id ;;
   }
@@ -60,6 +61,7 @@ view: dim_brand {
   }
 
   dimension: subsidiary_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.Subsidiary_id ;;
   }

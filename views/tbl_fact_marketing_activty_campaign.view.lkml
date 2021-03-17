@@ -2,11 +2,13 @@ view: fact_marketing_activty_campaign {
   sql_table_name: dbo.tblFactMarketingActivty_Campaign ;;
 
   dimension: brand_parent_name {
+    hidden: yes
     type: string
     sql: ${TABLE}.brand_parent_name ;;
   }
 
   dimension: brand_parent_id {
+    hidden: yes
     type: string
     sql: ${TABLE}.brand_parent_id ;;
   }
@@ -27,21 +29,29 @@ view: fact_marketing_activty_campaign {
   }
 
   dimension: marketing_ad_content {
+    group_label: "Marketing Channels"
+    label: "Ad Content"
     type: string
     sql: ${TABLE}.marketing_ad_content ;;
   }
 
   dimension: marketing_campaign_name {
+    group_label: "Marketing Channels"
+    label: "Campaign"
     type: string
     sql: ${TABLE}.marketing_campaign_name ;;
   }
 
   dimension: marketing_channel_grouping {
+    group_label: "Marketing Channels"
+    label: "Channel Grouping"
     type: string
     sql: ${TABLE}.marketing_channel_grouping ;;
   }
 
   dimension: marketing_source {
+    group_label: "Marketing Channels"
+    label: "Source"
     type: string
     sql: ${TABLE}.marketing_source ;;
   }
@@ -54,22 +64,9 @@ view: fact_marketing_activty_campaign {
 
   measure: hard_bounce_count_total {
     group_label: "Ad Metrics"
-    label: "Hard Bounce Count"
+    label: "Hard Bounces"
     type: sum
     sql: ${hard_bounce_count} ;;
-  }
-
-  dimension: marketing_clicks {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.marketing_clicks ;;
-  }
-
-  measure: marketing_clicks_total {
-    group_label: "Ad Metrics"
-    label: "Marketing Clicks"
-    type: sum
-    sql: ${marketing_clicks} ;;
   }
 
   dimension: marketing_impressions {
@@ -80,22 +77,92 @@ view: fact_marketing_activty_campaign {
 
   measure: marketing_impressions_total {
     group_label: "Ad Metrics"
-    label: "Marketing Impressions"
+    label: "Impressions"
     type: sum
     sql: ${marketing_impressions} ;;
   }
 
-  dimension: session_count {
-    hidden: yes
+  # Impressions per Click
+
+  measure: impressions_per_click {
+    group_label: "Ad Metrics"
+    label: "Impressions per Click"
+    value_format_name: decimal_2
     type: number
-    sql: ${TABLE}.session_count ;;
+    sql: ${marketing_impressions_total} / NULLIF(${marketing_clicks_total}, 0) ;;
   }
 
-  measure: session_count_total {
+  # Impressions per Visitor
+
+  measure: impressions_per_Visitor {
     group_label: "Ad Metrics"
-    label: "Session Count"
+    label: "Impressions per Visitor"
+    value_format_name: decimal_2
+    type: number
+    sql: ${marketing_impressions_total} / NULLIF(${visitor_count_total}, 0) ;;
+  }
+
+  # Impressions per Page View
+
+  measure: impressions_per_page_view{
+    group_label: "Ad Metrics"
+    label: "Impressions per Page View"
+    value_format_name: decimal_2
+    type: number
+    sql: ${marketing_impressions_total} / NULLIF(${page_views_total}, 0) ;;
+  }
+
+  # Impressions per Session
+
+  measure: impressions_per_session{
+    group_label: "Ad Metrics"
+    label: "Impressions per Session"
+    value_format_name: decimal_2
+    type: number
+    sql: ${marketing_impressions_total} / NULLIF(${session_count_total}, 0) ;;
+  }
+
+  dimension: marketing_clicks {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.marketing_clicks ;;
+  }
+
+  measure: marketing_clicks_total {
+    group_label: "Ad Metrics"
+    label: "Clicks"
     type: sum
-    sql: ${session_count} ;;
+    sql: ${marketing_clicks} ;;
+  }
+
+  # Clicks Per Session
+
+  measure: clicks_per_session{
+    group_label: "Ad Metrics"
+    label: "Clicks per Session"
+    value_format_name: decimal_2
+    type: number
+    sql: ${marketing_clicks_total} / NULLIF(${session_count_total}, 0) ;;
+  }
+
+  # Clicks Per Page Views
+
+  measure: clicks_per_page_view{
+    group_label: "Ad Metrics"
+    label: "Clicks per Page View"
+    value_format_name: decimal_2
+    type: number
+    sql: ${marketing_clicks_total} / NULLIF(${page_views_total}, 0) ;;
+  }
+
+  # Clicks Per Visitors
+
+  measure: clicks_per_visitor{
+    group_label: "Ad Metrics"
+    label: "Clicks per Visitor"
+    value_format_name: decimal_2
+    type: number
+    sql: ${marketing_clicks_total} / NULLIF(${visitor_count_total}, 0) ;;
   }
 
   dimension: page_views {
@@ -111,6 +178,19 @@ view: fact_marketing_activty_campaign {
     sql: ${page_views} ;;
   }
 
+  dimension: session_count {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.session_count ;;
+  }
+
+  measure: session_count_total {
+    group_label: "Ad Metrics"
+    label: "Sessions"
+    type: sum
+    sql: ${session_count} ;;
+  }
+
   dimension: visitor_count {
     hidden: yes
     type: number
@@ -119,7 +199,7 @@ view: fact_marketing_activty_campaign {
 
   measure: visitor_count_total {
     group_label: "Ad Metrics"
-    label: "Visitor Count"
+    label: "Visitors"
     type: sum
     sql: ${visitor_count} ;;
   }

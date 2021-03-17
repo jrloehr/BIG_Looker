@@ -50,11 +50,11 @@ explore: fact_sales_detail {
     relationship: many_to_one
   }
 
-  join: dim_date {
-    type: left_outer
-    sql_on: ${fact_sales_detail.ordered_date} = ${dim_date.date_date} ;;
-    relationship: many_to_one
-  }
+  # join: dim_date {
+  #   type: left_outer
+  #   sql_on: ${fact_sales_detail.ordered_date} = ${dim_date.date_date} ;;
+  #   relationship: many_to_one
+  # }
 
   join: dim_item {
     view_label: "Products"
@@ -95,13 +95,13 @@ explore: fact_sales_detail {
     relationship: many_to_one
   }
 
-  ##### JOINED IN THE CUSTOMER LIFETIME VALUE PDT #####
-  join: customer_order_facts {
-    view_label: "Customer Order Facts"
-    type: left_outer
-    relationship: many_to_one
-    sql_on: ${fact_sales_detail.customer_id} = ${customer_order_facts.customer_id} ;;
-  }
+  # ##### JOINED IN THE CUSTOMER LIFETIME VALUE PDT #####
+  # join: customer_order_facts {
+  #   view_label: "Customer Order Facts"
+  #   type: left_outer
+  #   relationship: many_to_one
+  #   sql_on: ${fact_sales_detail.customer_id} = ${customer_order_facts.customer_id} ;;
+  # }
 
   # join: dim_customer_types {
   #   view_label: "Sales Channel"

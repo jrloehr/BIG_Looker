@@ -2,6 +2,7 @@ view: dim_customer_types {
   sql_table_name: dbo.DimCustomerTypes ;;
 
   dimension: customer_type_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.customer_type_id ;;
   }
