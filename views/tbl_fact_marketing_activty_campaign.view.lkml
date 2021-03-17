@@ -67,6 +67,7 @@ view: fact_marketing_activty_campaign {
     label: "Hard Bounces"
     type: sum
     sql: ${hard_bounce_count} ;;
+    description: "Use this field to see how many hard bounces an Ad tracked."
   }
 
   dimension: marketing_impressions {
@@ -80,6 +81,7 @@ view: fact_marketing_activty_campaign {
     label: "Impressions"
     type: sum
     sql: ${marketing_impressions} ;;
+    description: "Use this field to measure how many impressions an Ad received."
   }
 
   # Impressions per Click
@@ -89,7 +91,8 @@ view: fact_marketing_activty_campaign {
     label: "Impressions per Click"
     value_format_name: decimal_2
     type: number
-    sql: ${marketing_impressions_total} / NULLIF(${marketing_clicks_total}, 0) ;;
+    sql: 1.0 * ${marketing_impressions_total} / NULLIF(${marketing_clicks_total}, 0) ;;
+    description: "Use this field to analyze how effective impressions are at procuring clicks."
   }
 
   # Impressions per Visitor
@@ -99,7 +102,8 @@ view: fact_marketing_activty_campaign {
     label: "Impressions per Visitor"
     value_format_name: decimal_2
     type: number
-    sql: ${marketing_impressions_total} / NULLIF(${visitor_count_total}, 0) ;;
+    sql: 1.0 * ${marketing_impressions_total} / NULLIF(${visitor_count_total}, 0) ;;
+    description: "Use this field to analyze how effective impressions are at procuring visistors to the site."
   }
 
   # Impressions per Page View
@@ -109,7 +113,8 @@ view: fact_marketing_activty_campaign {
     label: "Impressions per Page View"
     value_format_name: decimal_2
     type: number
-    sql: ${marketing_impressions_total} / NULLIF(${page_views_total}, 0) ;;
+    sql: 1.0 * ${marketing_impressions_total} / NULLIF(${page_views_total}, 0) ;;
+    description: "Use this field to analyze how effective impressions are at procuring page views on the site."
   }
 
   # Impressions per Session
@@ -119,7 +124,32 @@ view: fact_marketing_activty_campaign {
     label: "Impressions per Session"
     value_format_name: decimal_2
     type: number
-    sql: ${marketing_impressions_total} / NULLIF(${session_count_total}, 0) ;;
+    sql: 1.0 * ${marketing_impressions_total} / NULLIF(${session_count_total}, 0) ;;
+    description: "Use this field to analyze how effective impressions are at procuring sessions."
+  }
+
+  measure: impressions_per_new_order_count{
+    group_label: "Ad Metrics"
+    label: "Impressions per New Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${marketing_impressions_total} / NULLIF(${new_order_count_total}, 0) ;;
+  }
+
+  measure: impressions_per_existing_order_count{
+    group_label: "Ad Metrics"
+    label: "Impressions per Existing Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${marketing_impressions_total} / NULLIF(${existing_order_count_total}, 0) ;;
+  }
+
+  measure: impressions_per_new_existing_order_count{
+    group_label: "Ad Metrics"
+    label: "Impressions per New & Existing Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${marketing_impressions_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
   }
 
   dimension: marketing_clicks {
@@ -133,6 +163,7 @@ view: fact_marketing_activty_campaign {
     label: "Clicks"
     type: sum
     sql: ${marketing_clicks} ;;
+    description: "Use this field to analyze how many Clicks an Ad received."
   }
 
   # Clicks Per Session
@@ -142,7 +173,8 @@ view: fact_marketing_activty_campaign {
     label: "Clicks per Session"
     value_format_name: decimal_2
     type: number
-    sql: ${marketing_clicks_total} / NULLIF(${session_count_total}, 0) ;;
+    sql: 1.0 * ${marketing_clicks_total} / NULLIF(${session_count_total}, 0) ;;
+    description: "Use this field to analyze how effective clicks are at producing sessions."
   }
 
   # Clicks Per Page Views
@@ -152,7 +184,8 @@ view: fact_marketing_activty_campaign {
     label: "Clicks per Page View"
     value_format_name: decimal_2
     type: number
-    sql: ${marketing_clicks_total} / NULLIF(${page_views_total}, 0) ;;
+    sql: 1.0 * ${marketing_clicks_total} / NULLIF(${page_views_total}, 0) ;;
+    description: "Use this field to analyze how effective clicks are at producing page views."
   }
 
   # Clicks Per Visitors
@@ -162,7 +195,32 @@ view: fact_marketing_activty_campaign {
     label: "Clicks per Visitor"
     value_format_name: decimal_2
     type: number
-    sql: ${marketing_clicks_total} / NULLIF(${visitor_count_total}, 0) ;;
+    sql: 1.0 * ${marketing_clicks_total} / NULLIF(${visitor_count_total}, 0) ;;
+    description: "Use this field to analyze how effective clicks are at producing visitors."
+  }
+
+  measure: clicks_per_new_order_count{
+    group_label: "Ad Metrics"
+    label: "Clicks per New Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${marketing_clicks_total} / NULLIF(${new_order_count_total}, 0) ;;
+  }
+
+  measure: clicks_per_existing_order_count{
+    group_label: "Ad Metrics"
+    label: "Clicks per Existing Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${marketing_clicks_total} / NULLIF(${existing_order_count_total}, 0) ;;
+  }
+
+  measure: clicks_per_new_existing_order_count{
+    group_label: "Ad Metrics"
+    label: "Clicks per New & Existing Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${marketing_clicks_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
   }
 
   dimension: page_views {
@@ -178,6 +236,30 @@ view: fact_marketing_activty_campaign {
     sql: ${page_views} ;;
   }
 
+  measure: page_views_per_new_order_count{
+    group_label: "Ad Metrics"
+    label: "Page Views per New Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${page_views_total} / NULLIF(${new_order_count_total}, 0) ;;
+  }
+
+  measure: page_views_per_existing_order_count{
+    group_label: "Ad Metrics"
+    label: "Page Views per Existing Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${page_views_total} / NULLIF(${existing_order_count_total}, 0) ;;
+  }
+
+  measure: page_views_per_new_existing_order_count{
+    group_label: "Ad Metrics"
+    label: "Page Views per New & Existing Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${page_views_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
+  }
+
   dimension: session_count {
     hidden: yes
     type: number
@@ -191,6 +273,30 @@ view: fact_marketing_activty_campaign {
     sql: ${session_count} ;;
   }
 
+  measure: sessions_per_new_order_count{
+    group_label: "Ad Metrics"
+    label: "Sessions per New Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${session_count_total} / NULLIF(${new_order_count_total}, 0) ;;
+  }
+
+  measure: sessions_views_per_existing_order_count{
+    group_label: "Ad Metrics"
+    label: "Sessions per Existing Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${session_count_total} / NULLIF(${existing_order_count_total}, 0) ;;
+  }
+
+  measure: sessions_views_per_new_existing_order_count{
+    group_label: "Ad Metrics"
+    label: "Sessions per New & Existing Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${session_count_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
+  }
+
   dimension: visitor_count {
     hidden: yes
     type: number
@@ -202,6 +308,31 @@ view: fact_marketing_activty_campaign {
     label: "Visitors"
     type: sum
     sql: ${visitor_count} ;;
+  }
+
+  measure: visitors_per_new_order_count{
+    group_label: "Ad Metrics"
+    label: "Visitors per New Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${visitor_count_total} / NULLIF(${new_order_count_total}, 0) ;;
+  }
+
+  measure: visitors_views_per_order_order_count{
+    group_label: "Ad Metrics"
+    label: "Visitors per Existing Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${visitor_count_total} / NULLIF(${existing_order_count_total}, 0) ;;
+  }
+
+  measure: visitors_views_per_new_existing_order_count{
+    group_label: "Ad Metrics"
+    label: "Visitors per New & Existing Customer Order"
+    type: number
+    value_format_name: decimal_2
+    sql: 1.0 * ${visitor_count_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
+    description: "Use this field to determine how frequently visitors might transition to any order."
   }
 
   # NEW METRICS
