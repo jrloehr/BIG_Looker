@@ -15,6 +15,7 @@ view: fact_estimated_budget {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.date ;;
+    description: "Use this field to track budgeted ad expense or projected revenue. For projected revenue, this is tied to order date (and associates to Net Sales). For budgeted ad expense, this is tied to the ad date (and associates with marketing spend)."
   }
 
   dimension: _fivetran_synced {
@@ -54,6 +55,7 @@ view: fact_estimated_budget {
     hidden: yes
     type: number
     sql: ${TABLE}.estimated_revenue ;;
+    description: "Use this field to track estimated revenue."
   }
 
   dimension: subsidiary_id {
@@ -71,6 +73,7 @@ view: fact_estimated_budget {
   measure: sum_estimated_revenue {
     group_label: "Estimated Revenue"
     label: "Estimated Revenue"
+    description: "Use this field to track aggregated estimated revenue."
     type: sum
     value_format_name: usd
     sql: ${estimated_revenue} ;;
@@ -79,6 +82,7 @@ view: fact_estimated_budget {
   measure: avg_estimated_revenue {
     group_label: "Estimated Revenue"
     label: "Average Estimated Revenue"
+    description: "Use this field to track average estimated revenue by period."
     type: average
     value_format_name: usd
     sql: ${estimated_revenue} ;;
@@ -87,7 +91,7 @@ view: fact_estimated_budget {
   measure: runningtotal_estimated_revenue {
     group_label: "Estimated Revenue"
     label: "Running Total Estimated Revenue"
-    # description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
+    description: "Use this field to track cumulative estimated revenue for a period."
     type: running_total
     value_format_name: usd
     sql: ${sum_estimated_revenue} ;;
@@ -96,6 +100,7 @@ view: fact_estimated_budget {
   measure: sum_variable_ad_expense_budget {
     group_label: "VADX"
     label: "Variable Ad Expense Budget"
+    description: "Use this field to track aggregated budgeted ad expense for a period."
     type: sum
     value_format_name: usd
     sql: ${variable_ad_expense_budget} ;;
@@ -104,6 +109,7 @@ view: fact_estimated_budget {
   measure: runningtotal_variable_ad_expense {
     group_label: "VADX"
     label: "Running Total VADX"
+    description: "Use this field to track average budgeted ad expense for a period."
     # description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: running_total
     value_format_name: usd
@@ -113,6 +119,7 @@ view: fact_estimated_budget {
   measure: avg_variable_ad_expense_budget {
     group_label: "VADX"
     label: "Average Variable Ad Expense Budget"
+    description: "Use this field to track cumulative budgeted ad expense for a period."
     type: average
     value_format_name: usd
     sql: ${variable_ad_expense_budget} ;;

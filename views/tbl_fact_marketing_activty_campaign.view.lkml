@@ -26,6 +26,7 @@ view: fact_marketing_activty_campaign {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.date ;;
+    description: "This is the date the ad incurred charges. Cost is associated to this day, as are all ad metrics."
   }
 
   dimension: marketing_ad_content {
@@ -134,6 +135,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${marketing_impressions_total} / NULLIF(${new_order_count_total}, 0) ;;
+    description: "Use this field to see how many total impressions convert to new customer orders. Please note, this is total impressions (impressions for both new and existing customers), not just impressions on NEW customers."
   }
 
   measure: impressions_per_existing_order_count{
@@ -142,6 +144,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${marketing_impressions_total} / NULLIF(${existing_order_count_total}, 0) ;;
+    description: "Use this field to see how many total impressions convert to existing customer orders. Please note, this is total impressions (impressions for both new and existing customers), not just impressions on EXISTING customers."
   }
 
   measure: impressions_per_new_existing_order_count{
@@ -150,6 +153,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${marketing_impressions_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
+    description: "Use this field to see how many total impressions convert to new and existing customer orders."
   }
 
   dimension: marketing_clicks {
@@ -205,6 +209,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${marketing_clicks_total} / NULLIF(${new_order_count_total}, 0) ;;
+    description: "Use this field to see how many total clicks convert to new customer orders. Please note, this is total clicks (clicks for both new and existing customers), not just clicks on NEW customers."
   }
 
   measure: clicks_per_existing_order_count{
@@ -213,6 +218,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${marketing_clicks_total} / NULLIF(${existing_order_count_total}, 0) ;;
+    description: "Use this field to see how many total clicks convert to existing customer orders. Please note, this is total clicks (clicks for both new and existing customers), not just clicks on EXISTING customers."
   }
 
   measure: clicks_per_new_existing_order_count{
@@ -221,6 +227,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${marketing_clicks_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
+    description: "Use this field to see how many total clicks convert to new and existing customer orders."
   }
 
   dimension: page_views {
@@ -258,6 +265,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${page_views_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
+    description: "Use this field to see how frequently page views convert to new and existing customer orders."
   }
 
   dimension: session_count {
@@ -295,6 +303,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${session_count_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
+    description: "Use this field to see how frequently sessions convert to new and existing customer orders."
   }
 
   dimension: visitor_count {
@@ -332,7 +341,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${visitor_count_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
-    description: "Use this field to determine how frequently visitors might transition to any order."
+    description: "Use this field to see how frequently visitors convert to new and existing customer orders."
   }
 
   # NEW METRICS
