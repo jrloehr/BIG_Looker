@@ -13,13 +13,15 @@ view: fact_sales_detail {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.COGS ;;
+    description: "Use this to get the aggregated cost of goods sold."
   }
 
   measure: cogs_per_order {
     label: "Average COGS"
     type: number
     value_format_name: usd
-    sql: ${cogs_total} / ${countd_transaction_id} ;;
+    sql: 1.0 * ${cogs_total} / ${countd_transaction_id} ;;
+    description: "Cost of Goods Sold / Orders - produces average COGS."
   }
 
   dimension: shipping {
@@ -37,6 +39,7 @@ view: fact_sales_detail {
     type: sum
     value_format_name: usd
     sql: ${shipping} ;;
+    description: "Use this field to get the aggregated shipping cost."
   }
 
   measure: runningtotal_total_shipping {
@@ -45,6 +48,7 @@ view: fact_sales_detail {
     type: running_total
     value_format_name: usd
     sql: ${sum_shipping} ;;
+    description: "Use this field to get the running total shipping costs of a period."
   }
 
   measure: shp_avg_shipping {
@@ -53,6 +57,7 @@ view: fact_sales_detail {
     type: number
     value_format_name: usd
     sql: 1.0 * ${sum_shipping} / ${countd_transaction_id} ;;
+    description: "Total Shipping / Orders - produces average shipping cost."
   }
 
   dimension: net_sales {
@@ -77,7 +82,7 @@ view: fact_sales_detail {
   measure: runningtotal_net_sales {
     group_label: "Net Sales"
     label: "Running Total Net Sales"
-    description: "Net Sales = Gross Sales - Discounts + Shipping"
+    description: "Use this to get the running total Net Sales of a period."
     type: running_total
     value_format_name: usd
     sql: ${sum_net_sales} + ${sum_shipping} ;;
@@ -86,7 +91,7 @@ view: fact_sales_detail {
   measure: avg_net_sales {
     group_label: "Net Sales"
     label: "Average Net Sales"
-    description: "Net Sales = Gross Sales - Discounts + Shipping"
+    description: "Net Sales / Orders - produces average Net Sales."
     type: number
     value_format_name: usd
     sql: 1.0 * (${sum_net_sales} + ${sum_shipping}) / ${countd_transaction_id} ;;
@@ -107,6 +112,7 @@ view: fact_sales_detail {
     type: sum
     value_format_name: usd
     sql: ${taxes} ;;
+    description: "Use this field to get the aggregated Sales Tax."
   }
 
   measure: runningtotal_total_taxes {
@@ -115,6 +121,7 @@ view: fact_sales_detail {
     type: running_total
     value_format_name: usd
     sql: ${sum_taxes} ;;
+    description: "Use this field to get the cumulative Sales Tax for a period."
   }
 
   measure: shp_avg_taxes {
@@ -123,6 +130,7 @@ view: fact_sales_detail {
     type: number
     value_format_name: usd
     sql: 1.0 * ${sum_taxes} / ${countd_transaction_id} ;;
+    description: "Total Sales Tax / Orders - use this field to get the average sales tax for orders."
   }
 
   dimension: total_sales {
@@ -147,7 +155,7 @@ view: fact_sales_detail {
   measure: runningtotal_total_sales {
     group_label: "Total Sales"
     label: "Running Total Sales"
-    description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
+    description: "Use this field to get the cumulative total sales amount for period."
     type: running_total
     value_format_name: usd
     sql: ${sum_total_sales} ;;
@@ -156,10 +164,10 @@ view: fact_sales_detail {
   measure: avg_total_sales {
     group_label: "Total Sales"
     label: "Average Total Sales"
-    description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: number
     value_format_name: usd
     sql: 1.0 * ${sum_total_sales} / ${countd_transaction_id} ;;
+    description: "Use this field to get the average total sales (total sales / orders)."
   }
 
 #### THIS CAN BE USED FOR CHANGING YEARS OF SALES DYNAMICALLY
@@ -199,6 +207,7 @@ view: fact_sales_detail {
   measure: sum_item_qty {
     group_label: "Item Quantity"
     label: "Total Item Quantity"
+    description: "Use this to get the quantity of items in orders."
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.Item_Qty ;;
@@ -207,14 +216,16 @@ view: fact_sales_detail {
   measure: runningtotal_item_qty {
     group_label: "Item Quantity"
     label: "Running Total Item Quantity"
+    description: "Use this field to get a cumulative of quantity in orders in a period."
     type: running_total
     value_format_name: decimal_0
     sql: ${sum_item_qty} ;;
   }
 
-  measure: shp_avg_item_qty {
+  measure: avg_item_qty {
     group_label: "Item Quantity"
     label: "Average Item Quantity"
+    description: "Use this field to get the average number of items in an order (Item Quantity / Orders)"
     type: number
     value_format_name: decimal_0
     sql: 1.0 * ${sum_item_qty} / ${countd_transaction_id} ;;
@@ -235,7 +246,7 @@ view: fact_sales_detail {
     type: sum
     sql: ${gross_sales};;
     value_format_name: usd
-    description: "Description of Gross Sales"
+    description: "Gross Sales - the amount of the sale from NetSuite."
   }
 
   measure: runningtotal_gross_sales {
@@ -244,11 +255,13 @@ view: fact_sales_detail {
     type: running_total
     value_format_name: usd
     sql: ${sum_gross_sales} ;;
+    description: "Use this field to get a cumulative of Gross Sales in a period."
   }
 
-  measure: shp_avg_gross_sales {
+  measure: avg_gross_sales {
     group_label: "Gross Sales"
     label: "Average Gross Sales"
+    description: "Use this field to get the average Gross Sales (Gross Sales / Orders)"
     type: number
     value_format_name: usd
     sql: 1.0 * ${sum_gross_sales} / ${countd_transaction_id};;
@@ -266,6 +279,7 @@ view: fact_sales_detail {
   measure: sum_discounts {
     group_label: "Discounts"
     label: "Total Discounts"
+    description: "Use this field to see aggregated discounts."
     type: sum
     value_format_name: usd
     sql: ${discounts};;
@@ -274,14 +288,16 @@ view: fact_sales_detail {
   measure: runningtotal_discounts {
     group_label: "Discounts"
     label: "Running Total Discounts"
+    description: "Use this field to see cumulative discounts in a given period."
     type: running_total
     value_format_name: usd
     sql: ${sum_discounts} ;;
   }
 
-  measure: shp_avg_discounts {
+  measure: avg_discounts {
     group_label: "Discounts"
     label: "Average Discounts"
+    description: "Use this field to see average discounts (Total Discounts / Orders)"
     type: number
     value_format_name: usd
     sql: 1.0 * ${sum_discounts} / ${countd_transaction_id};;
@@ -290,6 +306,7 @@ view: fact_sales_detail {
   dimension: transaction_id {
     group_label: "Orders"
     label: "Transaction ID"
+    hidden: yes
     type: number
     sql: ${TABLE}.transaction_id ;;
   }
@@ -297,6 +314,7 @@ view: fact_sales_detail {
   measure: countd_transaction_id {
     group_label: "Orders"
     label: "# of Orders"
+    description: "Use this field to get the distinct/unique number of orders in a period."
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id} ;;
@@ -309,12 +327,14 @@ view: fact_sales_detail {
     type: running_total
     value_format_name: decimal_0
     sql: ${countd_transaction_id} ;;
+    description: "Use this field to get a cumulative number of orders in a period."
   }
 
   dimension: customer_id {
     group_label: "Customers"
     type: number
     sql: ${TABLE}.Customer_id ;;
+    description: "This field may be more useful once BIG has a BIG Customer ID field."
   }
 
   measure: countd_customer_id {
@@ -323,6 +343,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${customer_id} ;;
+    description: "Use this field to get the unique customers at BIG."
   }
 
 
@@ -335,7 +356,7 @@ view: fact_sales_detail {
 
   measure: aov_sales_per_order{
     label: "AOV - Sales per Order"
-    description: "Net Sales / # of Orders"
+    description: "Use this to see the average order value. Can be useful when comparing timeframes, brands, etc. Net Sales / # of Orders"
     type: number
     value_format_name: usd
     sql: 1.0 * ${sum_net_sales} / ${countd_transaction_id} ;;
@@ -343,7 +364,7 @@ view: fact_sales_detail {
 
   measure: ltv_sales_per_customer{
     label: "LTV - Sales per Customer"
-    description: "Net Sales / Unique Customers"
+    description: "Use this field to get the lifetime value (Net Sales / Unique Customers) for a group of customers. Can be useful when comparing customer types/cohorts."
     type: number
     value_format_name: usd
     sql: 1.0 * ${sum_net_sales} / ${countd_customer_id} ;;
@@ -351,24 +372,30 @@ view: fact_sales_detail {
 
   measure: aof_orders_per_customer{
     label: "Frequency - Orders per Customer"
-    description: "# of Orders / Unique Customers"
+    description: "Use this field to determine order frequency. Can be useful when determining customer loyalty in customer types (# of Orders / Unique Customers)"
     type: number
-    value_format: "0.00"
+    value_format_name: decimal_0
     sql: 1.0 * ${countd_transaction_id} / ${countd_customer_id} ;;
   }
 
   dimension: customer_type_id {
+    hidden: yes
+    label: "Sales Channel"
+    description: "The NetSuite Customer Type field, includes types of customers for BIG and their subsidiaries."
     type: number
     value_format_name: id
     sql: ${TABLE}.customer_type_id ;;
   }
 
   dimension: document_number {
+    description: "I don't know what this field is or if it's useful."
     type: string
     sql: ${TABLE}.Document_Number ;;
   }
 
   dimension: etail_order_id {
+    label: "eTail Order ID"
+    description: "Etail Order ID is a unique tag given in Shopify. Currently, only Shopify provides an etail order ID, so when the etail order ID is present, it means the order is a 'Shopify' order."
     type: string
     sql: ${TABLE}.etail_order_id ;;
   }
@@ -384,6 +411,8 @@ view: fact_sales_detail {
   }
 
   measure: count_etail_order_id {
+    hidden: yes
+    description: "Unique count of all eTail Order IDs in a subset of data."
     type: count_distinct
     sql: ${etail_order_id};;
   }
@@ -395,6 +424,8 @@ view: fact_sales_detail {
   }
 
   dimension: location_id {
+    hidden: yes
+    description: "This is the Brand_Parent_ID, related to Brand Parent Name."
     type: number
     sql: ${TABLE}.Location_id ;;
   }
@@ -453,6 +484,7 @@ view: fact_sales_detail {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.OrderedDate ;;
+    description: "Use this field to check the order date. Select the time-frame you'd like to use."
   }
 
   dimension_group: shipped {
@@ -468,19 +500,23 @@ view: fact_sales_detail {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.ShippedDate ;;
+    description: "Use this field to group/filter/compare by Ship Date. Select the time-frame you'd like to use."
   }
 
   dimension: shipped_flag {
+    description: "Presumably, this is a flag that will tell whether or not an order has shipped. Could be used to help confirm/validate data in NetSuite."
     type: number
     sql: ${TABLE}.ShippedFlag ;;
   }
 
   dimension: subsidiary_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.subsidiary_id ;;
   }
 
   dimension: marketing_channel_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.marketing_channelid ;;
   }
