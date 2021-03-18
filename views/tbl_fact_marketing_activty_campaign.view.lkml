@@ -26,7 +26,7 @@ view: fact_marketing_activty_campaign {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.date ;;
-    description: "This is the date the ad incurred charges. Cost is associated to this day, as are all ad metrics."
+    description: "This is the date the ad incurred charges. Cost is associated to this date, as are all ad metrics."
   }
 
   dimension: marketing_ad_content {
