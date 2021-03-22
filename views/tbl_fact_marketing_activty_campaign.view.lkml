@@ -804,10 +804,6 @@ view: fact_marketing_activty_campaign {
   #   label: "Existing | ROAS Average"
   #   type: average
   #   value_format_name: usd
-  #   # sql: CASE
-  #   # WHEN ${marketing_spend} <> 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
-  #   # ELSE ${existing_total_sales_b4_returns}
-  #   # END;;
   #   sql: AVG(${existing_total_sales_b4_returns}) / AVG(${marketing_spend}) ;;
   # }
 
@@ -817,9 +813,6 @@ view: fact_marketing_activty_campaign {
   #   type: average
   #   value_format_name: usd
   #   # sql: CASE
-  #   # WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
-  #   # ELSE ${new_total_sales_b4_returns}
-  #   # END;;
   #   sql: AVG(${new_total_sales_b4_returns}) / AVG(${marketing_spend}) ;;
   # }
 
@@ -828,10 +821,6 @@ view: fact_marketing_activty_campaign {
 #     label: "New & Existing | ROAS Average"
 #     type: average
 #     value_format_name: usd
-#   #   sql: CASE
-#   #   WHEN ${marketing_spend} <> 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
-#   #   ELSE ${new_existing_total_sales_b4_returns}
-#   # END;;
 #     sql: AVG(${new_existing_total_sales_b4_returns}) / AVG(${marketing_spend}) ;;
 # }
 
