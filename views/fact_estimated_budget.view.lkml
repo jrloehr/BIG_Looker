@@ -88,6 +88,15 @@ view: fact_estimated_budget {
     sql: ${estimated_revenue} ;;
   }
 
+  measure: avg_estimated_revenue_per_actual_order {
+    group_label: "Estimated Revenue"
+    label: "Average Estimated Revenue"
+    description: "Use this field to track average estimated revenue by period."
+    type: average
+    value_format_name: usd
+    sql: ${estimated_revenue};;
+  }
+
   measure: runningtotal_estimated_revenue {
     group_label: "Estimated Revenue"
     label: "Running Total Estimated Revenue"
