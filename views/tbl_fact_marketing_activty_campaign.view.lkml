@@ -738,6 +738,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: usd
     sql: 1.0 * ${new_existing_net_sales_b4_returns_total} / NULLIF(${new_existing_order_count_total},0) ;;
+    description: "Use this field to determine the overall Average Order Value of all customers."
   }
 
   measure: new_existing_conversions {
@@ -746,6 +747,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${new_existing_order_count_total} / NULLIF(${session_count_total},0) ;;
+    description: "Use this field to Orders / Sessions for all customers."
   }
 
   measure: new_existing_variable_ad_expense_as_percent_of_sales {
@@ -754,6 +756,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${marketing_spend_total} / NULLIF(${new_existing_net_sales_b4_returns_total},0) ;;
+    description: "Use this field to determine actual marketing costs as a percentage of total sales."
   }
 
 
