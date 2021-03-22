@@ -429,12 +429,40 @@ view: fact_marketing_activty_campaign {
     sql: ${new_total_sales_b4_returns} ;;
   }
 
+  dimension: new_net_sales_b4_returns {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.new_net_sales_b4_returns ;;
+  }
+
+  measure: new_net_sales_b4_returns_total {
+    group_label: "New Customers"
+    label: "New | Net Sales"
+    type: sum
+    value_format_name: usd
+    sql: ${new_net_sales_b4_returns} + ${new_shipping} ;;
+  }
+
+  dimension: new_shipping {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.new_shipping ;;
+  }
+
+  measure: new_shipping_total {
+    group_label: "New Customers"
+    label: "New | Shipping"
+    type: sum
+    value_format_name: usd
+    sql: ${new_shipping} ;;
+  }
+
   measure: new_AOV {
     group_label: "New Customers"
     label: "New | Average Order Value"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${new_total_sales_b4_returns_total} / NULLIF(${new_order_count_total},0) ;;
+    sql: 1.0 * ${new_net_sales_b4_returns_total} / NULLIF(${new_order_count_total},0) ;;
   }
 
   measure: new_conversions {
@@ -450,7 +478,7 @@ view: fact_marketing_activty_campaign {
     label: "New | VADX % of Sales"
     type: number
     value_format_name: percent_2
-    sql: 1.0 * ${marketing_spend_total} / NULLIF(${new_total_sales_b4_returns_total},0) ;;
+    sql: 1.0 * ${marketing_spend_total} / NULLIF(${new_net_sales_b4_returns_total},0) ;;
   }
 
   # EXISTING METRICS
@@ -538,12 +566,40 @@ view: fact_marketing_activty_campaign {
     sql: ${existing_total_sales_b4_returns} ;;
   }
 
+  dimension: existing_net_sales_b4_returns {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.existing_net_sales_b4_returns ;;
+  }
+
+  measure: existing_net_sales_b4_returns_total {
+    group_label: "Existing Customers"
+    label: "Existing | Net Sales"
+    type: sum
+    value_format_name: usd
+    sql: ${existing_net_sales_b4_returns} + ${existing_shipping};;
+  }
+
+  dimension: existing_shipping {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.existing_shipping ;;
+  }
+
+  measure: existing_shipping_total {
+    group_label: "Existing Customers"
+    label: "Existing | Shipping"
+    type: sum
+    value_format_name: usd
+    sql: ${existing_shipping} ;;
+  }
+
   measure: existing_AOV {
     group_label: "Existing Customers"
     label: "Existing | Average Order Value"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${existing_total_sales_b4_returns_total} / NULLIF(${existing_order_count_total},0) ;;
+    sql: 1.0 * ${existing_net_sales_b4_returns_total} / NULLIF(${existing_order_count_total},0) ;;
   }
 
   measure: existing_conversions {
@@ -559,7 +615,7 @@ view: fact_marketing_activty_campaign {
     label: "Existing | VADX % of Sales"
     type: number
     value_format_name: percent_2
-    sql: 1.0 * ${marketing_spend_total} / NULLIF(${existing_total_sales_b4_returns_total},0) ;;
+    sql: 1.0 * ${marketing_spend_total} / NULLIF(${existing_net_sales_b4_returns_total},0) ;;
   }
 
   # TOTAL METRICS
@@ -637,7 +693,7 @@ view: fact_marketing_activty_campaign {
   dimension: new_existing_total_sales_b4_returns {
     hidden: yes
     type: number
-    sql: ${TABLE}.total_sales_b4_returns ;;
+    sql: ${TABLE}.total_total_sales_b4_returns ;;
   }
 
   measure: new_existing_total_sales_b4_returns_total {
@@ -648,12 +704,40 @@ view: fact_marketing_activty_campaign {
     sql: ${new_existing_total_sales_b4_returns} ;;
   }
 
+  dimension: new_existing_net_sales_b4_returns {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.total_net_sales_b4_returns ;;
+  }
+
+  measure: new_existing_net_sales_b4_returns_total {
+    group_label: "All Customers"
+    label: "New & Existing | Net Sales"
+    type: sum
+    value_format_name: usd
+    sql: ${new_existing_net_sales_b4_returns} + ${new_existing_shipping} ;;
+  }
+
+  dimension: new_existing_shipping {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.total_shipping ;;
+  }
+
+  measure: new_existing_shipping_total {
+    group_label: "All Customers"
+    label: "New & Existing | Shipping"
+    type: sum
+    value_format_name: usd
+    sql: ${new_existing_shipping} ;;
+  }
+
   measure: new_existing_AOV {
     group_label: "All Customers"
     label: "New & Existing | Average Order Value"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${new_existing_total_sales_b4_returns_total} / NULLIF(${new_existing_order_count_total},0) ;;
+    sql: 1.0 * ${new_existing_net_sales_b4_returns_total} / NULLIF(${new_existing_order_count_total},0) ;;
   }
 
   measure: new_existing_conversions {
@@ -669,7 +753,7 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | VADX % of Sales"
     type: number
     value_format_name: percent_2
-    sql: 1.0 * ${marketing_spend_total} / NULLIF(${new_existing_total_sales_b4_returns_total},0) ;;
+    sql: 1.0 * ${marketing_spend_total} / NULLIF(${new_existing_net_sales_b4_returns_total},0) ;;
   }
 
 
@@ -769,7 +853,7 @@ view: fact_marketing_activty_campaign {
     # WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${new_total_sales_b4_returns}
     # END;;
-    sql: ${new_total_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
+    sql: ${new_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
   }
 
   measure: new_existing_roas_sum {
@@ -781,7 +865,7 @@ view: fact_marketing_activty_campaign {
     # WHEN ${marketing_spend} <> 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
     # ELSE ${new_existing_total_sales_b4_returns}
     # END;;
-    sql: ${new_existing_total_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
+    sql: ${new_existing_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
   }
 
   # MARKETING SPEND METRICS
