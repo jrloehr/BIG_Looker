@@ -840,11 +840,7 @@ view: fact_marketing_activty_campaign {
     label: "Existing | ROAS Total"
     type: number
     value_format_name: decimal_2
-    # sql: CASE
-    # WHEN ${marketing_spend} <> 0 THEN ${existing_total_sales_b4_returns} / ${marketing_spend}
-    # ELSE ${existing_total_sales_b4_returns}
-    # END;;
-    sql: ${existing_total_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
+    sql: ${existing_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
   }
 
   measure: new_roas_sum {
@@ -852,10 +848,6 @@ view: fact_marketing_activty_campaign {
     label: "New | ROAS Total"
     type: number
     value_format_name: decimal_2
-    # sql: CASE
-    # WHEN ${marketing_spend} <> 0 THEN ${new_total_sales_b4_returns} / ${marketing_spend}
-    # ELSE ${new_total_sales_b4_returns}
-    # END;;
     sql: ${new_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
   }
 
@@ -864,10 +856,6 @@ view: fact_marketing_activty_campaign {
     label: "New & Existing | ROAS Total"
     type: number
     value_format_name: decimal_2
-    # sql: CASE
-    # WHEN ${marketing_spend} <> 0 THEN ${new_existing_total_sales_b4_returns} / ${marketing_spend}
-    # ELSE ${new_existing_total_sales_b4_returns}
-    # END;;
     sql: ${new_existing_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
   }
 
