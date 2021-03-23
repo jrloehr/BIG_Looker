@@ -2,7 +2,7 @@ view: fact_marketing_activty_campaign {
   sql_table_name: dbo.tblFactMarketingActivty_Campaign ;;
 
   dimension: brand_parent_name {
-    hidden: yes
+    label: "Brand Name"
     type: string
     sql: ${TABLE}.brand_parent_name ;;
   }
