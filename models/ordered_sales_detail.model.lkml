@@ -12,15 +12,15 @@ persist_with: order_sales_detail_datagroup
 
 explore: cohort_tool {}
 
-explore: fact_marketing_activity_campaign {
+explore: fact_marketing_activty_campaign {
 
   view_label: "Marketing Detail"
 
   join: fact_budget {
     view_label: "Budget and Forecast"
     type: inner
-    sql_on: ${fact_marketing_activity_campaign.date_date} = ${fact_budget.date_date}
-          AND ${fact_marketing_activity_campaign.brand_parent_id} = ${fact_budget.brand_parent_id}
+    sql_on: ${fact_marketing_activty_campaign.date_date} = ${fact_budget.date_date}
+          AND ${fact_marketing_activty_campaign.brand_parent_id} = ${fact_budget.brand_parent_id}
           ;;
     relationship: many_to_one
   }
