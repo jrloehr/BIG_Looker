@@ -129,6 +129,7 @@ view: dim_customer {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.First_Order_Date ;;
+    description: "Use this field to determine if a customer was a new or returning customer at a given point in time. If their first order was within the required timeframe, then they were a first time customer in that timeframe."
   }
 
   dimension_group: last_order {

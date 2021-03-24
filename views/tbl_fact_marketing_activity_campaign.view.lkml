@@ -1,4 +1,4 @@
-view: fact_marketing_activty_campaign {
+view: fact_marketing_activity_campaign {
   sql_table_name: dbo.tblFactMarketingActivty_Campaign ;;
 
   dimension: brand_parent_name {

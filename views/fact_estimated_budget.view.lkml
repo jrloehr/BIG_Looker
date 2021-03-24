@@ -51,7 +51,7 @@ view: fact_budget {
     sql: ${TABLE}.subsidiary_name ;;
   }
 
-  dimension: Budget_revenue {
+  dimension: budget_revenue {
     hidden: yes
     type: number
     sql: ${TABLE}.estimated_revenue ;;
@@ -70,40 +70,40 @@ view: fact_budget {
     sql: ${TABLE}.variable_ad_expense_budget ;;
   }
 
-  measure: sum_Budget_revenue {
+  measure: sum_budget_revenue {
     group_label: "Budget Revenue"
     label: "Budget Revenue"
     description: "Use this field to track aggregated Budget revenue."
     type: sum
     value_format_name: usd
-    sql: ${Budget_revenue} ;;
+    sql: ${budget_revenue} ;;
   }
 
-  measure: avg_Budget_revenue {
+  measure: avg_budget_revenue {
     group_label: "Budget Revenue"
     label: "Average Budget Revenue"
     description: "Use this field to track average Budget revenue by period."
     type: average
     value_format_name: usd
-    sql: ${Budget_revenue} ;;
+    sql: ${budget_revenue} ;;
   }
 
-  measure: avg_Budget_revenue_per_actual_order {
+  measure: avg_budget_revenue_per_actual_order {
     group_label: "Budget Revenue"
     label: "Average Budget Revenue"
     description: "Use this field to track average Budget revenue by period."
     type: average
     value_format_name: usd
-    sql: ${Budget_revenue};;
+    sql: ${budget_revenue};;
   }
 
-  measure: runningtotal_Budget_revenue {
+  measure: runningtotal_budget_revenue {
     group_label: "Budget Revenue"
     label: "Running Total Budget Revenue"
     description: "Use this field to track cumulative Budget revenue for a period."
     type: running_total
     value_format_name: usd
-    sql: ${sum_Budget_revenue} ;;
+    sql: ${sum_budget_revenue} ;;
   }
 
   measure: sum_variable_ad_expense_budget {
