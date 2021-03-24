@@ -88,15 +88,6 @@ view: fact_budget {
     sql: ${budget_revenue} ;;
   }
 
-  measure: avg_budget_revenue_per_actual_order {
-    group_label: "Budget Revenue"
-    label: "Average Budget Revenue"
-    description: "Use this field to track average Budget revenue by period."
-    type: average
-    value_format_name: usd
-    sql: ${budget_revenue};;
-  }
-
   measure: runningtotal_budget_revenue {
     group_label: "Budget Revenue"
     label: "Running Total Budget Revenue"
