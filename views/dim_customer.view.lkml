@@ -158,6 +158,7 @@ view: dim_customer {
     hidden: yes
   }
 
+
   measure: count_firsttime_customers {
     type: count_distinct
     sql: ${customer_id} ;;
