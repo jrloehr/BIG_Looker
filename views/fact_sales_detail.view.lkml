@@ -460,7 +460,7 @@ view: fact_sales_detail {
     type:  yesno
     label: "Last Seven Days"
     sql: ${ordered_date} <= GETDATE() - 1
-      AND ${ordered_date} >= GETDATE() - 7;;
+      AND ${ordered_date} >= GETDATE() - 8;;
   }
 
   dimension: order_date_last_year {
