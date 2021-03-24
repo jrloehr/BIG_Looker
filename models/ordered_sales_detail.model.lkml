@@ -14,6 +14,7 @@ explore: cohort_tool {}
 
 explore: fact_marketing_activty_campaign {
 
+  label: "Marketing Data"
   view_label: "Marketing Detail"
 
   join: fact_budget {
@@ -28,6 +29,7 @@ explore: fact_marketing_activty_campaign {
 }
 
 explore: fact_sales_detail {
+    label: "Sales Data"
     view_label: "Sales Detail"
 
     query: order_count_by_month {
