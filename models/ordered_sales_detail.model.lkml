@@ -10,7 +10,7 @@ datagroup: order_sales_detail_datagroup {
 
 persist_with: order_sales_detail_datagroup
 
-explore: cohort_tool {}
+# explore: cohort_tool {}
 
 explore: fact_marketing_activty_campaign {
 
