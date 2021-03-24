@@ -766,7 +766,7 @@ view: fact_marketing_activty_campaign {
     group_label: "Date Filters"
     type:  yesno
     label: "Year to Date"
-    sql: ${date_date} <= GETDATE()
+    sql: ${date_date} <= GETDATE() - 1
       AND YEAR(${date_date}) = YEAR(GETDATE());;
   }
 
@@ -775,17 +775,16 @@ view: fact_marketing_activty_campaign {
     group_label: "Date Filters"
     type:  yesno
     label: "Month to Date"
-    sql: ${date_date} <= GETDATE()
+    sql: ${date_date} <= GETDATE() - 1
       AND YEAR(${date_date}) = YEAR(GETDATE())
-      AND MONTH(${date_date}) = MONTH(GETDATE())
-      AND ${date_date} <= GETDATE() - 1;;
+      AND MONTH(${date_date}) = MONTH(GETDATE());;
   }
 
   dimension: order_date_last_year {
     group_label: "Date Filters"
     type:  yesno
     label: "Last Year"
-    sql: ${date_date} <= GETDATE()
+    sql: ${date_date} <= GETDATE() - 1
       AND YEAR(${date_date}) = YEAR(GETDATE()) - 1;;
   }
 
@@ -793,7 +792,7 @@ view: fact_marketing_activty_campaign {
     group_label: "Date Filters"
     type:  yesno
     label: "Last Year Month to Date"
-    sql: ${date_date} <= GETDATE()
+    sql: ${date_date} <= GETDATE() - 1
       AND YEAR(${date_date}) = YEAR(GETDATE()) - 1
       AND MONTH(${date_date}) = MONTH(GETDATE())
       AND DAY(${date_date}) <= DAY(GETDATE()) - 1;;

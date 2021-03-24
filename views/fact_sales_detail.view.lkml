@@ -440,8 +440,8 @@ view: fact_sales_detail {
     group_label: "Date Filters"
     type:  yesno
     label: "Year to Date"
-    sql: ${ordered_date} <= GETDATE()
-    AND YEAR(${ordered_date}) = YEAR(GETDATE());;
+    sql: ${ordered_date} <= GETDATE() - 1
+      AND YEAR(${ordered_date}) = YEAR(GETDATE());;
   }
 
 # MAY NEED TO CHANGE THESE TO FILTERS
@@ -449,29 +449,29 @@ view: fact_sales_detail {
     group_label: "Date Filters"
     type:  yesno
     label: "Month to Date"
-    sql: ${ordered_date} <= GETDATE()
+    sql: ${ordered_date} <= GETDATE() - 1
       AND YEAR(${ordered_date}) = YEAR(GETDATE())
-      AND MONTH(${ordered_date}) = MONTH(GETDATE())
-      AND ${ordered_date} <= GETDATE() - 1;;
+      AND MONTH(${ordered_date}) = MONTH(GETDATE());;
   }
 
   dimension: order_date_last_year {
     group_label: "Date Filters"
     type:  yesno
     label: "Last Year"
-    sql: ${ordered_date} <= GETDATE()
-    AND YEAR(${ordered_date}) = YEAR(GETDATE()) - 1;;
+    sql: ${ordered_date} <= GETDATE() - 1
+      AND YEAR(${ordered_date}) = YEAR(GETDATE()) - 1;;
   }
 
   dimension: order_date_last_year_month_to_date {
     group_label: "Date Filters"
     type:  yesno
     label: "Last Year Month to Date"
-    sql: ${ordered_date} <= GETDATE()
+    sql: ${ordered_date} <= GETDATE() - 1
       AND YEAR(${ordered_date}) = YEAR(GETDATE()) - 1
       AND MONTH(${ordered_date}) = MONTH(GETDATE())
       AND DAY(${ordered_date}) <= DAY(GETDATE()) - 1;;
   }
+
 
   dimension_group: ordered {
     type: time
