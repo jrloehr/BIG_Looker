@@ -1,4 +1,4 @@
-view: fact_estimated_budget {
+view: fact_budget {
   sql_table_name: google_sheets.fact_estimated_budget ;;
 
   dimension_group: date {
@@ -51,11 +51,11 @@ view: fact_estimated_budget {
     sql: ${TABLE}.subsidiary_name ;;
   }
 
-  dimension: estimated_revenue {
+  dimension: Budget_revenue {
     hidden: yes
     type: number
     sql: ${TABLE}.estimated_revenue ;;
-    description: "Use this field to track estimated revenue."
+    description: "Use this field to track Budget revenue."
   }
 
   dimension: subsidiary_id {
@@ -70,40 +70,40 @@ view: fact_estimated_budget {
     sql: ${TABLE}.variable_ad_expense_budget ;;
   }
 
-  measure: sum_estimated_revenue {
-    group_label: "Estimated Revenue"
-    label: "Estimated Revenue"
-    description: "Use this field to track aggregated estimated revenue."
+  measure: sum_Budget_revenue {
+    group_label: "Budget Revenue"
+    label: "Budget Revenue"
+    description: "Use this field to track aggregated Budget revenue."
     type: sum
     value_format_name: usd
-    sql: ${estimated_revenue} ;;
+    sql: ${Budget_revenue} ;;
   }
 
-  measure: avg_estimated_revenue {
-    group_label: "Estimated Revenue"
-    label: "Average Estimated Revenue"
-    description: "Use this field to track average estimated revenue by period."
+  measure: avg_Budget_revenue {
+    group_label: "Budget Revenue"
+    label: "Average Budget Revenue"
+    description: "Use this field to track average Budget revenue by period."
     type: average
     value_format_name: usd
-    sql: ${estimated_revenue} ;;
+    sql: ${Budget_revenue} ;;
   }
 
-  measure: avg_estimated_revenue_per_actual_order {
-    group_label: "Estimated Revenue"
-    label: "Average Estimated Revenue"
-    description: "Use this field to track average estimated revenue by period."
+  measure: avg_Budget_revenue_per_actual_order {
+    group_label: "Budget Revenue"
+    label: "Average Budget Revenue"
+    description: "Use this field to track average Budget revenue by period."
     type: average
     value_format_name: usd
-    sql: ${estimated_revenue};;
+    sql: ${Budget_revenue};;
   }
 
-  measure: runningtotal_estimated_revenue {
-    group_label: "Estimated Revenue"
-    label: "Running Total Estimated Revenue"
-    description: "Use this field to track cumulative estimated revenue for a period."
+  measure: runningtotal_Budget_revenue {
+    group_label: "Budget Revenue"
+    label: "Running Total Budget Revenue"
+    description: "Use this field to track cumulative Budget revenue for a period."
     type: running_total
     value_format_name: usd
-    sql: ${sum_estimated_revenue} ;;
+    sql: ${sum_Budget_revenue} ;;
   }
 
   measure: sum_variable_ad_expense_budget {
@@ -117,7 +117,7 @@ view: fact_estimated_budget {
 
   measure: runningtotal_variable_ad_expense {
     group_label: "VADX"
-    label: "Running Total VADX"
+    label: "Running Total VADX Budget"
     description: "Use this field to track average budgeted ad expense for a period."
     # description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: running_total
