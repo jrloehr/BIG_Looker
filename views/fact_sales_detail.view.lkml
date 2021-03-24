@@ -451,7 +451,8 @@ view: fact_sales_detail {
     label: "Month to Date"
     sql: ${ordered_date} <= GETDATE()
       AND YEAR(${ordered_date}) = YEAR(GETDATE())
-      AND MONTH(${ordered_date}) = MONTH(GETDATE());;
+      AND MONTH(${ordered_date}) = MONTH(GETDATE())
+      AND ${ordered_date} <= GETDATE() - 1;;
   }
 
   dimension: order_date_last_year {
@@ -468,7 +469,8 @@ view: fact_sales_detail {
     label: "Last Year Month to Date"
     sql: ${ordered_date} <= GETDATE()
       AND YEAR(${ordered_date}) = YEAR(GETDATE()) - 1
-      AND MONTH(${ordered_date}) = MONTH(GETDATE());;
+      AND MONTH(${ordered_date}) = MONTH(GETDATE())
+      AND DAY(${ordered_date}) <= DAY(GETDATE()) - 1;;
   }
 
   dimension_group: ordered {

@@ -777,7 +777,8 @@ view: fact_marketing_activty_campaign {
     label: "Month to Date"
     sql: ${date_date} <= GETDATE()
       AND YEAR(${date_date}) = YEAR(GETDATE())
-      AND MONTH(${date_date}) = MONTH(GETDATE());;
+      AND MONTH(${date_date}) = MONTH(GETDATE())
+      AND ${date_date} <= GETDATE() - 1;;
   }
 
   dimension: order_date_last_year {
@@ -794,7 +795,8 @@ view: fact_marketing_activty_campaign {
     label: "Last Year Month to Date"
     sql: ${date_date} <= GETDATE()
       AND YEAR(${date_date}) = YEAR(GETDATE()) - 1
-      AND MONTH(${date_date}) = MONTH(GETDATE());;
+      AND MONTH(${date_date}) = MONTH(GETDATE())
+      AND DAY(${date_date}) <= DAY(GETDATE()) - 1;;
   }
 
   # ROAS
