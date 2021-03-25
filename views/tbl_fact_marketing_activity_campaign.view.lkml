@@ -104,12 +104,12 @@ view: fact_marketing_activty_campaign {
     description: "Use this field to analyze how effective impressions are at procuring clicks."
   }
 
-  # Impressions per Visitor
+  # Impressions per User
 
-  measure: impressions_per_Visitor {
+  measure: impressions_per_visitor {
     hidden: yes
     group_label: "Ad Metrics"
-    label: "Impressions per Visitor"
+    label: "Impressions per User"
     value_format_name: decimal_2
     type: number
     sql: 1.0 * ${marketing_impressions_total} / NULLIF(${visitor_count_total}, 0) ;;
@@ -214,7 +214,7 @@ view: fact_marketing_activty_campaign {
   measure: clicks_per_visitor{
     hidden: yes
     group_label: "Ad Metrics"
-    label: "Clicks per Visitor"
+    label: "Clicks per User"
     value_format_name: decimal_2
     type: number
     sql: 1.0 * ${marketing_clicks_total} / NULLIF(${visitor_count_total}, 0) ;;
@@ -344,7 +344,7 @@ view: fact_marketing_activty_campaign {
   measure: visitor_count_total {
     hidden: yes
     group_label: "Ad Metrics"
-    label: "Visitors"
+    label: "Users"
     type: sum
     sql: ${visitor_count} ;;
   }
@@ -352,7 +352,7 @@ view: fact_marketing_activty_campaign {
   measure: visitors_per_new_order_count{
     hidden: yes
     group_label: "Ad Metrics"
-    label: "Visitors per New Customer Order"
+    label: "Users per New Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${visitor_count_total} / NULLIF(${new_order_count_total}, 0) ;;
@@ -361,7 +361,7 @@ view: fact_marketing_activty_campaign {
   measure: visitors_views_per_existing_order_count{
     hidden: yes
     group_label: "Ad Metrics"
-    label: "Visitors per Returning Customer Order"
+    label: "Users per Returning Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${visitor_count_total} / NULLIF(${existing_order_count_total}, 0) ;;
@@ -370,7 +370,7 @@ view: fact_marketing_activty_campaign {
   measure: visitors_views_per_new_existing_order_count{
     hidden: yes
     group_label: "Ad Metrics"
-    label: "Visitors per Total Customer Order"
+    label: "Users per Total Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${visitor_count_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
@@ -513,7 +513,7 @@ view: fact_marketing_activty_campaign {
     label: "New | Conversion Rate"
     type: number
     value_format_name: percent_2
-    sql: 1.0 * ${new_order_count_total} / NULLIF(${session_count_total},0) ;;
+    sql: 1.0 * ${new_order_count_total} / NULLIF(${visitor_count_total},0) ;;
   }
 
   measure: new_variable_ad_expense_as_percent_of_sales {
@@ -661,7 +661,7 @@ view: fact_marketing_activty_campaign {
     label: "Returning | Conversion Rate"
     type: number
     value_format_name: percent_2
-    sql: 1.0 * ${existing_order_count_total} / NULLIF(${session_count_total},0) ;;
+    sql: 1.0 * ${existing_order_count_total} / NULLIF(${visitor_count_total},0) ;;
   }
 
   measure: existing_variable_ad_expense_as_percent_of_sales {
@@ -807,7 +807,7 @@ view: fact_marketing_activty_campaign {
     label: "Conversion Rate"
     type: number
     value_format_name: percent_2
-    sql: 1.0 * ${new_existing_order_count_total} / NULLIF(${session_count_total},0) ;;
+    sql: 1.0 * ${new_existing_order_count_total} / NULLIF(${visitor_count_total},0) ;;
     description: "Use this field to Orders / Sessions for all customers."
   }
 
