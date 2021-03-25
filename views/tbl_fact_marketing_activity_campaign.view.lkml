@@ -639,7 +639,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_customer_count_total {
     group_label: "All Customers"
-    label: "New & Existing | Customer Count"
+    label: "Customer Count"
     type: sum
     sql: ${new_existing_customer_count} ;;
   }
@@ -652,7 +652,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_item_count_total {
     group_label: "All Customers"
-    label: "New & Existing | Item Count"
+    label: "Item Count"
     type: sum
     sql: ${new_existing_item_count} ;;
   }
@@ -665,7 +665,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_order_count_total {
     group_label: "All Customers"
-    label: "New & Existing | Order Count"
+    label: "Order Count"
     type: sum
     sql: ${new_existing_order_count} ;;
   }
@@ -681,7 +681,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_cogs_total {
     group_label: "All Customers"
-    label: "New & Existing | COGS"
+    label: "COGS"
     type: sum
     value_format_name: usd
     sql: ${new_existing_cogs} ;;
@@ -695,7 +695,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_margin_dollars_total {
     group_label: "All Customers"
-    label: "New & Existing | Margin Dollars"
+    label: "Margin Dollars"
     type: sum
     value_format_name: usd
     sql: ${new_existing_margin_dollars} ;;
@@ -709,7 +709,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_total_sales_b4_returns_total {
     group_label: "All Customers"
-    label: "New & Existing | Sales"
+    label: "Sales"
     type: sum
     value_format_name: usd
     sql: ${new_existing_total_sales_b4_returns} ;;
@@ -723,7 +723,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_net_sales_b4_returns_total {
     group_label: "All Customers"
-    label: "New & Existing | Net Sales"
+    label: "Net Sales"
     type: sum
     value_format_name: usd
     sql: ${new_existing_net_sales_b4_returns} + ${new_existing_shipping} ;;
@@ -737,7 +737,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_shipping_total {
     group_label: "All Customers"
-    label: "New & Existing | Shipping"
+    label: "Shipping"
     type: sum
     value_format_name: usd
     sql: ${new_existing_shipping} ;;
@@ -745,7 +745,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_AOV {
     group_label: "All Customers"
-    label: "New & Existing | Average Order Value"
+    label: "Average Order Value"
     type: number
     value_format_name: usd
     sql: 1.0 * ${new_existing_net_sales_b4_returns_total} / NULLIF(${new_existing_order_count_total},0) ;;
@@ -754,7 +754,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_conversions {
     group_label: "All Customers"
-    label: "New & Existing | Conversions"
+    label: "Conversions"
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${new_existing_order_count_total} / NULLIF(${session_count_total},0) ;;
@@ -763,7 +763,7 @@ view: fact_marketing_activty_campaign {
 
   measure: new_existing_variable_ad_expense_as_percent_of_sales {
     group_label: "All Customers"
-    label: "New & Existing | VADX % of Sales"
+    label: "VADX % of Sales"
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${marketing_spend_total} / NULLIF(${new_existing_net_sales_b4_returns_total},0) ;;
