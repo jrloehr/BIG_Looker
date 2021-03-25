@@ -2,13 +2,14 @@ view: dim_brand {
   sql_table_name: dbo.DimBrand ;;
 
   dimension: subsidiary_id {
-    label: "Subsidiary ID"
     hidden: yes
+    label: "Subsidiary ID"
     type: number
     sql: ${TABLE}.Subsidiary_id ;;
   }
 
   dimension: subsidiary_name {
+    hidden: yes
     label: "Subsidiary Name"
     type: string
     sql: ${TABLE}.Subsidiary_Name ;;
@@ -30,12 +31,14 @@ view: dim_brand {
 
   #### THIS CAN BE USED FOR BENCHMARKING BRANDS
   filter: company_for_comparison {
+    hidden: yes
     description: "Use with Brand Benchmark"
     type: string
     suggest_dimension: brand_parent_name
   }
 
   dimension: brand_benchmark {
+    hidden: yes
     type: string
     sql: CASE
             WHEN {% condition company_for_comparison %} ${brand_parent_name} {% endcondition %} THEN ${brand_name}
@@ -45,6 +48,7 @@ view: dim_brand {
     }
 
   dimension: brand_benchmark_with_group {
+    hidden: yes
     type: string
     sql: CASE
             WHEN {% condition company_for_comparison %} ${brand_parent_name} {% endcondition %} THEN 'Group of Chosen Brands'
@@ -61,6 +65,7 @@ view: dim_brand {
   }
 
   dimension: brand_city {
+    hidden: yes
     group_label: "Brand Location"
     label: "Brand City"
     type: string
@@ -69,6 +74,7 @@ view: dim_brand {
   }
 
   dimension: brand_country {
+    hidden: yes
     group_label: "Brand Location"
     label: "Brand Country"
     type: string
@@ -77,6 +83,7 @@ view: dim_brand {
   }
 
   dimension: brand_state {
+    hidden: yes
     group_label: "Brand Location"
     label: "Brand State"
     type: string
@@ -85,6 +92,7 @@ view: dim_brand {
   }
 
   dimension: brand_zip_code {
+    hidden: yes
     group_label: "Brand Location"
     label: "Brand Zip Code"
     type: string
@@ -93,6 +101,7 @@ view: dim_brand {
   }
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: [brand_name, brand_parent_name, subsidiary_name]
   }

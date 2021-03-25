@@ -29,54 +29,63 @@ view: dim_customer {
   }
 
   dimension: email {
+    hidden: yes
     label: "Email"
     type: string
     sql: ${TABLE}.Email ;;
   }
 
   dimension: first_name {
+    hidden: yes
     label: "First Name"
     type: string
     sql: ${TABLE}.FirstName ;;
   }
 
   dimension: last_name {
+    hidden: yes
     label: "Last Name"
     type: string
     sql: ${TABLE}.LastName ;;
   }
 
   dimension: first_last_name {
+    hidden: yes
     label: "First and Last Name"
     type: string
     sql: ${first_name} + " " + ${last_name} ;;
   }
 
   dimension: customer_name {
+    hidden: yes
     label: "Customer Name"
     type: string
     sql: ${TABLE}.Customer_Name ;;
   }
 
   dimension: city {
+    hidden: yes
     label: "Customer City"
     type: string
     sql: ${TABLE}.City ;;
   }
 
   dimension: zip_code {
+    hidden: yes
     label: "Customer Zip Code"
     type: zipcode
     sql: ${TABLE}.ZipCode ;;
   }
 
   dimension: customer_state {
+    hidden: yes
     label: "Customer State"
     type: string
     sql: ${TABLE}.Customer_State ;;
   }
 
   dimension: full_name {
+    hidden: yes
     type: string
     sql: CONCAT(${first_name}, ' ', ${last_name});;
 
@@ -126,6 +135,7 @@ view: dim_customer {
       quarter,
       year
     ]
+    label: "First Order"
     convert_tz: no
     datatype: date
     sql: ${TABLE}.First_Order_Date ;;
@@ -133,6 +143,7 @@ view: dim_customer {
   }
 
   dimension_group: last_order {
+    hidden: yes
     type: time
     timeframes: [
       raw,
@@ -142,40 +153,45 @@ view: dim_customer {
       quarter,
       year
     ]
+    label: "Last Order"
     convert_tz: no
     datatype: date
     sql: ${TABLE}.Last_Order_Date ;;
   }
 
-  dimension: firsttime_or_returning {
+  dimension: new_or_returning {
+    label: "New or Returning"
     type: string
     description: "Validated by SJ on 2/4/2021 using 2/1/2021 data from Looker and Shopify - see 89 vs 90 and 289 vs. 292 but both reports come out to 308 total. This may also need adjustment to see historical first-time customers - in other words, as of today, 'X' was a first-time customer, but as of 2 months from now, they may not be. Will probably need to compare First_Order_Date to Order_Date in order to tell if a specific historical order was their first purchase."
     sql:
     CASE
-      WHEN ${first_order_date} = ${last_order_date} THEN 'First-Time'
+      WHEN ${first_order_date} = ${last_order_date} THEN 'New'
       ELSE 'Returning'
     END;;
     hidden: yes
   }
 
 
-  measure: count_firsttime_customers {
+  measure: count_new_customers {
+    label: "Count of New Customers"
     type: count_distinct
     sql: ${customer_id} ;;
-    filters: [firsttime_or_returning: "First-Time"]
+    filters: [new_or_returning: "New"]
     drill_fields: [customer_drill*]
     description: "Use this field to get a count of all First-Time customers at this point in time."
   }
 
   measure: count_returning_customers {
+    label: "Count of Returning Customers"
     type: count_distinct
     sql: ${customer_id} ;;
-    filters: [firsttime_or_returning: "Returning"]
+    filters: [new_or_returning: "Returning"]
     drill_fields: [customer_drill*, count_returning_customers]
     description: "Use this field to get a count of all Returning customers at this point in time."
   }
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: [customer_name, first_name, last_name]
   }
