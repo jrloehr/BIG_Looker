@@ -23,6 +23,7 @@ view: fact_marketing_activty_campaign {
       quarter,
       year
     ]
+    label: "Marketing"
     convert_tz: no
     datatype: date
     sql: ${TABLE}.date ;;
@@ -130,6 +131,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: impressions_per_new_order_count{
+    hidden: yes
     group_label: "Ad Metrics"
     label: "Impressions per New Customer Order"
     type: number
@@ -139,6 +141,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: impressions_per_existing_order_count{
+    hidden: yes
     group_label: "Ad Metrics"
     label: "Impressions per Existing Customer Order"
     type: number
@@ -149,7 +152,7 @@ view: fact_marketing_activty_campaign {
 
   measure: impressions_per_new_existing_order_count{
     group_label: "Ad Metrics"
-    label: "Impressions per New & Existing Customer Order"
+    label: "Impressions per Total Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${marketing_impressions_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
@@ -204,6 +207,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: clicks_per_new_order_count{
+    hidden: yes
     group_label: "Ad Metrics"
     label: "Clicks per New Customer Order"
     type: number
@@ -213,6 +217,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: clicks_per_existing_order_count{
+    hidden: yes
     group_label: "Ad Metrics"
     label: "Clicks per Existing Customer Order"
     type: number
@@ -223,7 +228,7 @@ view: fact_marketing_activty_campaign {
 
   measure: clicks_per_new_existing_order_count{
     group_label: "Ad Metrics"
-    label: "Clicks per New & Existing Customer Order"
+    label: "Clicks per Total Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${marketing_clicks_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
@@ -244,6 +249,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: page_views_per_new_order_count{
+    hidden: yes
     group_label: "Ad Metrics"
     label: "Page Views per New Customer Order"
     type: number
@@ -252,6 +258,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: page_views_per_existing_order_count{
+    hidden: yes
     group_label: "Ad Metrics"
     label: "Page Views per Existing Customer Order"
     type: number
@@ -261,7 +268,7 @@ view: fact_marketing_activty_campaign {
 
   measure: page_views_per_new_existing_order_count{
     group_label: "Ad Metrics"
-    label: "Page Views per New & Existing Customer Order"
+    label: "Page Views per Total Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${page_views_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
@@ -282,6 +289,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: sessions_per_new_order_count{
+    hidden: yes
     group_label: "Ad Metrics"
     label: "Sessions per New Customer Order"
     type: number
@@ -290,6 +298,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: sessions_views_per_existing_order_count{
+    hidden: yes
     group_label: "Ad Metrics"
     label: "Sessions per Existing Customer Order"
     type: number
@@ -299,7 +308,7 @@ view: fact_marketing_activty_campaign {
 
   measure: sessions_views_per_new_existing_order_count{
     group_label: "Ad Metrics"
-    label: "Sessions per New & Existing Customer Order"
+    label: "Sessions per Total Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${session_count_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
@@ -320,6 +329,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: visitors_per_new_order_count{
+    hidden: yes
     group_label: "Ad Metrics"
     label: "Visitors per New Customer Order"
     type: number
@@ -327,7 +337,8 @@ view: fact_marketing_activty_campaign {
     sql: 1.0 * ${visitor_count_total} / NULLIF(${new_order_count_total}, 0) ;;
   }
 
-  measure: visitors_views_per_order_order_count{
+  measure: visitors_views_per_existing_order_count{
+    hidden: yes
     group_label: "Ad Metrics"
     label: "Visitors per Existing Customer Order"
     type: number
@@ -337,7 +348,7 @@ view: fact_marketing_activty_campaign {
 
   measure: visitors_views_per_new_existing_order_count{
     group_label: "Ad Metrics"
-    label: "Visitors per New & Existing Customer Order"
+    label: "Visitors per Total Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${visitor_count_total} / NULLIF(${new_existing_order_count_total}, 0) ;;
