@@ -153,7 +153,7 @@ view: fact_marketing_activty_campaign {
   measure: impressions_per_existing_order_count{
     hidden: yes
     group_label: "Ad Metrics"
-    label: "Impressions per Existing Customer Order"
+    label: "Impressions per Returning Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${marketing_impressions_total} / NULLIF(${existing_order_count_total}, 0) ;;
@@ -234,7 +234,7 @@ view: fact_marketing_activty_campaign {
   measure: clicks_per_existing_order_count{
     hidden: yes
     group_label: "Ad Metrics"
-    label: "Clicks per Existing Customer Order"
+    label: "Clicks per Returning Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${marketing_clicks_total} / NULLIF(${existing_order_count_total}, 0) ;;
@@ -277,7 +277,7 @@ view: fact_marketing_activty_campaign {
   measure: page_views_per_existing_order_count{
     hidden: yes
     group_label: "Ad Metrics"
-    label: "Page Views per Existing Customer Order"
+    label: "Page Views per Returning Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${page_views_total} / NULLIF(${existing_order_count_total}, 0) ;;
@@ -319,7 +319,7 @@ view: fact_marketing_activty_campaign {
   measure: sessions_views_per_existing_order_count{
     hidden: yes
     group_label: "Ad Metrics"
-    label: "Sessions per Existing Customer Order"
+    label: "Sessions per Returning Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${session_count_total} / NULLIF(${existing_order_count_total}, 0) ;;
@@ -361,7 +361,7 @@ view: fact_marketing_activty_campaign {
   measure: visitors_views_per_existing_order_count{
     hidden: yes
     group_label: "Ad Metrics"
-    label: "Visitors per Existing Customer Order"
+    label: "Visitors per Returning Customer Order"
     type: number
     value_format_name: decimal_2
     sql: 1.0 * ${visitor_count_total} / NULLIF(${existing_order_count_total}, 0) ;;
@@ -535,8 +535,8 @@ view: fact_marketing_activty_campaign {
 
   measure: existing_customer_count_total {
     hidden: yes
-    group_label: "Existing Customers"
-    label: "Existing | Customer Count"
+    group_label: "Returning Customers"
+    label: "Returning | Customer Count"
     type: sum
     sql: ${existing_customer_count} ;;
   }
@@ -549,8 +549,8 @@ view: fact_marketing_activty_campaign {
 
   measure: existing_item_count_total {
     hidden: yes
-    group_label: "Existing Customers"
-    label: "Existing | Item Count"
+    group_label: "Returning Customers"
+    label: "Returning | Item Count"
     type: sum
     sql: ${existing_item_count} ;;
   }
@@ -563,8 +563,8 @@ view: fact_marketing_activty_campaign {
 
   measure: existing_order_count_total {
     hidden: yes
-    group_label: "Existing Customers"
-    label: "Existing | Order Count"
+    group_label: "Returning Customers"
+    label: "Returning | Order Count"
     type: sum
     sql: ${existing_order_count} ;;
   }
@@ -579,8 +579,8 @@ view: fact_marketing_activty_campaign {
 
   measure: existing_cogs_total {
     hidden: yes
-    group_label: "Existing Customers"
-    label: "Existing | COGS"
+    group_label: "Returning Customers"
+    label: "Returning | COGS"
     type: sum
     value_format_name: usd
     sql: ${existing_cogs} ;;
@@ -594,8 +594,8 @@ view: fact_marketing_activty_campaign {
 
   measure: existing_margin_dollars_total {
     hidden: yes
-    group_label: "Existing Customers"
-    label: "Existing | Margin Dollars"
+    group_label: "Returning Customers"
+    label: "Returning | Margin Dollars"
     type: sum
     value_format_name: usd
     sql: ${existing_margin_dollars} ;;
@@ -609,8 +609,8 @@ view: fact_marketing_activty_campaign {
 
   measure: existing_total_sales_b4_returns_total {
     hidden: yes
-    group_label: "Existing Customers"
-    label: "Existing | Sales"
+    group_label: "Returning Customers"
+    label: "Returning | Sales"
     type: sum
     value_format_name: usd
     sql: ${existing_total_sales_b4_returns} ;;
@@ -624,8 +624,8 @@ view: fact_marketing_activty_campaign {
 
   measure: existing_net_sales_b4_returns_total {
     hidden: yes
-    group_label: "Existing Customers"
-    label: "Existing | Net Sales"
+    group_label: "Returning Customers"
+    label: "Returning | Net Sales"
     type: sum
     value_format_name: usd
     sql: ${existing_net_sales_b4_returns} + ${existing_shipping};;
@@ -639,8 +639,8 @@ view: fact_marketing_activty_campaign {
 
   measure: existing_shipping_total {
     hidden: yes
-    group_label: "Existing Customers"
-    label: "Existing | Shipping"
+    group_label: "Returning Customers"
+    label: "Returning | Shipping"
     type: sum
     value_format_name: usd
     sql: ${existing_shipping} ;;
@@ -648,8 +648,8 @@ view: fact_marketing_activty_campaign {
 
   measure: existing_AOV {
     hidden: yes
-    group_label: "Existing Customers"
-    label: "Existing | Average Order Value"
+    group_label: "Returning Customers"
+    label: "Returning | Average Order Value"
     type: number
     value_format_name: usd
     sql: 1.0 * ${existing_net_sales_b4_returns_total} / NULLIF(${existing_order_count_total},0) ;;
@@ -657,8 +657,8 @@ view: fact_marketing_activty_campaign {
 
   measure: existing_conversions {
     hidden: yes
-    group_label: "Existing Customers"
-    label: "Existing | Conversion Rate"
+    group_label: "Returning Customers"
+    label: "Returning | Conversion Rate"
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${existing_order_count_total} / NULLIF(${session_count_total},0) ;;
@@ -666,8 +666,8 @@ view: fact_marketing_activty_campaign {
 
   measure: existing_variable_ad_expense_as_percent_of_sales {
     hidden: yes
-    group_label: "Existing Customers"
-    label: "Existing | VADX % of Sales"
+    group_label: "Returning Customers"
+    label: "Returning | VADX % of Sales"
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${marketing_spend_total} / NULLIF(${existing_net_sales_b4_returns_total},0) ;;
@@ -863,7 +863,7 @@ view: fact_marketing_activty_campaign {
 
   # measure: existing_roas_avg {
   #   group_label: "ROAS"
-  #   label: "Existing | ROAS Average"
+  #   label: "Returning | ROAS Average"
   #   type: average
   #   value_format_name: usd
   #   sql: AVG(${existing_total_sales_b4_returns}) / AVG(${marketing_spend}) ;;
@@ -880,7 +880,7 @@ view: fact_marketing_activty_campaign {
 
 #   measure: new_existing_roas_avg {
 #     group_label: "ROAS"
-#     label: "New & Existing | ROAS Average"
+#     label: "New & Returning | ROAS Average"
 #     type: average
 #     value_format_name: usd
 #     sql: AVG(${new_existing_total_sales_b4_returns}) / AVG(${marketing_spend}) ;;
@@ -888,8 +888,8 @@ view: fact_marketing_activty_campaign {
 
   measure: existing_roas_sum {
     hidden: yes
-    group_label: "Existing Customers"
-    label: "Existing | ROAS"
+    group_label: "Returning Customers"
+    label: "Returning | ROAS"
     type: number
     value_format_name: decimal_2
     sql: ${existing_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
@@ -974,7 +974,7 @@ view: fact_marketing_activty_campaign {
 
   # measure: new_existing_spend_per_order_avg {
   #   group_label: "Marketing Spend Metrics"
-  #   label: "New & Existing | Dollars / Order Average"
+  #   label: "New & Returning | Dollars / Order Average"
   #   type: number
   #   value_format_name: usd
   #   # sql: CASE
@@ -986,7 +986,7 @@ view: fact_marketing_activty_campaign {
 
   # measure: new_existing_spend_per_customer_avg {
   #   group_label: "Marketing Spend Metrics"
-  #   label: "New & Existing | Dollars / Customer Average"
+  #   label: "New & Returning | Dollars / Customer Average"
   #   type: number
   #   value_format_name: usd
   #   # sql: CASE
@@ -998,7 +998,7 @@ view: fact_marketing_activty_campaign {
 
   # measure: new_existing_spend_per_item_avg {
   #   group_label: "Marketing Spend Metrics"
-  #   label: "New & Existing | Dollars / Item Average"
+  #   label: "New & Returning | Dollars / Item Average"
   #   type: number
   #   value_format_name: usd
   #   # sql: CASE
