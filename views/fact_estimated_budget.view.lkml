@@ -12,7 +12,7 @@ view: fact_budget {
       quarter,
       year
     ]
-    label: "Budget/VADX Date"
+    label: "Budget"
     convert_tz: no
     datatype: date
     sql: ${TABLE}.date ;;
