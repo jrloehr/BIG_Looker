@@ -12,6 +12,7 @@ view: fact_budget {
       quarter,
       year
     ]
+    label: "Date"
     convert_tz: no
     datatype: date
     sql: ${TABLE}.date ;;
@@ -81,7 +82,7 @@ view: fact_budget {
 
   measure: avg_budget_revenue {
     group_label: "Budget Revenue"
-    label: "Average Budget Revenue"
+    label: "Daily Average Budget Revenue"
     description: "Use this field to track average Budget revenue by period."
     type: average
     value_format_name: usd
@@ -90,7 +91,7 @@ view: fact_budget {
 
   measure: runningtotal_budget_revenue {
     group_label: "Budget Revenue"
-    label: "Running Total Budget Revenue"
+    label: "Cumulative Daily Budget Revenue"
     description: "Use this field to track cumulative Budget revenue for a period."
     type: running_total
     value_format_name: usd
@@ -99,7 +100,7 @@ view: fact_budget {
 
   measure: sum_variable_ad_expense_budget {
     group_label: "VADX"
-    label: "Variable Ad Expense Budget"
+    label: "Daily Variable Ad Expense Budget"
     description: "Use this field to track aggregated budgeted ad expense for a period."
     type: sum
     value_format_name: usd
@@ -108,7 +109,7 @@ view: fact_budget {
 
   measure: runningtotal_variable_ad_expense {
     group_label: "VADX"
-    label: "Running Total VADX Budget"
+    label: "Cumulative VADX Budget"
     description: "Use this field to track average budgeted ad expense for a period."
     # description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: running_total
@@ -118,7 +119,7 @@ view: fact_budget {
 
   measure: avg_variable_ad_expense_budget {
     group_label: "VADX"
-    label: "Average Variable Ad Expense Budget"
+    label: "Average Daily Variable Ad Expense Budget"
     description: "Use this field to track cumulative budgeted ad expense for a period."
     type: average
     value_format_name: usd
@@ -126,6 +127,7 @@ view: fact_budget {
   }
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: [subsidiary_name, brand_parent_name]
   }
