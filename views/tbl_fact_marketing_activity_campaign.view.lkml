@@ -808,7 +808,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${new_existing_order_count_total} / NULLIF(${visitor_count_total},0) ;;
-    description: "Use this field to Orders / Sessions for all customers."
+    description: "Use this field to Orders / Visitors for all customers."
   }
 
   measure: new_existing_variable_ad_expense_as_percent_of_sales {
