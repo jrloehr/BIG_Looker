@@ -80,7 +80,8 @@ view: fact_sales_detail {
     description: "Net Sales = Gross Sales - Discounts + Shipping"
     type: sum
     value_format_name: usd
-    sql: ${net_sales} + ${shipping} ;;
+    sql: ${net_sales} + ${shipping};;
+    filters: [shipped_flag: "1"]
   }
 
   measure: runningtotal_net_sales {
@@ -182,6 +183,7 @@ view: fact_sales_detail {
 
 #### THIS CAN BE USED FOR CHANGING YEARS OF SALES DYNAMICALLY
   filter: select_sales_year {
+    hidden: yes
     description: "Use with filtered sales"
     type: number
     suggestions: ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"]
@@ -196,6 +198,7 @@ view: fact_sales_detail {
   }
 
   measure: filtered_sales {
+    hidden: yes
     group_label: "Total Sales"
     label: "Filtered Sales"
     description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
