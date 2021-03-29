@@ -292,7 +292,6 @@ view: fact_sales_detail {
   }
 
   measure: sum_discounts {
-    hidden: yes
     group_label: "Discounts"
     label: "Total Discounts"
     description: "Use this field to see aggregated discounts."
@@ -312,7 +311,6 @@ view: fact_sales_detail {
   }
 
   measure: avg_discounts {
-    hidden: yes
     group_label: "Discounts"
     label: "Average Discounts"
     description: "Use this field to see average discounts (Total Discounts / Orders)"
