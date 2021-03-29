@@ -14,6 +14,7 @@ view: fact_sales_detail {
     value_format_name: usd
     sql: ${TABLE}.COGS ;;
     description: "Use this to get the aggregated cost of goods sold."
+    hidden: yes
   }
 
   measure: cogs_per_order {
@@ -22,6 +23,7 @@ view: fact_sales_detail {
     value_format_name: usd
     sql: 1.0 * ${cogs_total} / ${countd_transaction_id} ;;
     description: "Cost of Goods Sold / Orders - produces average COGS."
+    hidden: yes
   }
 
   dimension: shipping {
@@ -40,6 +42,7 @@ view: fact_sales_detail {
     value_format_name: usd
     sql: ${shipping} ;;
     description: "Use this field to get the aggregated shipping cost."
+    hidden: yes
   }
 
   measure: runningtotal_total_shipping {
@@ -49,9 +52,10 @@ view: fact_sales_detail {
     value_format_name: usd
     sql: ${sum_shipping} ;;
     description: "Use this field to get the running total shipping costs of a period."
+    hidden: yes
   }
 
-  measure: shp_avg_shipping {
+  measure: avg_shipping {
     group_label: "Shipping"
     label: "Average Shipping"
     type: number
@@ -107,6 +111,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_taxes {
+    hidden: yes
     group_label: "Taxes"
     label: "Total Taxes"
     type: sum
@@ -116,6 +121,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_total_taxes {
+    hidden: yes
     group_label: "Taxes"
     label: "Running Total Taxes"
     type: running_total
@@ -124,7 +130,8 @@ view: fact_sales_detail {
     description: "Use this field to get the cumulative Sales Tax for a period."
   }
 
-  measure: shp_avg_taxes {
+  measure: avg_taxes {
+    hidden: yes
     group_label: "Taxes"
     label: "Average Taxes"
     type: number
@@ -144,6 +151,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales {
+    hidden: yes
     group_label: "Total Sales"
     label: "Total Sales"
     description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
@@ -153,6 +161,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_total_sales {
+    hidden: yes
     group_label: "Total Sales"
     label: "Running Total Sales"
     description: "Use this field to get the cumulative total sales amount for period."
@@ -162,6 +171,7 @@ view: fact_sales_detail {
   }
 
   measure: avg_total_sales {
+    hidden: yes
     group_label: "Total Sales"
     label: "Average Total Sales"
     type: number
@@ -190,7 +200,7 @@ view: fact_sales_detail {
     label: "Filtered Sales"
     description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
     type: sum
-    sql: ${total_sales} ;;
+    sql: ${net_sales} ;;
     value_format_name: usd
     filters: [sales_year_selected: "1"]
   }
@@ -205,6 +215,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_item_qty {
+    hidden: yes
     group_label: "Item Quantity"
     label: "Total Item Quantity"
     description: "Use this to get the quantity of items in orders."
@@ -214,6 +225,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_item_qty {
+    hidden: yes
     group_label: "Item Quantity"
     label: "Running Total Item Quantity"
     description: "Use this field to get a cumulative of quantity in orders in a period."
@@ -223,6 +235,7 @@ view: fact_sales_detail {
   }
 
   measure: avg_item_qty {
+    hidden: yes
     group_label: "Item Quantity"
     label: "Average Item Quantity"
     description: "Use this field to get the average number of items in an order (Item Quantity / Orders)"
@@ -250,6 +263,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_gross_sales {
+    hidden: yes
     group_label: "Gross Sales"
     label: "Running Total Gross Sales"
     type: running_total
@@ -259,6 +273,7 @@ view: fact_sales_detail {
   }
 
   measure: avg_gross_sales {
+    hidden: yes
     group_label: "Gross Sales"
     label: "Average Gross Sales"
     description: "Use this field to get the average Gross Sales (Gross Sales / Orders)"
@@ -277,6 +292,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_discounts {
+    hidden: yes
     group_label: "Discounts"
     label: "Total Discounts"
     description: "Use this field to see aggregated discounts."
@@ -286,6 +302,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_discounts {
+    hidden: yes
     group_label: "Discounts"
     label: "Running Total Discounts"
     description: "Use this field to see cumulative discounts in a given period."
@@ -295,6 +312,7 @@ view: fact_sales_detail {
   }
 
   measure: avg_discounts {
+    hidden: yes
     group_label: "Discounts"
     label: "Average Discounts"
     description: "Use this field to see average discounts (Total Discounts / Orders)"
@@ -331,6 +349,7 @@ view: fact_sales_detail {
   }
 
   dimension: customer_id {
+    hidden: yes
     group_label: "Customers"
     type: number
     sql: ${TABLE}.Customer_id ;;
@@ -363,6 +382,7 @@ view: fact_sales_detail {
   }
 
   measure: ltv_sales_per_customer{
+    hidden: yes
     label: "LTV - Sales per Customer"
     description: "Use this field to get the lifetime value (Net Sales / Unique Customers) for a group of customers. Can be useful when comparing customer types/cohorts."
     type: number
@@ -371,6 +391,7 @@ view: fact_sales_detail {
   }
 
   measure: aof_orders_per_customer{
+    hidden: yes
     label: "Frequency - Orders per Customer"
     description: "Use this field to determine order frequency. Can be useful when determining customer loyalty in customer types (# of Orders / Unique Customers)"
     type: number
@@ -388,6 +409,7 @@ view: fact_sales_detail {
   }
 
   dimension: document_number {
+    hidden: yes
     description: "I don't know what this field is or if it's useful."
     type: string
     sql: ${TABLE}.Document_Number ;;
@@ -418,6 +440,7 @@ view: fact_sales_detail {
   }
 
   dimension: item_id {
+    hidden: yes
     label: "Item ID"
     type: number
     sql: ${TABLE}.item_id ;;
@@ -431,6 +454,7 @@ view: fact_sales_detail {
   }
 
   dimension: margin_dollars {
+    hidden: yes
     type: string
     sql: ${TABLE}.Margin_Dollars ;;
   }
@@ -511,6 +535,7 @@ view: fact_sales_detail {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.ShippedDate ;;
+    hidden: yes
     description: "Use this field to group/filter/compare by Ship Date. Select the time-frame you'd like to use."
   }
 
@@ -537,6 +562,7 @@ view: fact_sales_detail {
   }
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: []
   }
