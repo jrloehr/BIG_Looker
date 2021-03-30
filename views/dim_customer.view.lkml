@@ -168,7 +168,7 @@ view: dim_customer {
       WHEN ${first_order_date} = ${last_order_date} THEN 'New'
       ELSE 'Returning'
     END;;
-    hidden: yes
+    hidden: no
   }
 
 
