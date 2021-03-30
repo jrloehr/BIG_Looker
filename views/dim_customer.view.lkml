@@ -160,9 +160,9 @@ view: dim_customer {
   }
 
   dimension: new_or_returning {
-    label: "New or Returning"
+    label: "New or Returning - Current"
     type: string
-    description: "Validated by SJ on 2/4/2021 using 2/1/2021 data from Looker and Shopify - see 89 vs 90 and 289 vs. 292 but both reports come out to 308 total. This may also need adjustment to see historical first-time customers - in other words, as of today, 'X' was a first-time customer, but as of 2 months from now, they may not be. Will probably need to compare First_Order_Date to Order_Date in order to tell if a specific historical order was their first purchase."
+    description: "Validated by SJ on 2/4/2021 using 2/1/2021 data from Looker and Shopify - see 89 vs 90 and 289 vs. 292 but both reports come out to 308 total. This may also need adjustment to see historical first-time customers - in other words, as of today, 'X' was a first-time customer, but as of 2 months from now, they may not be. Will probably need to compare First_Order_Date to Order_Date in order to tell if a specific historical order was their first purchase. This is the way Shopify calculates."
     sql:
     CASE
       WHEN ${first_order_date} = ${last_order_date} THEN 'New'
@@ -170,7 +170,6 @@ view: dim_customer {
     END;;
     hidden: no
   }
-
 
   measure: count_new_customers {
     label: "Count of New Customers"
