@@ -328,7 +328,7 @@ view: fact_sales_detail {
   dimension: transaction_id {
     group_label: "Orders"
     label: "Transaction ID"
-    hidden: yes
+    hidden: no
     type: number
     sql: ${TABLE}.transaction_id ;;
   }
