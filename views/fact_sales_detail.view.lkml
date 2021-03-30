@@ -329,7 +329,7 @@ view: fact_sales_detail {
     group_label: "Orders"
     label: "Transaction ID"
     hidden: no
-    type: number
+    type: string
     sql: ${TABLE}.transaction_id ;;
   }
 
