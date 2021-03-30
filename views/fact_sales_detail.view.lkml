@@ -413,7 +413,7 @@ view: fact_sales_detail {
   }
 
   dimension: document_number {
-    hidden: yes
+    hidden: no
     description: "I don't know what this field is or if it's useful."
     type: string
     sql: ${TABLE}.Document_Number ;;
