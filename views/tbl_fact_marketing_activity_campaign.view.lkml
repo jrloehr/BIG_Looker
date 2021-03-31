@@ -917,6 +917,7 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: decimal_2
     sql: ${new_existing_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
+    description: "Use this field to get the ROAS for all customers (ROAS is calculated using Net Sales as of the Ordered Date, not as of Shipped Date)"
   }
 
   # MARKETING SPEND METRICS
