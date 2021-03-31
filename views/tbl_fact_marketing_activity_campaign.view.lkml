@@ -5,6 +5,7 @@ view: fact_marketing_activty_campaign {
     label: "Brand Name"
     type: string
     sql: ${TABLE}.brand_parent_name ;;
+    description: "Use this field to group or compare by Brand."
   }
 
   dimension: brand_parent_id {
@@ -714,6 +715,7 @@ view: fact_marketing_activty_campaign {
     label: "Order Count"
     type: sum
     sql: ${new_existing_order_count} ;;
+    description: "Use this field to get a count of all customers orders."
   }
 
 
@@ -776,6 +778,7 @@ view: fact_marketing_activty_campaign {
     type: sum
     value_format_name: usd
     sql: ${new_existing_net_sales_b4_returns} + ${new_existing_shipping} ;;
+    description: "Use this field to get the Net Sales (ordered Net Sales) for all customers."
   }
 
   dimension: new_existing_shipping {
@@ -829,6 +832,7 @@ view: fact_marketing_activty_campaign {
     label: "Year to Date"
     sql: ${date_date} <= GETDATE() - 1
       AND YEAR(${date_date}) = YEAR(GETDATE());;
+    description: "Use this filter to get data for Year to Date"
   }
 
 # MAY NEED TO CHANGE THESE TO FILTERS
@@ -839,6 +843,7 @@ view: fact_marketing_activty_campaign {
     sql: ${date_date} <= GETDATE() - 1
       AND YEAR(${date_date}) = YEAR(GETDATE())
       AND MONTH(${date_date}) = MONTH(GETDATE());;
+    description: "Use this filter to get data for Month to Date"
   }
 
   dimension: order_date_last_year {
@@ -847,6 +852,7 @@ view: fact_marketing_activty_campaign {
     label: "Last Year"
     sql: ${date_date} <= GETDATE() - 1
       AND YEAR(${date_date}) = YEAR(GETDATE()) - 1;;
+    description: "Use this filter to get data for Last Year."
   }
 
   dimension: order_date_last_year_month_to_date {
@@ -857,6 +863,7 @@ view: fact_marketing_activty_campaign {
       AND YEAR(${date_date}) = YEAR(GETDATE()) - 1
       AND MONTH(${date_date}) = MONTH(GETDATE())
       AND DAY(${date_date}) <= DAY(GETDATE()) - 1;;
+    description: "Use this filter to get data for Last Year Month to Date"
   }
 
   # ROAS
