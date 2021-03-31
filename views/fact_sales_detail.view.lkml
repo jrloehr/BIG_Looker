@@ -540,31 +540,36 @@ view: fact_sales_detail {
   }
 
   parameter: timeframe_picker {
+    group_label: "Date Filters"
     label: "Date Granularity"
     type: string
     allowed_value: { value: "Date" }
     allowed_value: { value: "Week" }
     allowed_value: { value: "Month" }
-    allowed_value: { value: "Quarter" }
-    allowed_value: { value: "Year" }
     default_value: "Date"
   }
 
+  # allowed_value: { value: "Quarter" }
+  # allowed_value: { value: "Year" }
+
   dimension: ordered_date_dynamic_timeframe {
+    group_label: "Ordered Date"
     type: string
     sql:
     CASE
     WHEN {% parameter timeframe_picker %} = 'Date' THEN ${ordered_date}
     WHEN {% parameter timeframe_picker %} = 'Week' THEN ${ordered_week}
-    WHEN{% parameter timeframe_picker %} = 'Month' THEN ${ordered_month}
-    WHEN{% parameter timeframe_picker %} = 'Quarter' THEN ${ordered_quarter}
-    WHEN{% parameter timeframe_picker %} = 'Year' THEN ${ordered_year}
+    WHEN {% parameter timeframe_picker %} = 'Month' THEN ${ordered_month}
     ELSE ${ordered_date}
     END ;;
     label: "Ordered Timeframe"
   }
 
+    # WHEN {% parameter timeframe_picker %} = 'Quarter' THEN ${ordered_quarter}
+    # WHEN {% parameter timeframe_picker %} = 'Year' THEN ${ordered_year}
+
   dimension_group: ordered {
+    group_label: "Ordered Date"
     type: time
     timeframes: [
       raw,
