@@ -387,7 +387,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${customer_id} ;;
-    filters: [first_order_flag: "-1"]
+    filters: [first_order_flag: "0"]
     description: "Use this field to get the number of Returning Customers."
   }
 
