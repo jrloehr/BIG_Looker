@@ -539,6 +539,30 @@ view: fact_sales_detail {
     description: "Use this field to get data for Last Year, this Month to Yesterday's day number"
   }
 
+  parameter: timeframe_picker {
+    label: "Date Granularity"
+    type: string
+    allowed_value: { value: "Date" }
+    allowed_value: { value: "Week" }
+    allowed_value: { value: "Month" }
+    allowed_value: { value: "Quarter" }
+    allowed_value: { value: "Year" }
+    default_value: "Date"
+  }
+
+  dimension: ordered_date_dynamic_timeframe {
+    type: string
+    sql:
+    CASE
+    WHEN {% parameter timeframe_picker %} = 'Date' THEN ${ordered_date}
+    WHEN {% parameter timeframe_picker %} = 'Week' THEN ${ordered_week}
+    WHEN{% parameter timeframe_picker %} = 'Month' THEN ${ordered_month}
+    WHEN{% parameter timeframe_picker %} = 'Quarter' THEN ${ordered_quarter}
+    WHEN{% parameter timeframe_picker %} = 'Year' THEN ${ordered_year}
+    ELSE ${ordered_date}
+    END ;;
+    label: "Ordered Timeframe"
+  }
 
   dimension_group: ordered {
     type: time
