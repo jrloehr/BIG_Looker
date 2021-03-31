@@ -82,7 +82,7 @@ explore: fact_sales_detail {
   join: fact_budget {
     view_label: "Budget and Forecast"
     type: inner
-    sql_on: ${fact_sales_detail.ordered_date} = ${fact_budget.date_date}
+    sql_on: ${fact_sales_detail.shipped_date} = ${fact_budget.date_date}
     AND ${fact_sales_detail.location_id} = ${fact_budget.brand_parent_id}
     ;;
     relationship: many_to_one
