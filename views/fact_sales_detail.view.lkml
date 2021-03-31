@@ -328,7 +328,7 @@ view: fact_sales_detail {
   dimension: transaction_id {
     group_label: "Orders"
     label: "Transaction ID"
-    hidden: no
+    hidden: yes
     type: string
     sql: ${TABLE}.transaction_id ;;
   }
@@ -430,6 +430,7 @@ view: fact_sales_detail {
   }
 
   dimension: ecommerce_etail_order_id_filter {
+    group_label: "Orders"
     label: "Shopify Order ID Filter"
     description: "This is used to help filter for those items that have Shopify orders."
     type: string
