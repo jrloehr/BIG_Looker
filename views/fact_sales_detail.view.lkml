@@ -417,22 +417,25 @@ view: fact_sales_detail {
     description: "I don't know what this field is or if it's useful."
     type: string
     sql: ${TABLE}.Document_Number ;;
+    label: "NetSuite Order ID"
+    group_label: "Orders"
   }
 
   dimension: etail_order_id {
-    label: "eTail Order ID"
+    group_label: "Orders"
+    label: "Shopify Order ID"
     description: "Etail Order ID is a unique tag given in Shopify. Currently, only Shopify provides an etail order ID, so when the etail order ID is present, it means the order is a 'Shopify' order."
     type: string
     sql: ${TABLE}.etail_order_id ;;
   }
 
   dimension: ecommerce_etail_order_id_filter {
-    label: "etail Order ID Filter"
+    label: "Shopify Order ID Filter"
     description: "This is used to help filter for those items that have Shopify orders."
     type: string
     sql: CASE
-          WHEN ${etail_order_id} IS NULL THEN 'No etail Order ID'
-          WHEN ${etail_order_id} IS NOT NULL THEN 'Has Etail Order ID'
+          WHEN ${etail_order_id} IS NULL THEN 'No Shopify Order ID'
+          WHEN ${etail_order_id} IS NOT NULL THEN 'Has Shopify Order ID'
           END;;
   }
 
