@@ -369,6 +369,27 @@ view: fact_sales_detail {
     description: "Use this field to get the unique customers at BIG."
   }
 
+  measure: new_customers_snapshot {
+    hidden: no
+    group_label: "Customers"
+    label: "New Customers"
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${customer_id} ;;
+    filters: [first_order_flag: "1"]
+    description: "Use this field to get the number of New Customers."
+  }
+
+  measure: returning_customers_snapshot {
+    hidden: no
+    group_label: "Customers"
+    label: "Returning Customers"
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${customer_id} ;;
+    filters: [first_order_flag: "-1"]
+    description: "Use this field to get the number of Returning Customers."
+  }
 
   # measure: count_customer_id {
   #   label: "Customers"
@@ -562,6 +583,12 @@ view: fact_sales_detail {
     hidden: yes
     type: number
     sql: ${TABLE}.subsidiary_id ;;
+  }
+
+  dimension: first_order_flag {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.first_order_flag ;;
   }
 
   dimension: marketing_channel_id {
