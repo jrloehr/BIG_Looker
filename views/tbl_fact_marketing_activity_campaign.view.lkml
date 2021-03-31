@@ -343,7 +343,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: visitor_count_total {
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Users"
     type: sum
