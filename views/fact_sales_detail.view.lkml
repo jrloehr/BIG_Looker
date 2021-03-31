@@ -474,6 +474,7 @@ view: fact_sales_detail {
     label: "Year to Date"
     sql: ${ordered_date} <= GETDATE() - 1
       AND YEAR(${ordered_date}) = YEAR(GETDATE());;
+    description: "Use this field to get data for this Year up to Yesterday"
   }
 
 # MAY NEED TO CHANGE THESE TO FILTERS
@@ -484,6 +485,7 @@ view: fact_sales_detail {
     sql: ${ordered_date} <= GETDATE() - 1
       AND YEAR(${ordered_date}) = YEAR(GETDATE())
       AND MONTH(${ordered_date}) = MONTH(GETDATE());;
+    description: "Use this field to get data for this Month up to Yesterday"
   }
 
 # MAY NEED TO CHANGE THESE TO FILTERS
@@ -493,6 +495,7 @@ view: fact_sales_detail {
     label: "Last Seven Days"
     sql: ${ordered_date} <= GETDATE() - 1
       AND ${ordered_date} >= GETDATE() - 8;;
+    description: "Use this field to get data for the Last Week (7 days from Yesterday)"
   }
 
   dimension: order_date_last_year {
@@ -501,6 +504,7 @@ view: fact_sales_detail {
     label: "Last Year"
     sql: ${ordered_date} <= GETDATE() - 1
       AND YEAR(${ordered_date}) = YEAR(GETDATE()) - 1;;
+    description: "Use this field to get data for Last Year"
   }
 
   dimension: order_date_last_year_month_to_date {
@@ -511,6 +515,7 @@ view: fact_sales_detail {
       AND YEAR(${ordered_date}) = YEAR(GETDATE()) - 1
       AND MONTH(${ordered_date}) = MONTH(GETDATE())
       AND DAY(${ordered_date}) <= DAY(GETDATE()) - 1;;
+    description: "Use this field to get data for Last Year, this Month to Yesterday's day number"
   }
 
 
