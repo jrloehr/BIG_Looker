@@ -56,7 +56,7 @@ view: fact_marketing_activty_campaign {
   }
 
   dimension: marketing_source {
-    hidden: yes
+    hidden: no
     group_label: "Marketing Channels"
     label: "Source"
     type: string
