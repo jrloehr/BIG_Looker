@@ -41,35 +41,35 @@ view: dim_market_channel_direct_allocation {
   }
 
   dimension: marketing_channel_grouping {
-    hidden: yes
+    hidden: no
     group_label: "Marketing Channel"
     type: string
     sql: ${TABLE}.Marketing_Channel_Grouping ;;
   }
 
   dimension: marketing_source_medium {
-    hidden: yes
+    hidden: no
     group_label: "Marketing Channel"
     type: string
     sql: ${TABLE}.Marketing_Source_Medium ;;
   }
 
   dimension: marketing_campaign {
-    hidden: yes
+    hidden: no
     group_label: "Marketing Channel"
     type: string
     sql: ${TABLE}.Marketing_Campaign ;;
   }
 
   dimension: marketing_ad_content {
-    hidden: yes
+    hidden: no
     group_label: "Marketing Channel"
     type: string
     sql: ${TABLE}.Marketing_Ad_Content ;;
   }
 
   dimension: marketing_keyword {
-    hidden: yes
+    hidden: no
     group_label: "Marketing Channel"
     type: string
     sql: ${TABLE}.Marketing_Keyword ;;
