@@ -920,6 +920,15 @@ view: fact_marketing_activty_campaign {
     description: "Use this field to get the ROAS for all customers (ROAS is calculated using Net Sales as of the Ordered Date, not as of Shipped Date)"
   }
 
+  measure: new_existing_roas_sum_7_day_rolling_average {
+    group_label: "All Customers"
+    label: "7 Day Rolling ROAS"
+    type: number
+    value_format_name: decimal_2
+    sql: mean(offset_list(${new_existing_roas_sum},-1,7)) ;;
+    description: "Use this field to get the ROAS for all customers (ROAS is calculated using Net Sales as of the Ordered Date, not as of Shipped Date)"
+  }
+
   # MARKETING SPEND METRICS
 
   dimension: marketing_spend {
