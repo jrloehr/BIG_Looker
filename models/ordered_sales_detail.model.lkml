@@ -90,12 +90,12 @@ explore: fact_sales_detail {
 
 # AND ${fact_sales_detail.location_id} = ${dim_estimated_budget.brand_id}
 
-  # join: dim_market_channel_direct_allocation {
-  #   view_label: "Marketing Channel"
-  #   type: inner
-  #   sql_on: ${fact_sales_detail.marketing_channel_id} = ${dim_market_channel_direct_allocation.marketing_channel_id};;
-  #   relationship: many_to_one
-  # }
+  join: dim_market_channel_direct_allocation {
+    view_label: "Marketing Channel"
+    type: inner
+    sql_on: ${fact_sales_detail.marketing_channel_id} = ${dim_market_channel_direct_allocation.marketing_channel_id};;
+    relationship: many_to_one
+  }
 
   # ##### JOINED IN THE CUSTOMER LIFETIME VALUE PDT #####
   # join: customer_order_facts {
