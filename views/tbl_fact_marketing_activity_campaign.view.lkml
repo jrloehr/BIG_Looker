@@ -777,7 +777,7 @@ view: fact_marketing_activty_campaign {
     label: "Net Sales"
     type: sum
     value_format_name: usd
-    sql: ${new_existing_net_sales_b4_returns} + ${new_existing_shipping} ;;
+    sql: IFNULL(${new_existing_net_sales_b4_returns},0) + IFNULL(${new_existing_shipping},0) ;;
     description: "Use this field to get the Net Sales (ordered Net Sales) for all customers."
   }
 
