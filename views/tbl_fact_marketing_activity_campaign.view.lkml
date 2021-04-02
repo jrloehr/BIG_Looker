@@ -14,13 +14,7 @@ view: fact_marketing_activty_campaign {
   dimension: rolling_roas_user_selection {
     group_label: "ROAS"
     type: number
-    sql:
-    CASE
-    WHEN {% parameter rolling_roas_picker %} = '7' THEN 7
-    WHEN {% parameter rolling_roas_picker %} = '28' THEN 28
-    WHEN {% parameter rolling_roas_picker %} = '56' THEN 56
-    ELSE 28
-    END ;;
+    sql: {% parameter rolling_roas_picker %};;
     label: "Rolling ROAS User Selection"
   }
 
