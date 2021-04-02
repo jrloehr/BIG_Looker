@@ -14,6 +14,8 @@ persist_with: order_sales_detail_datagroup
 
 explore: fact_marketing_activty_campaign {
 
+  cancel_grouping_fields: [fact_marketing_activty_campaign.rolling_roas_user_selection]
+
   label: "Marketing Data"
   view_label: "Marketing Detail"
 
