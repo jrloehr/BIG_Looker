@@ -1,6 +1,16 @@
 view: fact_marketing_activty_campaign {
   sql_table_name: dbo.tblFactMarketingActivty_Campaign ;;
 
+  parameter: rolling_roas_picker {
+    group_label: "User Parameters"
+    label: "Rolling ROAS Picker"
+    type: number
+    allowed_value: { value: "7" }
+    allowed_value: { value: "28" }
+    allowed_value: { value: "56" }
+    default_value: "28"
+  }
+
   dimension: brand_parent_name {
     label: "Brand Name"
     type: string
