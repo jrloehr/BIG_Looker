@@ -11,9 +11,9 @@ view: fact_marketing_activty_campaign {
     default_value: "28"
   }
 
-  dimension: rolling_roas_user_selection {
+  measure: rolling_roas_user_selection {
     group_label: "ROAS"
-    type: number
+    type: max
     sql: {% parameter rolling_roas_picker %};;
     label: "Rolling ROAS User Selection"
   }
