@@ -11,6 +11,19 @@ view: fact_marketing_activty_campaign {
     default_value: "28"
   }
 
+  dimension: rolling_roas_user_selection {
+    group_label: "ROAS"
+    type: number
+    sql:
+    CASE
+    WHEN {% parameter rolling_roas_picker %} = '7' THEN 7
+    WHEN {% parameter rolling_roas_picker %} = '28' THEN 28
+    WHEN {% parameter rolling_roas_picker %} = '56' THEN 56
+    ELSE 28
+    END ;;
+    label: "Rolling ROAS User Selection"
+  }
+
   dimension: brand_parent_name {
     label: "Brand Name"
     type: string
