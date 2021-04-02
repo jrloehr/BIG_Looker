@@ -4,7 +4,7 @@ view: fact_marketing_activty_campaign {
   parameter: rolling_roas_picker {
     group_label: "User Parameters"
     label: "Rolling ROAS Picker"
-    type: number
+    type: unquoted
     allowed_value: { value: "7" }
     allowed_value: { value: "28" }
     allowed_value: { value: "56" }
@@ -14,7 +14,12 @@ view: fact_marketing_activty_campaign {
   dimension: rolling_roas_user_selection {
     group_label: "ROAS"
     type: number
-    sql: {% parameter rolling_roas_picker %};;
+    sql: CASE
+          WHEN {% parameter rolling_roas_picker %} = 7 THEN 7
+          WHEN {% parameter rolling_roas_picker %} = 28 THEN 28
+          WHEN {% parameter rolling_roas_picker %} = 56 THEN 56
+          ELSE 28
+          END;;
     label: "Rolling ROAS User Selection"
   }
 
@@ -934,15 +939,6 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: decimal_2
     sql: ${new_existing_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total}, 0) ;;
-    description: "Use this field to get the ROAS for all customers (ROAS is calculated using Net Sales as of the Ordered Date, not as of Shipped Date)"
-  }
-
-  measure: new_existing_roas_sum_7_day_rolling_average {
-    group_label: "All Customers"
-    label: "7 Day Rolling ROAS"
-    type: number
-    value_format_name: decimal_2
-    sql: mean(offset_list(${new_existing_roas_sum},-1,7)) ;;
     description: "Use this field to get the ROAS for all customers (ROAS is calculated using Net Sales as of the Ordered Date, not as of Shipped Date)"
   }
 
