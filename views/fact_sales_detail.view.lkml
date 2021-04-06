@@ -539,6 +539,17 @@ view: fact_sales_detail {
     description: "Use this field to get data for Last Year, this Month to Yesterday's day number"
   }
 
+  dimension: dates_up_to_last_completed_quarter{
+    group_label: "Date Filters"
+    type:  yesno
+    label: "This Year Up to Last Quarter"
+    sql: ${ordered_date} <= GETDATE() - 1
+      AND YEAR(${ordered_date}) <= YEAR(GETDATE())
+      AND MONTH(${ordered_date}) <= MONTH(GETDATE())
+      AND QUARTER(${ordered_date}) <= QUARTER(GETDATE()) - 1;;
+    description: "Use this field to get data for up to the last fully completed quarter."
+  }
+
   parameter: timeframe_picker {
     group_label: "Date Filters"
     label: "Date Granularity"
