@@ -840,8 +840,6 @@ view: fact_marketing_activty_campaign {
     description: "Use this field to determine actual marketing costs as a percentage of total sales."
   }
 
-
-
 # MAY NEED TO CHANGE THESE TO FILTERS
   dimension: year_to_date {
     group_label: "Date Filters"
