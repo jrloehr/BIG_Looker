@@ -128,7 +128,7 @@ view: fact_budget {
 
   measure: variable_ad_expense_as_percent_of_sales_target {
     group_label: "VADX"
-    label: "VADX % of Sales"
+    label: "VADX % of Sales - Target"
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${sum_variable_ad_expense_budget} / NULLIF(${sum_budget_revenue},0) ;;
