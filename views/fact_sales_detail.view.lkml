@@ -524,8 +524,9 @@ view: fact_sales_detail {
     type:  yesno
     label: "Week to Date"
     sql: ${ordered_date} <= GETDATE() - 1
-      AND DATEPART(ww, ${ordered_date}) = DATEPART(ww, GETDATE() - 1);;
-    description: "Use this field to get data for this Quarter up to Yesterday"
+      AND DATEPART(ww, ${ordered_date}) = DATEPART(ww, GETDATE() - 1)
+      AND YEAR(${ordered_date}) = YEAR(GETDATE());;
+    description: "Use this field to get data for this Week up to Yesterday"
   }
 
 # MAY NEED TO CHANGE THESE TO FILTERS
