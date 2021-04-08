@@ -515,7 +515,7 @@ view: fact_sales_detail {
     label: "Quarter to Date"
     sql: ${ordered_date} <= GETDATE() - 1
       AND YEAR(${ordered_date}) = YEAR(GETDATE())
-      AND DATEPART(q, ${ordered_date}) <= DATEPART(q, GETDATE() - 1);;
+      AND DATEPART(q, ${ordered_date}) = DATEPART(q, GETDATE() - 1);;
     description: "Use this field to get data for this Quarter up to Yesterday"
   }
 
