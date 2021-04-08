@@ -498,6 +498,16 @@ view: fact_sales_detail {
     description: "Use this field to get data for this Year up to Yesterday"
   }
 
+  dimension: quarter_to_date {
+    group_label: "Date Filters"
+    type:  yesno
+    label: "Quarter to Date"
+    sql: ${ordered_date} <= GETDATE() - 1
+      AND YEAR(${ordered_date}) = YEAR(GETDATE())
+      AND DATEPART(q, ${ordered_date}) = DATEPART(q, GETDATE() - 1);;
+    description: "Use this field to get data for this Quarter up to Yesterday"
+  }
+
 # MAY NEED TO CHANGE THESE TO FILTERS
   dimension: month_to_date {
     group_label: "Date Filters"
@@ -509,13 +519,12 @@ view: fact_sales_detail {
     description: "Use this field to get data for this Month up to Yesterday"
   }
 
-  dimension: quarter_to_date {
+  dimension: week_to_date {
     group_label: "Date Filters"
     type:  yesno
-    label: "Quarter to Date"
+    label: "Week to Date"
     sql: ${ordered_date} <= GETDATE() - 1
-      AND YEAR(${ordered_date}) = YEAR(GETDATE())
-      AND DATEPART(q, ${ordered_date}) = DATEPART(q, GETDATE() - 1);;
+      AND DATEPART(ww, ${ordered_date}) = DATEPART(ww, GETDATE() - 1);;
     description: "Use this field to get data for this Quarter up to Yesterday"
   }
 
