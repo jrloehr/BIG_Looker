@@ -7,6 +7,81 @@ view: dim_item {
     sql: ${TABLE}.item_status_id ;;
   }
 
+  dimension: item_hierarchy_id_1 {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.prod_family_lvl__1_id ;;
+  }
+
+  dimension: item_hierarchy_id_2 {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.prod_family_lvl__2_id ;;
+  }
+
+  dimension: item_hierarchy_id_3 {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.prod_family_lvl__3_id ;;
+  }
+
+  dimension: item_hierarchy_id_4 {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.prod_family_lvl__4_id ;;
+  }
+
+  dimension: item_hierarchy_name_1 {
+    hidden: no
+    type: string
+    sql: ${TABLE}.prod_family_lvl__1_name ;;
+  }
+
+  dimension: item_hierarchy_name_2 {
+    hidden: no
+    type: string
+    sql: ${TABLE}.prod_family_lvl__2_name ;;
+  }
+
+  dimension: item_hierarchy_name_3 {
+    hidden: no
+    type: string
+    sql: ${TABLE}.prod_family_lvl__3_name ;;
+  }
+
+  dimension: item_hierarchy_name_4 {
+    hidden: no
+    type: string
+    sql: ${TABLE}.prod_family_lvl__4_name ;;
+  }
+
+  dimension: product_family_hierarchy {
+    hidden: yes
+    label_from_parameter: product_family_hierarchy_types
+    sql:  CASE
+      WHEN {% parameter product_family_hierarchy_types %} = '4 Ad Content'
+        THEN ${item_hierarchy_name_4}
+      WHEN {% parameter product_family_hierarchy_types %} = '3 Campaign'
+        THEN ${item_hierarchy_name_3}
+      WHEN {% parameter product_family_hierarchy_types %} = '2 Source Medium'
+        THEN ${item_hierarchy_name_2}
+      WHEN {% parameter product_family_hierarchy_types %} = '1 Grouping'
+        THEN ${item_hierarchy_name_1}
+      ELSE NULL
+    END ;;
+  }
+
+  parameter: product_family_hierarchy_types {
+    hidden: yes
+    type: string
+    allowed_value: {value:"Ad Content"}
+    allowed_value: {value:"Keyword"}
+    allowed_value: {value:"Campaign"}
+    allowed_value: {value:"Source Medium"}
+    allowed_value: {value:"Grouping"}
+  }
+
+
 
   dimension: brand {
     hidden: yes
