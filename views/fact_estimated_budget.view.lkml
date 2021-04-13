@@ -86,7 +86,8 @@ view: fact_budget {
     description: "Use this field to track aggregated Budget revenue."
     type: sum
     value_format_name: usd
-    sql: DAYS(EOMONTH(GETDATE())) * ${budget_revenue};;
+    sql: CASE
+          WHEN MONTH(GETDATE()-1) = MONTH(${date_date}) THEN ${budget_revenue} END;;
   }
 
   measure: avg_budget_revenue {
