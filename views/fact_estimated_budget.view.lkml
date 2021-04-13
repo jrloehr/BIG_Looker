@@ -80,15 +80,14 @@ view: fact_budget {
     sql: ${budget_revenue} ;;
   }
 
-  # measure: sum_budget_revenue_current_month {
-  #   group_label: "Budget Revenue"
-  #   label: "Budget Revenue Monthly"
-  #   description: "Use this field to track aggregated Budget revenue."
-  #   type: sum
-  #   value_format_name: usd
-  #   sql: CASE
-  #         WHEN MONTH(GETDATE()-1) = MONTH(${date_date}) THEN ${budget_revenue} END;;
-  # }
+  measure: sum_budget_revenue_current_month {
+    group_label: "Budget Revenue"
+    label: "Budget Revenue Monthly"
+    description: "Use this field to track aggregated Budget revenue."
+    type: sum
+    value_format_name: usd
+    sql: DAYS(EOMONTH(GETDATE())) * ${budget_revenue};;
+  }
 
   measure: avg_budget_revenue {
     group_label: "Budget Revenue"
