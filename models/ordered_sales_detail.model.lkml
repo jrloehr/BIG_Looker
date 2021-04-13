@@ -38,7 +38,8 @@ explore: fact_budget {
     view_label: "Sales Detail"
     type: left_outer
     sql_on: ${fact_sales_detail.ordered_date} = ${fact_budget.date_date}
-    AND ${fact_sales_detail.location_id} = ${fact_budget.brand_parent_id};;
+    AND ${fact_sales_detail.location_id} = ${fact_budget.brand_parent_id}
+    ;;
     relationship: many_to_one
   }
 
