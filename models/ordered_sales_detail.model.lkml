@@ -30,6 +30,19 @@ explore: fact_marketing_activty_campaign {
 
 }
 
+explore: fact_budget {
+  label: "Fact Budget Explore"
+  view_label: "Fact Budget"
+
+  join: fact_sales_detail {
+    view_label: "Sales Detail"
+    type: left_outer
+    sql_on: ${fact_sales_detail.ordered_date} = ${fact_budget.date_date} ;;
+    relationship: many_to_one
+  }
+
+}
+
 explore: fact_sales_detail {
     label: "Sales Data"
     view_label: "Sales Detail"
