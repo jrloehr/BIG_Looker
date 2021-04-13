@@ -41,6 +41,13 @@ explore: fact_budget {
     relationship: many_to_one
   }
 
+  join: dim_customer {
+    view_label: "Customer"
+    type: left_outer
+    sql_on: ${fact_sales_detail.customer_id} = ${dim_customer.customer_id} ;;
+    relationship: many_to_one
+  }
+
 }
 
 explore: fact_sales_detail {
