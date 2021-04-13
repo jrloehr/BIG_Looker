@@ -31,8 +31,8 @@ explore: fact_marketing_activty_campaign {
 }
 
 explore: fact_budget {
-  label: "Fact Budget Explore"
-  view_label: "Fact Budget"
+  label: "Sales Data"
+  view_label: "Sales Detail"
 
   join: fact_sales_detail {
     view_label: "Sales Detail"
@@ -47,38 +47,6 @@ explore: fact_budget {
     sql_on: ${fact_sales_detail.customer_id} = ${dim_customer.customer_id} ;;
     relationship: many_to_one
   }
-
-}
-
-explore: fact_sales_detail {
-    label: "Sales Data"
-    view_label: "Sales Detail"
-
-    query: order_count_by_month {
-    description: "Number of orders placed by month in 2019"
-    dimensions: [fact_sales_detail.ordered_month]
-    measures: [fact_sales_detail.count_etail_order_id]
-    filters: [fact_sales_detail.ordered_date: "2018"]
-  }
-
-  query: total_yearly_sales {
-    description: "Total Sales by Year"
-    dimensions: [fact_sales_detail.ordered_year]
-    measures: [fact_sales_detail.sum_total_sales]
-  }
-
-  join: dim_customer {
-    view_label: "Customer"
-    type: left_outer
-    sql_on: ${fact_sales_detail.customer_id} = ${dim_customer.customer_id} ;;
-    relationship: many_to_one
-  }
-
-  # join: dim_date {
-  #   type: left_outer
-  #   sql_on: ${fact_sales_detail.ordered_date} = ${dim_date.date_date} ;;
-  #   relationship: many_to_one
-  # }
 
   join: dim_item {
     view_label: "Products"
@@ -101,23 +69,83 @@ explore: fact_sales_detail {
     relationship: many_to_one
   }
 
-  join: fact_budget {
-    view_label: "Budget and Forecast"
-    type: left_outer
-    sql_on: ${fact_sales_detail.ordered_date} = ${fact_budget.date_date}
-    AND ${fact_sales_detail.location_id} = ${fact_budget.brand_parent_id}
-    ;;
-    relationship: many_to_one
-  }
-
-# AND ${fact_sales_detail.location_id} = ${dim_estimated_budget.brand_id}
-
   join: dim_market_channel_direct_allocation {
     view_label: "Marketing Channel"
     type: inner
     sql_on: ${fact_sales_detail.marketing_channel_id} = ${dim_market_channel_direct_allocation.marketing_channel_id};;
     relationship: many_to_one
   }
+
+}
+
+# explore: fact_sales_detail {
+#     label: "Sales Data"
+#     view_label: "Sales Detail"
+
+#     query: order_count_by_month {
+#     description: "Number of orders placed by month in 2019"
+#     dimensions: [fact_sales_detail.ordered_month]
+#     measures: [fact_sales_detail.count_etail_order_id]
+#     filters: [fact_sales_detail.ordered_date: "2018"]
+#   }
+
+#   query: total_yearly_sales {
+#     description: "Total Sales by Year"
+#     dimensions: [fact_sales_detail.ordered_year]
+#     measures: [fact_sales_detail.sum_total_sales]
+#   }
+
+#   join: dim_customer {
+#     view_label: "Customer"
+#     type: left_outer
+#     sql_on: ${fact_sales_detail.customer_id} = ${dim_customer.customer_id} ;;
+#     relationship: many_to_one
+#   }
+
+#   # join: dim_date {
+#   #   type: left_outer
+#   #   sql_on: ${fact_sales_detail.ordered_date} = ${dim_date.date_date} ;;
+#   #   relationship: many_to_one
+#   # }
+
+#   join: dim_item {
+#     view_label: "Products"
+#     type: left_outer
+#     sql_on: ${fact_sales_detail.item_id} = ${dim_item.item_id} ;;
+#     relationship: many_to_one
+#   }
+
+#   join: dim_sales_channel {
+#     view_label: "Sales Channel"
+#     type: left_outer
+#     sql_on: ${fact_sales_detail.customer_type_id} = ${dim_sales_channel.customer_type_id} ;;
+#     relationship: many_to_one
+#   }
+
+#   join: dim_brand {
+#     view_label: "Brands"
+#     type: left_outer
+#     sql_on: ${fact_sales_detail.location_id} = ${dim_brand.brand_id} ;;
+#     relationship: many_to_one
+#   }
+
+#   join: fact_budget {
+#     view_label: "Budget and Forecast"
+#     type: left_outer
+#     sql_on: ${fact_sales_detail.ordered_date} = ${fact_budget.date_date}
+#     AND ${fact_sales_detail.location_id} = ${fact_budget.brand_parent_id}
+#     ;;
+#     relationship: many_to_one
+#   }
+
+# # AND ${fact_sales_detail.location_id} = ${dim_estimated_budget.brand_id}
+
+#   join: dim_market_channel_direct_allocation {
+#     view_label: "Marketing Channel"
+#     type: inner
+#     sql_on: ${fact_sales_detail.marketing_channel_id} = ${dim_market_channel_direct_allocation.marketing_channel_id};;
+#     relationship: many_to_one
+#   }
 
   # ##### JOINED IN THE CUSTOMER LIFETIME VALUE PDT #####
   # join: customer_order_facts {
@@ -163,4 +191,4 @@ explore: fact_sales_detail {
   #   relationship: many_to_one
   # }
 
-}
+# }
