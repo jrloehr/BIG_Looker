@@ -1,5 +1,5 @@
 # view: dim_subsidiary {
-#   sql_table_name: dbo.DimSubsidiary ;;
+#   sql_table_name: edw.DimSubsidiary ;;
 
 #   dimension: city {
 #     type: string

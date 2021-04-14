@@ -1,5 +1,5 @@
 view: dim_market_channel_direct_allocation {
-  sql_table_name: dbo.DimMarketChannelDirectAllocation ;;
+  sql_table_name: edw.DimMarketChannelDirectAllocation ;;
 
   dimension_group: date_created {
     type: time

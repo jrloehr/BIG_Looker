@@ -1,5 +1,5 @@
 view: dim_customer {
-  sql_table_name: dbo.DimCustomer ;;
+  sql_table_name: edw.DimCustomer ;;
 
   dimension: customer_id {
     primary_key: yes

@@ -1,5 +1,5 @@
 # view: dim_parent_company {
-#   sql_table_name: dbo.DimParentCompany ;;
+#   sql_table_name: edw.DimParentCompany ;;
 
 #   dimension: city {
 #     label: "Parent Company City"

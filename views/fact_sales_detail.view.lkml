@@ -1,5 +1,5 @@
 view: fact_sales_detail {
-  sql_table_name: dbo.FactSalesDetail ;;
+  sql_table_name: edw.FactSalesDetail ;;
 
   dimension: cogs {
     label: "Cost of Goods Sold"

@@ -1,5 +1,5 @@
 # view: dim_location {
-#   sql_table_name: dbo.DimLocation ;;
+#   sql_table_name: edw.DimLocation ;;
 
 #   dimension: city {
 #     label: "City"

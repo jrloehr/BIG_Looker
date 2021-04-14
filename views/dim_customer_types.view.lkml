@@ -1,5 +1,5 @@
 # view: dim_customer_types {
-#   sql_table_name: dbo.DimCustomerTypes ;;
+#   sql_table_name: edw.DimCustomerTypes ;;
 
 #   dimension: customer_type_id {
 #     hidden: yes

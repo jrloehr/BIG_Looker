@@ -1,5 +1,5 @@
 view: fact_marketing_activty_campaign {
-  sql_table_name: dbo.tblFactMarketingActivty_Campaign ;;
+  sql_table_name: edw.tblFactMarketingActivty_Campaign ;;
 
   parameter: rolling_roas_picker {
     group_label: "User Parameters"

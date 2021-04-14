@@ -1,5 +1,5 @@
 view: dim_brand {
-  sql_table_name: dbo.DimBrand ;;
+  sql_table_name: edw.DimBrand ;;
 
   dimension: subsidiary_id {
     hidden: yes

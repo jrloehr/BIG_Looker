@@ -1,5 +1,5 @@
 # view: dim_date {
-#   sql_table_name: dbo.DimDate ;;
+#   sql_table_name: edw.DimDate ;;
 
 #   dimension_group: date {
 #     type: time

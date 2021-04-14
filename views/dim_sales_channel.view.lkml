@@ -1,5 +1,5 @@
 view: dim_sales_channel {
-  sql_table_name: dbo.DimSalesChannel ;;
+  sql_table_name: edw.DimSalesChannel ;;
 
   dimension: customer_type_id {
     hidden: yes

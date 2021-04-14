@@ -1,5 +1,5 @@
 view: dim_item {
-  sql_table_name: dbo.DimItem ;;
+  sql_table_name: edw.DimItem ;;
 
   dimension: item_status_id {
     hidden: yes
