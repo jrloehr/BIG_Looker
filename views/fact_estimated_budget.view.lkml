@@ -52,12 +52,7 @@ view: fact_budget {
     sql: ${TABLE}.subsidiary_name ;;
   }
 
-  dimension: budget_revenue {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.estimated_revenue ;;
-    description: "Use this field to track Budget revenue."
-  }
+
 
   dimension: subsidiary_id {
     hidden: yes
@@ -69,6 +64,13 @@ view: fact_budget {
     hidden: yes
     type: number
     sql: ${TABLE}.variable_ad_expense_budget ;;
+  }
+
+  dimension: budget_revenue {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.estimated_revenue ;;
+    description: "Use this field to track Budget revenue."
   }
 
   measure: sum_budget_revenue {
