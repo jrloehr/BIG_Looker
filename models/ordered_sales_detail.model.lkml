@@ -151,8 +151,8 @@ explore: fact_sales_detail {
 
   join: fact_budget {
     sql: RIGHT JOIN google_sheets.fact_estimated_budget as fact_budget
-    ON ${fact_budget.date_date} = ${fact_sales_detail.ordered_date}
-    AND ${fact_budget.brand_parent_id} = ${fact_sales_detail.location_id} ;;
+    ON ${fact_sales_detail.ordered_date} = ${fact_budget.date_date}
+    AND ${fact_sales_detail.location_id} = ${fact_budget.brand_parent_id} ;;
     relationship: many_to_one
   }
 
