@@ -128,7 +128,7 @@ explore: fact_sales_detail {
     view_label: "Brands"
     type: left_outer
     sql_on: ${fact_sales_detail.location_id} = ${dim_brand.brand_id} ;;
-    relationship: many_to_one
+    relationship: many_to_many
   }
 
   join: fact_budget {
