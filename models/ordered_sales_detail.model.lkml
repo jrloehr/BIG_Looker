@@ -127,7 +127,7 @@ explore: fact_sales_detail {
   join: dim_brand {
     view_label: "Brands"
     type: left_outer
-    sql_on: ${fact_sales_detail.location_id} = ${dim_brand.brand_id} ;;
+    sql_on: ${fact_sales_detail.location_id} = ${dim_brand.brand_parent_id} ;;
     relationship: many_to_many
   }
 

@@ -22,6 +22,13 @@ view: dim_brand {
     sql: ${TABLE}.Brand_id ;;
   }
 
+  dimension: brand_parent_id {
+    label: "Brand Parent ID"
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Brand_parent_id ;;
+  }
+
   dimension: brand_name {
     label: "Brand"
     hidden: yes
