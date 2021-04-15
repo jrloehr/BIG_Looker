@@ -134,10 +134,11 @@ explore: fact_sales_detail {
   join: fact_budget {
     view_label: "Budget and Forecast"
     type: full_outer
-    sql_on: ${fact_sales_detail.ordered_date} = ${fact_budget.date_date}
-    AND ${fact_sales_detail.location_id} = ${fact_budget.brand_parent_id}
+    sql_on:
+    --${fact_sales_detail.ordered_date} = ${fact_budget.date_date} AND
+    ${fact_sales_detail.location_id} = ${fact_budget.brand_parent_id}
     ;;
-    relationship: many_to_one
+    relationship: many_to_many
   }
 
   # join: fact_budget {
