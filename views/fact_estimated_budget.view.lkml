@@ -40,7 +40,7 @@ view: fact_budget {
 
   dimension: brand_parent_name {
     hidden: no
-    label: "Brand Name"
+    label: "Brand Name (Budget)"
     type: string
     sql: ${TABLE}.brand_parent_name ;;
   }
