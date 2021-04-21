@@ -102,7 +102,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: marketing_impressions_total {
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Impressions"
     type: sum
@@ -195,7 +195,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: marketing_clicks_total {
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Clicks"
     type: sum
@@ -276,7 +276,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: page_views_total {
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Page Views"
     type: sum
@@ -318,7 +318,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: session_count_total {
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Sessions"
     type: sum
