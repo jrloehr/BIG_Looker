@@ -432,7 +432,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_order_count_total {
-    hidden: yes
+    hidden: no
     group_label: "New Customers"
     label: "New | Order Count"
     type: sum
@@ -448,7 +448,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_cogs_total {
-    hidden: yes
+    hidden: no
     group_label: "New Customers"
     label: "New | COGS"
     type: sum
@@ -463,7 +463,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_margin_dollars_total {
-    hidden: yes
+    hidden: no
     group_label: "New Customers"
     label: "New | Margin Dollars"
     type: sum
@@ -478,7 +478,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_total_sales_b4_returns_total {
-    hidden: yes
+    hidden: no
     group_label: "New Customers"
     label: "New | Sales"
     type: sum
@@ -493,7 +493,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_net_sales_b4_returns_total {
-    hidden: yes
+    hidden: no
     group_label: "New Customers"
     label: "New | Net Sales"
     type: sum
