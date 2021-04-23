@@ -404,7 +404,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_customer_count_total {
-    hidden: yes
+    hidden: no
     group_label: "New Customers"
     label: "New | Customer Count"
     type: sum
@@ -418,7 +418,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_item_count_total {
-    hidden: yes
+    hidden: no
     group_label: "New Customers"
     label: "New | Item Count"
     type: sum
