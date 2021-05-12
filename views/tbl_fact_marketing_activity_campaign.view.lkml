@@ -1037,6 +1037,12 @@ view: fact_marketing_activty_campaign {
     type: number
     sql: ${fact_budget.variable_ad_expense_as_percent_of_sales_target} - ${fact_marketing_activty_campaign.new_existing_variable_ad_expense_as_percent_of_sales} ;;
     value_format_name: percent_2
+    html:
+    {% if value < 0 %}
+    <p style="color: red; font-size: 100%">{{ rendered_value }}</p>
+    {% elsif value >= 0 %}
+    <p style="color: green; font-size:100%">{{ rendered_value }}</p>
+    {% endif %};;
   }
 
   measure: count {
