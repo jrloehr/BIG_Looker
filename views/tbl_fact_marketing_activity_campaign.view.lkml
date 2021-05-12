@@ -444,7 +444,10 @@ view: fact_marketing_activty_campaign {
     group_label: "New Customers"
     label: "New | Average Order Count"
     type: average
-    sql: ${new_order_count} ;;
+    sql: CASE
+    WHEN ${date_date} >= GETDATE() - 365
+    THEN ${new_order_count}
+    END ;;
   }
 
 # NEW DOLLAR METRICS
