@@ -439,24 +439,19 @@ view: fact_marketing_activty_campaign {
     sql: ${new_order_count} ;;
   }
 
+  measure: avg_new_order_count_prior_365_filter {
+    hidden: yes
+    type: sum
+    sql: ${new_order_count} ;;
+    filters: [last_365_days: "Yes"]
+  }
+
   measure: avg_new_order_count_prior_365 {
     hidden: no
     group_label: "New Customers"
-    label: "New | Average Order Count"
-    type: number
-    sql: CASE
-    WHEN ${date_date} >= GETDATE() - 365
-    THEN SUM(${new_order_count})/12
-    END ;;
-  }
-
-  measure: avg_new_order_count_prior_365_filter {
-    hidden: no
-    group_label: "New Customers"
     label: "New | Average Order Count Filter"
-    type: sum
-    sql: ${new_order_count}/12 ;;
-    filters: [last_365_days: "Yes"]
+    type: number
+    sql: ${avg_new_order_count_prior_365_filter}/12 ;;
   }
 
 # NEW DOLLAR METRICS
