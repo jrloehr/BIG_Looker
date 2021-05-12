@@ -840,6 +840,20 @@ view: fact_marketing_activty_campaign {
     description: "Use this field to determine actual marketing costs as a percentage of total sales."
   }
 
+  measure: target_vadx_vs_actual {
+    group_label: "Other VADX"
+    label: "Target VADX vs. Actual"
+    type: number
+    sql: ${fact_budget.variable_ad_expense_as_percent_of_sales_target} - ${fact_marketing_activty_campaign.new_existing_variable_ad_expense_as_percent_of_sales} ;;
+    value_format_name: percent_2
+    html:
+    {% if value < 0 %}
+    <p style="color: red; font-size: 100%">{{ rendered_value }}</p>
+    {% elsif value >= 0 %}
+    <p style="color: green; font-size:100%">{{ rendered_value }}</p>
+    {% endif %};;
+  }
+
 # MAY NEED TO CHANGE THESE TO FILTERS
   dimension: year_to_date {
     group_label: "Date Filters"
@@ -1032,18 +1046,7 @@ view: fact_marketing_activty_campaign {
   #   sql: AVG(${marketing_spend}) / AVG(${new_existing_item_count}) ;;
   # }
 
-  measure: target_vadx_vs_actual {
-    label: "Target VADX vs. Actual"
-    type: number
-    sql: ${fact_budget.variable_ad_expense_as_percent_of_sales_target} - ${fact_marketing_activty_campaign.new_existing_variable_ad_expense_as_percent_of_sales} ;;
-    value_format_name: percent_2
-    html:
-    {% if value < 0 %}
-    <p style="color: green; font-size: 100%">{{ rendered_value }}</p>
-    {% elsif value >= 0 %}
-    <p style="color: red; font-size:100%">{{ rendered_value }}</p>
-    {% endif %};;
-  }
+
 
   measure: count {
     hidden: yes
