@@ -1039,9 +1039,9 @@ view: fact_marketing_activty_campaign {
     value_format_name: percent_2
     html:
     {% if value < 0 %}
-    <p style="color: red; font-size: 100%">{{ rendered_value }}</p>
+    <p style="color: green; font-size: 100%">{{ rendered_value }}</p>
     {% elsif value >= 0 %}
-    <p style="color: green; font-size:100%">{{ rendered_value }}</p>
+    <p style="color: red; font-size:100%">{{ rendered_value }}</p>
     {% endif %};;
   }
 
