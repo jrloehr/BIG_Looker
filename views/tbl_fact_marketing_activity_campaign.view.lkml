@@ -439,6 +439,14 @@ view: fact_marketing_activty_campaign {
     sql: ${new_order_count} ;;
   }
 
+  measure: avg_new_order_count_prior_365 {
+    hidden: no
+    group_label: "New Customers"
+    label: "New | Average Order Count"
+    type: average
+    sql: ${new_order_count} ;;
+  }
+
 # NEW DOLLAR METRICS
 
   dimension: new_cogs {
@@ -862,6 +870,14 @@ view: fact_marketing_activty_campaign {
     sql: ${date_date} <= GETDATE() - 1
       AND YEAR(${date_date}) = YEAR(GETDATE());;
     description: "Use this filter to get data for Year to Date"
+  }
+
+  dimension: last_365_days {
+    group_label: "Date Filters"
+    type: yesno
+    label: "In Last 365 Days"
+    sql: ${date_date} >= GETDATE() - 365 ;;
+    description: "Use this filter to get data for the last 365 days."
   }
 
 
