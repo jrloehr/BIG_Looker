@@ -450,6 +450,15 @@ view: fact_marketing_activty_campaign {
     END ;;
   }
 
+  measure: avg_new_order_count_prior_365_filter {
+    hidden: no
+    group_label: "New Customers"
+    label: "New | Average Order Count"
+    type: average
+    sql: ${new_order_count} ;;
+    filters: [last_365_days: "Yes"]
+  }
+
 # NEW DOLLAR METRICS
 
   dimension: new_cogs {
