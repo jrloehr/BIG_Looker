@@ -1035,7 +1035,7 @@ view: fact_marketing_activty_campaign {
   measure: target_vadx_vs_actual {
     label: "Target VADX vs. Actual"
     type: number
-    sql: sum(${fact_budget.variable_ad_expense_as_percent_of_sales_target} - ${fact_marketing_activty_campaign.new_existing_variable_ad_expense_as_percent_of_sales}) ;;
+    sql: ${fact_budget.variable_ad_expense_as_percent_of_sales_target} - ${fact_marketing_activty_campaign.new_existing_variable_ad_expense_as_percent_of_sales}) ;;
   }
 
   measure: count {
