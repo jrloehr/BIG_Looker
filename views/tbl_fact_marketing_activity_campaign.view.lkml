@@ -850,6 +850,7 @@ view: fact_marketing_activty_campaign {
     description: "Use this filter to get data for Year to Date"
   }
 
+
 # MAY NEED TO CHANGE THESE TO FILTERS
   dimension: month_to_date {
     group_label: "Date Filters"
