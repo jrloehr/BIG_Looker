@@ -49,7 +49,7 @@ view: fact_marketing_activty_campaign {
   }
 
   dimension: marketing_ad_content {
-    hidden: yes
+    hidden: no
     group_label: "Marketing Channels"
     label: "Ad Content"
     type: string
@@ -57,7 +57,7 @@ view: fact_marketing_activty_campaign {
   }
 
   dimension: marketing_campaign_name {
-    hidden: yes
+    hidden: no
     group_label: "Marketing Channels"
     label: "Campaign"
     type: string
@@ -65,7 +65,7 @@ view: fact_marketing_activty_campaign {
   }
 
   dimension: marketing_channel_grouping {
-    hidden: yes
+    hidden: no
     group_label: "Marketing Channels"
     label: "Channel Grouping"
     type: string
@@ -87,7 +87,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: hard_bounce_count_total {
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Hard Bounces"
     type: sum
@@ -113,7 +113,7 @@ view: fact_marketing_activty_campaign {
   # Impressions per Click
 
   measure: impressions_per_click {
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Impressions per Click"
     value_format_name: decimal_2
@@ -125,7 +125,7 @@ view: fact_marketing_activty_campaign {
   # Impressions per User
 
   measure: impressions_per_visitor {
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Impressions per User"
     value_format_name: decimal_2
@@ -137,7 +137,7 @@ view: fact_marketing_activty_campaign {
   # Impressions per Page View
 
   measure: impressions_per_page_view{
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Impressions per Page View"
     value_format_name: decimal_2
@@ -149,7 +149,7 @@ view: fact_marketing_activty_campaign {
   # Impressions per Session
 
   measure: impressions_per_session{
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Impressions per Session"
     value_format_name: decimal_2
@@ -179,7 +179,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: impressions_per_new_existing_order_count{
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Impressions per Total Customer Order"
     type: number
@@ -206,7 +206,7 @@ view: fact_marketing_activty_campaign {
   # Clicks Per Session
 
   measure: clicks_per_session{
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Clicks per Session"
     value_format_name: decimal_2
@@ -218,7 +218,7 @@ view: fact_marketing_activty_campaign {
   # Clicks Per Page Views
 
   measure: clicks_per_page_view{
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Clicks per Page View"
     value_format_name: decimal_2
@@ -230,7 +230,7 @@ view: fact_marketing_activty_campaign {
   # Clicks Per Visitors
 
   measure: clicks_per_visitor{
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Clicks per User"
     value_format_name: decimal_2
@@ -260,7 +260,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: clicks_per_new_existing_order_count{
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Clicks per Total Customer Order"
     type: number
@@ -302,7 +302,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: page_views_per_new_existing_order_count{
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Page Views per Total Customer Order"
     type: number
@@ -326,7 +326,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: sessions_per_new_order_count{
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Sessions per New Customer Order"
     type: number
@@ -344,7 +344,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: sessions_views_per_new_existing_order_count{
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Sessions per Total Customer Order"
     type: number
@@ -386,7 +386,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: visitors_views_per_new_existing_order_count{
-    hidden: yes
+    hidden: no
     group_label: "Ad Metrics"
     label: "Users per Total Customer Order"
     type: number
@@ -508,7 +508,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_shipping_total {
-    hidden: yes
+    hidden: no
     group_label: "New Customers"
     label: "New | Shipping"
     type: sum
@@ -526,7 +526,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_conversions {
-    hidden: yes
+    hidden: no
     group_label: "New Customers"
     label: "New | Conversion Rate"
     type: number
@@ -535,7 +535,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_variable_ad_expense_as_percent_of_sales {
-    hidden: yes
+    hidden: no
     group_label: "New Customers"
     label: "New | VADX % of Sales"
     type: number
@@ -552,7 +552,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: existing_customer_count_total {
-    hidden: yes
+    hidden: no
     group_label: "Returning Customers"
     label: "Returning | Customer Count"
     type: sum
@@ -566,7 +566,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: existing_item_count_total {
-    hidden: yes
+    hidden: no
     group_label: "Returning Customers"
     label: "Returning | Item Count"
     type: sum
@@ -580,7 +580,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: existing_order_count_total {
-    hidden: yes
+    hidden: no
     group_label: "Returning Customers"
     label: "Returning | Order Count"
     type: sum
@@ -596,7 +596,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: existing_cogs_total {
-    hidden: yes
+    hidden: no
     group_label: "Returning Customers"
     label: "Returning | COGS"
     type: sum
@@ -611,7 +611,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: existing_margin_dollars_total {
-    hidden: yes
+    hidden: no
     group_label: "Returning Customers"
     label: "Returning | Margin Dollars"
     type: sum
@@ -626,7 +626,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: existing_total_sales_b4_returns_total {
-    hidden: yes
+    hidden: no
     group_label: "Returning Customers"
     label: "Returning | Sales"
     type: sum
@@ -641,7 +641,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: existing_net_sales_b4_returns_total {
-    hidden: yes
+    hidden: no
     group_label: "Returning Customers"
     label: "Returning | Net Sales"
     type: sum
@@ -656,7 +656,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: existing_shipping_total {
-    hidden: yes
+    hidden: no
     group_label: "Returning Customers"
     label: "Returning | Shipping"
     type: sum
@@ -665,7 +665,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: existing_AOV {
-    hidden: yes
+    hidden: no
     group_label: "Returning Customers"
     label: "Returning | Average Order Value"
     type: number
@@ -674,7 +674,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: existing_conversions {
-    hidden: yes
+    hidden: no
     group_label: "Returning Customers"
     label: "Returning | Conversion Rate"
     type: number
@@ -683,7 +683,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: existing_variable_ad_expense_as_percent_of_sales {
-    hidden: yes
+    hidden: no
     group_label: "Returning Customers"
     label: "Returning | VADX % of Sales"
     type: number
@@ -700,7 +700,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_existing_customer_count_total {
-    hidden: yes
+    hidden: no
     group_label: "All Customers"
     label: "Customer Count"
     type: sum
@@ -714,7 +714,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_existing_item_count_total {
-    hidden: yes
+    hidden: no
     group_label: "All Customers"
     label: "Item Count"
     type: sum
@@ -745,7 +745,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_existing_cogs_total {
-    hidden: yes
+    hidden: no
     group_label: "All Customers"
     label: "COGS"
     type: sum
@@ -760,7 +760,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_existing_margin_dollars_total {
-    hidden: yes
+    hidden: no
     group_label: "All Customers"
     label: "Margin Dollars"
     type: sum
@@ -775,7 +775,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_existing_total_sales_b4_returns_total {
-    hidden: yes
+    hidden: no
     group_label: "All Customers"
     label: "Sales"
     type: sum
@@ -805,7 +805,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_existing_shipping_total {
-    hidden: yes
+    hidden: no
     group_label: "All Customers"
     label: "Shipping"
     type: sum
@@ -909,7 +909,7 @@ view: fact_marketing_activty_campaign {
 # }
 
   measure: existing_roas_sum {
-    hidden: yes
+    hidden: no
     group_label: "Returning Customers"
     label: "Returning | ROAS"
     type: number
@@ -918,7 +918,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_roas_sum {
-    hidden: yes
+    hidden: no
     group_label: "New Customers"
     label: "New | ROAS"
     type: number
@@ -953,7 +953,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_existing_spend_per_order_sum {
-    hidden: yes
+    hidden: no
     group_label: "Ad Cost Metrics"
     label: "Ad Cost / Order Total"
     type: number
@@ -966,7 +966,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_existing_spend_per_customer_sum {
-    hidden: yes
+    hidden: no
     group_label: "Ad Cost Metrics"
     label: "Ad Cost / Customer Total"
     type: number
@@ -979,7 +979,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_existing_spend_per_item_sum {
-    hidden: yes
+    hidden: no
     group_label: "Ad Cost Metrics"
     label: "Ad Cost / Item Total"
     type: number

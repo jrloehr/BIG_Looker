@@ -3,7 +3,7 @@ view: dim_customer {
 
   dimension: customer_id {
     primary_key: yes
-    hidden: yes
+    hidden: no
     type: number
     sql: ${TABLE}.Customer_id ;;
     description: "This may deprecate when BIG has a BIG Customer ID."
@@ -29,28 +29,28 @@ view: dim_customer {
   }
 
   dimension: email {
-    hidden: yes
+    hidden: no
     label: "Email"
     type: string
     sql: ${TABLE}.Email ;;
   }
 
   dimension: first_name {
-    hidden: yes
+    hidden: no
     label: "First Name"
     type: string
     sql: ${TABLE}.FirstName ;;
   }
 
   dimension: last_name {
-    hidden: yes
+    hidden: no
     label: "Last Name"
     type: string
     sql: ${TABLE}.LastName ;;
   }
 
   dimension: first_last_name {
-    hidden: yes
+    hidden: no
     label: "First and Last Name"
     type: string
     sql: ${first_name} + " " + ${last_name} ;;
@@ -64,21 +64,21 @@ view: dim_customer {
   }
 
   dimension: city {
-    hidden: yes
+    hidden: no
     label: "Customer City"
     type: string
     sql: ${TABLE}.City ;;
   }
 
   dimension: zip_code {
-    hidden: yes
+    hidden: no
     label: "Customer Zip Code"
     type: zipcode
     sql: ${TABLE}.ZipCode ;;
   }
 
   dimension: customer_state {
-    hidden: yes
+    hidden: no
     label: "Customer State"
     type: string
     sql: ${TABLE}.Customer_State ;;
@@ -143,7 +143,7 @@ view: dim_customer {
   }
 
   dimension_group: last_order {
-    hidden: yes
+    hidden: no
     type: time
     timeframes: [
       raw,

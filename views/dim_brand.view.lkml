@@ -9,7 +9,7 @@ view: dim_brand {
   }
 
   dimension: subsidiary_name {
-    hidden: yes
+    hidden: no
     label: "Subsidiary Name"
     type: string
     sql: ${TABLE}.Subsidiary_Name ;;
@@ -72,7 +72,7 @@ view: dim_brand {
   }
 
   dimension: brand_city {
-    hidden: yes
+    hidden: no
     group_label: "Brand Location"
     label: "Brand City"
     type: string
@@ -81,7 +81,7 @@ view: dim_brand {
   }
 
   dimension: brand_country {
-    hidden: yes
+    hidden: no
     group_label: "Brand Location"
     label: "Brand Country"
     type: string
@@ -90,7 +90,7 @@ view: dim_brand {
   }
 
   dimension: brand_state {
-    hidden: yes
+    hidden: no
     group_label: "Brand Location"
     label: "Brand State"
     type: string
@@ -99,7 +99,7 @@ view: dim_brand {
   }
 
   dimension: brand_zip_code {
-    hidden: yes
+    hidden: no
     group_label: "Brand Location"
     label: "Brand Zip Code"
     type: string

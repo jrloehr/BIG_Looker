@@ -46,7 +46,7 @@ view: fact_budget {
   }
 
   dimension: subsidiary_name {
-    hidden: yes
+    hidden: no
     label: "Subsidiary Name"
     type: string
     sql: ${TABLE}.subsidiary_name ;;

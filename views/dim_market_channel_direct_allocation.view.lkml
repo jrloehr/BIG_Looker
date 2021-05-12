@@ -27,14 +27,14 @@ view: dim_market_channel_direct_allocation {
       quarter,
       year
     ]
-    hidden: yes
+    hidden: no
     convert_tz: no
     datatype: date
     sql: ${TABLE}.last_activity ;;
   }
 
   dimension: marketing_channel_id {
-    hidden: yes
+    hidden: no
     group_label: "Marketing Channel"
     type: number
     sql: ${TABLE}.Marketing_ChannelId ;;
@@ -76,7 +76,7 @@ view: dim_market_channel_direct_allocation {
   }
 
   dimension: marketing_channel_hierarchy {
-    hidden: yes
+    hidden: no
     label_from_parameter: marketing_channel_hierarchy_types
     sql:  CASE
       WHEN {% parameter marketing_channel_hierarchy_types %} = '5 Keyword'
@@ -94,7 +94,7 @@ view: dim_market_channel_direct_allocation {
   }
 
   parameter: marketing_channel_hierarchy_types {
-    hidden: yes
+    hidden: no
     type: string
     allowed_value: {value:"Ad Content"}
     allowed_value: {value:"Keyword"}

@@ -14,7 +14,7 @@ view: fact_sales_detail {
     value_format_name: usd
     sql: ${TABLE}.COGS ;;
     description: "Use this to get the aggregated cost of goods sold."
-    hidden: yes
+    hidden: no
   }
 
   measure: cogs_per_order {
@@ -23,7 +23,7 @@ view: fact_sales_detail {
     value_format_name: usd
     sql: 1.0 * ${cogs_total} / ${countd_transaction_id} ;;
     description: "Cost of Goods Sold / Orders - produces average COGS."
-    hidden: yes
+    hidden: no
   }
 
   dimension: shipping {
@@ -42,7 +42,7 @@ view: fact_sales_detail {
     value_format_name: usd
     sql: ${shipping} ;;
     description: "Use this field to get the aggregated shipping cost."
-    hidden: yes
+    hidden: no
   }
 
   measure: runningtotal_total_shipping {
@@ -52,7 +52,7 @@ view: fact_sales_detail {
     value_format_name: usd
     sql: ${sum_shipping} ;;
     description: "Use this field to get the running total shipping costs of a period."
-    hidden: yes
+    hidden: no
   }
 
   measure: avg_shipping {
@@ -112,7 +112,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_taxes {
-    hidden: yes
+    hidden: no
     group_label: "Taxes"
     label: "Taxes"
     type: sum
@@ -122,7 +122,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_total_taxes {
-    hidden: yes
+    hidden: no
     group_label: "Taxes"
     label: "Cumulative Taxes"
     type: running_total
@@ -132,7 +132,7 @@ view: fact_sales_detail {
   }
 
   measure: avg_taxes {
-    hidden: yes
+    hidden: no
     group_label: "Taxes"
     label: "Average Taxes"
     type: number
@@ -152,7 +152,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_total_sales {
-    hidden: yes
+    hidden: no
     group_label: "Sales"
     label: "Sales"
     description: "Sales Amount = Gross Sales - Discounts + Shipping + Taxes"
@@ -162,7 +162,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_total_sales {
-    hidden: yes
+    hidden: no
     group_label: "Sales"
     label: "Cumulative Sales"
     description: "Use this field to get the cumulative total sales amount for period."
@@ -172,7 +172,7 @@ view: fact_sales_detail {
   }
 
   measure: avg_total_sales {
-    hidden: yes
+    hidden: no
     group_label: "Sales"
     label: "Average Sales"
     type: number
@@ -210,7 +210,7 @@ view: fact_sales_detail {
 
   dimension: item_qty {
     group_label: "Item Quantity"
-    hidden: yes
+    hidden: no
     label: "Item Quantity"
     type: number
     value_format_name: decimal_0
@@ -218,7 +218,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_item_qty {
-    hidden: yes
+    hidden: no
     group_label: "Item Quantity"
     label: "Item Quantity"
     description: "Use this to get the quantity of items in orders."
@@ -228,7 +228,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_item_qty {
-    hidden: yes
+    hidden: no
     group_label: "Item Quantity"
     label: "Cumulative Item Quantity"
     description: "Use this field to get a cumulative of quantity in orders in a period."
@@ -238,7 +238,7 @@ view: fact_sales_detail {
   }
 
   measure: avg_item_qty {
-    hidden: yes
+    hidden: no
     group_label: "Item Quantity"
     label: "Average Item Quantity"
     description: "Use this field to get the average number of items in an order (Item Quantity / Orders)"
@@ -257,7 +257,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_gross_sales {
-    hidden: yes
+    hidden: no
     group_label: "Gross Sales"
     label: "Gross Sales"
     type: sum
@@ -267,7 +267,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_gross_sales {
-    hidden: yes
+    hidden: no
     group_label: "Gross Sales"
     label: "Cumulative Gross Sales"
     type: running_total
@@ -277,7 +277,7 @@ view: fact_sales_detail {
   }
 
   measure: avg_gross_sales {
-    hidden: yes
+    hidden: no
     group_label: "Gross Sales"
     label: "Average Gross Sales"
     description: "Use this field to get the average Gross Sales (Gross Sales / Orders)"
@@ -296,7 +296,7 @@ view: fact_sales_detail {
   }
 
   measure: sum_discounts {
-    hidden: yes
+    hidden: no
     group_label: "Discounts"
     label: "Discounts"
     description: "Use this field to see aggregated discounts."
@@ -306,7 +306,7 @@ view: fact_sales_detail {
   }
 
   measure: runningtotal_discounts {
-    hidden: yes
+    hidden: no
     group_label: "Discounts"
     label: "Cumulative Discounts"
     description: "Use this field to see cumulative discounts in a given period."
@@ -316,7 +316,7 @@ view: fact_sales_detail {
   }
 
   measure: avg_discounts {
-    hidden: yes
+    hidden: no
     group_label: "Discounts"
     label: "Average Discounts"
     description: "Use this field to see average discounts (Discounts / Orders)"
@@ -407,7 +407,7 @@ view: fact_sales_detail {
   }
 
   measure: ltv_sales_per_customer{
-    hidden: yes
+    hidden: no
     label: "LTV - Sales per Customer"
     description: "Use this field to get the lifetime value (Net Sales / Unique Customers) for a group of customers. Can be useful when comparing customer types/cohorts."
     type: number
@@ -416,7 +416,7 @@ view: fact_sales_detail {
   }
 
   measure: aof_orders_per_customer{
-    hidden: yes
+    hidden: no
     label: "Frequency - Orders per Customer"
     description: "Use this field to determine order frequency. Can be useful when determining customer loyalty in customer types (# of Orders / Unique Customers)"
     type: number
@@ -462,14 +462,14 @@ view: fact_sales_detail {
   }
 
   measure: count_etail_order_id {
-    hidden: yes
+    hidden: no
     description: "Unique count of all eTail Order IDs in a subset of data."
     type: count_distinct
     sql: ${etail_order_id};;
   }
 
   dimension: item_id {
-    hidden: yes
+    hidden: no
     label: "Item ID"
     type: number
     sql: ${TABLE}.item_id ;;
@@ -646,7 +646,7 @@ view: fact_sales_detail {
   }
 
   dimension: first_order_flag {
-    hidden: yes
+    hidden: no
     type: number
     sql: ${TABLE}.first_order_flag ;;
   }
