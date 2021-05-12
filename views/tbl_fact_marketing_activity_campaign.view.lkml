@@ -443,10 +443,10 @@ view: fact_marketing_activty_campaign {
     hidden: no
     group_label: "New Customers"
     label: "New | Average Order Count"
-    type: average
+    type: number
     sql: CASE
     WHEN ${date_date} >= GETDATE() - 365
-    THEN ${new_order_count}
+    THEN SUM(${new_order_count})/12
     END ;;
   }
 
@@ -454,8 +454,8 @@ view: fact_marketing_activty_campaign {
     hidden: no
     group_label: "New Customers"
     label: "New | Average Order Count Filter"
-    type: average
-    sql: ${new_order_count} ;;
+    type: sum
+    sql: ${new_order_count}/12 ;;
     filters: [last_365_days: "Yes"]
   }
 
