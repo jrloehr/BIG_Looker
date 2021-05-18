@@ -679,7 +679,14 @@ view: fact_sales_detail {
     hidden: yes
     type: number
     sql: ${TABLE}.marketing_channelid ;;
+    # link: {# https://4847083.app.netsuite.com/app/reporting/reportrunner.nl?acctid={{ value }}&reload=T&outputtype=3&reporttype=REGISTER - for linking to external [to Looker] sites}
   }
+
+# https://help.looker.com/hc/en-us/articles/360023589613--More-Powerful-Data-Drilling
+# https://xin-looker.github.io/
+# https://help.looker.com/hc/en-us/articles/360001288228
+
+# https://4847083.app.netsuite.com/app/reporting/reportrunner.nl?acctid={{ value }}&reload=T&outputtype=3&reporttype=REGISTER - for linking to external [to Looker] sites
 
   set: testset {
     fields: [customer_id, dim_customer.full_name, dim_customer.email]

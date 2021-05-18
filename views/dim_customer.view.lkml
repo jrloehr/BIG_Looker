@@ -33,6 +33,7 @@ view: dim_customer {
     label: "Email"
     type: string
     sql: ${TABLE}.Email ;;
+    # link: {https://4847083.app.netsuite.com/app/reporting/reportrunner.nl?acctid={{ dim_customer.first_name._value }}&reload=T&outputtype=3&reporttype=REGISTER - for linking to external [to Looker] sites}
   }
 
   dimension: first_name {
