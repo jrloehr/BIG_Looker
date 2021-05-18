@@ -629,7 +629,8 @@ view: fact_sales_detail {
       month,
       quarter,
       year,
-      month_name
+      month_name,
+      month_num
     ]
     convert_tz: no
     datatype: date
@@ -646,7 +647,8 @@ view: fact_sales_detail {
       month,
       quarter,
       year,
-      month_name
+      month_name,
+      month_num
     ]
     convert_tz: no
     datatype: date
