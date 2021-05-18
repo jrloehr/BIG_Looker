@@ -21,17 +21,28 @@ view: fact_sales_detail {
     label: "Average COGS"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${cogs_total} / ${countd_transaction_id} ;;
+    sql: 1.0 * ${cogs_total} / NULLIF(${countd_transaction_id},0) ;;
     description: "Cost of Goods Sold / Orders - produces average COGS."
     hidden: no
   }
 
   measure: profit {
     label: "Profit"
+    group_label: "Net Sales"
     type: number
     value_format_name: usd
     sql: 1.0 * (${sum_net_sales} - ${cogs_total}) ;;
     description: "Net Sales minus Cost of Goods Sold."
+    hidden: no
+  }
+
+  measure: net_sales_to_cogs_ratio {
+    label: "Net Sales to COGS Ratio"
+    group_label: "Net Sales"
+    type: number
+    value_format_name: usd
+    sql: 1.0 * (${sum_net_sales}/ NULLIF(${cogs_total})) ;;
+    description: "Net Sales / Cost of Goods Sold."
     hidden: no
   }
 
@@ -69,7 +80,7 @@ view: fact_sales_detail {
     label: "Average Shipping"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${sum_shipping} / ${countd_transaction_id} ;;
+    sql: 1.0 * ${sum_shipping} / NULLIF(${countd_transaction_id},0) ;;
     description: "Shipping / Orders - produces average shipping cost."
   }
 
@@ -108,7 +119,7 @@ view: fact_sales_detail {
     description: "Net Sales / Orders - produces average Net Sales."
     type: number
     value_format_name: usd
-    sql: 1.0 * (${sum_net_sales} + ${sum_shipping}) / ${countd_transaction_id} ;;
+    sql: 1.0 * (${sum_net_sales} + ${sum_shipping}) / NULLIF(${countd_transaction_id},0) ;;
   }
 
   dimension: taxes {
@@ -146,7 +157,7 @@ view: fact_sales_detail {
     label: "Average Taxes"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${sum_taxes} / ${countd_transaction_id} ;;
+    sql: 1.0 * ${sum_taxes} / NULLIF(${countd_transaction_id},0) ;;
     description: "Sales Tax / Orders - use this field to get the average sales tax for orders."
   }
 
@@ -186,7 +197,7 @@ view: fact_sales_detail {
     label: "Average Sales"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${sum_total_sales} / ${countd_transaction_id} ;;
+    sql: 1.0 * ${sum_total_sales} / NULLIF(${countd_transaction_id},0) ;;
     description: "Use this field to get the average total sales (total sales / orders)."
   }
 
@@ -253,7 +264,7 @@ view: fact_sales_detail {
     description: "Use this field to get the average number of items in an order (Item Quantity / Orders)"
     type: number
     value_format_name: decimal_0
-    sql: 1.0 * ${sum_item_qty} / ${countd_transaction_id} ;;
+    sql: 1.0 * ${sum_item_qty} / NULLIF(${countd_transaction_id},0) ;;
   }
 
   dimension: gross_sales {
@@ -292,7 +303,7 @@ view: fact_sales_detail {
     description: "Use this field to get the average Gross Sales (Gross Sales / Orders)"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${sum_gross_sales} / ${countd_transaction_id};;
+    sql: 1.0 * ${sum_gross_sales} / NULLIF(${countd_transaction_id},0);;
   }
 
   dimension: discounts {
@@ -331,7 +342,7 @@ view: fact_sales_detail {
     description: "Use this field to see average discounts (Discounts / Orders)"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${sum_discounts} / ${countd_transaction_id};;
+    sql: 1.0 * ${sum_discounts} / NULLIF(${countd_transaction_id},0);;
   }
 
   dimension: transaction_id {
@@ -412,7 +423,7 @@ view: fact_sales_detail {
     description: "Use this to see the average order value. Can be useful when comparing timeframes, brands, etc. Net Sales / # of Orders"
     type: number
     value_format_name: usd
-    sql: 1.0 * ${sum_net_sales} / ${countd_transaction_id} ;;
+    sql: 1.0 * ${sum_net_sales} / NULLIF(${countd_transaction_id},0) ;;
   }
 
   measure: ltv_sales_per_customer{
@@ -421,7 +432,7 @@ view: fact_sales_detail {
     description: "Use this field to get the lifetime value (Net Sales / Unique Customers) for a group of customers. Can be useful when comparing customer types/cohorts."
     type: number
     value_format_name: usd
-    sql: 1.0 * ${sum_net_sales} / ${countd_customer_id} ;;
+    sql: 1.0 * ${sum_net_sales} / NULLIF(${countd_customer_id},0) ;;
   }
 
   measure: aof_orders_per_customer{
@@ -430,7 +441,7 @@ view: fact_sales_detail {
     description: "Use this field to determine order frequency. Can be useful when determining customer loyalty in customer types (# of Orders / Unique Customers)"
     type: number
     value_format_name: decimal_0
-    sql: 1.0 * ${countd_transaction_id} / ${countd_customer_id} ;;
+    sql: 1.0 * ${countd_transaction_id} / NULLIF(${countd_customer_id},0) ;;
   }
 
   dimension: customer_type_id {
