@@ -360,7 +360,7 @@ view: fact_sales_detail {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${transaction_id} ;;
-    drill_fields: [customer_id, dim_customer.full_name, dim_customer.email]
+    drill_fields: [testset*]
   }
 
   measure: runningtotal_orders {
@@ -681,8 +681,8 @@ view: fact_sales_detail {
     sql: ${TABLE}.marketing_channelid ;;
   }
 
-  set: fact_sales_detail_drill_set {
-    fields: [customer_id,dim_brand.first_order_date_date]
+  set: testset {
+    fields: [customer_id, dim_customer.full_name, dim_customer.email]
   }
 
   measure: count {
