@@ -41,7 +41,7 @@ view: fact_sales_detail {
     group_label: "Net Sales"
     type: number
     value_format_name: usd
-    sql: 1.0 * (${sum_net_sales}/ NULLIF(${cogs_total})) ;;
+    sql: 1.0 * (${sum_net_sales}/ NULLIF(${cogs_total},0)) ;;
     description: "Net Sales / Cost of Goods Sold."
     hidden: no
   }
