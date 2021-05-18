@@ -97,6 +97,11 @@ explore: fact_sales_detail {
     measures: [fact_sales_detail.sum_total_sales]
   }
 
+  # access_filter: {
+  #   field: dim_brand.brand_parent_name
+  #   user_attribute: brand_name
+  # }
+
   join: dim_customer {
     view_label: "Customer"
     type: left_outer

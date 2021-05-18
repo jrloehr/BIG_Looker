@@ -26,6 +26,15 @@ view: fact_sales_detail {
     hidden: no
   }
 
+  measure: profit {
+    label: "Profit"
+    type: number
+    value_format_name: usd
+    sql: 1.0 * (${sum_net_sales} - ${cogs_total}) ;;
+    description: "Net Sales minus Cost of Goods Sold."
+    hidden: no
+  }
+
   dimension: shipping {
     group_label: "Shipping"
     hidden: yes

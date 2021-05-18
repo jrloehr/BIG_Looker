@@ -454,6 +454,7 @@ view: fact_marketing_activty_campaign {
     sql: ${avg_new_order_count_prior_365_filter}/12 ;;
   }
 
+
 # NEW DOLLAR METRICS
 
   dimension: new_cogs {
