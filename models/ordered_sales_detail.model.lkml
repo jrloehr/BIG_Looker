@@ -12,6 +12,10 @@ persist_with: order_sales_detail_datagroup
 
 # explore: cohort_tool {}
 
+explore: data_current_status_by_source {
+  label: "Enterprise Data Warehouse Last Sync"
+}
+
 explore: fact_marketing_activty_campaign {
 
   cancel_grouping_fields: [fact_marketing_activty_campaign.rolling_roas_user_selection]
