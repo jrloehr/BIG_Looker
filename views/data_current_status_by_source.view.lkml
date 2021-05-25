@@ -12,7 +12,10 @@ view: data_current_status_by_source {
       quarter,
       year,
       month_name,
-      month_num
+      month_num,
+      hour,
+      minute,
+      second
     ]
     convert_tz: no
     datatype: date
