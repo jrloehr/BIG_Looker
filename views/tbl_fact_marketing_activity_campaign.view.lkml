@@ -1017,6 +1017,19 @@ view: fact_marketing_activty_campaign {
     sql: ${marketing_spend_total} / NULLIF(${new_existing_customer_count_total},0) ;;
   }
 
+  measure: spend_per_new_customer_sum {
+    hidden: no
+    group_label: "Ad Cost Metrics"
+    label: "New Customer Acquisition Cost (CAC)"
+    type: number
+    value_format_name: usd
+    # sql: CASE
+    # WHEN ${new_existing_customer_count} <> 0 THEN ${marketing_spend} / ${new_existing_customer_count}
+    # ELSE ${marketing_spend}
+    # END;;
+    sql: ${marketing_spend_total} / NULLIF(${new_customer_count_total},0) ;;
+  }
+
   measure: new_existing_spend_per_item_sum {
     hidden: no
     group_label: "Ad Cost Metrics"
