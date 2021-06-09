@@ -203,6 +203,15 @@ view: fact_marketing_activty_campaign {
     description: "Use this field to analyze how many Clicks an Ad received."
   }
 
+  measure: cost_per_click {
+    hidden: no
+    group_label: "Ad Metrics"
+    label: "Cost per Click"
+    type: number
+    value_format_name: percent_2
+    sql: 1.0 * ${marketing_spend_total} / NULLIF(${marketing_clicks},0) ;;
+  }
+
   # Clicks Per Session
 
   measure: clicks_per_session{
