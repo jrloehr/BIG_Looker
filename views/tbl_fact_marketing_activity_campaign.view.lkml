@@ -72,12 +72,12 @@ view: fact_marketing_activty_campaign {
     sql: ${TABLE}.marketing_channel_grouping ;;
   }
 
-  dimension: marketing_source {
+  dimension: marketing_source_medium {
     hidden: no
     group_label: "Marketing Channels"
-    label: "Source"
+    label: "Source/Medium"
     type: string
-    sql: ${TABLE}.marketing_source ;;
+    sql: ${TABLE}.marketing_source_medium ;;
   }
 
   dimension: hard_bounce_count {
