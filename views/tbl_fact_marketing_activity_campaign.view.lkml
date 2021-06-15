@@ -11,6 +11,16 @@ view: fact_marketing_activty_campaign {
     default_value: "28"
   }
 
+  parameter: date_granularity {
+    group_label: "User Parameters"
+    type: string
+    allowed_value: { value: "Date" }
+    allowed_value: { value: "Week" }
+    allowed_value: { value: "Month" }
+    allowed_value: { value: "Year" }
+    default_value: "Month"
+  }
+
   measure: rolling_roas_user_selection {
     group_label: "ROAS"
     type: max
@@ -46,6 +56,18 @@ view: fact_marketing_activty_campaign {
     datatype: date
     sql: ${TABLE}.date ;;
     description: "This is the date the ad incurred charges. Cost is associated to this date, as are all ad metrics."
+  }
+
+  dimension: dynamic_date {
+    type: string
+    label_from_parameter: date_granularity
+    sql:
+    CASE
+    WHEN {% parameter date_granularity %} = 'Date' THEN CAST(${date_date} AS nvarchar)
+    WHEN {% parameter date_granularity %} = 'Week' THEN CAST(${date_week} as nvarchar)
+    WHEN {% parameter date_granularity %} = 'Month' THEN CAST(${date_month} as nvarchar)
+    WHEN {% parameter date_granularity %} = 'Year' THEN CAST(${date_year} AS nvarchar)
+    END ;;
   }
 
   dimension: marketing_ad_content {
@@ -542,7 +564,7 @@ view: fact_marketing_activty_campaign {
   }
 
   measure: new_AOV {
-    hidden: yes
+    hidden: no
     group_label: "New Customers"
     label: "New | Average Order Value"
     type: number
