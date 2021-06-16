@@ -21,11 +21,42 @@ view: fact_marketing_activty_campaign {
     default_value: "Month"
   }
 
+  parameter: channel_or_brand {
+    group_label: "User Parameters"
+    type: string
+    allowed_value: { value: "Channel" }
+    allowed_value: { value: "Brand" }
+    default_value: "Channel"
+  }
+
   measure: rolling_roas_user_selection {
     group_label: "ROAS"
     type: max
     sql: {% parameter rolling_roas_picker %};;
     label: "Rolling ROAS User Selection"
+  }
+
+  dimension: dynamic_group_by {
+    label_from_parameter: channel_or_brand
+    type: string
+    sql:     CASE
+    WHEN {% parameter channel_or_brand %} = 'Channel' THEN ${marketing_channel_grouping}
+    WHEN {% parameter channel_or_brand %} = 'Brand' THEN ${brand_parent_name}
+    END ;;
+  }
+
+  measure: drill_by_brand_conversions {
+    hidden: yes
+    type: number
+    sql: 1 ;;
+    drill_fields: [brand_parent_name,new_conversions]
+  }
+
+  measure: drill_by_channel_conversions {
+    hidden: yes
+    type: number
+    sql: 1 ;;
+    drill_fields: [marketing_channel_grouping,new_conversions]
   }
 
   dimension: brand_parent_name {
@@ -579,6 +610,80 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${new_order_count_total} / NULLIF(${visitor_count_total},0) ;;
+    link: {
+      label: "Drill By Channel"
+      url: "{% assign vis= '{\"x_axis_gridlines\":false,
+                \"y_axis_gridlines\":true,
+                \"show_view_names\":false,
+                \"show_y_axis_labels\":true,
+                \"show_y_axis_ticks\":true,
+                \"y_axis_tick_density\":\"default\",
+                \"y_axis_tick_density_custom\":5,
+                \"show_x_axis_label\":true,
+                \"show_x_axis_ticks\":true,
+                \"y_axis_scale_mode\":\"linear\",
+                \"x_axis_reversed\":false,
+                \"y_axis_reversed\":false,
+                \"plot_size_by_field\":false,
+                \"trellis\":\"\",
+                \"stacking\":\"normal\",
+                \"limit_displayed_rows\":false,
+                \"legend_position\":\"center\",
+                \"point_style\":\"none\",
+                \"show_value_labels\":false,
+                \"label_density\":25,
+                \"x_axis_scale\":\"auto\",
+                \"y_axis_combined\":true,
+                \"ordering\":\"none\",
+                \"show_null_labels\":false,
+                \"show_totals_labels\":false,
+                \"show_silhouette\":false,
+                \"totals_color\":\"#808080\",
+                \"series_types\":{},
+                \"type\":\"looker_bar\",
+                \"defaults_version\":1,
+                \"value_labels\":\"legend\",
+                \"label_type\":\"labPer\"}' %}
+
+                {{drill_by_channel_conversions._link}}&vis={{vis | encode_uri}}"
+    }
+    link: {
+      label: "Drill By Brand"
+      url: "{% assign vis= '{\"x_axis_gridlines\":false,
+                \"y_axis_gridlines\":true,
+                \"show_view_names\":false,
+                \"show_y_axis_labels\":true,
+                \"show_y_axis_ticks\":true,
+                \"y_axis_tick_density\":\"default\",
+                \"y_axis_tick_density_custom\":5,
+                \"show_x_axis_label\":true,
+                \"show_x_axis_ticks\":true,
+                \"y_axis_scale_mode\":\"linear\",
+                \"x_axis_reversed\":false,
+                \"y_axis_reversed\":false,
+                \"plot_size_by_field\":false,
+                \"trellis\":\"\",
+                \"stacking\":\"normal\",
+                \"limit_displayed_rows\":false,
+                \"legend_position\":\"center\",
+                \"point_style\":\"none\",
+                \"show_value_labels\":false,
+                \"label_density\":25,
+                \"x_axis_scale\":\"auto\",
+                \"y_axis_combined\":true,
+                \"ordering\":\"none\",
+                \"show_null_labels\":false,
+                \"show_totals_labels\":false,
+                \"show_silhouette\":false,
+                \"totals_color\":\"#808080\",
+                \"series_types\":{},
+                \"type\":\"looker_bar\",
+                \"defaults_version\":1,
+                \"value_labels\":\"legend\",
+                \"label_type\":\"labPer\"}' %}
+
+                {{drill_by_brand_conversions._link}}&vis={{vis | encode_uri}}"
+    }
   }
 
   measure: new_variable_ad_expense_as_percent_of_sales {
