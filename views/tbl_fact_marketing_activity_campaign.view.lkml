@@ -124,19 +124,23 @@ view: fact_marketing_activty_campaign {
   }
 
   dimension: is_placeholder_campaign_name {
-    hidden: yes
+    hidden: no
     type: yesno
-    sql:  ${marketing_campaign_name} = '(not set)' OR ${marketing_campaign_name} = 'Unknown';;
+    sql:  CASE
+    WHEN ${marketing_campaign_name} = '(not set)' OR ${marketing_campaign_name} = 'Unknown'
+    THEN 1
+    ELSE 0
+    END = 1;;
   }
 
-  dimension: filter_as_placeholder {
-    hidden: yes
+  measure: filter_as_placeholder {
+    hidden: no
     type: yesno
-    sql:
-    CASE
-    WHEN {% parameter filter_placeholder_campaigns %} THEN ${is_placeholder_campaign_name}
-    ELSE FALSE
-    END;;
+    sql: CASE
+    WHEN {{ filter_placeholder_campaigns._parameter_value }} AND ${is_placeholder_campaign_name}
+    THEN 1
+    ELSE 0
+    END = 1;;
   }
 
   dimension: marketing_channel_grouping {
