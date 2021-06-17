@@ -123,6 +123,12 @@ view: fact_marketing_activty_campaign {
     sql: ${TABLE}.marketing_campaign_name ;;
   }
 
+  dimension: is_placeholder_campaign_name {
+    hidden: yes
+    type: yesno
+    sql: ${marketing_campaign_name} = "(not set)" OR ${marketing_campaign_name} = "Unknown" ;;
+  }
+
   dimension: marketing_channel_grouping {
     hidden: no
     group_label: "Marketing Channels"
