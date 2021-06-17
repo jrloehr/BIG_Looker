@@ -29,6 +29,12 @@ view: fact_marketing_activty_campaign {
     default_value: "Channel"
   }
 
+  parameter: filter_placeholder_campaigns {
+    group_label: "User Parameters"
+    type: yesno
+    default_value: "Yes"
+  }
+
   measure: rolling_roas_user_selection {
     group_label: "ROAS"
     type: max
