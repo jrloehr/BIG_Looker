@@ -131,7 +131,7 @@ view: fact_marketing_activty_campaign {
   }
 
   dimension: is_placeholder_campaign_name {
-    hidden: no
+    hidden: yes
     type: yesno
     sql:  CASE
     WHEN ${marketing_campaign_name} = '(not set)' OR ${marketing_campaign_name} = 'Unknown'
@@ -141,7 +141,7 @@ view: fact_marketing_activty_campaign {
   }
 
   dimension: filter_as_placeholder {
-    hidden: no
+    hidden: yes
     type: yesno
     sql: CASE
     WHEN {{ filter_placeholder_campaigns._parameter_value }} AND ${is_placeholder_campaign_name}
