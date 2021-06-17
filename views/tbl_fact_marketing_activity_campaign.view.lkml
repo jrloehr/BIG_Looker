@@ -126,7 +126,17 @@ view: fact_marketing_activty_campaign {
   dimension: is_placeholder_campaign_name {
     hidden: yes
     type: yesno
-    sql: ${marketing_campaign_name} = '(not set)' OR ${marketing_campaign_name} = 'Unknown' ;;
+    sql:  ${marketing_campaign_name} = '(not set)' OR ${marketing_campaign_name} = 'Unknown';;
+  }
+
+  dimension: filter_as_placeholder {
+    hidden: yes
+    type: yesno
+    sql:
+    CASE
+    WHEN {% parameter filter_placeholder_campaigns %} THEN ${is_placeholder_campaign_name}
+    ELSE FALSE
+    END;;
   }
 
   dimension: marketing_channel_grouping {
