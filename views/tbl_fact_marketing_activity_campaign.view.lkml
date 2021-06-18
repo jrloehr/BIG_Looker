@@ -29,6 +29,12 @@ view: fact_marketing_activty_campaign {
     default_value: "Channel"
   }
 
+  parameter: filter_placeholder_campaigns {
+    group_label: "User Parameters"
+    type: yesno
+    default_value: "Yes"
+  }
+
   measure: rolling_roas_user_selection {
     group_label: "ROAS"
     type: max
@@ -50,6 +56,13 @@ view: fact_marketing_activty_campaign {
     type: number
     sql: 1 ;;
     drill_fields: [brand_parent_name,new_conversions]
+  }
+
+  measure: drill_over_time_conversions {
+    hidden: yes
+    type: number
+    sql: 1 ;;
+    drill_fields: [dynamic_date,new_customer_count_total]
   }
 
   measure: drill_by_channel_conversions {
@@ -115,6 +128,26 @@ view: fact_marketing_activty_campaign {
     label: "Campaign"
     type: string
     sql: ${TABLE}.marketing_campaign_name ;;
+  }
+
+  dimension: is_placeholder_campaign_name {
+    hidden: yes
+    type: yesno
+    sql:  CASE
+    WHEN ${marketing_campaign_name} = '(not set)' OR ${marketing_campaign_name} = 'Unknown'
+    THEN 1
+    ELSE 0
+    END = 1;;
+  }
+
+  dimension: filter_as_placeholder {
+    hidden: yes
+    type: yesno
+    sql: CASE
+    WHEN {{ filter_placeholder_campaigns._parameter_value }} AND ${is_placeholder_campaign_name}
+    THEN 1
+    ELSE 0
+    END = 1;;
   }
 
   dimension: marketing_channel_grouping {
