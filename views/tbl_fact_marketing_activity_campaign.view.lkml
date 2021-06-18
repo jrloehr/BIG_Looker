@@ -983,6 +983,15 @@ view: fact_marketing_activty_campaign {
     description: "Use this field to Orders / Visitors for all customers."
   }
 
+  measure: sessions_conversions {
+    group_label: "All Customers"
+    label: "Conversion Rate - Sessions"
+    type: number
+    value_format_name: percent_2
+    sql: 1.0 * ${new_existing_order_count_total} / NULLIF(${session_count_total},0) ;;
+    description: "Use this field to Orders / Visitors for all customers."
+  }
+
   measure: new_existing_variable_ad_expense_as_percent_of_sales {
     group_label: "All Customers"
     label: "VADX % of Sales"
