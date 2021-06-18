@@ -29,6 +29,12 @@ view: fact_marketing_activty_campaign {
     default_value: "Channel"
   }
 
+  parameter: filter_placeholder_campaigns {
+    group_label: "User Parameters"
+    type: yesno
+    default_value: "Yes"
+  }
+
   measure: rolling_roas_user_selection {
     group_label: "ROAS"
     type: max
@@ -50,6 +56,13 @@ view: fact_marketing_activty_campaign {
     type: number
     sql: 1 ;;
     drill_fields: [brand_parent_name,new_conversions]
+  }
+
+  measure: drill_over_time_conversions {
+    hidden: yes
+    type: number
+    sql: 1 ;;
+    drill_fields: [dynamic_date,new_customer_count_total]
   }
 
   measure: drill_by_channel_conversions {
@@ -117,6 +130,26 @@ view: fact_marketing_activty_campaign {
     sql: ${TABLE}.marketing_campaign_name ;;
   }
 
+  dimension: is_placeholder_campaign_name {
+    hidden: yes
+    type: yesno
+    sql:  CASE
+    WHEN ${marketing_campaign_name} = '(not set)' OR ${marketing_campaign_name} = 'Unknown'
+    THEN 1
+    ELSE 0
+    END = 1;;
+  }
+
+  dimension: filter_as_placeholder {
+    hidden: yes
+    type: yesno
+    sql: CASE
+    WHEN {{ filter_placeholder_campaigns._parameter_value }} AND ${is_placeholder_campaign_name}
+    THEN 1
+    ELSE 0
+    END = 1;;
+  }
+
   dimension: marketing_channel_grouping {
     hidden: no
     group_label: "Marketing Channels"
@@ -130,8 +163,18 @@ view: fact_marketing_activty_campaign {
     group_label: "Marketing Channels"
     label: "Source/Medium"
     type: string
-    sql: ${TABLE}.marketing_source_medium ;;
+    sql: ${TABLE}.marketing_source_medium;;
   }
+
+  # dimension: marketing_source_medium_formatted {
+  #   group_label: "Marketing Channels"
+  #   label: "Source/Medium"
+  #   type: string
+  #   sql: CASE WHEN ${marketing_source_medium} LIKE '%facebook%' THEN 'Facebook'
+  #             WHEN ${marketing_source_medium} LIKE '%google%' THEN 'Google'
+  #             ELSE init_cap(${marketing_source_medium}
+  #             END);;
+  # }
 
   dimension: hard_bounce_count {
     hidden: yes
@@ -263,6 +306,15 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${marketing_spend_total} / NULLIF(${marketing_clicks},0) ;;
+  }
+
+  measure: cost_per_thousand_impressions {
+    hidden: no
+    group_label: "Ad Metrics"
+    label: "Click per 1000 Impressions (CPM)"
+    type: number
+    value_format_name: usd
+    sql: 1.0*${marketing_spend_total} / (nullif(${marketing_impressions_total},0)/1000.0) ;;
   }
 
   # Clicks Per Session
@@ -948,6 +1000,14 @@ view: fact_marketing_activty_campaign {
     value_format_name: usd
     sql: ISNULL(${new_existing_net_sales_b4_returns},0) + ISNULL(${new_existing_shipping},0) ;;
     description: "Use this field to get the Net Sales (ordered Net Sales) for all customers."
+  }
+
+  measure: new_existing_net_sales_per_click {
+    group_label: "All Customers"
+    label: "Net Sales per Click"
+    type: number
+    value_format_name: usd
+    sql: 1.0*${new_existing_net_sales_b4_returns_total}/nullif(${marketing_clicks_total},0) ;;
   }
 
   dimension: new_existing_shipping {
