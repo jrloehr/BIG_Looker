@@ -163,8 +163,18 @@ view: fact_marketing_activty_campaign {
     group_label: "Marketing Channels"
     label: "Source/Medium"
     type: string
-    sql: ${TABLE}.marketing_source_medium ;;
+    sql: ${TABLE}.marketing_source_medium;;
   }
+
+  # dimension: marketing_source_medium_formatted {
+  #   group_label: "Marketing Channels"
+  #   label: "Source/Medium"
+  #   type: string
+  #   sql: CASE WHEN ${marketing_source_medium} LIKE '%facebook%' THEN 'Facebook'
+  #             WHEN ${marketing_source_medium} LIKE '%google%' THEN 'Google'
+  #             ELSE init_cap(${marketing_source_medium}
+  #             END);;
+  # }
 
   dimension: hard_bounce_count {
     hidden: yes
@@ -296,6 +306,15 @@ view: fact_marketing_activty_campaign {
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${marketing_spend_total} / NULLIF(${marketing_clicks},0) ;;
+  }
+
+  measure: cost_per_thousand_impressions {
+    hidden: no
+    group_label: "Ad Metrics"
+    label: "Click per 1000 Impressions (CPM)"
+    type: number
+    value_format_name: usd
+    sql: 1.0*${marketing_spend_total} / (nullif(${marketing_impressions_total},0)/1000.0) ;;
   }
 
   # Clicks Per Session
