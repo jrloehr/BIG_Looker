@@ -969,6 +969,14 @@ view: fact_marketing_activty_campaign {
     description: "Use this field to get the Net Sales (ordered Net Sales) for all customers."
   }
 
+  measure: new_existing_net_sales_per_click {
+    group_label: "All Customers"
+    label: "Net Sales per Click"
+    type: number
+    value_format_name: usd
+    sql: 1.0*${new_existing_net_sales_b4_returns_total}/nullif(${marketing_clicks_total},0) ;;
+  }
+
   dimension: new_existing_shipping {
     hidden: yes
     type: number
