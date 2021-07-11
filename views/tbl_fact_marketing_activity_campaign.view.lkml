@@ -1075,6 +1075,14 @@ view: fact_marketing_activty_campaign {
     {% endif %};;
   }
 
+  measure: target_vadx_vs_actual_filter {
+    group_label: "Other VADX"
+    label: "Target VADX vs. Actual"
+    type: yesno
+    sql: ${target_vadx_vs_actual} < 0 ;;
+    description: "Actual VADX has exceeded Target/Budget VADX"
+  }
+
 # MAY NEED TO CHANGE THESE TO FILTERS
   dimension: year_to_date {
     group_label: "Date Filters"
