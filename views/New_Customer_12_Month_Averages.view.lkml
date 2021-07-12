@@ -62,11 +62,11 @@ view: new_customer_12_month_averages {
     sql: ${TABLE}.movingmonthlyaverage ;;
   }
 
-  measure: sum_new_customer_orders_minus_twelve_month_average {
-    label: "Monthly Distance from Average"
-    type: number
-    sql: ${twelve_month_average} - ${fact_marketing_activity_campaign.new_order_count_total} ;;
-  }
+  # measure: sum_new_customer_orders_minus_twelve_month_average {
+  #   label: "Monthly Distance from Average"
+  #   type: number
+  #   sql: ${twelve_month_average} - ${fact_marketing_activity_campaign.new_order_count_total} ;;
+  # }
 
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
