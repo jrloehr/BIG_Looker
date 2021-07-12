@@ -32,6 +32,15 @@ explore: fact_marketing_activty_campaign {
     relationship: many_to_one
   }
 
+  join: new_customer_12_month_averages {
+    view_label: "12 Month New Customer Average Orders"
+    type: inner
+    sql_on: ${fact_marketing_activty_campaign.date_month} = ${new_customer_12_month_averages.ordered_month}
+    AND ${fact_marketing_activty_campaign.date_year} = ${new_customer_12_month_averages.ordered_year}
+    AND ${fact_marketing_activty_campaign.brand_parent_id} = ${new_customer_12_month_averages.brand_parent_id};;
+    relationship: many_to_one
+  }
+
 }
 
 # explore: fact_budget {
