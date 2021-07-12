@@ -31,8 +31,6 @@ view: new_customer_12_month_averages {
     sql: ${TABLE}.brand_parent_name ;;
   }
 
-
-
   dimension_group: ordered {
     group_label: "Ordered Date"
     type: time
@@ -62,6 +60,12 @@ view: new_customer_12_month_averages {
     label: "12 Month Average"
     type: number
     sql: ${TABLE}.movingmonthlyaverage ;;
+  }
+
+  measure: sum_new_customer_orders_minus_twelve_month_average {
+    label: "Monthly Distance from Average"
+    type: number
+    sql: ${twelve_month_average} - ${fact_marketing_activity_campaign.new_order_count_total} ;;
   }
 
   # # You can specify the table name if it's different from the view name:

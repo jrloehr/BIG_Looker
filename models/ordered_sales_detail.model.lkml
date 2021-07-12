@@ -16,9 +16,9 @@ explore: data_current_status_by_source {
   label: "Enterprise Data Warehouse Last Sync"
 }
 
-explore: fact_marketing_activty_campaign {
+explore: fact_marketing_activity_campaign {
 
-  cancel_grouping_fields: [fact_marketing_activty_campaign.rolling_roas_user_selection]
+  cancel_grouping_fields: [fact_marketing_activity_campaign.rolling_roas_user_selection]
 
   label: "Marketing Data"
   view_label: "Marketing Detail"
@@ -26,8 +26,8 @@ explore: fact_marketing_activty_campaign {
   join: fact_budget {
     view_label: "Budget and Forecast"
     type: inner
-    sql_on: ${fact_marketing_activty_campaign.date_date} = ${fact_budget.date_date}
-          AND ${fact_marketing_activty_campaign.brand_parent_id} = ${fact_budget.brand_parent_id}
+    sql_on: ${fact_marketing_activity_campaign.date_date} = ${fact_budget.date_date}
+          AND ${fact_marketing_activity_campaign.brand_parent_id} = ${fact_budget.brand_parent_id}
           ;;
     relationship: many_to_one
   }
@@ -35,9 +35,9 @@ explore: fact_marketing_activty_campaign {
   join: new_customer_12_month_averages {
     view_label: "12 Month New Customer Average Orders"
     type: inner
-    sql_on: ${fact_marketing_activty_campaign.date_month} = ${new_customer_12_month_averages.ordered_month}
-    AND ${fact_marketing_activty_campaign.date_year} = ${new_customer_12_month_averages.ordered_year}
-    AND ${fact_marketing_activty_campaign.brand_parent_id} = ${new_customer_12_month_averages.brand_parent_id};;
+    sql_on: ${fact_marketing_activity_campaign.date_month} = ${new_customer_12_month_averages.ordered_month}
+    AND ${fact_marketing_activity_campaign.date_year} = ${new_customer_12_month_averages.ordered_year}
+    AND ${fact_marketing_activity_campaign.brand_parent_id} = ${new_customer_12_month_averages.brand_parent_id};;
     relationship: many_to_one
   }
 
