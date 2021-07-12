@@ -1,23 +1,21 @@
 view: new_customer_12_month_averages {
-  derived_table: {sql: DROP TABLE IF EXISTS #TempNewOrderSums
+  derived_table: {sql:
 
-  SELECT fma.brand_parent_id
+  SELECT tno.*
+  , AVG(tno.New_Order_Sum) OVER (ORDER BY tno.Brand_Parent_ID, tno.MonthandYear ROWS BETWEEN 11 PRECEDING AND CURRENT ROW) as MovingMonthlyAverage
+
+  FROM (SELECT fma.brand_parent_id
   , fma.brand_parent_name
   , SUM(fma.new_order_count) as New_Order_Sum
   , DATEADD(MONTH, DATEDIFF(MONTH, 0, fma.[date]), 0) as MonthandYear
 
-  INTO #TempNewOrderSums
   FROM edw.tblFactMarketingActivty_Campaign as fma
 
   GROUP BY
   fma.brand_parent_id
   , fma.brand_parent_name
   , fma.brand_parent_name
-  , DATEADD(MONTH, DATEDIFF(MONTH, 0, fma.[date]), 0)
-
-  SELECT *
-  , AVG(tno.New_Order_Sum) OVER (ORDER BY tno.Brand_Parent_ID, tno.MonthandYear ROWS BETWEEN 11 PRECEDING AND CURRENT ROW) as MovingMonthlyAverage
-  FROM #TempNewOrderSums as tno ;;
+  , DATEADD(MONTH, DATEDIFF(MONTH, 0, fma.[date]), 0)) as tno ;;
 
   }
 
