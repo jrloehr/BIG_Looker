@@ -31,11 +31,7 @@ view: new_customer_12_month_averages {
     sql: ${TABLE}.brand_parent_name ;;
   }
 
-  measure: new_order_sum {
-    label: "New Customer Orders Sum"
-    type: sum
-    sql: ${TABLE}.new_order_sum ;;
-  }
+
 
   dimension_group: ordered {
     group_label: "Ordered Date"
@@ -56,7 +52,13 @@ view: new_customer_12_month_averages {
     description: "Use this field to check the order date. Select the time-frame you'd like to use."
   }
 
-  dimension: twelve_month_average {
+  measure: new_order_sum {
+    label: "New Customer Orders Sum"
+    type: sum
+    sql: ${TABLE}.new_order_sum ;;
+  }
+
+  measure: twelve_month_average {
     label: "12 Month Average"
     type: number
     sql: ${TABLE}.movingmonthlyaverage ;;
