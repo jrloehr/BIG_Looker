@@ -50,8 +50,25 @@ view: dim_market_channel_direct_allocation {
   dimension: marketing_source_medium {
     hidden: no
     group_label: "Marketing Channel"
+    label: "Marketing Source/Medium"
     type: string
     sql: ${TABLE}.Marketing_Source_Medium ;;
+  }
+
+  dimension: marketing_source {
+    hidden: no
+    label: "Marketing Source"
+    group_label: "Marketing Channel"
+    type: string
+    sql: ${TABLE}.Marketing_Source ;;
+  }
+
+  dimension: marketing_medium {
+    hidden: no
+    group_label: "Marketing Channel"
+    label: "Marketing Medium"
+    type: string
+    sql: ${TABLE}.Marketing_Medium ;;
   }
 
   dimension: marketing_campaign {

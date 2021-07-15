@@ -166,6 +166,22 @@ view: fact_marketing_activity_campaign {
     sql: ${TABLE}.marketing_source_medium;;
   }
 
+  dimension: marketing_medium {
+    hidden: no
+    group_label: "Marketing Channels"
+    label: "Medium"
+    type: string
+    sql: ${TABLE}.marketing_medium;;
+  }
+
+  dimension: marketing_source {
+    hidden: no
+    group_label: "Marketing Channels"
+    label: "Source"
+    type: string
+    sql: ${TABLE}.marketing_source;;
+  }
+
   # dimension: marketing_source_medium_formatted {
   #   group_label: "Marketing Channels"
   #   label: "Source/Medium"
