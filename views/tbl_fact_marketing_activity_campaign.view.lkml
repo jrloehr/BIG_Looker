@@ -768,7 +768,6 @@ view: fact_marketing_activity_campaign {
     group_label: "New Customers"
     label: "New | MER"
     type: number
-    value_format_name: percent_2
     sql: 1.0 * ${new_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total} ,0) ;;
   }
 
@@ -925,7 +924,6 @@ view: fact_marketing_activity_campaign {
     group_label: "Returning Customers"
     label: "Returning | MER"
     type: number
-    value_format_name: percent_2
     sql: 1.0 * ${existing_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total},0) ;;
   }
 
@@ -1099,7 +1097,6 @@ view: fact_marketing_activity_campaign {
     group_label: "All Customers"
     label: "MER"
     type: number
-    value_format_name: percent_2
     sql: 1.0 * ${new_existing_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total},0) ;;
     description: "Use this field to determine sales vs. marketing costs."
   }
