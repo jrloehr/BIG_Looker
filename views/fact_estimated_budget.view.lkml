@@ -147,6 +147,15 @@ view: fact_budget {
     description: "Use this field to determine target marketing costs as a percentage of target sales."
   }
 
+  measure: MER_target {
+    group_label: "MER"
+    label: "Target MER"
+    type: number
+    value_format_name: percent_2
+    sql: 1.0 * ${sum_budget_revenue} / NULLIF(${sum_variable_ad_expense_budget},0) ;;
+    description: "Use this field to determine sales vs. marketing costs."
+  }
+
   measure: count {
     hidden: yes
     type: count

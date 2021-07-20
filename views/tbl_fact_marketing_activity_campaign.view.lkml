@@ -763,6 +763,15 @@ view: fact_marketing_activity_campaign {
     sql: 1.0 * ${marketing_spend_total} / NULLIF(${new_net_sales_b4_returns_total},0) ;;
   }
 
+  measure: new_MER {
+    hidden: no
+    group_label: "New Customers"
+    label: "New | MER"
+    type: number
+    value_format_name: percent_2
+    sql: 1.0 * ${new_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total} ,0) ;;
+  }
+
   # EXISTING METRICS
 
   dimension: existing_customer_count {
@@ -909,6 +918,15 @@ view: fact_marketing_activity_campaign {
     type: number
     value_format_name: percent_2
     sql: 1.0 * ${marketing_spend_total} / NULLIF(${existing_net_sales_b4_returns_total},0) ;;
+  }
+
+  measure: existing_MER {
+    hidden: no
+    group_label: "Returning Customers"
+    label: "Returning | MER"
+    type: number
+    value_format_name: percent_2
+    sql: 1.0 * ${existing_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total},0) ;;
   }
 
   # TOTAL METRICS
@@ -1075,6 +1093,15 @@ view: fact_marketing_activity_campaign {
     value_format_name: percent_2
     sql: 1.0 * ${marketing_spend_total} / NULLIF(${new_existing_net_sales_b4_returns_total},0) ;;
     description: "Use this field to determine actual marketing costs as a percentage of total sales."
+  }
+
+  measure: new_existing_MER {
+    group_label: "All Customers"
+    label: "MER"
+    type: number
+    value_format_name: percent_2
+    sql: 1.0 * ${new_existing_net_sales_b4_returns_total} / NULLIF(${marketing_spend_total},0) ;;
+    description: "Use this field to determine sales vs. marketing costs."
   }
 
   measure: target_vadx_vs_actual {
